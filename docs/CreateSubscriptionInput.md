@@ -1,0 +1,29 @@
+# Amos::CreateSubscriptionInput
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **amount** | **Integer** |  | [optional] |
+| **currency** | **String** |  | [optional] |
+| **customer_id** | **String** |  | [optional] |
+| **cycles** | **Integer** |  | [optional] |
+| **interval** | **String** |  | [optional] |
+| **interval_count** | **Integer** |  | [optional] |
+| **subscription_plan_id** | **String** |  | [optional] |
+
+## Example
+
+```ruby
+require 'amos'
+
+instance = Amos::CreateSubscriptionInput.new(
+  amount: null,
+  currency: null,
+  customer_id: null,
+  cycles: null,
+  interval: null,
+  interval_count: null,
+  subscription_plan_id: null
+)
+```

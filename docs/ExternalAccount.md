@@ -1,0 +1,33 @@
+# Amos::ExternalAccount
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** |  | [optional] |
+| **account_id** | **String** |  | [optional] |
+| **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
+| **type** | **String** |  | [optional] |
+| **external_bank_account_profile** | [**BankAccountProfile**](BankAccountProfile.md) |  | [optional] |
+| **external_card_profile** | [**CardProfile**](CardProfile.md) |  | [optional] |
+| **external_billing_address** | [**BillingAddress**](BillingAddress.md) |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
+
+## Example
+
+```ruby
+require 'amos'
+
+instance = Amos::ExternalAccount.new(
+  id: null,
+  account_id: null,
+  metadata: null,
+  type: null,
+  external_bank_account_profile: null,
+  external_card_profile: null,
+  external_billing_address: null,
+  created_at: null,
+  updated_at: null
+)
+```
