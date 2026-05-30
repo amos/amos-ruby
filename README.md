@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
 *Amos::SubscriptionsApi* | [**create_subscription**](docs/SubscriptionsApi.md#create_subscription) | **POST** /subscriptions | Create a new subscription
 *Amos::SubscriptionsApi* | [**get_subscription**](docs/SubscriptionsApi.md#get_subscription) | **GET** /subscriptions/{id} | Retrieve a subscription by ID
 *Amos::SubscriptionsApi* | [**list_subscriptions**](docs/SubscriptionsApi.md#list_subscriptions) | **GET** /subscriptions | List all subscriptions
+*Amos::SubscriptionsApi* | [**update_subscription**](docs/SubscriptionsApi.md#update_subscription) | **PUT** /subscriptions/{id} | Update a subscription by ID
 *Amos::VoidsApi* | [**create_void**](docs/VoidsApi.md#create_void) | **POST** /voids | Create a void
 *Amos::VoidsApi* | [**get_void**](docs/VoidsApi.md#get_void) | **GET** /voids/{id} | Retrieve a void by ID
 *Amos::VoidsApi* | [**list_voids**](docs/VoidsApi.md#list_voids) | **GET** /voids | List all voids
@@ -299,6 +300,8 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateProductRequest](docs/UpdateProductRequest.md)
  - [Amos::UpdateRefundInput](docs/UpdateRefundInput.md)
  - [Amos::UpdateRefundRequest](docs/UpdateRefundRequest.md)
+ - [Amos::UpdateSubscriptionInput](docs/UpdateSubscriptionInput.md)
+ - [Amos::UpdateSubscriptionRequest](docs/UpdateSubscriptionRequest.md)
  - [Amos::UpdateVoidInput](docs/UpdateVoidInput.md)
  - [Amos::UpdateVoidRequest](docs/UpdateVoidRequest.md)
  - [Amos::Void](docs/Void.md)

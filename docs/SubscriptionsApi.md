@@ -8,6 +8,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | [**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /subscriptions | Create a new subscription |
 | [**get_subscription**](SubscriptionsApi.md#get_subscription) | **GET** /subscriptions/{id} | Retrieve a subscription by ID |
 | [**list_subscriptions**](SubscriptionsApi.md#list_subscriptions) | **GET** /subscriptions | List all subscriptions |
+| [**update_subscription**](SubscriptionsApi.md#update_subscription) | **PUT** /subscriptions/{id} | Update a subscription by ID |
 
 
 ## cancel_subscription
@@ -299,5 +300,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_subscription
+
+> <Subscription> update_subscription(id, update_subscription_request)
+
+Update a subscription by ID
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Amos::SubscriptionsApi.new
+id = 'id_example' # String | The ID of the subscription to update
+update_subscription_request = Amos::UpdateSubscriptionRequest.new({subscription: Amos::UpdateSubscriptionInput.new}) # UpdateSubscriptionRequest | 
+
+begin
+  # Update a subscription by ID
+  result = api_instance.update_subscription(id, update_subscription_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling SubscriptionsApi->update_subscription: #{e}"
+end
+```
+
+#### Using the update_subscription_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Subscription>, Integer, Hash)> update_subscription_with_http_info(id, update_subscription_request)
+
+```ruby
+begin
+  # Update a subscription by ID
+  data, status_code, headers = api_instance.update_subscription_with_http_info(id, update_subscription_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Subscription>
+rescue Amos::ApiError => e
+  puts "Error when calling SubscriptionsApi->update_subscription_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the subscription to update |  |
+| **update_subscription_request** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md) |  |  |
+
+### Return type
+
+[**Subscription**](Subscription.md)
+
+### Authorization
+
+[X-Api-Key](../README.md#X-Api-Key), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
