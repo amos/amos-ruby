@@ -22,7 +22,7 @@ describe Amos::CreateRefundRequest do
   describe 'test an instance of CreateRefundRequest' do
     it 'should create an instance of CreateRefundRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateRefundRequest)
+      # expect(instance).to be_instance_of(Amos::CreateRefundRequest)
     end
   end
 

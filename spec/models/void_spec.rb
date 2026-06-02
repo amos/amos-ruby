@@ -22,7 +22,7 @@ describe Amos::Void do
   describe 'test an instance of Void' do
     it 'should create an instance of Void' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::Void)
+      # expect(instance).to be_instance_of(Amos::Void)
     end
   end
 

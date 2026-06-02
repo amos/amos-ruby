@@ -22,7 +22,7 @@ describe Amos::CreateSubscriptionPlanRequest do
   describe 'test an instance of CreateSubscriptionPlanRequest' do
     it 'should create an instance of CreateSubscriptionPlanRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateSubscriptionPlanRequest)
+      # expect(instance).to be_instance_of(Amos::CreateSubscriptionPlanRequest)
     end
   end
 

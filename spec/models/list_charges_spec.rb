@@ -22,7 +22,7 @@ describe Amos::ListCharges do
   describe 'test an instance of ListCharges' do
     it 'should create an instance of ListCharges' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListCharges)
+      # expect(instance).to be_instance_of(Amos::ListCharges)
     end
   end
 

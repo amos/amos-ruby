@@ -22,7 +22,7 @@ describe Amos::ListLegalEntities do
   describe 'test an instance of ListLegalEntities' do
     it 'should create an instance of ListLegalEntities' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListLegalEntities)
+      # expect(instance).to be_instance_of(Amos::ListLegalEntities)
     end
   end
 

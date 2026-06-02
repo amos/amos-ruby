@@ -22,7 +22,7 @@ describe Amos::UpdateChargeInput do
   describe 'test an instance of UpdateChargeInput' do
     it 'should create an instance of UpdateChargeInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::UpdateChargeInput)
+      # expect(instance).to be_instance_of(Amos::UpdateChargeInput)
     end
   end
 

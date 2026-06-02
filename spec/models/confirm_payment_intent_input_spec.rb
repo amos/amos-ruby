@@ -22,7 +22,7 @@ describe Amos::ConfirmPaymentIntentInput do
   describe 'test an instance of ConfirmPaymentIntentInput' do
     it 'should create an instance of ConfirmPaymentIntentInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ConfirmPaymentIntentInput)
+      # expect(instance).to be_instance_of(Amos::ConfirmPaymentIntentInput)
     end
   end
 

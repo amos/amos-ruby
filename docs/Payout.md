@@ -9,6 +9,7 @@
 | **external_account_id** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
 | **currency** | **String** |  | [optional] |
+| **direction** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **state** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
@@ -25,6 +26,7 @@ instance = Amos::Payout.new(
   external_account_id: null,
   amount: null,
   currency: null,
+  direction: null,
   metadata: null,
   state: null,
   created_at: null,

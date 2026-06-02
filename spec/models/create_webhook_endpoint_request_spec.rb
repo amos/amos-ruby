@@ -22,7 +22,7 @@ describe Amos::CreateWebhookEndpointRequest do
   describe 'test an instance of CreateWebhookEndpointRequest' do
     it 'should create an instance of CreateWebhookEndpointRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateWebhookEndpointRequest)
+      # expect(instance).to be_instance_of(Amos::CreateWebhookEndpointRequest)
     end
   end
 

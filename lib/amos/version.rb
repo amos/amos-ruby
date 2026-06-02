@@ -10,5 +10,5 @@ Generator version: 7.22.0
 =end
 
 module Amos
-  VERSION = '0.2.0'
+  VERSION = '0.2.1'
 end

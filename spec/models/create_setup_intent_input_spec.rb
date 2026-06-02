@@ -22,7 +22,7 @@ describe Amos::CreateSetupIntentInput do
   describe 'test an instance of CreateSetupIntentInput' do
     it 'should create an instance of CreateSetupIntentInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateSetupIntentInput)
+      # expect(instance).to be_instance_of(Amos::CreateSetupIntentInput)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::ListPayouts do
   describe 'test an instance of ListPayouts' do
     it 'should create an instance of ListPayouts' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListPayouts)
+      # expect(instance).to be_instance_of(Amos::ListPayouts)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::FileDownloadConfiguration do
   describe 'test an instance of FileDownloadConfiguration' do
     it 'should create an instance of FileDownloadConfiguration' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::FileDownloadConfiguration)
+      # expect(instance).to be_instance_of(Amos::FileDownloadConfiguration)
     end
   end
 

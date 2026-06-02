@@ -22,7 +22,7 @@ describe Amos::CreateLegalEntityApplicationPrincipalInput do
   describe 'test an instance of CreateLegalEntityApplicationPrincipalInput' do
     it 'should create an instance of CreateLegalEntityApplicationPrincipalInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateLegalEntityApplicationPrincipalInput)
+      # expect(instance).to be_instance_of(Amos::CreateLegalEntityApplicationPrincipalInput)
     end
   end
 

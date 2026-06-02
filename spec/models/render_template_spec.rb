@@ -22,7 +22,7 @@ describe Amos::RenderTemplate do
   describe 'test an instance of RenderTemplate' do
     it 'should create an instance of RenderTemplate' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::RenderTemplate)
+      # expect(instance).to be_instance_of(Amos::RenderTemplate)
     end
   end
 

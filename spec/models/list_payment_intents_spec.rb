@@ -22,7 +22,7 @@ describe Amos::ListPaymentIntents do
   describe 'test an instance of ListPaymentIntents' do
     it 'should create an instance of ListPaymentIntents' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListPaymentIntents)
+      # expect(instance).to be_instance_of(Amos::ListPaymentIntents)
     end
   end
 

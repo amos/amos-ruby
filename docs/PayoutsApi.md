@@ -33,7 +33,7 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::PayoutsApi.new
-create_bulk_payouts_request = Amos::CreateBulkPayoutsRequest.new({payouts: [Amos::CreateBulkPayoutInput.new({account_id: 'account_id_example', external_account_id: 'external_account_id_example', amount: 37})]}) # CreateBulkPayoutsRequest | 
+create_bulk_payouts_request = Amos::CreateBulkPayoutsRequest.new({payouts: [Amos::CreateBulkPayoutInput.new({account_id: 'account_id_example', external_account_id: 'external_account_id_example', amount: 37, direction: 'credit'})]}) # CreateBulkPayoutsRequest | 
 
 begin
   # Bulk create payouts
@@ -105,7 +105,7 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::PayoutsApi.new
-create_payout_request = Amos::CreatePayoutRequest.new({payout: Amos::CreatePayoutInput.new({external_account_id: 'external_account_id_example', amount: 37})}) # CreatePayoutRequest | 
+create_payout_request = Amos::CreatePayoutRequest.new({payout: Amos::CreatePayoutInput.new({external_account_id: 'external_account_id_example', amount: 37, direction: 'credit'})}) # CreatePayoutRequest | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }

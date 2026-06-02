@@ -22,7 +22,7 @@ describe Amos::ProcessorTransaction do
   describe 'test an instance of ProcessorTransaction' do
     it 'should create an instance of ProcessorTransaction' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ProcessorTransaction)
+      # expect(instance).to be_instance_of(Amos::ProcessorTransaction)
     end
   end
 

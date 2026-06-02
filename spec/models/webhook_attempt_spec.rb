@@ -22,7 +22,7 @@ describe Amos::WebhookAttempt do
   describe 'test an instance of WebhookAttempt' do
     it 'should create an instance of WebhookAttempt' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::WebhookAttempt)
+      # expect(instance).to be_instance_of(Amos::WebhookAttempt)
     end
   end
 

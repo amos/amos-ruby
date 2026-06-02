@@ -22,7 +22,7 @@ describe Amos::BulkCreatePayouts do
   describe 'test an instance of BulkCreatePayouts' do
     it 'should create an instance of BulkCreatePayouts' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::BulkCreatePayouts)
+      # expect(instance).to be_instance_of(Amos::BulkCreatePayouts)
     end
   end
 

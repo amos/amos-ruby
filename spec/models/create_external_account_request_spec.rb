@@ -22,7 +22,7 @@ describe Amos::CreateExternalAccountRequest do
   describe 'test an instance of CreateExternalAccountRequest' do
     it 'should create an instance of CreateExternalAccountRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateExternalAccountRequest)
+      # expect(instance).to be_instance_of(Amos::CreateExternalAccountRequest)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::Meta do
   describe 'test an instance of Meta' do
     it 'should create an instance of Meta' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::Meta)
+      # expect(instance).to be_instance_of(Amos::Meta)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::RenderToken do
   describe 'test an instance of RenderToken' do
     it 'should create an instance of RenderToken' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::RenderToken)
+      # expect(instance).to be_instance_of(Amos::RenderToken)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::BillingAddress do
   describe 'test an instance of BillingAddress' do
     it 'should create an instance of BillingAddress' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::BillingAddress)
+      # expect(instance).to be_instance_of(Amos::BillingAddress)
     end
   end
 

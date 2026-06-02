@@ -22,7 +22,7 @@ describe Amos::PaymentMethod do
   describe 'test an instance of PaymentMethod' do
     it 'should create an instance of PaymentMethod' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::PaymentMethod)
+      # expect(instance).to be_instance_of(Amos::PaymentMethod)
     end
   end
 

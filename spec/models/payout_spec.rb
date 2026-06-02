@@ -22,7 +22,7 @@ describe Amos::Payout do
   describe 'test an instance of Payout' do
     it 'should create an instance of Payout' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::Payout)
+      # expect(instance).to be_instance_of(Amos::Payout)
     end
   end
 

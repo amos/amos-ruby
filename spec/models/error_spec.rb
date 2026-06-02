@@ -22,7 +22,7 @@ describe Amos::Error do
   describe 'test an instance of Error' do
     it 'should create an instance of Error' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::Error)
+      # expect(instance).to be_instance_of(Amos::Error)
     end
   end
 

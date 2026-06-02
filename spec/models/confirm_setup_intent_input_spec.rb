@@ -22,7 +22,7 @@ describe Amos::ConfirmSetupIntentInput do
   describe 'test an instance of ConfirmSetupIntentInput' do
     it 'should create an instance of ConfirmSetupIntentInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ConfirmSetupIntentInput)
+      # expect(instance).to be_instance_of(Amos::ConfirmSetupIntentInput)
     end
   end
 

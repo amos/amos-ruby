@@ -22,7 +22,7 @@ describe Amos::CreateMerchantApplicationRequest do
   describe 'test an instance of CreateMerchantApplicationRequest' do
     it 'should create an instance of CreateMerchantApplicationRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateMerchantApplicationRequest)
+      # expect(instance).to be_instance_of(Amos::CreateMerchantApplicationRequest)
     end
   end
 

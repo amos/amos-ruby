@@ -22,7 +22,7 @@ describe Amos::RenderTokenJwt do
   describe 'test an instance of RenderTokenJwt' do
     it 'should create an instance of RenderTokenJwt' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::RenderTokenJwt)
+      # expect(instance).to be_instance_of(Amos::RenderTokenJwt)
     end
   end
 

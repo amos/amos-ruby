@@ -20,8 +20,32 @@ module Amos
 
     attr_accessor :currency
 
+    attr_accessor :direction
+
     # Additional metadata key-value pairs
     attr_accessor :metadata
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -29,6 +53,7 @@ module Amos
         :'external_account_id' => :'external_account_id',
         :'amount' => :'amount',
         :'currency' => :'currency',
+        :'direction' => :'direction',
         :'metadata' => :'metadata'
       }
     end
@@ -44,6 +69,7 @@ module Amos
         :'external_account_id' => :'String',
         :'amount' => :'Integer',
         :'currency' => :'String',
+        :'direction' => :'String',
         :'metadata' => :'Hash<String, String>'
       }
     end
@@ -85,6 +111,12 @@ module Amos
         self.currency = attributes[:'currency']
       end
 
+      if attributes.key?(:'direction')
+        self.direction = attributes[:'direction']
+      else
+        self.direction = nil
+      end
+
       if attributes.key?(:'metadata')
         if (value = attributes[:'metadata']).is_a?(Hash)
           self.metadata = value
@@ -105,6 +137,10 @@ module Amos
         invalid_properties.push('invalid value for "amount", amount cannot be nil.')
       end
 
+      if @direction.nil?
+        invalid_properties.push('invalid value for "direction", direction cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -114,7 +150,20 @@ module Amos
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @external_account_id.nil?
       return false if @amount.nil?
+      return false if @direction.nil?
+      direction_validator = EnumAttributeValidator.new('String', ["credit", "debit"])
+      return false unless direction_validator.valid?(@direction)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] direction Object to be assigned
+    def direction=(direction)
+      validator = EnumAttributeValidator.new('String', ["credit", "debit"])
+      unless validator.valid?(direction)
+        fail ArgumentError, "invalid value for \"direction\", must be one of #{validator.allowable_values}."
+      end
+      @direction = direction
     end
 
     # Checks equality by comparing each attribute.
@@ -125,6 +174,7 @@ module Amos
           external_account_id == o.external_account_id &&
           amount == o.amount &&
           currency == o.currency &&
+          direction == o.direction &&
           metadata == o.metadata
     end
 
@@ -137,7 +187,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [external_account_id, amount, currency, metadata].hash
+      [external_account_id, amount, currency, direction, metadata].hash
     end
 
     # Builds the object from hash

@@ -22,7 +22,7 @@ describe Amos::ListRenderTemplates do
   describe 'test an instance of ListRenderTemplates' do
     it 'should create an instance of ListRenderTemplates' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListRenderTemplates)
+      # expect(instance).to be_instance_of(Amos::ListRenderTemplates)
     end
   end
 

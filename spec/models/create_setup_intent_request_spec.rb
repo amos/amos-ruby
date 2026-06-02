@@ -22,7 +22,7 @@ describe Amos::CreateSetupIntentRequest do
   describe 'test an instance of CreateSetupIntentRequest' do
     it 'should create an instance of CreateSetupIntentRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateSetupIntentRequest)
+      # expect(instance).to be_instance_of(Amos::CreateSetupIntentRequest)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::CreateCustomerRequest do
   describe 'test an instance of CreateCustomerRequest' do
     it 'should create an instance of CreateCustomerRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateCustomerRequest)
+      # expect(instance).to be_instance_of(Amos::CreateCustomerRequest)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::LegalEntityApplicationDocument do
   describe 'test an instance of LegalEntityApplicationDocument' do
     it 'should create an instance of LegalEntityApplicationDocument' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::LegalEntityApplicationDocument)
+      # expect(instance).to be_instance_of(Amos::LegalEntityApplicationDocument)
     end
   end
 

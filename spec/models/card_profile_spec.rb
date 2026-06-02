@@ -22,7 +22,7 @@ describe Amos::CardProfile do
   describe 'test an instance of CardProfile' do
     it 'should create an instance of CardProfile' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CardProfile)
+      # expect(instance).to be_instance_of(Amos::CardProfile)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::UpdateSubscriptionInput do
   describe 'test an instance of UpdateSubscriptionInput' do
     it 'should create an instance of UpdateSubscriptionInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::UpdateSubscriptionInput)
+      # expect(instance).to be_instance_of(Amos::UpdateSubscriptionInput)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::ListPaymentLinks do
   describe 'test an instance of ListPaymentLinks' do
     it 'should create an instance of ListPaymentLinks' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListPaymentLinks)
+      # expect(instance).to be_instance_of(Amos::ListPaymentLinks)
     end
   end
 

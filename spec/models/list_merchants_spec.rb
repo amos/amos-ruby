@@ -22,7 +22,7 @@ describe Amos::ListMerchants do
   describe 'test an instance of ListMerchants' do
     it 'should create an instance of ListMerchants' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::ListMerchants)
+      # expect(instance).to be_instance_of(Amos::ListMerchants)
     end
   end
 

@@ -22,7 +22,7 @@ describe Amos::BillingAddressInput do
   describe 'test an instance of BillingAddressInput' do
     it 'should create an instance of BillingAddressInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::BillingAddressInput)
+      # expect(instance).to be_instance_of(Amos::BillingAddressInput)
     end
   end
 

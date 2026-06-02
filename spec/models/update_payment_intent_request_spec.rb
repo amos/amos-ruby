@@ -22,7 +22,7 @@ describe Amos::UpdatePaymentIntentRequest do
   describe 'test an instance of UpdatePaymentIntentRequest' do
     it 'should create an instance of UpdatePaymentIntentRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::UpdatePaymentIntentRequest)
+      # expect(instance).to be_instance_of(Amos::UpdatePaymentIntentRequest)
     end
   end
 

@@ -24,6 +24,8 @@ module Amos
 
     attr_accessor :currency
 
+    attr_accessor :direction
+
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
@@ -63,6 +65,7 @@ module Amos
         :'external_account_id' => :'external_account_id',
         :'amount' => :'amount',
         :'currency' => :'currency',
+        :'direction' => :'direction',
         :'metadata' => :'metadata',
         :'state' => :'state',
         :'created_at' => :'created_at',
@@ -83,6 +86,7 @@ module Amos
         :'external_account_id' => :'String',
         :'amount' => :'Integer',
         :'currency' => :'String',
+        :'direction' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'state' => :'String',
         :'created_at' => :'Time',
@@ -131,6 +135,10 @@ module Amos
         self.currency = attributes[:'currency']
       end
 
+      if attributes.key?(:'direction')
+        self.direction = attributes[:'direction']
+      end
+
       if attributes.key?(:'metadata')
         if (value = attributes[:'metadata']).is_a?(Hash)
           self.metadata = value
@@ -162,9 +170,21 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      direction_validator = EnumAttributeValidator.new('String', ["credit", "debit"])
+      return false unless direction_validator.valid?(@direction)
       state_validator = EnumAttributeValidator.new('String', ["pending", "succeeded", "failed", "accepted", "rejected"])
       return false unless state_validator.valid?(@state)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] direction Object to be assigned
+    def direction=(direction)
+      validator = EnumAttributeValidator.new('String', ["credit", "debit"])
+      unless validator.valid?(direction)
+        fail ArgumentError, "invalid value for \"direction\", must be one of #{validator.allowable_values}."
+      end
+      @direction = direction
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -187,6 +207,7 @@ module Amos
           external_account_id == o.external_account_id &&
           amount == o.amount &&
           currency == o.currency &&
+          direction == o.direction &&
           metadata == o.metadata &&
           state == o.state &&
           created_at == o.created_at &&
@@ -202,7 +223,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, external_account_id, amount, currency, metadata, state, created_at, updated_at].hash
+      [id, account_id, external_account_id, amount, currency, direction, metadata, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash

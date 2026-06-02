@@ -22,7 +22,7 @@ describe Amos::EmbedToken do
   describe 'test an instance of EmbedToken' do
     it 'should create an instance of EmbedToken' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::EmbedToken)
+      # expect(instance).to be_instance_of(Amos::EmbedToken)
     end
   end
 

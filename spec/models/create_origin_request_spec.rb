@@ -22,7 +22,7 @@ describe Amos::CreateOriginRequest do
   describe 'test an instance of CreateOriginRequest' do
     it 'should create an instance of CreateOriginRequest' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreateOriginRequest)
+      # expect(instance).to be_instance_of(Amos::CreateOriginRequest)
     end
   end
 

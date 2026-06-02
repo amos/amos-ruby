@@ -22,7 +22,7 @@ describe Amos::CreatePayoutInput do
   describe 'test an instance of CreatePayoutInput' do
     it 'should create an instance of CreatePayoutInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::CreatePayoutInput)
+      # expect(instance).to be_instance_of(Amos::CreatePayoutInput)
     end
   end
 

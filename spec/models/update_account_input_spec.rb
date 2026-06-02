@@ -22,7 +22,7 @@ describe Amos::UpdateAccountInput do
   describe 'test an instance of UpdateAccountInput' do
     it 'should create an instance of UpdateAccountInput' do
       # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(Amos::UpdateAccountInput)
+      # expect(instance).to be_instance_of(Amos::UpdateAccountInput)
     end
   end
 
