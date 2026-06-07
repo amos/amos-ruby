@@ -332,6 +332,4 @@ lib/amos/models/webhook_attempt.rb
 lib/amos/models/webhook_endpoint.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
-spec/models/skip_subscription_input_spec.rb
-spec/models/skip_subscription_request_spec.rb
 spec/spec_helper.rb
