@@ -16,7 +16,7 @@ module Amos
   class WebhookEndpoint
     attr_accessor :id
 
-    attr_accessor :event
+    attr_accessor :events
 
     # Additional metadata key-value pairs
     attr_accessor :metadata
@@ -31,11 +31,33 @@ module Amos
 
     attr_accessor :updated_at
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'event' => :'event',
+        :'events' => :'events',
         :'metadata' => :'metadata',
         :'secret' => :'secret',
         :'url' => :'url',
@@ -54,7 +76,7 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'event' => :'String',
+        :'events' => :'Array<String>',
         :'metadata' => :'Hash<String, String>',
         :'secret' => :'String',
         :'url' => :'String',
@@ -89,8 +111,10 @@ module Amos
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
+      if attributes.key?(:'events')
+        if (value = attributes[:'events']).is_a?(Array)
+          self.events = value
+        end
       end
 
       if attributes.key?(:'metadata')
@@ -141,7 +165,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          event == o.event &&
+          events == o.events &&
           metadata == o.metadata &&
           secret == o.secret &&
           url == o.url &&
@@ -159,7 +183,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, event, metadata, secret, url, active, created_at, updated_at].hash
+      [id, events, metadata, secret, url, active, created_at, updated_at].hash
     end
 
     # Builds the object from hash

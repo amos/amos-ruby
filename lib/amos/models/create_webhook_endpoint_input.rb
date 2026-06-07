@@ -14,7 +14,7 @@ require 'time'
 
 module Amos
   class CreateWebhookEndpointInput
-    attr_accessor :event
+    attr_accessor :events
 
     # Additional metadata key-value pairs
     attr_accessor :metadata
@@ -23,10 +23,32 @@ module Amos
 
     attr_accessor :url
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'event' => :'event',
+        :'events' => :'events',
         :'metadata' => :'metadata',
         :'active' => :'active',
         :'url' => :'url'
@@ -41,7 +63,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'event' => :'String',
+        :'events' => :'Array<String>',
         :'metadata' => :'Hash<String, String>',
         :'active' => :'Boolean',
         :'url' => :'String'
@@ -69,8 +91,10 @@ module Amos
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
+      if attributes.key?(:'events')
+        if (value = attributes[:'events']).is_a?(Array)
+          self.events = value
+        end
       end
 
       if attributes.key?(:'metadata')
@@ -108,7 +132,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          event == o.event &&
+          events == o.events &&
           metadata == o.metadata &&
           active == o.active &&
           url == o.url
@@ -123,7 +147,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [event, metadata, active, url].hash
+      [events, metadata, active, url].hash
     end
 
     # Builds the object from hash

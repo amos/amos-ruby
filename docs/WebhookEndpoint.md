@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **event** | **String** |  | [optional] |
+| **events** | **Array&lt;String&gt;** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **secret** | **String** |  | [optional] |
 | **url** | **String** |  | [optional] |
@@ -20,7 +20,7 @@ require 'amos'
 
 instance = Amos::WebhookEndpoint.new(
   id: null,
-  event: null,
+  events: null,
   metadata: null,
   secret: null,
   url: null,
