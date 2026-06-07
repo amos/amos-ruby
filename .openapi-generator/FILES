@@ -136,6 +136,8 @@ docs/RenderToken.md
 docs/RenderTokenJwt.md
 docs/SetupIntent.md
 docs/SetupIntentsApi.md
+docs/SkipSubscriptionInput.md
+docs/SkipSubscriptionRequest.md
 docs/Subscription.md
 docs/SubscriptionPlan.md
 docs/SubscriptionPlansApi.md
@@ -305,6 +307,8 @@ lib/amos/models/render_template.rb
 lib/amos/models/render_token.rb
 lib/amos/models/render_token_jwt.rb
 lib/amos/models/setup_intent.rb
+lib/amos/models/skip_subscription_input.rb
+lib/amos/models/skip_subscription_request.rb
 lib/amos/models/subscription.rb
 lib/amos/models/subscription_plan.rb
 lib/amos/models/update_account_input.rb
@@ -328,4 +332,6 @@ lib/amos/models/webhook_attempt.rb
 lib/amos/models/webhook_endpoint.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
+spec/models/skip_subscription_input_spec.rb
+spec/models/skip_subscription_request_spec.rb
 spec/spec_helper.rb

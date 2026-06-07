@@ -38,6 +38,10 @@ module Amos
 
     attr_accessor :cycles_completed
 
+    attr_accessor :skip_billing_periods_remaining
+
+    attr_accessor :skipped_billing_periods_count
+
     attr_accessor :current_billing_period_start
 
     attr_accessor :current_billing_period_end
@@ -85,6 +89,8 @@ module Amos
         :'interval_count' => :'interval_count',
         :'state' => :'state',
         :'cycles_completed' => :'cycles_completed',
+        :'skip_billing_periods_remaining' => :'skip_billing_periods_remaining',
+        :'skipped_billing_periods_count' => :'skipped_billing_periods_count',
         :'current_billing_period_start' => :'current_billing_period_start',
         :'current_billing_period_end' => :'current_billing_period_end',
         :'trial_ends_at' => :'trial_ends_at',
@@ -113,6 +119,8 @@ module Amos
         :'interval_count' => :'Integer',
         :'state' => :'String',
         :'cycles_completed' => :'Integer',
+        :'skip_billing_periods_remaining' => :'Integer',
+        :'skipped_billing_periods_count' => :'Integer',
         :'current_billing_period_start' => :'Time',
         :'current_billing_period_end' => :'Time',
         :'trial_ends_at' => :'Time',
@@ -189,6 +197,14 @@ module Amos
 
       if attributes.key?(:'cycles_completed')
         self.cycles_completed = attributes[:'cycles_completed']
+      end
+
+      if attributes.key?(:'skip_billing_periods_remaining')
+        self.skip_billing_periods_remaining = attributes[:'skip_billing_periods_remaining']
+      end
+
+      if attributes.key?(:'skipped_billing_periods_count')
+        self.skipped_billing_periods_count = attributes[:'skipped_billing_periods_count']
       end
 
       if attributes.key?(:'current_billing_period_start')
@@ -268,6 +284,8 @@ module Amos
           interval_count == o.interval_count &&
           state == o.state &&
           cycles_completed == o.cycles_completed &&
+          skip_billing_periods_remaining == o.skip_billing_periods_remaining &&
+          skipped_billing_periods_count == o.skipped_billing_periods_count &&
           current_billing_period_start == o.current_billing_period_start &&
           current_billing_period_end == o.current_billing_period_end &&
           trial_ends_at == o.trial_ends_at &&
@@ -284,7 +302,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, currency, cycles, subscription_plan_id, customer_id, payment_method_id, interval, interval_count, state, cycles_completed, current_billing_period_start, current_billing_period_end, trial_ends_at, created_at, updated_at].hash
+      [id, account_id, amount, currency, cycles, subscription_plan_id, customer_id, payment_method_id, interval, interval_count, state, cycles_completed, skip_billing_periods_remaining, skipped_billing_periods_count, current_billing_period_start, current_billing_period_end, trial_ends_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

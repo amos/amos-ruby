@@ -16,6 +16,8 @@
 | **interval_count** | **Integer** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **cycles_completed** | **Integer** |  | [optional] |
+| **skip_billing_periods_remaining** | **Integer** |  | [optional] |
+| **skipped_billing_periods_count** | **Integer** |  | [optional] |
 | **current_billing_period_start** | **Time** |  | [optional] |
 | **current_billing_period_end** | **Time** |  | [optional] |
 | **trial_ends_at** | **Time** |  | [optional] |
@@ -40,6 +42,8 @@ instance = Amos::Subscription.new(
   interval_count: null,
   state: null,
   cycles_completed: null,
+  skip_billing_periods_remaining: null,
+  skipped_billing_periods_count: null,
   current_billing_period_start: null,
   current_billing_period_end: null,
   trial_ends_at: null,

@@ -8,6 +8,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | [**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /subscriptions | Create a new subscription |
 | [**get_subscription**](SubscriptionsApi.md#get_subscription) | **GET** /subscriptions/{id} | Retrieve a subscription by ID |
 | [**list_subscriptions**](SubscriptionsApi.md#list_subscriptions) | **GET** /subscriptions | List all subscriptions |
+| [**skip_subscription**](SubscriptionsApi.md#skip_subscription) | **PUT** /subscriptions/{id}/skip | Skip subscription billing periods by ID |
 | [**update_subscription**](SubscriptionsApi.md#update_subscription) | **PUT** /subscriptions/{id} | Update a subscription by ID |
 
 
@@ -300,6 +301,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## skip_subscription
+
+> <Subscription> skip_subscription(id, skip_subscription_request)
+
+Skip subscription billing periods by ID
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Amos::SubscriptionsApi.new
+id = 'id_example' # String | The ID of the subscription to skip billing periods for
+skip_subscription_request = Amos::SkipSubscriptionRequest.new({subscription: Amos::SkipSubscriptionInput.new}) # SkipSubscriptionRequest | 
+
+begin
+  # Skip subscription billing periods by ID
+  result = api_instance.skip_subscription(id, skip_subscription_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling SubscriptionsApi->skip_subscription: #{e}"
+end
+```
+
+#### Using the skip_subscription_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Subscription>, Integer, Hash)> skip_subscription_with_http_info(id, skip_subscription_request)
+
+```ruby
+begin
+  # Skip subscription billing periods by ID
+  data, status_code, headers = api_instance.skip_subscription_with_http_info(id, skip_subscription_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Subscription>
+rescue Amos::ApiError => e
+  puts "Error when calling SubscriptionsApi->skip_subscription_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the subscription to skip billing periods for |  |
+| **skip_subscription_request** | [**SkipSubscriptionRequest**](SkipSubscriptionRequest.md) |  |  |
+
+### Return type
+
+[**Subscription**](Subscription.md)
+
+### Authorization
+
+[X-Api-Key](../README.md#X-Api-Key), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

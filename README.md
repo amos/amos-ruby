@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
 *Amos::SubscriptionsApi* | [**create_subscription**](docs/SubscriptionsApi.md#create_subscription) | **POST** /subscriptions | Create a new subscription
 *Amos::SubscriptionsApi* | [**get_subscription**](docs/SubscriptionsApi.md#get_subscription) | **GET** /subscriptions/{id} | Retrieve a subscription by ID
 *Amos::SubscriptionsApi* | [**list_subscriptions**](docs/SubscriptionsApi.md#list_subscriptions) | **GET** /subscriptions | List all subscriptions
+*Amos::SubscriptionsApi* | [**skip_subscription**](docs/SubscriptionsApi.md#skip_subscription) | **PUT** /subscriptions/{id}/skip | Skip subscription billing periods by ID
 *Amos::SubscriptionsApi* | [**update_subscription**](docs/SubscriptionsApi.md#update_subscription) | **PUT** /subscriptions/{id} | Update a subscription by ID
 *Amos::VoidsApi* | [**create_void**](docs/VoidsApi.md#create_void) | **POST** /voids | Create a void
 *Amos::VoidsApi* | [**get_void**](docs/VoidsApi.md#get_void) | **GET** /voids/{id} | Retrieve a void by ID
@@ -286,6 +287,8 @@ Class | Method | HTTP request | Description
  - [Amos::RenderToken](docs/RenderToken.md)
  - [Amos::RenderTokenJwt](docs/RenderTokenJwt.md)
  - [Amos::SetupIntent](docs/SetupIntent.md)
+ - [Amos::SkipSubscriptionInput](docs/SkipSubscriptionInput.md)
+ - [Amos::SkipSubscriptionRequest](docs/SkipSubscriptionRequest.md)
  - [Amos::Subscription](docs/Subscription.md)
  - [Amos::SubscriptionPlan](docs/SubscriptionPlan.md)
  - [Amos::UpdateAccountInput](docs/UpdateAccountInput.md)
