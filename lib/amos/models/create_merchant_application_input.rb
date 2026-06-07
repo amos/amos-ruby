@@ -247,7 +247,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      business_category_validator = EnumAttributeValidator.new('String', ["sporting_goods", "services", "medical", "charity", "civic", "political", "religious"])
+      business_category_validator = EnumAttributeValidator.new('String', ["business_association", "charity", "church", "county", "federal", "fraternal_org", "government", "higher_education", "k12", "labor_union", "local", "ministry", "pac", "parachurch", "party", "preschool", "social_club", "social_welfare", "state", "tribal", "vendor", "veterans_org"])
       return false unless business_category_validator.valid?(@business_category)
       true
     end
@@ -255,7 +255,7 @@ module Amos
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] business_category Object to be assigned
     def business_category=(business_category)
-      validator = EnumAttributeValidator.new('String', ["sporting_goods", "services", "medical", "charity", "civic", "political", "religious"])
+      validator = EnumAttributeValidator.new('String', ["business_association", "charity", "church", "county", "federal", "fraternal_org", "government", "higher_education", "k12", "labor_union", "local", "ministry", "pac", "parachurch", "party", "preschool", "social_club", "social_welfare", "state", "tribal", "vendor", "veterans_org"])
       unless validator.valid?(business_category)
         fail ArgumentError, "invalid value for \"business_category\", must be one of #{validator.allowable_values}."
       end
