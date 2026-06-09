@@ -4,12 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **account_id** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
-| **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
-| **phone** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
+| **phone** | **String** |  | [optional] |
+| **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 
 ## Example
 
@@ -17,11 +16,10 @@
 require 'amos'
 
 instance = Amos::UpdateCustomerInput.new(
-  account_id: null,
-  name: null,
   email: null,
-  metadata: null,
+  name: null,
+  payment_method_id: null,
   phone: null,
-  payment_method_id: null
+  metadata: null
 )
 ```

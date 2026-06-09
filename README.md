@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 *Amos::CustomersApi* | [**create_customer**](docs/CustomersApi.md#create_customer) | **POST** /customers | Create a new customer
 *Amos::CustomersApi* | [**get_customer**](docs/CustomersApi.md#get_customer) | **GET** /customers/{id} | Retrieve a customer by ID
 *Amos::CustomersApi* | [**list_customers**](docs/CustomersApi.md#list_customers) | **GET** /customers | List all customers
-*Amos::CustomersApi* | [**update_customer**](docs/CustomersApi.md#update_customer) | **PATCH** /customers/{id} | Update a customer by ID
+*Amos::CustomersApi* | [**update_customer**](docs/CustomersApi.md#update_customer) | **PUT** /customers/{id} | Update a customer by ID
 *Amos::ExternalAccountsApi* | [**create_external_account**](docs/ExternalAccountsApi.md#create_external_account) | **POST** /external_accounts | Create an external account
 *Amos::ExternalAccountsApi* | [**get_external_account**](docs/ExternalAccountsApi.md#get_external_account) | **GET** /external_accounts/{id} | Retrieve an external account by ID
 *Amos::ExternalAccountsApi* | [**list_external_accounts**](docs/ExternalAccountsApi.md#list_external_accounts) | **GET** /external_accounts | List all external accounts
@@ -141,7 +141,7 @@ Class | Method | HTTP request | Description
 *Amos::ProcessorTransactionsApi* | [**list_processor_transactions**](docs/ProcessorTransactionsApi.md#list_processor_transactions) | **GET** /processor_transactions | List all processor transactions
 *Amos::ProductsApi* | [**create_product**](docs/ProductsApi.md#create_product) | **POST** /products | Create a new product
 *Amos::ProductsApi* | [**list_products**](docs/ProductsApi.md#list_products) | **GET** /products | List all products
-*Amos::ProductsApi* | [**update_product**](docs/ProductsApi.md#update_product) | **PATCH** /products/{id} | Update a product by ID
+*Amos::ProductsApi* | [**update_product**](docs/ProductsApi.md#update_product) | **PUT** /products/{id} | Update a product by ID
 *Amos::RefundsApi* | [**cancel_refund**](docs/RefundsApi.md#cancel_refund) | **PUT** /refunds/{id}/cancel | Cancel a refund
 *Amos::RefundsApi* | [**create_refund**](docs/RefundsApi.md#create_refund) | **POST** /refunds | Create a refund
 *Amos::RefundsApi* | [**get_refund**](docs/RefundsApi.md#get_refund) | **GET** /refunds/{id} | Retrieve a refund by ID

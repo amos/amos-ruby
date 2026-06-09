@@ -6,7 +6,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | ------ | ------------ | ----------- |
 | [**create_product**](ProductsApi.md#create_product) | **POST** /products | Create a new product |
 | [**list_products**](ProductsApi.md#list_products) | **GET** /products | List all products |
-| [**update_product**](ProductsApi.md#update_product) | **PATCH** /products/{id} | Update a product by ID |
+| [**update_product**](ProductsApi.md#update_product) | **PUT** /products/{id} | Update a product by ID |
 
 
 ## create_product

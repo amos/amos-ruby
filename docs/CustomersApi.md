@@ -7,7 +7,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | [**create_customer**](CustomersApi.md#create_customer) | **POST** /customers | Create a new customer |
 | [**get_customer**](CustomersApi.md#get_customer) | **GET** /customers/{id} | Retrieve a customer by ID |
 | [**list_customers**](CustomersApi.md#list_customers) | **GET** /customers | List all customers |
-| [**update_customer**](CustomersApi.md#update_customer) | **PATCH** /customers/{id} | Update a customer by ID |
+| [**update_customer**](CustomersApi.md#update_customer) | **PUT** /customers/{id} | Update a customer by ID |
 
 
 ## create_customer

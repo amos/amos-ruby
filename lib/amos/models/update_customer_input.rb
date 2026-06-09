@@ -14,28 +14,25 @@ require 'time'
 
 module Amos
   class UpdateCustomerInput
-    attr_accessor :account_id
+    attr_accessor :email
 
     attr_accessor :name
 
-    attr_accessor :email
+    attr_accessor :payment_method_id
+
+    attr_accessor :phone
 
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
-    attr_accessor :phone
-
-    attr_accessor :payment_method_id
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_id' => :'account_id',
-        :'name' => :'name',
         :'email' => :'email',
-        :'metadata' => :'metadata',
+        :'name' => :'name',
+        :'payment_method_id' => :'payment_method_id',
         :'phone' => :'phone',
-        :'payment_method_id' => :'payment_method_id'
+        :'metadata' => :'metadata'
       }
     end
 
@@ -47,12 +44,11 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account_id' => :'String',
-        :'name' => :'String',
         :'email' => :'String',
-        :'metadata' => :'Hash<String, String>',
+        :'name' => :'String',
+        :'payment_method_id' => :'String',
         :'phone' => :'String',
-        :'payment_method_id' => :'String'
+        :'metadata' => :'Hash<String, String>'
       }
     end
 
@@ -77,30 +73,26 @@ module Amos
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.key?(:'metadata')
-        if (value = attributes[:'metadata']).is_a?(Hash)
-          self.metadata = value
-        end
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
       end
 
       if attributes.key?(:'phone')
         self.phone = attributes[:'phone']
       end
 
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 
@@ -124,12 +116,11 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_id == o.account_id &&
-          name == o.name &&
           email == o.email &&
-          metadata == o.metadata &&
+          name == o.name &&
+          payment_method_id == o.payment_method_id &&
           phone == o.phone &&
-          payment_method_id == o.payment_method_id
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -141,7 +132,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, name, email, metadata, phone, payment_method_id].hash
+      [email, name, payment_method_id, phone, metadata].hash
     end
 
     # Builds the object from hash
