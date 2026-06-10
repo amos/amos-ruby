@@ -20,8 +20,6 @@ module Amos
 
     attr_accessor :error_message
 
-    attr_accessor :request_body
-
     attr_accessor :response_body
 
     attr_accessor :status_code
@@ -38,7 +36,6 @@ module Amos
         :'id' => :'id',
         :'webhook_request_id' => :'webhook_request_id',
         :'error_message' => :'error_message',
-        :'request_body' => :'request_body',
         :'response_body' => :'response_body',
         :'status_code' => :'status_code',
         :'success' => :'success',
@@ -58,7 +55,6 @@ module Amos
         :'id' => :'String',
         :'webhook_request_id' => :'String',
         :'error_message' => :'String',
-        :'request_body' => :'Object',
         :'response_body' => :'Object',
         :'status_code' => :'Integer',
         :'success' => :'Boolean',
@@ -98,10 +94,6 @@ module Amos
 
       if attributes.key?(:'error_message')
         self.error_message = attributes[:'error_message']
-      end
-
-      if attributes.key?(:'request_body')
-        self.request_body = attributes[:'request_body']
       end
 
       if attributes.key?(:'response_body')
@@ -148,7 +140,6 @@ module Amos
           id == o.id &&
           webhook_request_id == o.webhook_request_id &&
           error_message == o.error_message &&
-          request_body == o.request_body &&
           response_body == o.response_body &&
           status_code == o.status_code &&
           success == o.success &&
@@ -165,7 +156,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, webhook_request_id, error_message, request_body, response_body, status_code, success, created_at, updated_at].hash
+      [id, webhook_request_id, error_message, response_body, status_code, success, created_at, updated_at].hash
     end
 
     # Builds the object from hash

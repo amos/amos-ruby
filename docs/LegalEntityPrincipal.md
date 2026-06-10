@@ -10,7 +10,6 @@
 | **first_name** | **String** |  | [optional] |
 | **last_name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
-| **tax_id** | **String** |  | [optional] |
 | **date_of_birth** | **String** |  | [optional] |
 | **address_line1** | **String** |  | [optional] |
 | **address_line2** | **String** |  | [optional] |
@@ -19,6 +18,7 @@
 | **country** | **String** |  | [optional] |
 | **postal_code** | **String** |  | [optional] |
 | **contact_phone** | **String** |  | [optional] |
+| **tax_id_last4** | **String** |  | [optional] |
 
 ## Example
 
@@ -32,7 +32,6 @@ instance = Amos::LegalEntityPrincipal.new(
   first_name: null,
   last_name: null,
   email: null,
-  tax_id: null,
   date_of_birth: null,
   address_line1: null,
   address_line2: null,
@@ -40,6 +39,7 @@ instance = Amos::LegalEntityPrincipal.new(
   state: null,
   country: null,
   postal_code: null,
-  contact_phone: null
+  contact_phone: null,
+  tax_id_last4: null
 )
 ```

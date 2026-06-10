@@ -26,8 +26,6 @@ module Amos
 
     attr_accessor :email
 
-    attr_accessor :tax_id
-
     attr_accessor :date_of_birth
 
     attr_accessor :address_line1
@@ -44,6 +42,8 @@ module Amos
 
     attr_accessor :contact_phone
 
+    attr_accessor :tax_id_last4
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,7 +53,6 @@ module Amos
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'email' => :'email',
-        :'tax_id' => :'tax_id',
         :'date_of_birth' => :'date_of_birth',
         :'address_line1' => :'address_line1',
         :'address_line2' => :'address_line2',
@@ -61,7 +60,8 @@ module Amos
         :'state' => :'state',
         :'country' => :'country',
         :'postal_code' => :'postal_code',
-        :'contact_phone' => :'contact_phone'
+        :'contact_phone' => :'contact_phone',
+        :'tax_id_last4' => :'tax_id_last4'
       }
     end
 
@@ -79,7 +79,6 @@ module Amos
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'email' => :'String',
-        :'tax_id' => :'String',
         :'date_of_birth' => :'String',
         :'address_line1' => :'String',
         :'address_line2' => :'String',
@@ -87,7 +86,8 @@ module Amos
         :'state' => :'String',
         :'country' => :'String',
         :'postal_code' => :'String',
-        :'contact_phone' => :'String'
+        :'contact_phone' => :'String',
+        :'tax_id_last4' => :'String'
       }
     end
 
@@ -136,10 +136,6 @@ module Amos
         self.email = attributes[:'email']
       end
 
-      if attributes.key?(:'tax_id')
-        self.tax_id = attributes[:'tax_id']
-      end
-
       if attributes.key?(:'date_of_birth')
         self.date_of_birth = attributes[:'date_of_birth']
       end
@@ -171,6 +167,10 @@ module Amos
       if attributes.key?(:'contact_phone')
         self.contact_phone = attributes[:'contact_phone']
       end
+
+      if attributes.key?(:'tax_id_last4')
+        self.tax_id_last4 = attributes[:'tax_id_last4']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -199,7 +199,6 @@ module Amos
           first_name == o.first_name &&
           last_name == o.last_name &&
           email == o.email &&
-          tax_id == o.tax_id &&
           date_of_birth == o.date_of_birth &&
           address_line1 == o.address_line1 &&
           address_line2 == o.address_line2 &&
@@ -207,7 +206,8 @@ module Amos
           state == o.state &&
           country == o.country &&
           postal_code == o.postal_code &&
-          contact_phone == o.contact_phone
+          contact_phone == o.contact_phone &&
+          tax_id_last4 == o.tax_id_last4
     end
 
     # @see the `==` method
@@ -219,7 +219,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_entity_id, title, first_name, last_name, email, tax_id, date_of_birth, address_line1, address_line2, city, state, country, postal_code, contact_phone].hash
+      [id, legal_entity_id, title, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, contact_phone, tax_id_last4].hash
     end
 
     # Builds the object from hash

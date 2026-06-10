@@ -18,15 +18,11 @@ module Amos
 
     attr_accessor :legal_entity_application_id
 
-    attr_accessor :title
-
     attr_accessor :first_name
 
     attr_accessor :last_name
 
     attr_accessor :email
-
-    attr_accessor :tax_id
 
     attr_accessor :date_of_birth
 
@@ -46,16 +42,18 @@ module Amos
 
     attr_accessor :contact_phone
 
+    attr_accessor :tax_id_last4
+
+    attr_accessor :title
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'legal_entity_application_id' => :'legal_entity_application_id',
-        :'title' => :'title',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'email' => :'email',
-        :'tax_id' => :'tax_id',
         :'date_of_birth' => :'date_of_birth',
         :'address_line1' => :'address_line1',
         :'address_line2' => :'address_line2',
@@ -64,7 +62,9 @@ module Amos
         :'country' => :'country',
         :'postal_code' => :'postal_code',
         :'stake_percent' => :'stake_percent',
-        :'contact_phone' => :'contact_phone'
+        :'contact_phone' => :'contact_phone',
+        :'tax_id_last4' => :'tax_id_last4',
+        :'title' => :'title'
       }
     end
 
@@ -78,11 +78,9 @@ module Amos
       {
         :'id' => :'String',
         :'legal_entity_application_id' => :'String',
-        :'title' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'email' => :'String',
-        :'tax_id' => :'String',
         :'date_of_birth' => :'String',
         :'address_line1' => :'String',
         :'address_line2' => :'String',
@@ -91,7 +89,9 @@ module Amos
         :'country' => :'String',
         :'postal_code' => :'String',
         :'stake_percent' => :'Integer',
-        :'contact_phone' => :'String'
+        :'contact_phone' => :'String',
+        :'tax_id_last4' => :'String',
+        :'title' => :'String'
       }
     end
 
@@ -124,10 +124,6 @@ module Amos
         self.legal_entity_application_id = attributes[:'legal_entity_application_id']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
-      end
-
       if attributes.key?(:'first_name')
         self.first_name = attributes[:'first_name']
       end
@@ -138,10 +134,6 @@ module Amos
 
       if attributes.key?(:'email')
         self.email = attributes[:'email']
-      end
-
-      if attributes.key?(:'tax_id')
-        self.tax_id = attributes[:'tax_id']
       end
 
       if attributes.key?(:'date_of_birth')
@@ -179,6 +171,14 @@ module Amos
       if attributes.key?(:'contact_phone')
         self.contact_phone = attributes[:'contact_phone']
       end
+
+      if attributes.key?(:'tax_id_last4')
+        self.tax_id_last4 = attributes[:'tax_id_last4']
+      end
+
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -203,11 +203,9 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           legal_entity_application_id == o.legal_entity_application_id &&
-          title == o.title &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           email == o.email &&
-          tax_id == o.tax_id &&
           date_of_birth == o.date_of_birth &&
           address_line1 == o.address_line1 &&
           address_line2 == o.address_line2 &&
@@ -216,7 +214,9 @@ module Amos
           country == o.country &&
           postal_code == o.postal_code &&
           stake_percent == o.stake_percent &&
-          contact_phone == o.contact_phone
+          contact_phone == o.contact_phone &&
+          tax_id_last4 == o.tax_id_last4 &&
+          title == o.title
     end
 
     # @see the `==` method
@@ -228,7 +228,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_entity_application_id, title, first_name, last_name, email, tax_id, date_of_birth, address_line1, address_line2, city, state, country, postal_code, stake_percent, contact_phone].hash
+      [id, legal_entity_application_id, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, stake_percent, contact_phone, tax_id_last4, title].hash
     end
 
     # Builds the object from hash

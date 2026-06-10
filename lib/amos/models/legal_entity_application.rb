@@ -24,8 +24,6 @@ module Amos
 
     attr_accessor :ownership_type
 
-    attr_accessor :tax_id
-
     attr_accessor :contact_email
 
     attr_accessor :contact_phone
@@ -44,6 +42,8 @@ module Amos
 
     attr_accessor :state
 
+    attr_accessor :tax_id_last4
+
     attr_accessor :requirements
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -54,7 +54,6 @@ module Amos
         :'legal_entity_id' => :'legal_entity_id',
         :'entity_type' => :'entity_type',
         :'ownership_type' => :'ownership_type',
-        :'tax_id' => :'tax_id',
         :'contact_email' => :'contact_email',
         :'contact_phone' => :'contact_phone',
         :'business_address_line1' => :'business_address_line1',
@@ -64,6 +63,7 @@ module Amos
         :'business_postal_code' => :'business_postal_code',
         :'business_country' => :'business_country',
         :'state' => :'state',
+        :'tax_id_last4' => :'tax_id_last4',
         :'requirements' => :'requirements'
       }
     end
@@ -81,7 +81,6 @@ module Amos
         :'legal_entity_id' => :'String',
         :'entity_type' => :'String',
         :'ownership_type' => :'String',
-        :'tax_id' => :'String',
         :'contact_email' => :'String',
         :'contact_phone' => :'String',
         :'business_address_line1' => :'String',
@@ -91,6 +90,7 @@ module Amos
         :'business_postal_code' => :'String',
         :'business_country' => :'String',
         :'state' => :'String',
+        :'tax_id_last4' => :'String',
         :'requirements' => :'Array<LegalEntityApplicationRequirement>'
       }
     end
@@ -137,10 +137,6 @@ module Amos
         self.ownership_type = attributes[:'ownership_type']
       end
 
-      if attributes.key?(:'tax_id')
-        self.tax_id = attributes[:'tax_id']
-      end
-
       if attributes.key?(:'contact_email')
         self.contact_email = attributes[:'contact_email']
       end
@@ -177,6 +173,10 @@ module Amos
         self.state = attributes[:'state']
       end
 
+      if attributes.key?(:'tax_id_last4')
+        self.tax_id_last4 = attributes[:'tax_id_last4']
+      end
+
       if attributes.key?(:'requirements')
         if (value = attributes[:'requirements']).is_a?(Array)
           self.requirements = value
@@ -209,7 +209,6 @@ module Amos
           legal_entity_id == o.legal_entity_id &&
           entity_type == o.entity_type &&
           ownership_type == o.ownership_type &&
-          tax_id == o.tax_id &&
           contact_email == o.contact_email &&
           contact_phone == o.contact_phone &&
           business_address_line1 == o.business_address_line1 &&
@@ -219,6 +218,7 @@ module Amos
           business_postal_code == o.business_postal_code &&
           business_country == o.business_country &&
           state == o.state &&
+          tax_id_last4 == o.tax_id_last4 &&
           requirements == o.requirements
     end
 
@@ -231,7 +231,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_name, legal_entity_id, entity_type, ownership_type, tax_id, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, requirements].hash
+      [id, legal_name, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, requirements].hash
     end
 
     # Builds the object from hash

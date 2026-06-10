@@ -6,11 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **legal_entity_application_id** | **String** |  | [optional] |
-| **title** | **String** |  | [optional] |
 | **first_name** | **String** |  | [optional] |
 | **last_name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
-| **tax_id** | **String** |  | [optional] |
 | **date_of_birth** | **String** |  | [optional] |
 | **address_line1** | **String** |  | [optional] |
 | **address_line2** | **String** |  | [optional] |
@@ -20,6 +18,8 @@
 | **postal_code** | **String** |  | [optional] |
 | **stake_percent** | **Integer** |  | [optional] |
 | **contact_phone** | **String** |  | [optional] |
+| **tax_id_last4** | **String** |  | [optional] |
+| **title** | **String** |  | [optional] |
 
 ## Example
 
@@ -29,11 +29,9 @@ require 'amos'
 instance = Amos::LegalEntityApplicationPrincipal.new(
   id: null,
   legal_entity_application_id: null,
-  title: null,
   first_name: null,
   last_name: null,
   email: null,
-  tax_id: null,
   date_of_birth: null,
   address_line1: null,
   address_line2: null,
@@ -42,6 +40,8 @@ instance = Amos::LegalEntityApplicationPrincipal.new(
   country: null,
   postal_code: null,
   stake_percent: null,
-  contact_phone: null
+  contact_phone: null,
+  tax_id_last4: null,
+  title: null
 )
 ```
