@@ -17,3 +17,4 @@ instance = Amos::ListPayouts.new(
   meta: null
 )
 ```
+

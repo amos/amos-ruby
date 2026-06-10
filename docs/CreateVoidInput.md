@@ -21,3 +21,4 @@ instance = Amos::CreateVoidInput.new(
   metadata: null
 )
 ```
+

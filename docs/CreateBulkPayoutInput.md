@@ -25,3 +25,4 @@ instance = Amos::CreateBulkPayoutInput.new(
   metadata: null
 )
 ```
+

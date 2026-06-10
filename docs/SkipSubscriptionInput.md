@@ -15,3 +15,4 @@ instance = Amos::SkipSubscriptionInput.new(
   period_count: null
 )
 ```
+

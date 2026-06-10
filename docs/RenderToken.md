@@ -17,3 +17,4 @@ instance = Amos::RenderToken.new(
   ttl: null
 )
 ```
+

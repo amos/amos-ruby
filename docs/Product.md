@@ -29,3 +29,4 @@ instance = Amos::Product.new(
   updated_at: null
 )
 ```
+

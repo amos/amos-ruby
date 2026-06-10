@@ -15,3 +15,4 @@ instance = Amos::CreateLegalEntityApplicationDocumentRequest.new(
   legal_entity_application_document: null
 )
 ```
+

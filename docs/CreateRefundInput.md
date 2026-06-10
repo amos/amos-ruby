@@ -23,3 +23,4 @@ instance = Amos::CreateRefundInput.new(
   metadata: null
 )
 ```
+

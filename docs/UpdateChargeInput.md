@@ -17,3 +17,4 @@ instance = Amos::UpdateChargeInput.new(
   metadata: null
 )
 ```
+

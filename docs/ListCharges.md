@@ -17,3 +17,4 @@ instance = Amos::ListCharges.new(
   meta: null
 )
 ```
+

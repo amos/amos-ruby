@@ -15,3 +15,4 @@ instance = Amos::CreateWebhookEndpointRequest.new(
   webhook_endpoint: null
 )
 ```
+

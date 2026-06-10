@@ -17,3 +17,4 @@ instance = Amos::UpdateVoidInput.new(
   metadata: null
 )
 ```
+

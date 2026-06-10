@@ -15,3 +15,4 @@ instance = Amos::UpdateAccountInput.new(
   mcc: null
 )
 ```
+

@@ -4,8 +4,6 @@ gemspec
 
 group :development, :test do
   gem 'rake'
-  gem 'pry-byebug'
+  gem 'pry'
   gem 'rubocop'
-  gem 'faker'
-  gem 'webmock'
 end

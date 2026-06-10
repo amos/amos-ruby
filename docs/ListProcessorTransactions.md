@@ -17,3 +17,4 @@ instance = Amos::ListProcessorTransactions.new(
   meta: null
 )
 ```
+

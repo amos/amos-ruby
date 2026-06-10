@@ -31,3 +31,4 @@ instance = Amos::SetupIntent.new(
   updated_at: null
 )
 ```
+

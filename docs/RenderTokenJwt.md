@@ -21,3 +21,4 @@ instance = Amos::RenderTokenJwt.new(
   render_template_id: null
 )
 ```
+

@@ -33,3 +33,4 @@ instance = Amos::Merchant.new(
   updated_at: null
 )
 ```
+

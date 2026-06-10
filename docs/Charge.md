@@ -57,3 +57,4 @@ instance = Amos::Charge.new(
   updated_at: null
 )
 ```
+

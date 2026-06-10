@@ -15,3 +15,4 @@ instance = Amos::CreateExternalAccountRequest.new(
   external_account: null
 )
 ```
+

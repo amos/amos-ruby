@@ -15,3 +15,4 @@ instance = Amos::CreatePaymentLinkRequest.new(
   payment_link: null
 )
 ```
+

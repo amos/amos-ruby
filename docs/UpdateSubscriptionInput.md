@@ -17,3 +17,4 @@ instance = Amos::UpdateSubscriptionInput.new(
   metadata: null
 )
 ```
+

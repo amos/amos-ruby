@@ -31,3 +31,4 @@ instance = Amos::PaymentMethod.new(
   updated_at: null
 )
 ```
+

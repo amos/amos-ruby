@@ -53,3 +53,4 @@ instance = Amos::CreateMerchantApplicationInput.new(
   website_url: null
 )
 ```
+

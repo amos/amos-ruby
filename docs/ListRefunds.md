@@ -17,3 +17,4 @@ instance = Amos::ListRefunds.new(
   meta: null
 )
 ```
+

@@ -51,3 +51,4 @@ instance = Amos::PaymentLink.new(
   metadata: null
 )
 ```
+

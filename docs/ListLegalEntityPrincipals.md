@@ -17,3 +17,4 @@ instance = Amos::ListLegalEntityPrincipals.new(
   meta: null
 )
 ```
+

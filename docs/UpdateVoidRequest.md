@@ -15,3 +15,4 @@ instance = Amos::UpdateVoidRequest.new(
   void: null
 )
 ```
+

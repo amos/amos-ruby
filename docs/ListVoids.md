@@ -17,3 +17,4 @@ instance = Amos::ListVoids.new(
   meta: null
 )
 ```
+

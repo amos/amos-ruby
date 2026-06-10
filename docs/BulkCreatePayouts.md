@@ -15,3 +15,4 @@ instance = Amos::BulkCreatePayouts.new(
   data: null
 )
 ```
+

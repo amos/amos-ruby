@@ -21,3 +21,4 @@ instance = Amos::ConfirmPaymentIntentInputPaymentMethod.new(
   card_profile_attributes: null
 )
 ```
+

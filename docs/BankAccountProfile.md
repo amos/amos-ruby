@@ -33,3 +33,4 @@ instance = Amos::BankAccountProfile.new(
   updated_at: null
 )
 ```
+

@@ -17,3 +17,4 @@ instance = Amos::ListSubscriptions.new(
   meta: null
 )
 ```
+

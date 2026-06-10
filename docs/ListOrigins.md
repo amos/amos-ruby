@@ -17,3 +17,4 @@ instance = Amos::ListOrigins.new(
   meta: null
 )
 ```
+

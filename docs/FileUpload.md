@@ -25,3 +25,4 @@ instance = Amos::FileUpload.new(
   upload: null
 )
 ```
+

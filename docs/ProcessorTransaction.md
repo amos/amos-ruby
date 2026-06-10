@@ -47,3 +47,4 @@ instance = Amos::ProcessorTransaction.new(
   updated_at: null
 )
 ```
+

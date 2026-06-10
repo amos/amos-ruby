@@ -17,3 +17,4 @@ instance = Amos::ListPaymentMethods.new(
   meta: null
 )
 ```
+

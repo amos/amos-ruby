@@ -27,3 +27,4 @@ instance = Amos::BankAccountProfileInput.new(
   routing_number: null
 )
 ```
+

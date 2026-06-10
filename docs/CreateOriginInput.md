@@ -15,3 +15,4 @@ instance = Amos::CreateOriginInput.new(
   value: null
 )
 ```
+

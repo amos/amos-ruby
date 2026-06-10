@@ -19,3 +19,4 @@ instance = Amos::FileDownloadConfiguration.new(
   expires_at: null
 )
 ```
+

@@ -17,3 +17,4 @@ instance = Amos::ListRenderTemplates.new(
   meta: null
 )
 ```
+

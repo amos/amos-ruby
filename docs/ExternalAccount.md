@@ -31,3 +31,4 @@ instance = Amos::ExternalAccount.new(
   updated_at: null
 )
 ```
+

@@ -17,3 +17,4 @@ instance = Amos::ListProducts.new(
   meta: null
 )
 ```
+

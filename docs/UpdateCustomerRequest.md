@@ -15,3 +15,4 @@ instance = Amos::UpdateCustomerRequest.new(
   customer: null
 )
 ```
+

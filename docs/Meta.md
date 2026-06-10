@@ -21,3 +21,4 @@ instance = Amos::Meta.new(
   first_page: null
 )
 ```
+

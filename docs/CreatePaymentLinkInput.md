@@ -45,3 +45,4 @@ instance = Amos::CreatePaymentLinkInput.new(
   metadata: null
 )
 ```
+

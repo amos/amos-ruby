@@ -19,3 +19,4 @@ instance = Amos::CreateRenderTemplateInput.new(
   origin_ids: null
 )
 ```
+

@@ -39,3 +39,4 @@ instance = Amos::LegalEntity.new(
   tax_id_last4: null
 )
 ```
+

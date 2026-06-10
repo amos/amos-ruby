@@ -21,3 +21,4 @@ instance = Amos::RenderTemplate.new(
   currency: null
 )
 ```
+

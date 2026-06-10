@@ -15,3 +15,4 @@ instance = Amos::CreateCustomerRequest.new(
   customer: null
 )
 ```
+

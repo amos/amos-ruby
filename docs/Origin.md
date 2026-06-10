@@ -21,3 +21,4 @@ instance = Amos::Origin.new(
   updated_at: null
 )
 ```
+

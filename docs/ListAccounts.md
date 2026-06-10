@@ -17,3 +17,4 @@ instance = Amos::ListAccounts.new(
   meta: null
 )
 ```
+

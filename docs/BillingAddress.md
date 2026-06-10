@@ -35,3 +35,4 @@ instance = Amos::BillingAddress.new(
   updated_at: null
 )
 ```
+

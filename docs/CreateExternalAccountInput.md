@@ -21,3 +21,4 @@ instance = Amos::CreateExternalAccountInput.new(
   external_card_profile_attributes: null
 )
 ```
+

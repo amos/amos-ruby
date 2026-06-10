@@ -27,3 +27,4 @@ instance = Amos::CreateSubscriptionInput.new(
   subscription_plan_id: null
 )
 ```
+

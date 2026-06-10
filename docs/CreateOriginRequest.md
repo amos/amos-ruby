@@ -15,3 +15,4 @@ instance = Amos::CreateOriginRequest.new(
   origin: null
 )
 ```
+

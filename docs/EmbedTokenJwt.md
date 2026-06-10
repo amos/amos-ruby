@@ -19,3 +19,4 @@ instance = Amos::EmbedTokenJwt.new(
   setup_intent_id: null
 )
 ```
+

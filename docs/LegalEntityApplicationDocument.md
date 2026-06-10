@@ -21,3 +21,4 @@ instance = Amos::LegalEntityApplicationDocument.new(
   file_upload_id: null
 )
 ```
+

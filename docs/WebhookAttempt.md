@@ -29,3 +29,4 @@ instance = Amos::WebhookAttempt.new(
   updated_at: null
 )
 ```
+

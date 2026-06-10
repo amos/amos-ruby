@@ -17,3 +17,4 @@ instance = Amos::ListExternalAccounts.new(
   meta: null
 )
 ```
+

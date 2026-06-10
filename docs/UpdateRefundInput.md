@@ -17,3 +17,4 @@ instance = Amos::UpdateRefundInput.new(
   metadata: null
 )
 ```
+

@@ -15,3 +15,4 @@ instance = Amos::UpdateProductRequest.new(
   product: null
 )
 ```
+

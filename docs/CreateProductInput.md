@@ -21,3 +21,4 @@ instance = Amos::CreateProductInput.new(
   metadata: null
 )
 ```
+

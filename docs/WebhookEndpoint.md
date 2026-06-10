@@ -29,3 +29,4 @@ instance = Amos::WebhookEndpoint.new(
   updated_at: null
 )
 ```
+

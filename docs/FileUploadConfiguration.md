@@ -21,3 +21,4 @@ instance = Amos::FileUploadConfiguration.new(
   expires_at: null
 )
 ```
+

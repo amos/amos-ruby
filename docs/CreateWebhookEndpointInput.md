@@ -21,3 +21,4 @@ instance = Amos::CreateWebhookEndpointInput.new(
   url: null
 )
 ```
+

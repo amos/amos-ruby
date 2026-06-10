@@ -55,3 +55,4 @@ instance = Amos::Void.new(
   updated_at: null
 )
 ```
+

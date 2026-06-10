@@ -43,3 +43,4 @@ instance = Amos::PaymentIntent.new(
   updated_at: null
 )
 ```
+

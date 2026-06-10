@@ -57,3 +57,4 @@ instance = Amos::Refund.new(
   allowed_reverse_action: null
 )
 ```
+

@@ -51,3 +51,4 @@ instance = Amos::Subscription.new(
   updated_at: null
 )
 ```
+

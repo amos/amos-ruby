@@ -37,3 +37,4 @@ instance = Amos::CreateSubscriptionPlanInput.new(
   trial_period_days: null
 )
 ```
+

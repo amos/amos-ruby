@@ -27,3 +27,4 @@ instance = Amos::LegalEntityApplicationRequirement.new(
   waived_at: null
 )
 ```
+

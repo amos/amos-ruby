@@ -171,9 +171,9 @@ require 'amos'
 # setup authorization
 Amos.configure do |config|
   # Configure API key authorization: Embed
-  config.api_key['Embed'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Embed'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = Amos::PaymentIntentsApi.new
@@ -314,9 +314,9 @@ require 'amos'
 # setup authorization
 Amos.configure do |config|
   # Configure API key authorization: Embed
-  config.api_key['Embed'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Embed'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = Amos::PaymentIntentsApi.new

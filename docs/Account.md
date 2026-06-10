@@ -27,3 +27,4 @@ instance = Amos::Account.new(
   updated_at: null
 )
 ```
+

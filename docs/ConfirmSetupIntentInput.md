@@ -17,3 +17,4 @@ instance = Amos::ConfirmSetupIntentInput.new(
   payment_method: null
 )
 ```
+

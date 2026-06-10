@@ -15,3 +15,4 @@ instance = Amos::Error.new(
   errors: null
 )
 ```
+

@@ -47,3 +47,4 @@ instance = Amos::CardProfile.new(
   updated_at: null
 )
 ```
+

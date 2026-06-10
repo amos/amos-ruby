@@ -17,3 +17,4 @@ instance = Amos::ListMerchants.new(
   meta: null
 )
 ```
+

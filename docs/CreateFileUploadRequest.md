@@ -15,3 +15,4 @@ instance = Amos::CreateFileUploadRequest.new(
   file: null
 )
 ```
+

@@ -15,3 +15,4 @@ instance = Amos::UpdateRefundRequest.new(
   refund: null
 )
 ```
+

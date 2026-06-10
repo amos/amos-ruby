@@ -17,3 +17,4 @@ instance = Amos::CreateSetupIntentInput.new(
   metadata: null
 )
 ```
+

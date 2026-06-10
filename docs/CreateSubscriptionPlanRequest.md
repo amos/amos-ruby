@@ -15,3 +15,4 @@ instance = Amos::CreateSubscriptionPlanRequest.new(
   subscription_plan: null
 )
 ```
+

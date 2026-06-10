@@ -15,3 +15,4 @@ instance = Amos::CreateRenderTemplateRequest.new(
   render_template: null
 )
 ```
+

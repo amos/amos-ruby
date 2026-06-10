@@ -15,3 +15,4 @@ instance = Amos::UpdateAccountRequest.new(
   account: null
 )
 ```
+

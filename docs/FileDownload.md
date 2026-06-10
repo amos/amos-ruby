@@ -25,3 +25,4 @@ instance = Amos::FileDownload.new(
   download: null
 )
 ```
+

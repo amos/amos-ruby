@@ -43,3 +43,4 @@ instance = Amos::CreateLegalEntityApplicationPrincipalInput.new(
   contact_phone: null
 )
 ```
+

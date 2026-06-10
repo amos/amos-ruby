@@ -31,3 +31,4 @@ instance = Amos::CardProfileInput.new(
   wallet_provider: null
 )
 ```
+

@@ -17,3 +17,4 @@ instance = Amos::ListWebhookEndpoints.new(
   meta: null
 )
 ```
+

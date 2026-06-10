@@ -37,3 +37,4 @@ instance = Amos::CreateLegalEntityApplicationInput.new(
   business_country: null
 )
 ```
+

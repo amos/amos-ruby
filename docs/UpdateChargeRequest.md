@@ -15,3 +15,4 @@ instance = Amos::UpdateChargeRequest.new(
   charge: null
 )
 ```
+

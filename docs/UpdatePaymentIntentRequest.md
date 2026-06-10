@@ -15,3 +15,4 @@ instance = Amos::UpdatePaymentIntentRequest.new(
   payment_intent: null
 )
 ```
+

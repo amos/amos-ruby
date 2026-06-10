@@ -15,3 +15,4 @@ instance = Amos::CreateSetupIntentRequest.new(
   setup_intent: null
 )
 ```
+

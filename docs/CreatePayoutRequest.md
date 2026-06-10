@@ -15,3 +15,4 @@ instance = Amos::CreatePayoutRequest.new(
   payout: null
 )
 ```
+

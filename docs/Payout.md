@@ -33,3 +33,4 @@ instance = Amos::Payout.new(
   updated_at: null
 )
 ```
+

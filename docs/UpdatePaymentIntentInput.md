@@ -19,3 +19,4 @@ instance = Amos::UpdatePaymentIntentInput.new(
   metadata: null
 )
 ```
+

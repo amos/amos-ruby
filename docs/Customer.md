@@ -33,3 +33,4 @@ instance = Amos::Customer.new(
   updated_at: null
 )
 ```
+

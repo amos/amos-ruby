@@ -31,3 +31,4 @@ instance = Amos::BillingAddressInput.new(
   state: null
 )
 ```
+

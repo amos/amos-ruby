@@ -15,3 +15,4 @@ instance = Amos::UpdateSubscriptionRequest.new(
   subscription: null
 )
 ```
+

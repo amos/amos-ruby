@@ -23,3 +23,4 @@ instance = Amos::CreateCustomerInput.new(
   metadata: null
 )
 ```
+

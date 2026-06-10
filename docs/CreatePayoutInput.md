@@ -23,3 +23,4 @@ instance = Amos::CreatePayoutInput.new(
   metadata: null
 )
 ```
+

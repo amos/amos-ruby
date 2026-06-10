@@ -45,3 +45,4 @@ instance = Amos::LegalEntityApplication.new(
   requirements: null
 )
 ```
+

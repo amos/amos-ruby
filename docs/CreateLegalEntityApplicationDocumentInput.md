@@ -19,3 +19,4 @@ instance = Amos::CreateLegalEntityApplicationDocumentInput.new(
   file_upload_id: null
 )
 ```
+

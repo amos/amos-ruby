@@ -15,3 +15,4 @@ instance = Amos::ListLegalEntityApplicationDocuments.new(
   data: null
 )
 ```
+
