@@ -18,6 +18,7 @@
 | **payment_transaction_type** | **String** |  | [optional] |
 | **processor_transaction_id** | **String** |  | [optional] |
 | **processor_reference** | **String** |  | [optional] |
+| **network_transaction_id** | **String** |  | [optional] |
 | **transaction_type** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -42,6 +43,7 @@ instance = Amos::ProcessorTransaction.new(
   payment_transaction_type: null,
   processor_transaction_id: null,
   processor_reference: null,
+  network_transaction_id: null,
   transaction_type: null,
   created_at: null,
   updated_at: null
