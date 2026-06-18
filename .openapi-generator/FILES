@@ -334,5 +334,4 @@ lib/amos/models/webhook_attempt.rb
 lib/amos/models/webhook_endpoint.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
-spec/models/recurring_payment_spec.rb
 spec/spec_helper.rb
