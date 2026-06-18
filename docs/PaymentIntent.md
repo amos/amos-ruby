@@ -13,6 +13,7 @@
 | **customer_id** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
+| **recurring_payment** | [**RecurringPayment**](RecurringPayment.md) |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
 | **source** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
@@ -35,6 +36,7 @@ instance = Amos::PaymentIntent.new(
   customer_id: null,
   description: null,
   metadata: null,
+  recurring_payment: null,
   payment_method_id: null,
   source: null,
   state: null,

@@ -282,6 +282,7 @@ Class | Method | HTTP request | Description
  - [Amos::Payout](docs/Payout.md)
  - [Amos::ProcessorTransaction](docs/ProcessorTransaction.md)
  - [Amos::Product](docs/Product.md)
+ - [Amos::RecurringPayment](docs/RecurringPayment.md)
  - [Amos::Refund](docs/Refund.md)
  - [Amos::RenderTemplate](docs/RenderTemplate.md)
  - [Amos::RenderToken](docs/RenderToken.md)

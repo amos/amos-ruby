@@ -10,6 +10,7 @@
 | **description** | **String** |  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
+| **recurring_payment** | [**RecurringPayment**](RecurringPayment.md) |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = Amos::CreatePaymentIntentInput.new(
   customer_id: null,
   description: null,
   statement_descriptor: null,
-  metadata: null
+  metadata: null,
+  recurring_payment: null
 )
 ```
 

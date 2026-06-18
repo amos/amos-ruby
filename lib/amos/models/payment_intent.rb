@@ -34,6 +34,8 @@ module Amos
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
+    attr_accessor :recurring_payment
+
     attr_accessor :payment_method_id
 
     attr_accessor :source
@@ -80,6 +82,7 @@ module Amos
         :'customer_id' => :'customer_id',
         :'description' => :'description',
         :'metadata' => :'metadata',
+        :'recurring_payment' => :'recurring_payment',
         :'payment_method_id' => :'payment_method_id',
         :'source' => :'source',
         :'state' => :'state',
@@ -111,6 +114,7 @@ module Amos
         :'customer_id' => :'String',
         :'description' => :'String',
         :'metadata' => :'Hash<String, String>',
+        :'recurring_payment' => :'RecurringPayment',
         :'payment_method_id' => :'String',
         :'source' => :'String',
         :'state' => :'String',
@@ -181,6 +185,10 @@ module Amos
         if (value = attributes[:'metadata']).is_a?(Hash)
           self.metadata = value
         end
+      end
+
+      if attributes.key?(:'recurring_payment')
+        self.recurring_payment = attributes[:'recurring_payment']
       end
 
       if attributes.key?(:'payment_method_id')
@@ -261,6 +269,7 @@ module Amos
           customer_id == o.customer_id &&
           description == o.description &&
           metadata == o.metadata &&
+          recurring_payment == o.recurring_payment &&
           payment_method_id == o.payment_method_id &&
           source == o.source &&
           state == o.state &&
@@ -278,7 +287,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, payment_method_id, source, state, statement_descriptor, created_at, updated_at].hash
+      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, source, state, statement_descriptor, created_at, updated_at].hash
     end
 
     # Builds the object from hash

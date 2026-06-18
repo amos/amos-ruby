@@ -128,6 +128,7 @@ docs/ProcessorTransaction.md
 docs/ProcessorTransactionsApi.md
 docs/Product.md
 docs/ProductsApi.md
+docs/RecurringPayment.md
 docs/Refund.md
 docs/RefundsApi.md
 docs/RenderTemplate.md
@@ -302,6 +303,7 @@ lib/amos/models/payment_method.rb
 lib/amos/models/payout.rb
 lib/amos/models/processor_transaction.rb
 lib/amos/models/product.rb
+lib/amos/models/recurring_payment.rb
 lib/amos/models/refund.rb
 lib/amos/models/render_template.rb
 lib/amos/models/render_token.rb
@@ -332,4 +334,5 @@ lib/amos/models/webhook_attempt.rb
 lib/amos/models/webhook_endpoint.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
+spec/models/recurring_payment_spec.rb
 spec/spec_helper.rb

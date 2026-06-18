@@ -22,12 +22,15 @@ module Amos
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
+    attr_accessor :recurring_payment
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'payment_method_id' => :'payment_method_id',
         :'amount' => :'amount',
-        :'metadata' => :'metadata'
+        :'metadata' => :'metadata',
+        :'recurring_payment' => :'recurring_payment'
       }
     end
 
@@ -46,7 +49,8 @@ module Amos
       {
         :'payment_method_id' => :'String',
         :'amount' => :'Integer',
-        :'metadata' => :'Hash<String, String>'
+        :'metadata' => :'Hash<String, String>',
+        :'recurring_payment' => :'RecurringPayment'
       }
     end
 
@@ -88,6 +92,10 @@ module Amos
           self.metadata = value
         end
       end
+
+      if attributes.key?(:'recurring_payment')
+        self.recurring_payment = attributes[:'recurring_payment']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +120,8 @@ module Amos
       self.class == o.class &&
           payment_method_id == o.payment_method_id &&
           amount == o.amount &&
-          metadata == o.metadata
+          metadata == o.metadata &&
+          recurring_payment == o.recurring_payment
     end
 
     # @see the `==` method
@@ -124,7 +133,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [payment_method_id, amount, metadata].hash
+      [payment_method_id, amount, metadata, recurring_payment].hash
     end
 
     # Builds the object from hash

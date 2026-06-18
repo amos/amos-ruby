@@ -49,6 +49,28 @@ module Amos
 
     attr_accessor :updated_at
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -112,6 +134,7 @@ module Amos
         :'cvc_check_message',
         :'funding',
         :'three_d_secure_supported',
+        :'wallet_provider',
       ])
     end
 
@@ -215,7 +238,19 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      wallet_provider_validator = EnumAttributeValidator.new('String', ["googlepay", "applepay"])
+      return false unless wallet_provider_validator.valid?(@wallet_provider)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] wallet_provider Object to be assigned
+    def wallet_provider=(wallet_provider)
+      validator = EnumAttributeValidator.new('String', ["googlepay", "applepay"])
+      unless validator.valid?(wallet_provider)
+        fail ArgumentError, "invalid value for \"wallet_provider\", must be one of #{validator.allowable_values}."
+      end
+      @wallet_provider = wallet_provider
     end
 
     # Checks equality by comparing each attribute.

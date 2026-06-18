@@ -19,6 +19,8 @@ module Amos
 
     attr_accessor :webhook_endpoint_id
 
+    attr_accessor :expires_at
+
     attr_accessor :request_body
 
     attr_accessor :created_at
@@ -30,6 +32,7 @@ module Amos
       {
         :'id' => :'id',
         :'webhook_endpoint_id' => :'webhook_endpoint_id',
+        :'expires_at' => :'expires_at',
         :'request_body' => :'request_body',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -51,6 +54,7 @@ module Amos
       {
         :'id' => :'String',
         :'webhook_endpoint_id' => :'String',
+        :'expires_at' => :'Time',
         :'request_body' => :'Object',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -90,6 +94,10 @@ module Amos
         self.webhook_endpoint_id = attributes[:'webhook_endpoint_id']
       end
 
+      if attributes.key?(:'expires_at')
+        self.expires_at = attributes[:'expires_at']
+      end
+
       if attributes.key?(:'request_body')
         self.request_body = attributes[:'request_body']
       end
@@ -125,6 +133,7 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           webhook_endpoint_id == o.webhook_endpoint_id &&
+          expires_at == o.expires_at &&
           request_body == o.request_body &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -139,7 +148,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, webhook_endpoint_id, request_body, created_at, updated_at].hash
+      [id, webhook_endpoint_id, expires_at, request_body, created_at, updated_at].hash
     end
 
     # Builds the object from hash

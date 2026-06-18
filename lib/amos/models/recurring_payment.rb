@@ -14,59 +14,13 @@ require 'date'
 require 'time'
 
 module Amos
-  class CardProfileInput < ApiModelBase
-    attr_accessor :card_holder_name
-
-    attr_accessor :cvc
-
-    attr_accessor :encrypted_card_number
-
-    attr_accessor :exp_month
-
-    attr_accessor :exp_year
-
-    attr_accessor :wallet_brand
-
-    attr_accessor :wallet_last4
-
-    attr_accessor :wallet_payload
-
-    attr_accessor :wallet_provider
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  class RecurringPayment < ApiModelBase
+    attr_accessor :network_transaction_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'card_holder_name' => :'card_holder_name',
-        :'cvc' => :'cvc',
-        :'encrypted_card_number' => :'encrypted_card_number',
-        :'exp_month' => :'exp_month',
-        :'exp_year' => :'exp_year',
-        :'wallet_brand' => :'wallet_brand',
-        :'wallet_last4' => :'wallet_last4',
-        :'wallet_payload' => :'wallet_payload',
-        :'wallet_provider' => :'wallet_provider'
+        :'network_transaction_id' => :'network_transaction_id'
       }
     end
 
@@ -83,22 +37,13 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'card_holder_name' => :'String',
-        :'cvc' => :'String',
-        :'encrypted_card_number' => :'String',
-        :'exp_month' => :'Integer',
-        :'exp_year' => :'Integer',
-        :'wallet_brand' => :'String',
-        :'wallet_last4' => :'String',
-        :'wallet_payload' => :'String',
-        :'wallet_provider' => :'String'
+        :'network_transaction_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'wallet_provider'
       ])
     end
 
@@ -106,7 +51,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::CardProfileInput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::RecurringPayment` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -121,40 +66,8 @@ module Amos
         end
       }
 
-      if attributes.key?(:'card_holder_name')
-        self.card_holder_name = attributes[:'card_holder_name']
-      end
-
-      if attributes.key?(:'cvc')
-        self.cvc = attributes[:'cvc']
-      end
-
-      if attributes.key?(:'encrypted_card_number')
-        self.encrypted_card_number = attributes[:'encrypted_card_number']
-      end
-
-      if attributes.key?(:'exp_month')
-        self.exp_month = attributes[:'exp_month']
-      end
-
-      if attributes.key?(:'exp_year')
-        self.exp_year = attributes[:'exp_year']
-      end
-
-      if attributes.key?(:'wallet_brand')
-        self.wallet_brand = attributes[:'wallet_brand']
-      end
-
-      if attributes.key?(:'wallet_last4')
-        self.wallet_last4 = attributes[:'wallet_last4']
-      end
-
-      if attributes.key?(:'wallet_payload')
-        self.wallet_payload = attributes[:'wallet_payload']
-      end
-
-      if attributes.key?(:'wallet_provider')
-        self.wallet_provider = attributes[:'wallet_provider']
+      if attributes.key?(:'network_transaction_id')
+        self.network_transaction_id = attributes[:'network_transaction_id']
       end
     end
 
@@ -170,19 +83,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      wallet_provider_validator = EnumAttributeValidator.new('String', ["googlepay", "applepay"])
-      return false unless wallet_provider_validator.valid?(@wallet_provider)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] wallet_provider Object to be assigned
-    def wallet_provider=(wallet_provider)
-      validator = EnumAttributeValidator.new('String', ["googlepay", "applepay"])
-      unless validator.valid?(wallet_provider)
-        fail ArgumentError, "invalid value for \"wallet_provider\", must be one of #{validator.allowable_values}."
-      end
-      @wallet_provider = wallet_provider
     end
 
     # Checks equality by comparing each attribute.
@@ -190,15 +91,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          card_holder_name == o.card_holder_name &&
-          cvc == o.cvc &&
-          encrypted_card_number == o.encrypted_card_number &&
-          exp_month == o.exp_month &&
-          exp_year == o.exp_year &&
-          wallet_brand == o.wallet_brand &&
-          wallet_last4 == o.wallet_last4 &&
-          wallet_payload == o.wallet_payload &&
-          wallet_provider == o.wallet_provider
+          network_transaction_id == o.network_transaction_id
     end
 
     # @see the `==` method
@@ -210,7 +103,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [card_holder_name, cvc, encrypted_card_number, exp_month, exp_year, wallet_brand, wallet_last4, wallet_payload, wallet_provider].hash
+      [network_transaction_id].hash
     end
 
     # Builds the object from hash
