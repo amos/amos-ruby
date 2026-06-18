@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build amos.gemspec
-  - gem install ./amos-0.9.0.gem
+  - gem install ./amos-0.10.0.gem
