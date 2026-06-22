@@ -4,6 +4,10 @@ gemspec
 
 group :development, :test do
   gem 'rake', '~> 13.0.1'
-  gem 'pry-byebug'
+  gem 'pr'
   gem 'rubocop', '~> 0.66.0'
+  gem 'base64'
+  gem 'benchmark'
+  gem 'ostruct'
+  gem 'tsort'
 end
