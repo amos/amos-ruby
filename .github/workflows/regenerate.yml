@@ -1,0 +1,298 @@
+name: Regenerate from OpenAPI
+
+# Required repository secrets (mirror amos-node):
+#   OPENAPI_REPO_TOKEN - read access to the private amos/openapi repo
+#
+# Triggered by repository_dispatch from amos/openapi sync.yml when the
+# public spec changes. Requires AMOS_CLIENT_DISPATCH_PAT in amos/openapi.
+
+on:
+  repository_dispatch:
+    types: [public-openapi-spec-updated]
+  workflow_dispatch:
+    inputs:
+      spec_repo:
+        description: "Spec repo (owner/name)"
+        required: false
+        default: "amos/openapi"
+      spec_path:
+        description: "Path to the public spec inside the spec repo"
+        required: false
+        default: "amos/openapi.public.yaml"
+      spec_sha:
+        description: "Spec commit SHA to sync (defaults to spec_ref HEAD)"
+        required: false
+      spec_ref:
+        description: "Spec branch/ref"
+        required: false
+        default: "main"
+
+concurrency:
+  group: regenerate-from-openapi
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+
+    env:
+      SPEC_REPO: ${{ github.event.client_payload.spec_repo || inputs.spec_repo || 'amos/openapi' }}
+      SPEC_PATH: ${{ github.event.client_payload.spec_path || inputs.spec_path || 'amos/openapi.public.yaml' }}
+      SPEC_SHA: ${{ github.event.client_payload.spec_sha || inputs.spec_sha }}
+      SPEC_REF: ${{ github.event.client_payload.spec_ref || inputs.spec_ref || 'main' }}
+
+    steps:
+      - name: Checkout amos-ruby
+        uses: actions/checkout@v4
+        with:
+          path: amos-ruby
+
+      - name: Read previously-synced spec SHA
+        id: prev
+        working-directory: amos-ruby
+        run: |
+          set -euo pipefail
+          prev_sha="$(jq -r '.sha // ""' openapi/source.json)"
+          echo "sha=$prev_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout OpenAPI spec
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SPEC_REPO }}
+          ref: ${{ env.SPEC_REF }}
+          token: ${{ secrets.OPENAPI_REPO_TOKEN }}
+          path: openapi
+          fetch-depth: 0
+
+      - name: Pin OpenAPI spec to dispatched SHA
+        if: ${{ env.SPEC_SHA != '' }}
+        working-directory: openapi
+        run: |
+          set -euo pipefail
+          git fetch origin "$SPEC_SHA"
+          git reset --hard "$SPEC_SHA"
+
+      - name: Resolve synced spec SHA
+        run: |
+          set -euo pipefail
+          spec_sha="$(git -C openapi rev-parse HEAD)"
+          spec_short="$(git -C openapi rev-parse --short HEAD)"
+          {
+            echo "RESOLVED_SPEC_SHA=$spec_sha"
+            echo "RESOLVED_SPEC_SHORT=$spec_short"
+          } >> "$GITHUB_ENV"
+
+      - name: Read current gem version
+        id: current_version
+        working-directory: amos-ruby
+        run: |
+          set -euo pipefail
+          current="$(ruby -Ilib -r amos/version -e 'puts Amos::VERSION')"
+          echo "version=$current" >> "$GITHUB_OUTPUT"
+
+      - name: Classify version bump with oasdiff
+        id: bump
+        if: ${{ steps.prev.outputs.sha != '' && steps.prev.outputs.sha != env.RESOLVED_SPEC_SHA }}
+        env:
+          PREV_SPEC_SHA: ${{ steps.prev.outputs.sha }}
+        run: |
+          set -euo pipefail
+
+          if ! git -C openapi cat-file -e "${PREV_SPEC_SHA}:${SPEC_PATH}" 2>/dev/null; then
+            echo "::warning::Previous spec at ${PREV_SPEC_SHA} unavailable from openapi history; defaulting to patch bump with no diff."
+            echo "bump=patch" >> "$GITHUB_OUTPUT"
+            : > "${RUNNER_TEMP}/upstream-commits.txt"
+            : > "${RUNNER_TEMP}/oasdiff-changelog.txt"
+            exit 0
+          fi
+
+          mount_dir="${RUNNER_TEMP}/oasdiff"
+          mkdir -p "$mount_dir"
+          git -C openapi show "${PREV_SPEC_SHA}:${SPEC_PATH}" > "${mount_dir}/old.yaml"
+          cp "openapi/${SPEC_PATH}" "${mount_dir}/new.yaml"
+
+          oasdiff() {
+            docker run --rm -v "${mount_dir}:/specs" tufin/oasdiff:latest "$@"
+          }
+
+          set +e
+          oasdiff breaking /specs/old.yaml /specs/new.yaml --fail-on ERR -f text \
+            > "${RUNNER_TEMP}/oasdiff-breaking.txt" 2>&1
+          breaking_exit=$?
+          set -e
+
+          oasdiff changelog /specs/old.yaml /specs/new.yaml -f text \
+            > "${RUNNER_TEMP}/oasdiff-changelog.txt" 2>&1 || true
+
+          if [ "$breaking_exit" -ne 0 ]; then
+            bump="major"
+          elif grep -q '[^[:space:]]' "${RUNNER_TEMP}/oasdiff-changelog.txt"; then
+            bump="minor"
+          else
+            bump="patch"
+          fi
+
+          git -C openapi log \
+            --pretty='format:- %h %s' "${PREV_SPEC_SHA}..HEAD" -- "${SPEC_PATH}" \
+            > "${RUNNER_TEMP}/upstream-commits.txt" \
+            2>/dev/null || : > "${RUNNER_TEMP}/upstream-commits.txt"
+
+          echo "bump=$bump" >> "$GITHUB_OUTPUT"
+          echo "Classified as: $bump"
+
+      - name: Resolve gem version
+        id: version
+        working-directory: amos-ruby
+        env:
+          CURRENT_VERSION: ${{ steps.current_version.outputs.version }}
+          BUMP: ${{ steps.bump.outputs.bump }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$BUMP" ]; then
+            new_version="$CURRENT_VERSION"
+          else
+            new_version="$(ruby -e "
+              v = ENV.fetch('CURRENT_VERSION').split('.').map(&:to_i)
+              case ENV.fetch('BUMP')
+              when 'major' then puts \"\#{v[0] + 1}.0.0\"
+              when 'minor' then puts \"\#{v[0]}.\#{v[1] + 1}.0\"
+              else puts \"\#{v[0]}.\#{v[1]}.\#{v[2] + 1}\"
+              end
+            ")"
+          fi
+
+          echo "current=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "new=$new_version" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Regenerate Ruby client from OpenAPI
+        env:
+          GEM_VERSION: ${{ steps.version.outputs.new }}
+        run: |
+          set -euo pipefail
+          generated_dir="${RUNNER_TEMP}/generated"
+          rm -rf "$generated_dir"
+          mkdir -p "$generated_dir"
+
+          npx --yes @openapitools/openapi-generator-cli generate \
+            -i "openapi/${SPEC_PATH}" \
+            -g ruby \
+            -t "openapi/amos/templates/ruby_client_templates/" \
+            -c "openapi/amos/config/ruby_client_config.yaml" \
+            -o "$generated_dir" \
+            --additional-properties=gemVersion="${GEM_VERSION}"
+
+          rsync -a --delete \
+            --filter 'P .github/' \
+            --filter 'P openapi/source.json' \
+            "$generated_dir/" "amos-ruby/"
+
+      - name: Update openapi/source.json
+        working-directory: amos-ruby
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp)"
+          jq \
+            --arg repo "$SPEC_REPO" \
+            --arg path "$SPEC_PATH" \
+            --arg sha "$RESOLVED_SPEC_SHA" \
+            '.repo = $repo | .path = $path | .sha = $sha' \
+            openapi/source.json > "$tmp"
+          mv "$tmp" openapi/source.json
+
+      - name: Write regeneration notes
+        if: ${{ steps.prev.outputs.sha != '' && steps.prev.outputs.sha != env.RESOLVED_SPEC_SHA }}
+        working-directory: amos-ruby
+        env:
+          BUMP: ${{ steps.bump.outputs.bump }}
+          PREV_VERSION: ${{ steps.version.outputs.current }}
+          NEW_VERSION: ${{ steps.version.outputs.new }}
+        run: |
+          set -euo pipefail
+          notes="openapi/regen-notes.md"
+          {
+            echo "# Regeneration notes"
+            echo
+            echo "Regenerated from \`${SPEC_REPO}\` at \`${RESOLVED_SPEC_SHORT}\` (\`${RESOLVED_SPEC_SHA}\`)."
+            echo
+            echo "Gem version: \`${PREV_VERSION}\` → \`${NEW_VERSION}\` (${BUMP:-unchanged})."
+            echo
+            if [ -s "${RUNNER_TEMP}/upstream-commits.txt" ]; then
+              echo "**Upstream commits:**"
+              echo
+              cat "${RUNNER_TEMP}/upstream-commits.txt"
+              echo
+              echo
+            fi
+            if grep -q '[^[:space:]]' "${RUNNER_TEMP}/oasdiff-changelog.txt" 2>/dev/null; then
+              echo "**API changes detected by oasdiff:**"
+              echo
+              echo '```'
+              cat "${RUNNER_TEMP}/oasdiff-changelog.txt"
+              echo '```'
+            fi
+          } > "$notes"
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          working-directory: amos-ruby
+          bundler-cache: true
+
+      - name: Run specs
+        working-directory: amos-ruby
+        run: bundle exec rspec --format progress
+
+      - name: Compose pull request body
+        run: |
+          set -euo pipefail
+          body_path="${RUNNER_TEMP}/pr-body.md"
+          {
+            echo "Automated regeneration from the public OpenAPI spec."
+            echo
+            echo "- Source repo: \`${SPEC_REPO}\`"
+            echo "- Spec path: \`${SPEC_PATH}\`"
+            echo "- Spec SHA: \`${RESOLVED_SPEC_SHA}\`"
+            echo "- Gem version: \`${{ steps.version.outputs.current }}\` → \`${{ steps.version.outputs.new }}\`"
+            if [ -n "${{ steps.bump.outputs.bump }}" ]; then
+              echo "- oasdiff classification: \`${{ steps.bump.outputs.bump }}\`"
+            fi
+            echo
+            echo "Triggered by \`${{ github.event_name }}\`."
+            echo
+            echo "> Review the version bump in \`lib/amos/version.rb\` and notes in"
+            echo "> \`openapi/regen-notes.md\`. \`oasdiff\` is a best-effort classifier:"
+            echo "> promote to \`major\` if the change breaks exhaustive switches on"
+            echo "> response enums, narrows a type consumers were depending on, etc."
+          } > "$body_path"
+          echo "PR_BODY_PATH=$body_path" >> "$GITHUB_ENV"
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          path: amos-ruby
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: regen/openapi-${{ env.RESOLVED_SPEC_SHORT }}
+          base: main
+          title: "chore: regenerate from OpenAPI ${{ env.SPEC_REPO }}@${{ env.RESOLVED_SPEC_SHORT }}"
+          commit-message: |
+            chore: regenerate from OpenAPI
+
+            Source: ${{ env.SPEC_REPO }}@${{ env.RESOLVED_SPEC_SHA }}
+            Spec path: ${{ env.SPEC_PATH }}
+            Gem version: ${{ steps.version.outputs.new }}
+          body-path: ${{ env.PR_BODY_PATH }}
+          labels: |
+            openapi-sync
+            automated
+          delete-branch: true
