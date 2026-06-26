@@ -8,7 +8,7 @@
 | **currency** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **cycles** | **Integer** |  | [optional] |
-| **interval** | **String** |  | [optional] |
+| **interval** | [**SubscriptionIntervalType**](SubscriptionIntervalType.md) |  | [optional] |
 | **interval_count** | **Integer** |  | [optional] |
 | **subscription_plan_id** | **String** |  | [optional] |
 

@@ -20,7 +20,7 @@
 | **payment_intent_id** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
 | **platform_fee** | **Integer** |  | [optional] |
-| **source** | **String** |  | [optional] |
+| **source** | [**TransactionSourceType**](TransactionSourceType.md) |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |
 | **succeeded_at** | **Time** |  | [optional] |

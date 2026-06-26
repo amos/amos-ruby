@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **legal_name** | **String** |  | [optional] |
-| **entity_type** | **String** |  | [optional] |
-| **ownership_type** | **String** |  | [optional] |
+| **entity_type** | [**LegalEntityEntityType**](LegalEntityEntityType.md) |  | [optional] |
+| **ownership_type** | [**LegalEntityOwnershipType**](LegalEntityOwnershipType.md) |  | [optional] |
 | **contact_email** | **String** |  | [optional] |
 | **contact_phone** | **String** |  | [optional] |
 | **business_address_line1** | **String** |  | [optional] |

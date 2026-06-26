@@ -6,7 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **annual_credit_card_sales_volume** | **Integer** |  | [optional] |
-| **business_category** | **String** |  | [optional] |
+| **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethod&gt;**](AllowedPaymentMethod.md) |  | [optional] |
+| **business_category** | [**MerchantBusinessCategoryType**](MerchantBusinessCategoryType.md) |  | [optional] |
 | **business_description** | **String** |  | [optional] |
 | **city** | **String** |  | [optional] |
 | **country_code** | **String** |  | [optional] |
@@ -41,6 +42,7 @@ require 'amos'
 instance = Amos::MerchantApplication.new(
   id: null,
   annual_credit_card_sales_volume: null,
+  allowed_payment_methods: null,
   business_category: null,
   business_description: null,
   city: null,

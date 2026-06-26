@@ -18,7 +18,7 @@
 | **state** | **String** |  | [optional] |
 | **three_d_secure_supported** | **Boolean** |  | [optional] |
 | **token** | **String** |  | [optional] |
-| **wallet_provider** | **String** |  | [optional] |
+| **wallet_provider** | [**WalletProviderType**](WalletProviderType.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 

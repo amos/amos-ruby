@@ -10,11 +10,11 @@
 | **cycles** | **Integer** |  | [optional] |
 | **product_id** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
-| **interval** | **String** |  | [optional] |
+| **interval** | [**SubscriptionIntervalType**](SubscriptionIntervalType.md) |  | [optional] |
 | **interval_count** | **Integer** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **name** | **String** |  | [optional] |
-| **plan_type** | **String** |  | [optional] |
+| **plan_type** | [**SubscriptionPlanType**](SubscriptionPlanType.md) |  | [optional] |
 | **trial_period_days** | **Integer** |  | [optional] |
 
 ## Example

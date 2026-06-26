@@ -9,7 +9,7 @@
 | **customer_id** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
-| **source** | **String** |  | [optional] |
+| **source** | [**TransactionSourceType**](TransactionSourceType.md) |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |

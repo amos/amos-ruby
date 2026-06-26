@@ -5,9 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **annual_credit_card_sales_volume** | **Integer** |  | [optional] |
+| **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethodInput&gt;**](AllowedPaymentMethodInput.md) |  | [optional] |
 | **bank_account_number** | **String** |  | [optional] |
 | **bank_routing_number** | **String** |  | [optional] |
-| **business_category** | **String** |  | [optional] |
+| **business_category** | [**MerchantBusinessCategoryType**](MerchantBusinessCategoryType.md) |  | [optional] |
 | **business_description** | **String** |  | [optional] |
 | **city** | **String** |  | [optional] |
 | **country_code** | **String** |  | [optional] |
@@ -32,6 +33,7 @@ require 'amos'
 
 instance = Amos::CreateMerchantApplicationInput.new(
   annual_credit_card_sales_volume: null,
+  allowed_payment_methods: null,
   bank_account_number: null,
   bank_routing_number: null,
   business_category: null,

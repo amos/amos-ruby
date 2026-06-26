@@ -8,7 +8,9 @@
 | **external_account_id** | **String** |  |  |
 | **amount** | **Integer** |  |  |
 | **currency** | **String** |  | [optional] |
-| **direction** | **String** |  |  |
+| **direction** | [**PayoutDirectionType**](PayoutDirectionType.md) |  |  |
+| **prefix** | **String** |  | [optional] |
+| **addenda** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 
 ## Example
@@ -22,6 +24,8 @@ instance = Amos::CreateBulkPayoutInput.new(
   amount: null,
   currency: null,
   direction: null,
+  prefix: null,
+  addenda: null,
   metadata: null
 )
 ```

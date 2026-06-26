@@ -19,8 +19,8 @@
 | **payment_intent_id** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
 | **platform_fee** | **Integer** |  | [optional] |
-| **source** | **String** |  | [optional] |
-| **state** | **String** |  | [optional] |
+| **source** | [**TransactionSourceType**](TransactionSourceType.md) |  | [optional] |
+| **state** | [**RefundStateType**](RefundStateType.md) |  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |
 | **succeeded_at** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |

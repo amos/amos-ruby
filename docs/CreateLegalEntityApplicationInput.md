@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **legal_name** | **String** |  | [optional] |
-| **entity_type** | **String** |  | [optional] |
-| **ownership_type** | **String** |  | [optional] |
+| **entity_type** | [**LegalEntityEntityType**](LegalEntityEntityType.md) |  | [optional] |
+| **ownership_type** | [**LegalEntityOwnershipType**](LegalEntityOwnershipType.md) |  | [optional] |
 | **tax_id** | **String** |  | [optional] |
 | **contact_email** | **String** |  | [optional] |
 | **contact_phone** | **String** |  | [optional] |

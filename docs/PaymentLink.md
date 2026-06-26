@@ -9,7 +9,7 @@
 | **account_id** | **String** |  | [optional] |
 | **slug** | **String** |  | [optional] |
 | **active** | **Boolean** |  | [optional] |
-| **amount_type** | **String** |  | [optional] |
+| **amount_type** | [**PaymentLinkAmountType**](PaymentLinkAmountType.md) |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
 | **image_url** | **String** |  | [optional] |
 | **minimum_amount** | **Integer** |  | [optional] |
@@ -21,7 +21,7 @@
 | **success_url** | **String** |  | [optional] |
 | **title** | **String** |  | [optional] |
 | **cancel_url** | **String** |  | [optional] |
-| **allowed_payment_method_types** | **Array&lt;String&gt;** |  | [optional] |
+| **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethod&gt;**](AllowedPaymentMethod.md) |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 
 ## Example
@@ -47,7 +47,7 @@ instance = Amos::PaymentLink.new(
   success_url: null,
   title: null,
   cancel_url: null,
-  allowed_payment_method_types: null,
+  allowed_payment_methods: null,
   metadata: null
 )
 ```

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **legal_entity_application_id** | **String** |  | [optional] |
-| **document_type** | **String** |  | [optional] |
+| **document_type** | [**LegalEntityDocumentType**](LegalEntityDocumentType.md) |  | [optional] |
 | **file_upload_id** | **String** |  | [optional] |
 
 ## Example

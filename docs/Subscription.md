@@ -12,7 +12,7 @@
 | **subscription_plan_id** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
-| **interval** | **String** |  | [optional] |
+| **interval** | [**SubscriptionIntervalType**](SubscriptionIntervalType.md) |  | [optional] |
 | **interval_count** | **Integer** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **cycles_completed** | **Integer** |  | [optional] |

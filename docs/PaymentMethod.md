@@ -7,7 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
-| **type** | **String** |  | [optional] |
+| **type** | [**PaymentMethodType**](PaymentMethodType.md) |  | [optional] |
 | **bank_account_profile** | [**BankAccountProfile**](BankAccountProfile.md) |  | [optional] |
 | **billing_address** | [**BillingAddress**](BillingAddress.md) |  | [optional] |
 | **card_profile** | [**CardProfile**](CardProfile.md) |  | [optional] |

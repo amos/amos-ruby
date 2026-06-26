@@ -6,8 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **organization_id** | **String** |  | [optional] |
-| **allowed_payment_method_types** | **Array&lt;String&gt;** |  | [optional] |
+| **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethod&gt;**](AllowedPaymentMethod.md) |  | [optional] |
 | **currency** | **String** |  | [optional] |
+| **moto** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -17,8 +18,9 @@ require 'amos'
 instance = Amos::RenderTemplate.new(
   id: null,
   organization_id: null,
-  allowed_payment_method_types: null,
-  currency: null
+  allowed_payment_methods: null,
+  currency: null,
+  moto: null
 )
 ```
 

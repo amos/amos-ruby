@@ -33,7 +33,7 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::PayoutsApi.new
-create_bulk_payouts_request = Amos::CreateBulkPayoutsRequest.new({payouts: [Amos::CreateBulkPayoutInput.new({account_id: 'account_id_example', external_account_id: 'external_account_id_example', amount: 37, direction: 'credit'})]}) # CreateBulkPayoutsRequest | 
+create_bulk_payouts_request = Amos::CreateBulkPayoutsRequest.new({payouts: [Amos::CreateBulkPayoutInput.new({account_id: 'account_id_example', external_account_id: 'external_account_id_example', amount: 37, direction: Amos::PayoutDirectionType::CREDIT})]}) # CreateBulkPayoutsRequest | 
 
 begin
   # Bulk create payouts
@@ -105,7 +105,7 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::PayoutsApi.new
-create_payout_request = Amos::CreatePayoutRequest.new({payout: Amos::CreatePayoutInput.new({external_account_id: 'external_account_id_example', amount: 37, direction: 'credit'})}) # CreatePayoutRequest | 
+create_payout_request = Amos::CreatePayoutRequest.new({payout: Amos::CreatePayoutInput.new({external_account_id: 'external_account_id_example', amount: 37, direction: Amos::PayoutDirectionType::CREDIT})}) # CreatePayoutRequest | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
@@ -257,7 +257,8 @@ opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
   external_account_id: 'external_account_id_example', # String | The external account ID to filter by
-  state: 'pending' # String | The payout state to filter by
+  direction: Amos::PayoutDirectionType::CREDIT, # PayoutDirectionType | The payout direction to filter by
+  state: Amos::PayoutStateType::PENDING # PayoutStateType | The payout state to filter by
 }
 
 begin
@@ -294,7 +295,8 @@ end
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 | **external_account_id** | **String** | The external account ID to filter by | [optional] |
-| **state** | **String** | The payout state to filter by | [optional] |
+| **direction** | [**PayoutDirectionType**](.md) | The payout direction to filter by | [optional] |
+| **state** | [**PayoutStateType**](.md) | The payout state to filter by | [optional] |
 
 ### Return type
 
