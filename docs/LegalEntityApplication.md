@@ -19,6 +19,12 @@
 | **business_country** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **tax_id_last4** | **String** |  | [optional] |
+| **approved_at** | **Time** |  | [optional] |
+| **denied_at** | **Time** |  | [optional] |
+| **needs_information_at** | **Time** |  | [optional] |
+| **decision_reason** | **String** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 | **requirements** | [**Array&lt;LegalEntityApplicationRequirement&gt;**](LegalEntityApplicationRequirement.md) |  | [optional] |
 
 ## Example
@@ -42,6 +48,12 @@ instance = Amos::LegalEntityApplication.new(
   business_country: null,
   state: null,
   tax_id_last4: null,
+  approved_at: null,
+  denied_at: null,
+  needs_information_at: null,
+  decision_reason: null,
+  created_at: null,
+  updated_at: null,
   requirements: null
 )
 ```

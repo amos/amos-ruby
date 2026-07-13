@@ -282,7 +282,7 @@ module Amos
       warn '[DEPRECATED] the `valid?` method is obsolete'
       allowed_reverse_action_validator = EnumAttributeValidator.new('String', ["void", "refund"])
       return false unless allowed_reverse_action_validator.valid?(@allowed_reverse_action)
-      state_validator = EnumAttributeValidator.new('String', ["cancelled", "errored", "failed", "processing", "requires_capture", "requires_confirmation", "requires_review", "succeeded"])
+      state_validator = EnumAttributeValidator.new('String', ["cancelled", "errored", "failed", "processing", "requires_capture", "requires_confirmation", "requires_review", "settlement_failed", "succeeded"])
       return false unless state_validator.valid?(@state)
       true
     end
@@ -300,7 +300,7 @@ module Amos
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] state Object to be assigned
     def state=(state)
-      validator = EnumAttributeValidator.new('String', ["cancelled", "errored", "failed", "processing", "requires_capture", "requires_confirmation", "requires_review", "succeeded"])
+      validator = EnumAttributeValidator.new('String', ["cancelled", "errored", "failed", "processing", "requires_capture", "requires_confirmation", "requires_review", "settlement_failed", "succeeded"])
       unless validator.valid?(state)
         fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
       end

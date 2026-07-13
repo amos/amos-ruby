@@ -6,7 +6,6 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | ------ | ------------ | ----------- |
 | [**cancel_payment_intent**](PaymentIntentsApi.md#cancel_payment_intent) | **POST** /payment_intents/{id}/cancel | Cancel a payment intent |
 | [**capture_payment_intent**](PaymentIntentsApi.md#capture_payment_intent) | **POST** /payment_intents/{id}/capture | Capture a payment intent |
-| [**confirm_embed_payment_intent**](PaymentIntentsApi.md#confirm_embed_payment_intent) | **POST** /embed/payment_intents/{id}/confirm | Confirm a payment intent |
 | [**confirm_embed_payment_intent_with_payment_method**](PaymentIntentsApi.md#confirm_embed_payment_intent_with_payment_method) | **POST** /embed/payment_intents/{id}/confirm_with_payment_method | Confirm a payment intent with a new payment method |
 | [**create_payment_intent**](PaymentIntentsApi.md#create_payment_intent) | **POST** /payment_intents | Create a new payment intent |
 | [**get_embed_payment_intent**](PaymentIntentsApi.md#get_embed_payment_intent) | **GET** /embed/payment_intents/{id} | Retrieve a payment intent by ID |
@@ -158,77 +157,6 @@ end
 - **Accept**: application/json
 
 
-## confirm_embed_payment_intent
-
-> <PaymentIntent> confirm_embed_payment_intent(id, confirm_payment_intent_request)
-
-Confirm a payment intent
-
-### Examples
-
-```ruby
-require 'time'
-require 'amos'
-# setup authorization
-Amos.configure do |config|
-  # Configure API key authorization: Embed
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = Amos::PaymentIntentsApi.new
-id = 'id_example' # String | The ID of the payment intent to confirm
-confirm_payment_intent_request = Amos::ConfirmPaymentIntentRequest.new({payment_intent: Amos::ConfirmPaymentIntentInput.new}) # ConfirmPaymentIntentRequest | 
-
-begin
-  # Confirm a payment intent
-  result = api_instance.confirm_embed_payment_intent(id, confirm_payment_intent_request)
-  p result
-rescue Amos::ApiError => e
-  puts "Error when calling PaymentIntentsApi->confirm_embed_payment_intent: #{e}"
-end
-```
-
-#### Using the confirm_embed_payment_intent_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaymentIntent>, Integer, Hash)> confirm_embed_payment_intent_with_http_info(id, confirm_payment_intent_request)
-
-```ruby
-begin
-  # Confirm a payment intent
-  data, status_code, headers = api_instance.confirm_embed_payment_intent_with_http_info(id, confirm_payment_intent_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaymentIntent>
-rescue Amos::ApiError => e
-  puts "Error when calling PaymentIntentsApi->confirm_embed_payment_intent_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **String** | The ID of the payment intent to confirm |  |
-| **confirm_payment_intent_request** | [**ConfirmPaymentIntentRequest**](ConfirmPaymentIntentRequest.md) |  |  |
-
-### Return type
-
-[**PaymentIntent**](PaymentIntent.md)
-
-### Authorization
-
-[Embed](../README.md#Embed)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## confirm_embed_payment_intent_with_payment_method
 
 > <PaymentIntent> confirm_embed_payment_intent_with_payment_method(id, confirm_payment_intent_with_payment_method_request)
@@ -250,7 +178,7 @@ end
 
 api_instance = Amos::PaymentIntentsApi.new
 id = 'id_example' # String | The ID of the payment intent to confirm
-confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::CardProfileInput.new})})}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
+confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithPaymentMethodInput.new}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
 
 begin
   # Confirm a payment intent with a new payment method

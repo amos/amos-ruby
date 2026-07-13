@@ -45,6 +45,18 @@ module Amos
 
     attr_accessor :tax_id_last4
 
+    attr_accessor :approved_at
+
+    attr_accessor :denied_at
+
+    attr_accessor :needs_information_at
+
+    attr_accessor :decision_reason
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
     attr_accessor :requirements
 
     class EnumAttributeValidator
@@ -87,6 +99,12 @@ module Amos
         :'business_country' => :'business_country',
         :'state' => :'state',
         :'tax_id_last4' => :'tax_id_last4',
+        :'approved_at' => :'approved_at',
+        :'denied_at' => :'denied_at',
+        :'needs_information_at' => :'needs_information_at',
+        :'decision_reason' => :'decision_reason',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
         :'requirements' => :'requirements'
       }
     end
@@ -119,6 +137,12 @@ module Amos
         :'business_country' => :'String',
         :'state' => :'String',
         :'tax_id_last4' => :'String',
+        :'approved_at' => :'Time',
+        :'denied_at' => :'Time',
+        :'needs_information_at' => :'Time',
+        :'decision_reason' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
         :'requirements' => :'Array<LegalEntityApplicationRequirement>'
       }
     end
@@ -127,6 +151,10 @@ module Amos
     def self.openapi_nullable
       Set.new([
         :'business_address_line2',
+        :'approved_at',
+        :'denied_at',
+        :'needs_information_at',
+        :'decision_reason',
       ])
     end
 
@@ -209,6 +237,30 @@ module Amos
         self.tax_id_last4 = attributes[:'tax_id_last4']
       end
 
+      if attributes.key?(:'approved_at')
+        self.approved_at = attributes[:'approved_at']
+      end
+
+      if attributes.key?(:'denied_at')
+        self.denied_at = attributes[:'denied_at']
+      end
+
+      if attributes.key?(:'needs_information_at')
+        self.needs_information_at = attributes[:'needs_information_at']
+      end
+
+      if attributes.key?(:'decision_reason')
+        self.decision_reason = attributes[:'decision_reason']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
       if attributes.key?(:'requirements')
         if (value = attributes[:'requirements']).is_a?(Array)
           self.requirements = value
@@ -251,6 +303,12 @@ module Amos
           business_country == o.business_country &&
           state == o.state &&
           tax_id_last4 == o.tax_id_last4 &&
+          approved_at == o.approved_at &&
+          denied_at == o.denied_at &&
+          needs_information_at == o.needs_information_at &&
+          decision_reason == o.decision_reason &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
           requirements == o.requirements
     end
 
@@ -263,7 +321,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_name, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, requirements].hash
+      [id, legal_name, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, approved_at, denied_at, needs_information_at, decision_reason, created_at, updated_at, requirements].hash
     end
 
     # Builds the object from hash

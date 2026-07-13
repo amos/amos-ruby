@@ -9,6 +9,7 @@
 | **active** | **Boolean** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
 | **processor_id** | **String** |  | [optional] |
+| **worldpay_mid** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -23,6 +24,7 @@ instance = Amos::Account.new(
   active: null,
   merchant_id: null,
   processor_id: null,
+  worldpay_mid: null,
   created_at: null,
   updated_at: null
 )

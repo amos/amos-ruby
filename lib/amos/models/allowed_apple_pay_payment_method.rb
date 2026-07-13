@@ -14,19 +14,39 @@ require 'date'
 require 'time'
 
 module Amos
-  class ConfirmPaymentIntentInput < ApiModelBase
-    attr_accessor :moto
+  class AllowedApplePayPaymentMethod < ApiModelBase
+    attr_accessor :type
 
-    attr_accessor :payment_method_id
+    # No configurable options for Apple Pay payment methods.
+    attr_accessor :options
 
-    attr_accessor :payment_method
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'moto' => :'moto',
-        :'payment_method_id' => :'payment_method_id',
-        :'payment_method' => :'payment_method'
+        :'type' => :'type',
+        :'options' => :'options'
       }
     end
 
@@ -43,9 +63,8 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'moto' => :'Boolean',
-        :'payment_method_id' => :'String',
-        :'payment_method' => :'ConfirmPaymentIntentInputPaymentMethod'
+        :'type' => :'String',
+        :'options' => :'Object'
       }
     end
 
@@ -59,7 +78,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::ConfirmPaymentIntentInput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::AllowedApplePayPaymentMethod` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -74,16 +93,16 @@ module Amos
         end
       }
 
-      if attributes.key?(:'moto')
-        self.moto = attributes[:'moto']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
       end
 
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
-      end
-
-      if attributes.key?(:'payment_method')
-        self.payment_method = attributes[:'payment_method']
+      if attributes.key?(:'options')
+        self.options = attributes[:'options']
+      else
+        self.options = nil
       end
     end
 
@@ -92,6 +111,14 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
+      if @options.nil?
+        invalid_properties.push('invalid value for "options", options cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -99,7 +126,31 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @type.nil?
+      type_validator = EnumAttributeValidator.new('String', ["applepay"])
+      return false unless type_validator.valid?(@type)
+      return false if @options.nil?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["applepay"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+      end
+      @type = type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] options Value to be assigned
+    def options=(options)
+      if options.nil?
+        fail ArgumentError, 'options cannot be nil'
+      end
+
+      @options = options
     end
 
     # Checks equality by comparing each attribute.
@@ -107,9 +158,8 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          moto == o.moto &&
-          payment_method_id == o.payment_method_id &&
-          payment_method == o.payment_method
+          type == o.type &&
+          options == o.options
     end
 
     # @see the `==` method
@@ -121,7 +171,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [moto, payment_method_id, payment_method].hash
+      [type, options].hash
     end
 
     # Builds the object from hash

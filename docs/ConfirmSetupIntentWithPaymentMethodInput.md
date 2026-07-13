@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **moto** | **Boolean** |  | [optional] |
-| **payment_method** | [**EmbedConfirmPaymentMethodInput**](EmbedConfirmPaymentMethodInput.md) |  |  |
+| **payment_method_id** | **String** |  | [optional] |
+| **payment_method** | [**EmbedConfirmPaymentMethodInput**](EmbedConfirmPaymentMethodInput.md) |  | [optional] |
 
 ## Example
 
@@ -13,7 +13,7 @@
 require 'amos'
 
 instance = Amos::ConfirmSetupIntentWithPaymentMethodInput.new(
-  moto: null,
+  payment_method_id: null,
   payment_method: null
 )
 ```

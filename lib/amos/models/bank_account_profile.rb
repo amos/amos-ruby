@@ -23,6 +23,8 @@ module Amos
 
     attr_accessor :bank_name
 
+    attr_accessor :fingerprint
+
     attr_accessor :last4
 
     attr_accessor :routing_number
@@ -42,6 +44,7 @@ module Amos
         :'account_holder_type' => :'account_holder_type',
         :'account_type' => :'account_type',
         :'bank_name' => :'bank_name',
+        :'fingerprint' => :'fingerprint',
         :'last4' => :'last4',
         :'routing_number' => :'routing_number',
         :'state' => :'state',
@@ -68,6 +71,7 @@ module Amos
         :'account_holder_type' => :'String',
         :'account_type' => :'String',
         :'bank_name' => :'String',
+        :'fingerprint' => :'String',
         :'last4' => :'String',
         :'routing_number' => :'String',
         :'state' => :'String',
@@ -80,6 +84,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'fingerprint',
       ])
     end
 
@@ -116,6 +121,10 @@ module Amos
 
       if attributes.key?(:'bank_name')
         self.bank_name = attributes[:'bank_name']
+      end
+
+      if attributes.key?(:'fingerprint')
+        self.fingerprint = attributes[:'fingerprint']
       end
 
       if attributes.key?(:'last4')
@@ -167,6 +176,7 @@ module Amos
           account_holder_type == o.account_holder_type &&
           account_type == o.account_type &&
           bank_name == o.bank_name &&
+          fingerprint == o.fingerprint &&
           last4 == o.last4 &&
           routing_number == o.routing_number &&
           state == o.state &&
@@ -184,7 +194,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_holder_name, account_holder_type, account_type, bank_name, last4, routing_number, state, token, created_at, updated_at].hash
+      [account_holder_name, account_holder_type, account_type, bank_name, fingerprint, last4, routing_number, state, token, created_at, updated_at].hash
     end
 
     # Builds the object from hash

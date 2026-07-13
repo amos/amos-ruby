@@ -44,6 +44,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'setup_intent'
       ])
     end
 
@@ -78,10 +79,6 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @setup_intent.nil?
-        invalid_properties.push('invalid value for "setup_intent", setup_intent cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -89,18 +86,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @setup_intent.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] setup_intent Value to be assigned
-    def setup_intent=(setup_intent)
-      if setup_intent.nil?
-        fail ArgumentError, 'setup_intent cannot be nil'
-      end
-
-      @setup_intent = setup_intent
     end
 
     # Checks equality by comparing each attribute.

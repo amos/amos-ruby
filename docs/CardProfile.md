@@ -14,6 +14,7 @@
 | **exp_year** | **Integer** |  | [optional] |
 | **first6** | **String** |  | [optional] |
 | **funding** | **String** |  | [optional] |
+| **fingerprint** | **String** |  | [optional] |
 | **last4** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **three_d_secure_supported** | **Boolean** |  | [optional] |
@@ -38,6 +39,7 @@ instance = Amos::CardProfile.new(
   exp_year: null,
   first6: null,
   funding: null,
+  fingerprint: null,
   last4: null,
   state: null,
   three_d_secure_supported: null,

@@ -8,6 +8,7 @@
 | **account_holder_type** | **String** |  | [optional] |
 | **account_type** | **String** |  | [optional] |
 | **bank_name** | **String** |  | [optional] |
+| **fingerprint** | **String** |  | [optional] |
 | **last4** | **String** |  | [optional] |
 | **routing_number** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
@@ -25,6 +26,7 @@ instance = Amos::BankAccountProfile.new(
   account_holder_type: null,
   account_type: null,
   bank_name: null,
+  fingerprint: null,
   last4: null,
   routing_number: null,
   state: null,

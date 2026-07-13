@@ -16,15 +16,15 @@ $:.push File.expand_path("../lib", __FILE__)
 require "amos/version"
 
 Gem::Specification.new do |s|
-  s.name        = "amos"
-  s.version     = Amos::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["OpenAPI-Generator"]
-  s.email       = [""]
-  s.homepage    = "https://openapi-generator.tech"
-  s.summary     = "Amos Pay API Ruby Gem"
+  s.name = "amos"
+  s.version = Amos::VERSION
+  s.platform = Gem::Platform::RUBY
+  s.authors = ["OpenAPI-Generator"]
+  s.email = [""]
+  s.homepage = "https://openapi-generator.tech"
+  s.summary = "Amos Pay API Ruby Gem"
   s.description = "Amos Pay API spec"
-  s.license     = "Unlicense"
+  s.license = "MIT"
   s.required_ruby_version = ">= 4.0.5"
   s.metadata = {}
 

@@ -35,6 +35,8 @@ module Amos
 
     attr_accessor :funding
 
+    attr_accessor :fingerprint
+
     attr_accessor :last4
 
     attr_accessor :state
@@ -84,6 +86,7 @@ module Amos
         :'exp_year' => :'exp_year',
         :'first6' => :'first6',
         :'funding' => :'funding',
+        :'fingerprint' => :'fingerprint',
         :'last4' => :'last4',
         :'state' => :'state',
         :'three_d_secure_supported' => :'three_d_secure_supported',
@@ -117,6 +120,7 @@ module Amos
         :'exp_year' => :'Integer',
         :'first6' => :'String',
         :'funding' => :'String',
+        :'fingerprint' => :'String',
         :'last4' => :'String',
         :'state' => :'String',
         :'three_d_secure_supported' => :'Boolean',
@@ -133,6 +137,7 @@ module Amos
         :'avs_check_message',
         :'cvc_check_message',
         :'funding',
+        :'fingerprint',
         :'three_d_secure_supported',
       ])
     end
@@ -196,6 +201,10 @@ module Amos
         self.funding = attributes[:'funding']
       end
 
+      if attributes.key?(:'fingerprint')
+        self.fingerprint = attributes[:'fingerprint']
+      end
+
       if attributes.key?(:'last4')
         self.last4 = attributes[:'last4']
       end
@@ -255,6 +264,7 @@ module Amos
           exp_year == o.exp_year &&
           first6 == o.first6 &&
           funding == o.funding &&
+          fingerprint == o.fingerprint &&
           last4 == o.last4 &&
           state == o.state &&
           three_d_secure_supported == o.three_d_secure_supported &&
@@ -273,7 +283,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, first6, funding, last4, state, three_d_secure_supported, token, wallet_provider, created_at, updated_at].hash
+      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, first6, funding, fingerprint, last4, state, three_d_secure_supported, token, wallet_provider, created_at, updated_at].hash
     end
 
     # Builds the object from hash

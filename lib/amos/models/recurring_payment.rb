@@ -17,10 +17,13 @@ module Amos
   class RecurringPayment < ApiModelBase
     attr_accessor :network_transaction_id
 
+    attr_accessor :transaction_link_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'network_transaction_id' => :'network_transaction_id'
+        :'network_transaction_id' => :'network_transaction_id',
+        :'transaction_link_id' => :'transaction_link_id'
       }
     end
 
@@ -37,7 +40,8 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'network_transaction_id' => :'String'
+        :'network_transaction_id' => :'String',
+        :'transaction_link_id' => :'String'
       }
     end
 
@@ -69,6 +73,10 @@ module Amos
       if attributes.key?(:'network_transaction_id')
         self.network_transaction_id = attributes[:'network_transaction_id']
       end
+
+      if attributes.key?(:'transaction_link_id')
+        self.transaction_link_id = attributes[:'transaction_link_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +99,8 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          network_transaction_id == o.network_transaction_id
+          network_transaction_id == o.network_transaction_id &&
+          transaction_link_id == o.transaction_link_id
     end
 
     # @see the `==` method
@@ -103,7 +112,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [network_transaction_id].hash
+      [network_transaction_id, transaction_link_id].hash
     end
 
     # Builds the object from hash

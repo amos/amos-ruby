@@ -20,6 +20,7 @@ module Amos
       # List of class defined in oneOf (OpenAPI v3)
       def openapi_one_of
         [
+          :'AllowedApplePayPaymentMethod',
           :'AllowedBankAccountPaymentMethod',
           :'AllowedCardPaymentMethod',
           :'AllowedGooglePayPaymentMethod'
@@ -34,6 +35,7 @@ module Amos
       # Discriminator's mapping (OpenAPI v3)
       def openapi_discriminator_mapping
         {
+          :'applepay' => :'AllowedApplePayPaymentMethod',
           :'bank_account' => :'AllowedBankAccountPaymentMethod',
           :'card' => :'AllowedCardPaymentMethod',
           :'googlepay' => :'AllowedGooglePayPaymentMethod'

@@ -19,8 +19,6 @@ module Amos
 
     attr_accessor :currency
 
-    attr_accessor :moto
-
     attr_accessor :origin_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -28,7 +26,6 @@ module Amos
       {
         :'allowed_payment_methods' => :'allowed_payment_methods',
         :'currency' => :'currency',
-        :'moto' => :'moto',
         :'origin_ids' => :'origin_ids'
       }
     end
@@ -48,7 +45,6 @@ module Amos
       {
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethodInput>',
         :'currency' => :'String',
-        :'moto' => :'Boolean',
         :'origin_ids' => :'Array<String>'
       }
     end
@@ -86,10 +82,6 @@ module Amos
 
       if attributes.key?(:'currency')
         self.currency = attributes[:'currency']
-      end
-
-      if attributes.key?(:'moto')
-        self.moto = attributes[:'moto']
       end
 
       if attributes.key?(:'origin_ids')
@@ -131,7 +123,6 @@ module Amos
       self.class == o.class &&
           allowed_payment_methods == o.allowed_payment_methods &&
           currency == o.currency &&
-          moto == o.moto &&
           origin_ids == o.origin_ids
     end
 
@@ -144,7 +135,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_payment_methods, currency, moto, origin_ids].hash
+      [allowed_payment_methods, currency, origin_ids].hash
     end
 
     # Builds the object from hash

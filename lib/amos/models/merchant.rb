@@ -17,6 +17,8 @@ module Amos
   class Merchant < ApiModelBase
     attr_accessor :id
 
+    attr_accessor :active
+
     attr_accessor :organization_id
 
     attr_accessor :legal_entity_id
@@ -25,31 +27,119 @@ module Amos
 
     attr_accessor :allowed_payment_methods
 
+    attr_accessor :business_category
+
+    attr_accessor :business_description
+
+    attr_accessor :city
+
+    attr_accessor :country_code
+
+    attr_accessor :customer_service_number
+
     attr_accessor :has_accepted_credit_cards
 
     attr_accessor :dba_name
 
-    # Additional metadata key-value pairs
-    attr_accessor :metadata
+    attr_accessor :echeck_billing_descriptor
+
+    attr_accessor :echeck_company_name
+
+    attr_accessor :echeck_enabled
+
+    attr_accessor :hard_coded_billing_descriptor
+
+    attr_accessor :max_transaction_amount
+
+    attr_accessor :merchant_application_id
 
     attr_accessor :mcc
+
+    attr_accessor :naics_code
+
+    attr_accessor :postal_code
+
+    attr_accessor :primary_contact_email_address
+
+    attr_accessor :primary_contact_first_name
+
+    attr_accessor :primary_contact_last_name
+
+    attr_accessor :primary_contact_phone
+
+    attr_accessor :purchase_currency
+
+    attr_accessor :settlement_currency
+
+    attr_accessor :street_address1
+
+    attr_accessor :street_address2
+
+    attr_accessor :sub_merchant_id
+
+    attr_accessor :website_url
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
+        :'active' => :'active',
         :'organization_id' => :'organization_id',
         :'legal_entity_id' => :'legal_entity_id',
         :'annual_credit_card_sales_volume' => :'annual_credit_card_sales_volume',
         :'allowed_payment_methods' => :'allowed_payment_methods',
+        :'business_category' => :'business_category',
+        :'business_description' => :'business_description',
+        :'city' => :'city',
+        :'country_code' => :'country_code',
+        :'customer_service_number' => :'customer_service_number',
         :'has_accepted_credit_cards' => :'has_accepted_credit_cards',
         :'dba_name' => :'dba_name',
-        :'metadata' => :'metadata',
+        :'echeck_billing_descriptor' => :'echeck_billing_descriptor',
+        :'echeck_company_name' => :'echeck_company_name',
+        :'echeck_enabled' => :'echeck_enabled',
+        :'hard_coded_billing_descriptor' => :'hard_coded_billing_descriptor',
+        :'max_transaction_amount' => :'max_transaction_amount',
+        :'merchant_application_id' => :'merchant_application_id',
         :'mcc' => :'mcc',
+        :'naics_code' => :'naics_code',
+        :'postal_code' => :'postal_code',
+        :'primary_contact_email_address' => :'primary_contact_email_address',
+        :'primary_contact_first_name' => :'primary_contact_first_name',
+        :'primary_contact_last_name' => :'primary_contact_last_name',
+        :'primary_contact_phone' => :'primary_contact_phone',
+        :'purchase_currency' => :'purchase_currency',
+        :'settlement_currency' => :'settlement_currency',
+        :'street_address1' => :'street_address1',
+        :'street_address2' => :'street_address2',
+        :'sub_merchant_id' => :'sub_merchant_id',
+        :'website_url' => :'website_url',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -69,14 +159,37 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
+        :'active' => :'Boolean',
         :'organization_id' => :'String',
         :'legal_entity_id' => :'String',
         :'annual_credit_card_sales_volume' => :'Integer',
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
+        :'business_category' => :'MerchantBusinessCategoryType',
+        :'business_description' => :'String',
+        :'city' => :'String',
+        :'country_code' => :'String',
+        :'customer_service_number' => :'String',
         :'has_accepted_credit_cards' => :'Boolean',
         :'dba_name' => :'String',
-        :'metadata' => :'Hash<String, String>',
+        :'echeck_billing_descriptor' => :'String',
+        :'echeck_company_name' => :'String',
+        :'echeck_enabled' => :'Boolean',
+        :'hard_coded_billing_descriptor' => :'String',
+        :'max_transaction_amount' => :'Integer',
+        :'merchant_application_id' => :'String',
         :'mcc' => :'String',
+        :'naics_code' => :'String',
+        :'postal_code' => :'String',
+        :'primary_contact_email_address' => :'String',
+        :'primary_contact_first_name' => :'String',
+        :'primary_contact_last_name' => :'String',
+        :'primary_contact_phone' => :'String',
+        :'purchase_currency' => :'String',
+        :'settlement_currency' => :'String',
+        :'street_address1' => :'String',
+        :'street_address2' => :'String',
+        :'sub_merchant_id' => :'String',
+        :'website_url' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -111,6 +224,10 @@ module Amos
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
+      end
+
       if attributes.key?(:'organization_id')
         self.organization_id = attributes[:'organization_id']
       end
@@ -129,6 +246,26 @@ module Amos
         end
       end
 
+      if attributes.key?(:'business_category')
+        self.business_category = attributes[:'business_category']
+      end
+
+      if attributes.key?(:'business_description')
+        self.business_description = attributes[:'business_description']
+      end
+
+      if attributes.key?(:'city')
+        self.city = attributes[:'city']
+      end
+
+      if attributes.key?(:'country_code')
+        self.country_code = attributes[:'country_code']
+      end
+
+      if attributes.key?(:'customer_service_number')
+        self.customer_service_number = attributes[:'customer_service_number']
+      end
+
       if attributes.key?(:'has_accepted_credit_cards')
         self.has_accepted_credit_cards = attributes[:'has_accepted_credit_cards']
       end
@@ -137,14 +274,80 @@ module Amos
         self.dba_name = attributes[:'dba_name']
       end
 
-      if attributes.key?(:'metadata')
-        if (value = attributes[:'metadata']).is_a?(Hash)
-          self.metadata = value
-        end
+      if attributes.key?(:'echeck_billing_descriptor')
+        self.echeck_billing_descriptor = attributes[:'echeck_billing_descriptor']
+      end
+
+      if attributes.key?(:'echeck_company_name')
+        self.echeck_company_name = attributes[:'echeck_company_name']
+      end
+
+      if attributes.key?(:'echeck_enabled')
+        self.echeck_enabled = attributes[:'echeck_enabled']
+      end
+
+      if attributes.key?(:'hard_coded_billing_descriptor')
+        self.hard_coded_billing_descriptor = attributes[:'hard_coded_billing_descriptor']
+      end
+
+      if attributes.key?(:'max_transaction_amount')
+        self.max_transaction_amount = attributes[:'max_transaction_amount']
+      end
+
+      if attributes.key?(:'merchant_application_id')
+        self.merchant_application_id = attributes[:'merchant_application_id']
       end
 
       if attributes.key?(:'mcc')
         self.mcc = attributes[:'mcc']
+      end
+
+      if attributes.key?(:'naics_code')
+        self.naics_code = attributes[:'naics_code']
+      end
+
+      if attributes.key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
+      end
+
+      if attributes.key?(:'primary_contact_email_address')
+        self.primary_contact_email_address = attributes[:'primary_contact_email_address']
+      end
+
+      if attributes.key?(:'primary_contact_first_name')
+        self.primary_contact_first_name = attributes[:'primary_contact_first_name']
+      end
+
+      if attributes.key?(:'primary_contact_last_name')
+        self.primary_contact_last_name = attributes[:'primary_contact_last_name']
+      end
+
+      if attributes.key?(:'primary_contact_phone')
+        self.primary_contact_phone = attributes[:'primary_contact_phone']
+      end
+
+      if attributes.key?(:'purchase_currency')
+        self.purchase_currency = attributes[:'purchase_currency']
+      end
+
+      if attributes.key?(:'settlement_currency')
+        self.settlement_currency = attributes[:'settlement_currency']
+      end
+
+      if attributes.key?(:'street_address1')
+        self.street_address1 = attributes[:'street_address1']
+      end
+
+      if attributes.key?(:'street_address2')
+        self.street_address2 = attributes[:'street_address2']
+      end
+
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      end
+
+      if attributes.key?(:'website_url')
+        self.website_url = attributes[:'website_url']
       end
 
       if attributes.key?(:'created_at')
@@ -177,14 +380,37 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          active == o.active &&
           organization_id == o.organization_id &&
           legal_entity_id == o.legal_entity_id &&
           annual_credit_card_sales_volume == o.annual_credit_card_sales_volume &&
           allowed_payment_methods == o.allowed_payment_methods &&
+          business_category == o.business_category &&
+          business_description == o.business_description &&
+          city == o.city &&
+          country_code == o.country_code &&
+          customer_service_number == o.customer_service_number &&
           has_accepted_credit_cards == o.has_accepted_credit_cards &&
           dba_name == o.dba_name &&
-          metadata == o.metadata &&
+          echeck_billing_descriptor == o.echeck_billing_descriptor &&
+          echeck_company_name == o.echeck_company_name &&
+          echeck_enabled == o.echeck_enabled &&
+          hard_coded_billing_descriptor == o.hard_coded_billing_descriptor &&
+          max_transaction_amount == o.max_transaction_amount &&
+          merchant_application_id == o.merchant_application_id &&
           mcc == o.mcc &&
+          naics_code == o.naics_code &&
+          postal_code == o.postal_code &&
+          primary_contact_email_address == o.primary_contact_email_address &&
+          primary_contact_first_name == o.primary_contact_first_name &&
+          primary_contact_last_name == o.primary_contact_last_name &&
+          primary_contact_phone == o.primary_contact_phone &&
+          purchase_currency == o.purchase_currency &&
+          settlement_currency == o.settlement_currency &&
+          street_address1 == o.street_address1 &&
+          street_address2 == o.street_address2 &&
+          sub_merchant_id == o.sub_merchant_id &&
+          website_url == o.website_url &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -198,7 +424,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, legal_entity_id, annual_credit_card_sales_volume, allowed_payment_methods, has_accepted_credit_cards, dba_name, metadata, mcc, created_at, updated_at].hash
+      [id, active, organization_id, legal_entity_id, annual_credit_card_sales_volume, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

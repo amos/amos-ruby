@@ -46,6 +46,8 @@ module Amos
 
     attr_accessor :network_transaction_id
 
+    attr_accessor :transaction_link_id
+
     attr_accessor :transaction_type
 
     attr_accessor :created_at
@@ -92,6 +94,7 @@ module Amos
         :'processor_transaction_id' => :'processor_transaction_id',
         :'processor_reference' => :'processor_reference',
         :'network_transaction_id' => :'network_transaction_id',
+        :'transaction_link_id' => :'transaction_link_id',
         :'transaction_type' => :'transaction_type',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -126,6 +129,7 @@ module Amos
         :'processor_transaction_id' => :'String',
         :'processor_reference' => :'String',
         :'network_transaction_id' => :'String',
+        :'transaction_link_id' => :'String',
         :'transaction_type' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -219,6 +223,10 @@ module Amos
         self.network_transaction_id = attributes[:'network_transaction_id']
       end
 
+      if attributes.key?(:'transaction_link_id')
+        self.transaction_link_id = attributes[:'transaction_link_id']
+      end
+
       if attributes.key?(:'transaction_type')
         self.transaction_type = attributes[:'transaction_type']
       end
@@ -291,6 +299,7 @@ module Amos
           processor_transaction_id == o.processor_transaction_id &&
           processor_reference == o.processor_reference &&
           network_transaction_id == o.network_transaction_id &&
+          transaction_link_id == o.transaction_link_id &&
           transaction_type == o.transaction_type &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -305,7 +314,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, approved, avs_check, avs_check_message, cvc_check, cvc_check_message, external_reference, metadata, payment_method_id, payment_transaction_id, payment_transaction_type, processor_transaction_id, processor_reference, network_transaction_id, transaction_type, created_at, updated_at].hash
+      [id, account_id, approved, avs_check, avs_check_message, cvc_check, cvc_check_message, external_reference, metadata, payment_method_id, payment_transaction_id, payment_transaction_type, processor_transaction_id, processor_reference, network_transaction_id, transaction_link_id, transaction_type, created_at, updated_at].hash
     end
 
     # Builds the object from hash

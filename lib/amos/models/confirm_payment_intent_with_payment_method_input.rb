@@ -15,11 +15,14 @@ require 'time'
 
 module Amos
   class ConfirmPaymentIntentWithPaymentMethodInput < ApiModelBase
+    attr_accessor :payment_method_id
+
     attr_accessor :payment_method
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'payment_method_id' => :'payment_method_id',
         :'payment_method' => :'payment_method'
       }
     end
@@ -37,6 +40,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'payment_method_id' => :'String',
         :'payment_method' => :'EmbedConfirmPaymentMethodInput'
       }
     end
@@ -66,10 +70,12 @@ module Amos
         end
       }
 
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
       if attributes.key?(:'payment_method')
         self.payment_method = attributes[:'payment_method']
-      else
-        self.payment_method = nil
       end
     end
 
@@ -78,10 +84,6 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @payment_method.nil?
-        invalid_properties.push('invalid value for "payment_method", payment_method cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -89,18 +91,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @payment_method.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] payment_method Value to be assigned
-    def payment_method=(payment_method)
-      if payment_method.nil?
-        fail ArgumentError, 'payment_method cannot be nil'
-      end
-
-      @payment_method = payment_method
     end
 
     # Checks equality by comparing each attribute.
@@ -108,6 +99,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          payment_method_id == o.payment_method_id &&
           payment_method == o.payment_method
     end
 
@@ -120,7 +112,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [payment_method].hash
+      [payment_method_id, payment_method].hash
     end
 
     # Builds the object from hash

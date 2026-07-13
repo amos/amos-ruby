@@ -14,6 +14,7 @@ require 'amos'
 Amos::AllowedPaymentMethod.openapi_one_of
 # =>
 # [
+#   :'AllowedApplePayPaymentMethod',
 #   :'AllowedBankAccountPaymentMethod',
 #   :'AllowedCardPaymentMethod',
 #   :'AllowedGooglePayPaymentMethod'
@@ -45,6 +46,7 @@ require 'amos'
 Amos::AllowedPaymentMethod.openapi_discriminator_mapping
 # =>
 # {
+#   :'applepay' => :'AllowedApplePayPaymentMethod',
 #   :'bank_account' => :'AllowedBankAccountPaymentMethod',
 #   :'card' => :'AllowedCardPaymentMethod',
 #   :'googlepay' => :'AllowedGooglePayPaymentMethod'
@@ -61,7 +63,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'amos'
 
 Amos::AllowedPaymentMethod.build(data)
-# => #<AllowedBankAccountPaymentMethod:0x00007fdd4aab02a0>
+# => #<AllowedApplePayPaymentMethod:0x00007fdd4aab02a0>
 
 Amos::AllowedPaymentMethod.build(data_that_doesnt_match)
 # => nil
@@ -75,6 +77,7 @@ Amos::AllowedPaymentMethod.build(data_that_doesnt_match)
 
 #### Return type
 
+- `AllowedApplePayPaymentMethod`
 - `AllowedBankAccountPaymentMethod`
 - `AllowedCardPaymentMethod`
 - `AllowedGooglePayPaymentMethod`

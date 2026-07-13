@@ -17,7 +17,11 @@ module Amos
   class LegalEntity < ApiModelBase
     attr_accessor :id
 
+    attr_accessor :organization_id
+
     attr_accessor :legal_name
+
+    attr_accessor :parent_legal_entity_id
 
     attr_accessor :entity_type
 
@@ -40,6 +44,8 @@ module Amos
     attr_accessor :business_country
 
     attr_accessor :tax_id_last4
+
+    attr_accessor :created_at
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -67,7 +73,9 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
+        :'organization_id' => :'organization_id',
         :'legal_name' => :'legal_name',
+        :'parent_legal_entity_id' => :'parent_legal_entity_id',
         :'entity_type' => :'entity_type',
         :'ownership_type' => :'ownership_type',
         :'contact_email' => :'contact_email',
@@ -78,7 +86,8 @@ module Amos
         :'business_state' => :'business_state',
         :'business_postal_code' => :'business_postal_code',
         :'business_country' => :'business_country',
-        :'tax_id_last4' => :'tax_id_last4'
+        :'tax_id_last4' => :'tax_id_last4',
+        :'created_at' => :'created_at'
       }
     end
 
@@ -96,7 +105,9 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
+        :'organization_id' => :'String',
         :'legal_name' => :'String',
+        :'parent_legal_entity_id' => :'String',
         :'entity_type' => :'LegalEntityEntityType',
         :'ownership_type' => :'LegalEntityOwnershipType',
         :'contact_email' => :'String',
@@ -107,13 +118,15 @@ module Amos
         :'business_state' => :'String',
         :'business_postal_code' => :'String',
         :'business_country' => :'String',
-        :'tax_id_last4' => :'String'
+        :'tax_id_last4' => :'String',
+        :'created_at' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'parent_legal_entity_id',
         :'business_address_line2',
       ])
     end
@@ -141,8 +154,16 @@ module Amos
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
+      end
+
       if attributes.key?(:'legal_name')
         self.legal_name = attributes[:'legal_name']
+      end
+
+      if attributes.key?(:'parent_legal_entity_id')
+        self.parent_legal_entity_id = attributes[:'parent_legal_entity_id']
       end
 
       if attributes.key?(:'entity_type')
@@ -188,6 +209,10 @@ module Amos
       if attributes.key?(:'tax_id_last4')
         self.tax_id_last4 = attributes[:'tax_id_last4']
       end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -211,7 +236,9 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          organization_id == o.organization_id &&
           legal_name == o.legal_name &&
+          parent_legal_entity_id == o.parent_legal_entity_id &&
           entity_type == o.entity_type &&
           ownership_type == o.ownership_type &&
           contact_email == o.contact_email &&
@@ -222,7 +249,8 @@ module Amos
           business_state == o.business_state &&
           business_postal_code == o.business_postal_code &&
           business_country == o.business_country &&
-          tax_id_last4 == o.tax_id_last4
+          tax_id_last4 == o.tax_id_last4 &&
+          created_at == o.created_at
     end
 
     # @see the `==` method
@@ -234,7 +262,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_name, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, tax_id_last4].hash
+      [id, organization_id, legal_name, parent_legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, tax_id_last4, created_at].hash
     end
 
     # Builds the object from hash
