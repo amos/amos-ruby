@@ -12,6 +12,7 @@
 | **currency** | **String** |  | [optional] |
 | **direction** | [**PayoutDirectionType**](PayoutDirectionType.md) |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
+| **organization_id** | **String** |  | [optional] |
 | **prefix** | **String** |  | [optional] |
 | **public_id** | **String** |  | [optional] |
 | **state** | [**PayoutStateType**](PayoutStateType.md) |  | [optional] |
@@ -32,6 +33,7 @@ instance = Amos::Payout.new(
   currency: null,
   direction: null,
   metadata: null,
+  organization_id: null,
   prefix: null,
   public_id: null,
   state: null,

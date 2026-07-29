@@ -178,7 +178,7 @@ end
 
 api_instance = Amos::PaymentIntentsApi.new
 id = 'id_example' # String | The ID of the payment intent to confirm
-confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithPaymentMethodInput.new}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
+confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::CardProfileInput.new})})}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
 
 begin
   # Confirm a payment intent with a new payment method

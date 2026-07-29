@@ -12,6 +12,7 @@
 | **cvc_check_message** | **String** |  | [optional] |
 | **exp_month** | **Integer** |  | [optional] |
 | **exp_year** | **Integer** |  | [optional] |
+| **failure_reason** | **String** |  | [optional] |
 | **first6** | **String** |  | [optional] |
 | **funding** | **String** |  | [optional] |
 | **fingerprint** | **String** |  | [optional] |
@@ -37,6 +38,7 @@ instance = Amos::CardProfile.new(
   cvc_check_message: null,
   exp_month: null,
   exp_year: null,
+  failure_reason: null,
   first6: null,
   funding: null,
   fingerprint: null,

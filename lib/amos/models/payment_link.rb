@@ -19,6 +19,8 @@ module Amos
 
     attr_accessor :organization_id
 
+    attr_accessor :organization_slug
+
     attr_accessor :account_id
 
     attr_accessor :slug
@@ -81,6 +83,7 @@ module Amos
       {
         :'id' => :'id',
         :'organization_id' => :'organization_id',
+        :'organization_slug' => :'organization_slug',
         :'account_id' => :'account_id',
         :'slug' => :'slug',
         :'active' => :'active',
@@ -116,6 +119,7 @@ module Amos
       {
         :'id' => :'String',
         :'organization_id' => :'String',
+        :'organization_slug' => :'String',
         :'account_id' => :'String',
         :'slug' => :'String',
         :'active' => :'Boolean',
@@ -168,6 +172,10 @@ module Amos
 
       if attributes.key?(:'organization_id')
         self.organization_id = attributes[:'organization_id']
+      end
+
+      if attributes.key?(:'organization_slug')
+        self.organization_slug = attributes[:'organization_slug']
       end
 
       if attributes.key?(:'account_id')
@@ -267,6 +275,7 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           organization_id == o.organization_id &&
+          organization_slug == o.organization_slug &&
           account_id == o.account_id &&
           slug == o.slug &&
           active == o.active &&
@@ -295,7 +304,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, account_id, slug, active, amount_type, amount, image_url, minimum_amount, maximum_amount, suggested_amounts, currency, description, statement_descriptor, success_url, title, cancel_url, allowed_payment_methods, metadata].hash
+      [id, organization_id, organization_slug, account_id, slug, active, amount_type, amount, image_url, minimum_amount, maximum_amount, suggested_amounts, currency, description, statement_descriptor, success_url, title, cancel_url, allowed_payment_methods, metadata].hash
     end
 
     # Builds the object from hash

@@ -14,13 +14,13 @@ require 'date'
 require 'time'
 
 module Amos
-  class ConfirmPaymentIntentWithPaymentMethodRequest < ApiModelBase
-    attr_accessor :payment_intent
+  class ConfirmPaymentIntentWithEmbeddedPaymentMethodInput < ApiModelBase
+    attr_accessor :payment_method
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'payment_intent' => :'payment_intent'
+        :'payment_method' => :'payment_method'
       }
     end
 
@@ -37,7 +37,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'payment_intent' => :'ConfirmPaymentIntentWithPaymentMethodInput'
+        :'payment_method' => :'EmbedConfirmPaymentMethodInput'
       }
     end
 
@@ -51,7 +51,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::ConfirmPaymentIntentWithPaymentMethodRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -66,10 +66,10 @@ module Amos
         end
       }
 
-      if attributes.key?(:'payment_intent')
-        self.payment_intent = attributes[:'payment_intent']
+      if attributes.key?(:'payment_method')
+        self.payment_method = attributes[:'payment_method']
       else
-        self.payment_intent = nil
+        self.payment_method = nil
       end
     end
 
@@ -78,8 +78,8 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @payment_intent.nil?
-        invalid_properties.push('invalid value for "payment_intent", payment_intent cannot be nil.')
+      if @payment_method.nil?
+        invalid_properties.push('invalid value for "payment_method", payment_method cannot be nil.')
       end
 
       invalid_properties
@@ -89,18 +89,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @payment_intent.nil?
+      return false if @payment_method.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] payment_intent Value to be assigned
-    def payment_intent=(payment_intent)
-      if payment_intent.nil?
-        fail ArgumentError, 'payment_intent cannot be nil'
+    # @param [Object] payment_method Value to be assigned
+    def payment_method=(payment_method)
+      if payment_method.nil?
+        fail ArgumentError, 'payment_method cannot be nil'
       end
 
-      @payment_intent = payment_intent
+      @payment_method = payment_method
     end
 
     # Checks equality by comparing each attribute.
@@ -108,7 +108,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          payment_intent == o.payment_intent
+          payment_method == o.payment_method
     end
 
     # @see the `==` method
@@ -120,7 +120,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [payment_intent].hash
+      [payment_method].hash
     end
 
     # Builds the object from hash

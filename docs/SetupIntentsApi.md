@@ -30,7 +30,7 @@ end
 
 api_instance = Amos::SetupIntentsApi.new
 id = 'id_example' # String | The ID of the setup intent to confirm
-confirm_setup_intent_with_payment_method_request = Amos::ConfirmSetupIntentWithPaymentMethodRequest.new({setup_intent: Amos::ConfirmSetupIntentWithPaymentMethodInput.new}) # ConfirmSetupIntentWithPaymentMethodRequest | 
+confirm_setup_intent_with_payment_method_request = Amos::ConfirmSetupIntentWithPaymentMethodRequest.new({setup_intent: Amos::ConfirmSetupIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::CardProfileInput.new})})}) # ConfirmSetupIntentWithPaymentMethodRequest | 
 
 begin
   # Confirm a setup intent with a new payment method

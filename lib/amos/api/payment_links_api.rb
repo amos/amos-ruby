@@ -85,6 +85,67 @@ module Amos
       return data, status_code, headers
     end
 
+    # Retrieve a payment link by ID
+    # @param id [String] The ID of the payment link to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [PaymentLink]
+    def get_payment_link(id, opts = {})
+      data, _status_code, _headers = get_payment_link_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a payment link by ID
+    # @param id [String] The ID of the payment link to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PaymentLink, Integer, Hash)>] PaymentLink data, response status code and response headers
+    def get_payment_link_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PaymentLinksApi.get_payment_link ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling PaymentLinksApi.get_payment_link"
+      end
+      # resource path
+      local_var_path = '/payment_links/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaymentLink'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"PaymentLinksApi.get_payment_link",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PaymentLinksApi#get_payment_link\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List payment links
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
@@ -142,6 +203,78 @@ module Amos
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PaymentLinksApi#list_payment_links\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a payment link by ID
+    # @param id [String] The ID of the payment link to update
+    # @param update_payment_link_request [UpdatePaymentLinkRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PaymentLink]
+    def update_payment_link(id, update_payment_link_request, opts = {})
+      data, _status_code, _headers = update_payment_link_with_http_info(id, update_payment_link_request, opts)
+      data
+    end
+
+    # Update a payment link by ID
+    # @param id [String] The ID of the payment link to update
+    # @param update_payment_link_request [UpdatePaymentLinkRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PaymentLink, Integer, Hash)>] PaymentLink data, response status code and response headers
+    def update_payment_link_with_http_info(id, update_payment_link_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PaymentLinksApi.update_payment_link ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling PaymentLinksApi.update_payment_link"
+      end
+      # verify the required parameter 'update_payment_link_request' is set
+      if @api_client.config.client_side_validation && update_payment_link_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_payment_link_request' when calling PaymentLinksApi.update_payment_link"
+      end
+      # resource path
+      local_var_path = '/payment_links/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_payment_link_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaymentLink'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"PaymentLinksApi.update_payment_link",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PaymentLinksApi#update_payment_link\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -14,30 +14,37 @@ require 'date'
 require 'time'
 
 module Amos
-  class BankAccountProfile < ApiModelBase
-    attr_accessor :account_holder_name
+  class UpdatePaymentLinkInput < ApiModelBase
+    attr_accessor :active
 
-    attr_accessor :account_holder_type
+    attr_accessor :amount_type
 
-    attr_accessor :account_type
+    attr_accessor :amount
 
-    attr_accessor :bank_name
+    attr_accessor :image_url
 
-    attr_accessor :failure_reason
+    attr_accessor :minimum_amount
 
-    attr_accessor :fingerprint
+    attr_accessor :maximum_amount
 
-    attr_accessor :last4
+    attr_accessor :suggested_amounts
 
-    attr_accessor :routing_number
+    attr_accessor :currency
 
-    attr_accessor :state
+    attr_accessor :description
 
-    attr_accessor :token
+    attr_accessor :statement_descriptor
 
-    attr_accessor :created_at
+    attr_accessor :success_url
 
-    attr_accessor :updated_at
+    attr_accessor :title
+
+    attr_accessor :cancel_url
+
+    attr_accessor :allowed_payment_methods
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -64,18 +71,21 @@ module Amos
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_holder_name' => :'account_holder_name',
-        :'account_holder_type' => :'account_holder_type',
-        :'account_type' => :'account_type',
-        :'bank_name' => :'bank_name',
-        :'failure_reason' => :'failure_reason',
-        :'fingerprint' => :'fingerprint',
-        :'last4' => :'last4',
-        :'routing_number' => :'routing_number',
-        :'state' => :'state',
-        :'token' => :'token',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'active' => :'active',
+        :'amount_type' => :'amount_type',
+        :'amount' => :'amount',
+        :'image_url' => :'image_url',
+        :'minimum_amount' => :'minimum_amount',
+        :'maximum_amount' => :'maximum_amount',
+        :'suggested_amounts' => :'suggested_amounts',
+        :'currency' => :'currency',
+        :'description' => :'description',
+        :'statement_descriptor' => :'statement_descriptor',
+        :'success_url' => :'success_url',
+        :'title' => :'title',
+        :'cancel_url' => :'cancel_url',
+        :'allowed_payment_methods' => :'allowed_payment_methods',
+        :'metadata' => :'metadata'
       }
     end
 
@@ -92,26 +102,28 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account_holder_name' => :'String',
-        :'account_holder_type' => :'String',
-        :'account_type' => :'String',
-        :'bank_name' => :'String',
-        :'failure_reason' => :'String',
-        :'fingerprint' => :'String',
-        :'last4' => :'String',
-        :'routing_number' => :'String',
-        :'state' => :'String',
-        :'token' => :'String',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'active' => :'Boolean',
+        :'amount_type' => :'PaymentLinkAmountType',
+        :'amount' => :'Integer',
+        :'image_url' => :'String',
+        :'minimum_amount' => :'Integer',
+        :'maximum_amount' => :'Integer',
+        :'suggested_amounts' => :'Array<Integer>',
+        :'currency' => :'String',
+        :'description' => :'String',
+        :'statement_descriptor' => :'String',
+        :'success_url' => :'String',
+        :'title' => :'String',
+        :'cancel_url' => :'String',
+        :'allowed_payment_methods' => :'Array<AllowedPaymentMethodInput>',
+        :'metadata' => :'Hash<String, String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'failure_reason',
-        :'fingerprint',
+        :'description',
       ])
     end
 
@@ -119,7 +131,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::BankAccountProfile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::UpdatePaymentLinkInput` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -134,52 +146,70 @@ module Amos
         end
       }
 
-      if attributes.key?(:'account_holder_name')
-        self.account_holder_name = attributes[:'account_holder_name']
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
       end
 
-      if attributes.key?(:'account_holder_type')
-        self.account_holder_type = attributes[:'account_holder_type']
+      if attributes.key?(:'amount_type')
+        self.amount_type = attributes[:'amount_type']
       end
 
-      if attributes.key?(:'account_type')
-        self.account_type = attributes[:'account_type']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'bank_name')
-        self.bank_name = attributes[:'bank_name']
+      if attributes.key?(:'image_url')
+        self.image_url = attributes[:'image_url']
       end
 
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
+      if attributes.key?(:'minimum_amount')
+        self.minimum_amount = attributes[:'minimum_amount']
       end
 
-      if attributes.key?(:'fingerprint')
-        self.fingerprint = attributes[:'fingerprint']
+      if attributes.key?(:'maximum_amount')
+        self.maximum_amount = attributes[:'maximum_amount']
       end
 
-      if attributes.key?(:'last4')
-        self.last4 = attributes[:'last4']
+      if attributes.key?(:'suggested_amounts')
+        if (value = attributes[:'suggested_amounts']).is_a?(Array)
+          self.suggested_amounts = value
+        end
       end
 
-      if attributes.key?(:'routing_number')
-        self.routing_number = attributes[:'routing_number']
+      if attributes.key?(:'currency')
+        self.currency = attributes[:'currency']
       end
 
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'statement_descriptor')
+        self.statement_descriptor = attributes[:'statement_descriptor']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'success_url')
+        self.success_url = attributes[:'success_url']
       end
 
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
+      end
+
+      if attributes.key?(:'cancel_url')
+        self.cancel_url = attributes[:'cancel_url']
+      end
+
+      if attributes.key?(:'allowed_payment_methods')
+        if (value = attributes[:'allowed_payment_methods']).is_a?(Array)
+          self.allowed_payment_methods = value
+        end
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 
@@ -195,19 +225,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      failure_reason_validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed"])
-      return false unless failure_reason_validator.valid?(@failure_reason)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] failure_reason Object to be assigned
-    def failure_reason=(failure_reason)
-      validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed"])
-      unless validator.valid?(failure_reason)
-        fail ArgumentError, "invalid value for \"failure_reason\", must be one of #{validator.allowable_values}."
-      end
-      @failure_reason = failure_reason
     end
 
     # Checks equality by comparing each attribute.
@@ -215,18 +233,21 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_holder_name == o.account_holder_name &&
-          account_holder_type == o.account_holder_type &&
-          account_type == o.account_type &&
-          bank_name == o.bank_name &&
-          failure_reason == o.failure_reason &&
-          fingerprint == o.fingerprint &&
-          last4 == o.last4 &&
-          routing_number == o.routing_number &&
-          state == o.state &&
-          token == o.token &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          active == o.active &&
+          amount_type == o.amount_type &&
+          amount == o.amount &&
+          image_url == o.image_url &&
+          minimum_amount == o.minimum_amount &&
+          maximum_amount == o.maximum_amount &&
+          suggested_amounts == o.suggested_amounts &&
+          currency == o.currency &&
+          description == o.description &&
+          statement_descriptor == o.statement_descriptor &&
+          success_url == o.success_url &&
+          title == o.title &&
+          cancel_url == o.cancel_url &&
+          allowed_payment_methods == o.allowed_payment_methods &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -238,7 +259,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_holder_name, account_holder_type, account_type, bank_name, failure_reason, fingerprint, last4, routing_number, state, token, created_at, updated_at].hash
+      [active, amount_type, amount, image_url, minimum_amount, maximum_amount, suggested_amounts, currency, description, statement_descriptor, success_url, title, cancel_url, allowed_payment_methods, metadata].hash
     end
 
     # Builds the object from hash

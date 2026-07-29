@@ -32,6 +32,8 @@ module Amos
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
+    attr_accessor :organization_id
+
     attr_accessor :prefix
 
     attr_accessor :public_id
@@ -75,6 +77,7 @@ module Amos
         :'currency' => :'currency',
         :'direction' => :'direction',
         :'metadata' => :'metadata',
+        :'organization_id' => :'organization_id',
         :'prefix' => :'prefix',
         :'public_id' => :'public_id',
         :'state' => :'state',
@@ -104,6 +107,7 @@ module Amos
         :'currency' => :'String',
         :'direction' => :'PayoutDirectionType',
         :'metadata' => :'Hash<String, String>',
+        :'organization_id' => :'String',
         :'prefix' => :'String',
         :'public_id' => :'String',
         :'state' => :'PayoutStateType',
@@ -172,6 +176,10 @@ module Amos
         end
       end
 
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
+      end
+
       if attributes.key?(:'prefix')
         self.prefix = attributes[:'prefix']
       end
@@ -221,6 +229,7 @@ module Amos
           currency == o.currency &&
           direction == o.direction &&
           metadata == o.metadata &&
+          organization_id == o.organization_id &&
           prefix == o.prefix &&
           public_id == o.public_id &&
           state == o.state &&
@@ -237,7 +246,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, addenda, external_account_id, amount, currency, direction, metadata, prefix, public_id, state, created_at, updated_at].hash
+      [id, account_id, addenda, external_account_id, amount, currency, direction, metadata, organization_id, prefix, public_id, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash

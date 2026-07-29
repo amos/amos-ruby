@@ -82,9 +82,11 @@ end
 
 ## list_payment_methods
 
-> <ListPaymentMethods> list_payment_methods(customer_id, opts)
+> <ListPaymentMethods> list_payment_methods(opts)
 
 List all payment methods
+
+Filter by exactly one of customer_id or payment_intent_id.
 
 ### Examples
 
@@ -103,15 +105,16 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::PaymentMethodsApi.new
-customer_id = 'customer_id_example' # String | The ID of the customer to filter by
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  customer_id: 'customer_id_example', # String | The ID of the customer to filter by. Mutually exclusive with payment_intent_id.
+  payment_intent_id: 'payment_intent_id_example' # String | The ID of the payment intent to filter by
 }
 
 begin
   # List all payment methods
-  result = api_instance.list_payment_methods(customer_id, opts)
+  result = api_instance.list_payment_methods(opts)
   p result
 rescue Amos::ApiError => e
   puts "Error when calling PaymentMethodsApi->list_payment_methods: #{e}"
@@ -122,12 +125,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListPaymentMethods>, Integer, Hash)> list_payment_methods_with_http_info(customer_id, opts)
+> <Array(<ListPaymentMethods>, Integer, Hash)> list_payment_methods_with_http_info(opts)
 
 ```ruby
 begin
   # List all payment methods
-  data, status_code, headers = api_instance.list_payment_methods_with_http_info(customer_id, opts)
+  data, status_code, headers = api_instance.list_payment_methods_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListPaymentMethods>
@@ -140,9 +143,10 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **customer_id** | **String** | The ID of the customer to filter by |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **customer_id** | **String** | The ID of the customer to filter by. Mutually exclusive with payment_intent_id. | [optional] |
+| **payment_intent_id** | **String** | The ID of the payment intent to filter by | [optional] |
 
 ### Return type
 

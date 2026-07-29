@@ -131,7 +131,9 @@ Class | Method | HTTP request | Description
 *Amos::PaymentIntentsApi* | [**get_payment_intent**](docs/PaymentIntentsApi.md#get_payment_intent) | **GET** /payment_intents/{id} | Retrieve a payment intent by ID
 *Amos::PaymentIntentsApi* | [**list_payment_intents**](docs/PaymentIntentsApi.md#list_payment_intents) | **GET** /payment_intents | List payment intents
 *Amos::PaymentLinksApi* | [**create_payment_link**](docs/PaymentLinksApi.md#create_payment_link) | **POST** /payment_links | Create a new payment link
+*Amos::PaymentLinksApi* | [**get_payment_link**](docs/PaymentLinksApi.md#get_payment_link) | **GET** /payment_links/{id} | Retrieve a payment link by ID
 *Amos::PaymentLinksApi* | [**list_payment_links**](docs/PaymentLinksApi.md#list_payment_links) | **GET** /payment_links | List payment links
+*Amos::PaymentLinksApi* | [**update_payment_link**](docs/PaymentLinksApi.md#update_payment_link) | **PUT** /payment_links/{id} | Update a payment link by ID
 *Amos::PaymentMethodsApi* | [**get_payment_method**](docs/PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method
 *Amos::PaymentMethodsApi* | [**list_payment_methods**](docs/PaymentMethodsApi.md#list_payment_methods) | **GET** /payment_methods | List all payment methods
 *Amos::PayoutsApi* | [**bulk_create_payouts**](docs/PayoutsApi.md#bulk_create_payouts) | **POST** /payouts/bulk_create | Bulk create payouts
@@ -200,8 +202,12 @@ Class | Method | HTTP request | Description
  - [Amos::CardProfile](docs/CardProfile.md)
  - [Amos::CardProfileInput](docs/CardProfileInput.md)
  - [Amos::Charge](docs/Charge.md)
+ - [Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput](docs/ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.md)
+ - [Amos::ConfirmPaymentIntentWithPaymentMethodIdInput](docs/ConfirmPaymentIntentWithPaymentMethodIdInput.md)
  - [Amos::ConfirmPaymentIntentWithPaymentMethodInput](docs/ConfirmPaymentIntentWithPaymentMethodInput.md)
  - [Amos::ConfirmPaymentIntentWithPaymentMethodRequest](docs/ConfirmPaymentIntentWithPaymentMethodRequest.md)
+ - [Amos::ConfirmSetupIntentWithEmbeddedPaymentMethodInput](docs/ConfirmSetupIntentWithEmbeddedPaymentMethodInput.md)
+ - [Amos::ConfirmSetupIntentWithPaymentMethodIdInput](docs/ConfirmSetupIntentWithPaymentMethodIdInput.md)
  - [Amos::ConfirmSetupIntentWithPaymentMethodInput](docs/ConfirmSetupIntentWithPaymentMethodInput.md)
  - [Amos::ConfirmSetupIntentWithPaymentMethodRequest](docs/ConfirmSetupIntentWithPaymentMethodRequest.md)
  - [Amos::CreateBulkPayoutInput](docs/CreateBulkPayoutInput.md)
@@ -328,6 +334,8 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateCustomerRequest](docs/UpdateCustomerRequest.md)
  - [Amos::UpdatePaymentIntentInput](docs/UpdatePaymentIntentInput.md)
  - [Amos::UpdatePaymentIntentRequest](docs/UpdatePaymentIntentRequest.md)
+ - [Amos::UpdatePaymentLinkInput](docs/UpdatePaymentLinkInput.md)
+ - [Amos::UpdatePaymentLinkRequest](docs/UpdatePaymentLinkRequest.md)
  - [Amos::UpdateProductInput](docs/UpdateProductInput.md)
  - [Amos::UpdateProductRequest](docs/UpdateProductRequest.md)
  - [Amos::UpdateRefundInput](docs/UpdateRefundInput.md)

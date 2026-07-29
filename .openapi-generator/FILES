@@ -28,8 +28,12 @@ docs/CardProfile.md
 docs/CardProfileInput.md
 docs/Charge.md
 docs/ChargesApi.md
+docs/ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.md
+docs/ConfirmPaymentIntentWithPaymentMethodIdInput.md
 docs/ConfirmPaymentIntentWithPaymentMethodInput.md
 docs/ConfirmPaymentIntentWithPaymentMethodRequest.md
+docs/ConfirmSetupIntentWithEmbeddedPaymentMethodInput.md
+docs/ConfirmSetupIntentWithPaymentMethodIdInput.md
 docs/ConfirmSetupIntentWithPaymentMethodInput.md
 docs/ConfirmSetupIntentWithPaymentMethodRequest.md
 docs/CreateBulkPayoutInput.md
@@ -178,6 +182,8 @@ docs/UpdateCustomerInput.md
 docs/UpdateCustomerRequest.md
 docs/UpdatePaymentIntentInput.md
 docs/UpdatePaymentIntentRequest.md
+docs/UpdatePaymentLinkInput.md
+docs/UpdatePaymentLinkRequest.md
 docs/UpdateProductInput.md
 docs/UpdateProductRequest.md
 docs/UpdateRefundInput.md
@@ -250,8 +256,12 @@ lib/amos/models/bulk_create_payouts.rb
 lib/amos/models/card_profile.rb
 lib/amos/models/card_profile_input.rb
 lib/amos/models/charge.rb
+lib/amos/models/confirm_payment_intent_with_embedded_payment_method_input.rb
+lib/amos/models/confirm_payment_intent_with_payment_method_id_input.rb
 lib/amos/models/confirm_payment_intent_with_payment_method_input.rb
 lib/amos/models/confirm_payment_intent_with_payment_method_request.rb
+lib/amos/models/confirm_setup_intent_with_embedded_payment_method_input.rb
+lib/amos/models/confirm_setup_intent_with_payment_method_id_input.rb
 lib/amos/models/confirm_setup_intent_with_payment_method_input.rb
 lib/amos/models/confirm_setup_intent_with_payment_method_request.rb
 lib/amos/models/create_bulk_payout_input.rb
@@ -378,6 +388,8 @@ lib/amos/models/update_customer_input.rb
 lib/amos/models/update_customer_request.rb
 lib/amos/models/update_payment_intent_input.rb
 lib/amos/models/update_payment_intent_request.rb
+lib/amos/models/update_payment_link_input.rb
+lib/amos/models/update_payment_link_request.rb
 lib/amos/models/update_product_input.rb
 lib/amos/models/update_product_request.rb
 lib/amos/models/update_refund_input.rb
@@ -393,4 +405,10 @@ lib/amos/models/webhook_endpoint.rb
 lib/amos/models/webhook_event_type.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
+spec/models/confirm_payment_intent_with_embedded_payment_method_input_spec.rb
+spec/models/confirm_payment_intent_with_payment_method_id_input_spec.rb
+spec/models/confirm_setup_intent_with_embedded_payment_method_input_spec.rb
+spec/models/confirm_setup_intent_with_payment_method_id_input_spec.rb
+spec/models/update_payment_link_input_spec.rb
+spec/models/update_payment_link_request_spec.rb
 spec/spec_helper.rb
