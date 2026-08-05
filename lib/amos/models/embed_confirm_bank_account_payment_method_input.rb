@@ -14,11 +14,14 @@ require 'date'
 require 'time'
 
 module Amos
+  # Confirm an embedded intent with a bank account. When ACH verification is required for the intent amount, include plaid credentials; routing and account numbers are filled server-side from Plaid Auth. Otherwise provide encrypted_account_number and routing_number on bank_account_profile_attributes.
   class EmbedConfirmBankAccountPaymentMethodInput < ApiModelBase
     attr_accessor :type
 
     # Additional metadata key-value pairs
     attr_accessor :metadata
+
+    attr_accessor :plaid
 
     attr_accessor :bank_account_profile_attributes
 
@@ -51,6 +54,7 @@ module Amos
       {
         :'type' => :'type',
         :'metadata' => :'metadata',
+        :'plaid' => :'plaid',
         :'bank_account_profile_attributes' => :'bank_account_profile_attributes',
         :'billing_address_attributes' => :'billing_address_attributes'
       }
@@ -71,6 +75,7 @@ module Amos
       {
         :'type' => :'String',
         :'metadata' => :'Hash<String, String>',
+        :'plaid' => :'PlaidCredentialsInput',
         :'bank_account_profile_attributes' => :'BankAccountProfileInput',
         :'billing_address_attributes' => :'BillingAddressInput'
       }
@@ -111,6 +116,10 @@ module Amos
         if (value = attributes[:'metadata']).is_a?(Hash)
           self.metadata = value
         end
+      end
+
+      if attributes.key?(:'plaid')
+        self.plaid = attributes[:'plaid']
       end
 
       if attributes.key?(:'bank_account_profile_attributes')
@@ -178,6 +187,7 @@ module Amos
       self.class == o.class &&
           type == o.type &&
           metadata == o.metadata &&
+          plaid == o.plaid &&
           bank_account_profile_attributes == o.bank_account_profile_attributes &&
           billing_address_attributes == o.billing_address_attributes
     end
@@ -191,7 +201,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, metadata, bank_account_profile_attributes, billing_address_attributes].hash
+      [type, metadata, plaid, bank_account_profile_attributes, billing_address_attributes].hash
     end
 
     # Builds the object from hash

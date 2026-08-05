@@ -19,6 +19,7 @@ module Amos
 
     attr_accessor :wallet_last4
 
+    # The unmodified Google Pay payment token payload.
     attr_accessor :wallet_payload
 
     attr_accessor :wallet_provider
@@ -110,6 +111,8 @@ module Amos
 
       if attributes.key?(:'wallet_payload')
         self.wallet_payload = attributes[:'wallet_payload']
+      else
+        self.wallet_payload = nil
       end
 
       if attributes.key?(:'wallet_provider')
@@ -122,6 +125,10 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @wallet_payload.nil?
+        invalid_properties.push('invalid value for "wallet_payload", wallet_payload cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -129,7 +136,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @wallet_payload.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] wallet_payload Value to be assigned
+    def wallet_payload=(wallet_payload)
+      if wallet_payload.nil?
+        fail ArgumentError, 'wallet_payload cannot be nil'
+      end
+
+      @wallet_payload = wallet_payload
     end
 
     # Checks equality by comparing each attribute.

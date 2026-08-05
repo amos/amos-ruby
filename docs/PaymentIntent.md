@@ -7,7 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **account_id** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
-| **capture_method** | **String** |  | [optional] |
+| **capture_method** | [**PaymentIntentCaptureMethodType**](PaymentIntentCaptureMethodType.md) |  | [optional] |
 | **charge_id** | **String** |  | [optional] |
 | **currency** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
@@ -18,6 +18,8 @@
 | **source** | [**TransactionSourceType**](TransactionSourceType.md) |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |
+| **requires_ach_verification** | **Boolean** | True when the intent amount meets or exceeds the configured ACH verification threshold. | [optional] |
+| **ach_verification** | [**AchVerification**](AchVerification.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -41,6 +43,8 @@ instance = Amos::PaymentIntent.new(
   source: null,
   state: null,
   statement_descriptor: null,
+  requires_ach_verification: null,
+  ach_verification: null,
   created_at: null,
   updated_at: null
 )

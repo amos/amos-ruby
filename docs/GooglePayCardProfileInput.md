@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **wallet_brand** | **String** |  | [optional] |
 | **wallet_last4** | **String** |  | [optional] |
-| **wallet_payload** | **String** |  | [optional] |
+| **wallet_payload** | **String** | The unmodified Google Pay payment token payload. |  |
 | **wallet_provider** | [**WalletProviderType**](WalletProviderType.md) |  | [optional] |
 
 ## Example

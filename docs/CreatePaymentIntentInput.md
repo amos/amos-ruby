@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **amount** | **Integer** |  |  |
-| **capture_method** | **String** |  | [optional] |
+| **capture_method** | [**PaymentIntentCaptureMethodType**](PaymentIntentCaptureMethodType.md) |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |

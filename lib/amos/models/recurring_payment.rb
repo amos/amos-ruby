@@ -14,14 +14,21 @@ require 'date'
 require 'time'
 
 module Amos
+  # How this payment intent relates to a recurring series. Use `initial` for the first charge that establishes the series. Use `network_transaction_id` and/or `transaction_link_id` for subsequent merchant-initiated charges. Do not combine `initial` with network identifiers on the same request. 
   class RecurringPayment < ApiModelBase
+    # When true, marks the first payment in a recurring series so the processor can treat it as an initial recurring / credential-on-file setup transaction. 
+    attr_accessor :initial
+
+    # Network transaction id from the initial recurring charge, used for subsequent merchant-initiated payments. 
     attr_accessor :network_transaction_id
 
+    # Processor transaction link id for subsequent recurring payments where supported. 
     attr_accessor :transaction_link_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'initial' => :'initial',
         :'network_transaction_id' => :'network_transaction_id',
         :'transaction_link_id' => :'transaction_link_id'
       }
@@ -40,6 +47,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'initial' => :'Boolean',
         :'network_transaction_id' => :'String',
         :'transaction_link_id' => :'String'
       }
@@ -70,6 +78,10 @@ module Amos
         end
       }
 
+      if attributes.key?(:'initial')
+        self.initial = attributes[:'initial']
+      end
+
       if attributes.key?(:'network_transaction_id')
         self.network_transaction_id = attributes[:'network_transaction_id']
       end
@@ -99,6 +111,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          initial == o.initial &&
           network_transaction_id == o.network_transaction_id &&
           transaction_link_id == o.transaction_link_id
     end
@@ -112,7 +125,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [network_transaction_id, transaction_link_id].hash
+      [initial, network_transaction_id, transaction_link_id].hash
     end
 
     # Builds the object from hash

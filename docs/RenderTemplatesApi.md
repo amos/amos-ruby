@@ -33,7 +33,7 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::RenderTemplatesApi.new
-create_render_template_request = Amos::CreateRenderTemplateRequest.new({render_template: Amos::CreateRenderTemplateInput.new}) # CreateRenderTemplateRequest | 
+create_render_template_request = Amos::CreateRenderTemplateRequest.new({render_template: Amos::CreateRenderTemplateInput.new({billing_address_options: Amos::InternationalBillingAddressOptions.new({mode: 'international', allowed_countries: ['allowed_countries_example']})})}) # CreateRenderTemplateRequest | 
 
 begin
   # Create a new render template

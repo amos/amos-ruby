@@ -7,7 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **webhook_endpoint_id** | **String** |  | [optional] |
 | **expires_at** | **Time** |  | [optional] |
-| **request_body** | **Object** |  | [optional] |
+| **request_body** | [**WebhookEventPayload**](WebhookEventPayload.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 

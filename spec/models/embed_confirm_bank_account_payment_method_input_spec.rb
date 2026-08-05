@@ -43,6 +43,12 @@ describe Amos::EmbedConfirmBankAccountPaymentMethodInput do
     end
   end
 
+  describe 'test attribute "plaid"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "bank_account_profile_attributes"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

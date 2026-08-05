@@ -17,6 +17,8 @@ module Amos
   class CreateRenderTemplateInput < ApiModelBase
     attr_accessor :allowed_payment_methods
 
+    attr_accessor :billing_address_options
+
     attr_accessor :currency
 
     attr_accessor :origin_ids
@@ -25,6 +27,7 @@ module Amos
     def self.attribute_map
       {
         :'allowed_payment_methods' => :'allowed_payment_methods',
+        :'billing_address_options' => :'billing_address_options',
         :'currency' => :'currency',
         :'origin_ids' => :'origin_ids'
       }
@@ -44,6 +47,7 @@ module Amos
     def self.openapi_types
       {
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethodInput>',
+        :'billing_address_options' => :'BillingAddressOptions',
         :'currency' => :'String',
         :'origin_ids' => :'Array<String>'
       }
@@ -80,6 +84,12 @@ module Amos
         end
       end
 
+      if attributes.key?(:'billing_address_options')
+        self.billing_address_options = attributes[:'billing_address_options']
+      else
+        self.billing_address_options = nil
+      end
+
       if attributes.key?(:'currency')
         self.currency = attributes[:'currency']
       end
@@ -96,6 +106,10 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @billing_address_options.nil?
+        invalid_properties.push('invalid value for "billing_address_options", billing_address_options cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -103,7 +117,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @billing_address_options.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] billing_address_options Value to be assigned
+    def billing_address_options=(billing_address_options)
+      if billing_address_options.nil?
+        fail ArgumentError, 'billing_address_options cannot be nil'
+      end
+
+      @billing_address_options = billing_address_options
     end
 
     # Custom attribute writer method with validation
@@ -122,6 +147,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           allowed_payment_methods == o.allowed_payment_methods &&
+          billing_address_options == o.billing_address_options &&
           currency == o.currency &&
           origin_ids == o.origin_ids
     end
@@ -135,7 +161,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_payment_methods, currency, origin_ids].hash
+      [allowed_payment_methods, billing_address_options, currency, origin_ids].hash
     end
 
     # Builds the object from hash

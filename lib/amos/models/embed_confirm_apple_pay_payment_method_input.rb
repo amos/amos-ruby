@@ -72,7 +72,7 @@ module Amos
         :'type' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'billing_address_attributes' => :'BillingAddressInput',
-        :'card_profile_attributes' => :'CardProfileInput'
+        :'card_profile_attributes' => :'ApplePayCardProfileInput'
       }
     end
 

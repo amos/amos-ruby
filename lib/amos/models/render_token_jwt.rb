@@ -18,6 +18,8 @@ module Amos
   class RenderTokenJwt < ApiModelBase
     attr_accessor :allowed_payment_methods
 
+    attr_accessor :billing_address_options
+
     attr_accessor :env
 
     attr_accessor :origins
@@ -28,6 +30,7 @@ module Amos
     def self.attribute_map
       {
         :'allowed_payment_methods' => :'allowed_payment_methods',
+        :'billing_address_options' => :'billing_address_options',
         :'env' => :'env',
         :'origins' => :'origins',
         :'render_template_id' => :'render_template_id'
@@ -48,6 +51,7 @@ module Amos
     def self.openapi_types
       {
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
+        :'billing_address_options' => :'BillingAddressOptions',
         :'env' => :'String',
         :'origins' => :'Array<String>',
         :'render_template_id' => :'String'
@@ -83,6 +87,10 @@ module Amos
         if (value = attributes[:'allowed_payment_methods']).is_a?(Array)
           self.allowed_payment_methods = value
         end
+      end
+
+      if attributes.key?(:'billing_address_options')
+        self.billing_address_options = attributes[:'billing_address_options']
       end
 
       if attributes.key?(:'env')
@@ -121,6 +129,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           allowed_payment_methods == o.allowed_payment_methods &&
+          billing_address_options == o.billing_address_options &&
           env == o.env &&
           origins == o.origins &&
           render_template_id == o.render_template_id
@@ -135,7 +144,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_payment_methods, env, origins, render_template_id].hash
+      [allowed_payment_methods, billing_address_options, env, origins, render_template_id].hash
     end
 
     # Builds the object from hash

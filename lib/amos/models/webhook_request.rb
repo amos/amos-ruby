@@ -55,7 +55,7 @@ module Amos
         :'id' => :'String',
         :'webhook_endpoint_id' => :'String',
         :'expires_at' => :'Time',
-        :'request_body' => :'Object',
+        :'request_body' => :'WebhookEventPayload',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }

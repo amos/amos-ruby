@@ -21,6 +21,8 @@ module Amos
 
     attr_accessor :allowed_payment_methods
 
+    attr_accessor :billing_address_options
+
     attr_accessor :currency
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -29,6 +31,7 @@ module Amos
         :'id' => :'id',
         :'organization_id' => :'organization_id',
         :'allowed_payment_methods' => :'allowed_payment_methods',
+        :'billing_address_options' => :'billing_address_options',
         :'currency' => :'currency'
       }
     end
@@ -49,6 +52,7 @@ module Amos
         :'id' => :'String',
         :'organization_id' => :'String',
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
+        :'billing_address_options' => :'BillingAddressOptions',
         :'currency' => :'String'
       }
     end
@@ -92,6 +96,12 @@ module Amos
         end
       end
 
+      if attributes.key?(:'billing_address_options')
+        self.billing_address_options = attributes[:'billing_address_options']
+      else
+        self.billing_address_options = nil
+      end
+
       if attributes.key?(:'currency')
         self.currency = attributes[:'currency']
       end
@@ -102,6 +112,10 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @billing_address_options.nil?
+        invalid_properties.push('invalid value for "billing_address_options", billing_address_options cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -109,7 +123,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @billing_address_options.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] billing_address_options Value to be assigned
+    def billing_address_options=(billing_address_options)
+      if billing_address_options.nil?
+        fail ArgumentError, 'billing_address_options cannot be nil'
+      end
+
+      @billing_address_options = billing_address_options
     end
 
     # Checks equality by comparing each attribute.
@@ -120,6 +145,7 @@ module Amos
           id == o.id &&
           organization_id == o.organization_id &&
           allowed_payment_methods == o.allowed_payment_methods &&
+          billing_address_options == o.billing_address_options &&
           currency == o.currency
     end
 
@@ -132,7 +158,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, allowed_payment_methods, currency].hash
+      [id, organization_id, allowed_payment_methods, billing_address_options, currency].hash
     end
 
     # Builds the object from hash

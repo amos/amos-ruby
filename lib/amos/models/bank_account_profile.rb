@@ -195,7 +195,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      failure_reason_validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed"])
+      failure_reason_validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed", "insufficient_funds", "verification_failed"])
       return false unless failure_reason_validator.valid?(@failure_reason)
       true
     end
@@ -203,7 +203,7 @@ module Amos
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] failure_reason Object to be assigned
     def failure_reason=(failure_reason)
-      validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed"])
+      validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed", "insufficient_funds", "verification_failed"])
       unless validator.valid?(failure_reason)
         fail ArgumentError, "invalid value for \"failure_reason\", must be one of #{validator.allowable_values}."
       end

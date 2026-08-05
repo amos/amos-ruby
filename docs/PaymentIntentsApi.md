@@ -178,7 +178,7 @@ end
 
 api_instance = Amos::PaymentIntentsApi.new
 id = 'id_example' # String | The ID of the payment intent to confirm
-confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::CardProfileInput.new})})}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
+confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::ApplePayCardProfileInput.new({wallet_payload: 'wallet_payload_example'})})})}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
 
 begin
   # Confirm a payment intent with a new payment method
@@ -302,7 +302,7 @@ end
 
 ## get_embed_payment_intent
 
-> <PaymentIntent> get_embed_payment_intent(id)
+> <PaymentIntent> get_embed_payment_intent(id, opts)
 
 Retrieve a payment intent by ID
 
@@ -321,10 +321,13 @@ end
 
 api_instance = Amos::PaymentIntentsApi.new
 id = 'id_example' # String | The ID of the payment intent to retrieve
+opts = {
+  payment_method_type: 'bank_account' # String | When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link.
+}
 
 begin
   # Retrieve a payment intent by ID
-  result = api_instance.get_embed_payment_intent(id)
+  result = api_instance.get_embed_payment_intent(id, opts)
   p result
 rescue Amos::ApiError => e
   puts "Error when calling PaymentIntentsApi->get_embed_payment_intent: #{e}"
@@ -335,12 +338,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntent>, Integer, Hash)> get_embed_payment_intent_with_http_info(id)
+> <Array(<PaymentIntent>, Integer, Hash)> get_embed_payment_intent_with_http_info(id, opts)
 
 ```ruby
 begin
   # Retrieve a payment intent by ID
-  data, status_code, headers = api_instance.get_embed_payment_intent_with_http_info(id)
+  data, status_code, headers = api_instance.get_embed_payment_intent_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntent>
@@ -354,6 +357,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The ID of the payment intent to retrieve |  |
+| **payment_method_type** | **String** | When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link. | [optional] |
 
 ### Return type
 
