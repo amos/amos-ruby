@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **moto** | **Boolean** |  | [optional] |
+| **moto** | **Boolean** | When true, this surface supports MOTO card entry (cardholder not present). Only supported on render templates.  | [optional] |
 
 ## Example
 

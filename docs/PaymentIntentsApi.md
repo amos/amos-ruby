@@ -6,7 +6,8 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | ------ | ------------ | ----------- |
 | [**cancel_payment_intent**](PaymentIntentsApi.md#cancel_payment_intent) | **POST** /payment_intents/{id}/cancel | Cancel a payment intent |
 | [**capture_payment_intent**](PaymentIntentsApi.md#capture_payment_intent) | **POST** /payment_intents/{id}/capture | Capture a payment intent |
-| [**confirm_embed_payment_intent_with_payment_method**](PaymentIntentsApi.md#confirm_embed_payment_intent_with_payment_method) | **POST** /embed/payment_intents/{id}/confirm_with_payment_method | Confirm a payment intent with a new payment method |
+| [**confirm_embed_payment_intent**](PaymentIntentsApi.md#confirm_embed_payment_intent) | **POST** /embed/payment_intents/{id}/confirm | Confirm a payment intent and wait for processor authorization or sale |
+| [**confirm_embed_payment_intent_with_payment_method**](PaymentIntentsApi.md#confirm_embed_payment_intent_with_payment_method) | **POST** /embed/payment_intents/{id}/confirm_with_payment_method | Confirm a payment intent with a new payment method (async) |
 | [**create_payment_intent**](PaymentIntentsApi.md#create_payment_intent) | **POST** /payment_intents | Create a new payment intent |
 | [**get_embed_payment_intent**](PaymentIntentsApi.md#get_embed_payment_intent) | **GET** /embed/payment_intents/{id} | Retrieve a payment intent by ID |
 | [**get_payment_intent**](PaymentIntentsApi.md#get_payment_intent) | **GET** /payment_intents/{id} | Retrieve a payment intent by ID |
@@ -157,11 +158,13 @@ end
 - **Accept**: application/json
 
 
-## confirm_embed_payment_intent_with_payment_method
+## confirm_embed_payment_intent
 
-> <PaymentIntent> confirm_embed_payment_intent_with_payment_method(id, confirm_payment_intent_with_payment_method_request)
+> <PaymentIntent> confirm_embed_payment_intent(id, confirm_payment_intent_with_payment_method_request)
 
-Confirm a payment intent with a new payment method
+Confirm a payment intent and wait for processor authorization or sale
+
+Confirms the payment intent and blocks until the processor approves or declines the authorization or sale. Returns 200 with the post-processor state (for example succeeded, requires_payment_method, or requires_capture). Capture for automatic_async intents may still complete asynchronously after authorization. 
 
 ### Examples
 
@@ -181,7 +184,80 @@ id = 'id_example' # String | The ID of the payment intent to confirm
 confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::ApplePayCardProfileInput.new({wallet_payload: 'wallet_payload_example'})})})}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
 
 begin
-  # Confirm a payment intent with a new payment method
+  # Confirm a payment intent and wait for processor authorization or sale
+  result = api_instance.confirm_embed_payment_intent(id, confirm_payment_intent_with_payment_method_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling PaymentIntentsApi->confirm_embed_payment_intent: #{e}"
+end
+```
+
+#### Using the confirm_embed_payment_intent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaymentIntent>, Integer, Hash)> confirm_embed_payment_intent_with_http_info(id, confirm_payment_intent_with_payment_method_request)
+
+```ruby
+begin
+  # Confirm a payment intent and wait for processor authorization or sale
+  data, status_code, headers = api_instance.confirm_embed_payment_intent_with_http_info(id, confirm_payment_intent_with_payment_method_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaymentIntent>
+rescue Amos::ApiError => e
+  puts "Error when calling PaymentIntentsApi->confirm_embed_payment_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the payment intent to confirm |  |
+| **confirm_payment_intent_with_payment_method_request** | [**ConfirmPaymentIntentWithPaymentMethodRequest**](ConfirmPaymentIntentWithPaymentMethodRequest.md) |  |  |
+
+### Return type
+
+[**PaymentIntent**](PaymentIntent.md)
+
+### Authorization
+
+[Embed](../README.md#Embed)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## confirm_embed_payment_intent_with_payment_method
+
+> <PaymentIntent> confirm_embed_payment_intent_with_payment_method(id, confirm_payment_intent_with_payment_method_request)
+
+Confirm a payment intent with a new payment method (async)
+
+Legacy async confirmation for migration. Accepts a payment method, enqueues authorization or sale work, and returns 202 with processing_authorization or processing_sale. Prefer POST /embed/payment_intents/{id}/confirm for synchronous processor confirmation. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: Embed
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = Amos::PaymentIntentsApi.new
+id = 'id_example' # String | The ID of the payment intent to confirm
+confirm_payment_intent_with_payment_method_request = Amos::ConfirmPaymentIntentWithPaymentMethodRequest.new({payment_intent: Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::ApplePayCardProfileInput.new({wallet_payload: 'wallet_payload_example'})})})}) # ConfirmPaymentIntentWithPaymentMethodRequest | 
+
+begin
+  # Confirm a payment intent with a new payment method (async)
   result = api_instance.confirm_embed_payment_intent_with_payment_method(id, confirm_payment_intent_with_payment_method_request)
   p result
 rescue Amos::ApiError => e
@@ -197,7 +273,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Confirm a payment intent with a new payment method
+  # Confirm a payment intent with a new payment method (async)
   data, status_code, headers = api_instance.confirm_embed_payment_intent_with_payment_method_with_http_info(id, confirm_payment_intent_with_payment_method_request)
   p status_code # => 2xx
   p headers # => { ... }
@@ -302,7 +378,7 @@ end
 
 ## get_embed_payment_intent
 
-> <PaymentIntent> get_embed_payment_intent(id, opts)
+> <PaymentIntent> get_embed_payment_intent(id)
 
 Retrieve a payment intent by ID
 
@@ -321,13 +397,10 @@ end
 
 api_instance = Amos::PaymentIntentsApi.new
 id = 'id_example' # String | The ID of the payment intent to retrieve
-opts = {
-  payment_method_type: 'bank_account' # String | When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link.
-}
 
 begin
   # Retrieve a payment intent by ID
-  result = api_instance.get_embed_payment_intent(id, opts)
+  result = api_instance.get_embed_payment_intent(id)
   p result
 rescue Amos::ApiError => e
   puts "Error when calling PaymentIntentsApi->get_embed_payment_intent: #{e}"
@@ -338,12 +411,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntent>, Integer, Hash)> get_embed_payment_intent_with_http_info(id, opts)
+> <Array(<PaymentIntent>, Integer, Hash)> get_embed_payment_intent_with_http_info(id)
 
 ```ruby
 begin
   # Retrieve a payment intent by ID
-  data, status_code, headers = api_instance.get_embed_payment_intent_with_http_info(id, opts)
+  data, status_code, headers = api_instance.get_embed_payment_intent_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntent>
@@ -357,7 +430,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The ID of the payment intent to retrieve |  |
-| **payment_method_type** | **String** | When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link. | [optional] |
 
 ### Return type
 

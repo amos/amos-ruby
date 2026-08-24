@@ -27,6 +27,9 @@ module Amos
 
     attr_accessor :worldpay_mid
 
+    # ACH verification threshold in cents for this account, taken from the merchant. When the organization sets ach_threshold, that value is used instead. Amounts at or above this require Plaid verification when the render template enables it. 
+    attr_accessor :ach_threshold
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -40,6 +43,7 @@ module Amos
         :'merchant_id' => :'merchant_id',
         :'processor_id' => :'processor_id',
         :'worldpay_mid' => :'worldpay_mid',
+        :'ach_threshold' => :'ach_threshold',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -64,6 +68,7 @@ module Amos
         :'merchant_id' => :'String',
         :'processor_id' => :'String',
         :'worldpay_mid' => :'String',
+        :'ach_threshold' => :'Integer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -118,6 +123,10 @@ module Amos
         self.worldpay_mid = attributes[:'worldpay_mid']
       end
 
+      if attributes.key?(:'ach_threshold')
+        self.ach_threshold = attributes[:'ach_threshold']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -153,6 +162,7 @@ module Amos
           merchant_id == o.merchant_id &&
           processor_id == o.processor_id &&
           worldpay_mid == o.worldpay_mid &&
+          ach_threshold == o.ach_threshold &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -166,7 +176,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, active, merchant_id, processor_id, worldpay_mid, created_at, updated_at].hash
+      [id, name, active, merchant_id, processor_id, worldpay_mid, ach_threshold, created_at, updated_at].hash
     end
 
     # Builds the object from hash

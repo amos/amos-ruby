@@ -20,9 +20,10 @@ module Amos
     IFRAME = "iframe".freeze
     SYSTEM = "system".freeze
     SUBSCRIPTION = "subscription".freeze
+    ADMIN = "admin".freeze
 
     def self.all_vars
-      @all_vars ||= [API, DASHBOARD, IFRAME, SYSTEM, SUBSCRIPTION].freeze
+      @all_vars ||= [API, DASHBOARD, IFRAME, SYSTEM, SUBSCRIPTION, ADMIN].freeze
     end
 
     # Builds the enum from string

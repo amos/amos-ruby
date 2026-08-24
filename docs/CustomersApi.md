@@ -180,9 +180,11 @@ api_instance = Amos::CustomersApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
-  email: 'email_example', # String | The email to filter by
-  phone: 'phone_example', # String | The phone to filter by
-  account_id: 'account_id_example' # String | 
+  email: 'email_example', # String | Exact email match (case-insensitive). For substring search, use `q`.
+  phone: 'phone_example', # String | Exact phone match (normalized to E.164 when possible). For substring search, use `q`.
+  name: 'name_example', # String | Exact name match (case-insensitive). For substring search, use `q`.
+  type: 'type_example', # String | Exact customer type match (e.g. RegisteredCustomer, GuestCustomer).
+  q: 'q_example' # String | Substring search across name, email, and phone (case-insensitive).
 }
 
 begin
@@ -218,9 +220,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **email** | **String** | The email to filter by | [optional] |
-| **phone** | **String** | The phone to filter by | [optional] |
-| **account_id** | **String** |  | [optional] |
+| **email** | **String** | Exact email match (case-insensitive). For substring search, use &#x60;q&#x60;. | [optional] |
+| **phone** | **String** | Exact phone match (normalized to E.164 when possible). For substring search, use &#x60;q&#x60;. | [optional] |
+| **name** | **String** | Exact name match (case-insensitive). For substring search, use &#x60;q&#x60;. | [optional] |
+| **type** | **String** | Exact customer type match (e.g. RegisteredCustomer, GuestCustomer). | [optional] |
+| **q** | **String** | Substring search across name, email, and phone (case-insensitive). | [optional] |
 
 ### Return type
 

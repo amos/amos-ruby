@@ -141,7 +141,82 @@ module Amos
       return data, status_code, headers
     end
 
-    # Confirm a payment intent with a new payment method
+    # Confirm a payment intent and wait for processor authorization or sale
+    # Confirms the payment intent and blocks until the processor approves or declines the authorization or sale. Returns 200 with the post-processor state (for example succeeded, requires_payment_method, or requires_capture). Capture for automatic_async intents may still complete asynchronously after authorization. 
+    # @param id [String] The ID of the payment intent to confirm
+    # @param confirm_payment_intent_with_payment_method_request [ConfirmPaymentIntentWithPaymentMethodRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PaymentIntent]
+    def confirm_embed_payment_intent(id, confirm_payment_intent_with_payment_method_request, opts = {})
+      data, _status_code, _headers = confirm_embed_payment_intent_with_http_info(id, confirm_payment_intent_with_payment_method_request, opts)
+      data
+    end
+
+    # Confirm a payment intent and wait for processor authorization or sale
+    # Confirms the payment intent and blocks until the processor approves or declines the authorization or sale. Returns 200 with the post-processor state (for example succeeded, requires_payment_method, or requires_capture). Capture for automatic_async intents may still complete asynchronously after authorization. 
+    # @param id [String] The ID of the payment intent to confirm
+    # @param confirm_payment_intent_with_payment_method_request [ConfirmPaymentIntentWithPaymentMethodRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PaymentIntent, Integer, Hash)>] PaymentIntent data, response status code and response headers
+    def confirm_embed_payment_intent_with_http_info(id, confirm_payment_intent_with_payment_method_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PaymentIntentsApi.confirm_embed_payment_intent ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling PaymentIntentsApi.confirm_embed_payment_intent"
+      end
+      # verify the required parameter 'confirm_payment_intent_with_payment_method_request' is set
+      if @api_client.config.client_side_validation && confirm_payment_intent_with_payment_method_request.nil?
+        fail ArgumentError, "Missing the required parameter 'confirm_payment_intent_with_payment_method_request' when calling PaymentIntentsApi.confirm_embed_payment_intent"
+      end
+      # resource path
+      local_var_path = '/embed/payment_intents/{id}/confirm'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(confirm_payment_intent_with_payment_method_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaymentIntent'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"PaymentIntentsApi.confirm_embed_payment_intent",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PaymentIntentsApi#confirm_embed_payment_intent\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Confirm a payment intent with a new payment method (async)
+    # Legacy async confirmation for migration. Accepts a payment method, enqueues authorization or sale work, and returns 202 with processing_authorization or processing_sale. Prefer POST /embed/payment_intents/{id}/confirm for synchronous processor confirmation. 
     # @param id [String] The ID of the payment intent to confirm
     # @param confirm_payment_intent_with_payment_method_request [ConfirmPaymentIntentWithPaymentMethodRequest] 
     # @param [Hash] opts the optional parameters
@@ -151,7 +226,8 @@ module Amos
       data
     end
 
-    # Confirm a payment intent with a new payment method
+    # Confirm a payment intent with a new payment method (async)
+    # Legacy async confirmation for migration. Accepts a payment method, enqueues authorization or sale work, and returns 202 with processing_authorization or processing_sale. Prefer POST /embed/payment_intents/{id}/confirm for synchronous processor confirmation. 
     # @param id [String] The ID of the payment intent to confirm
     # @param confirm_payment_intent_with_payment_method_request [ConfirmPaymentIntentWithPaymentMethodRequest] 
     # @param [Hash] opts the optional parameters
@@ -282,7 +358,6 @@ module Amos
     # Retrieve a payment intent by ID
     # @param id [String] The ID of the payment intent to retrieve
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :payment_method_type When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link.
     # @return [PaymentIntent]
     def get_embed_payment_intent(id, opts = {})
       data, _status_code, _headers = get_embed_payment_intent_with_http_info(id, opts)
@@ -292,7 +367,6 @@ module Amos
     # Retrieve a payment intent by ID
     # @param id [String] The ID of the payment intent to retrieve
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :payment_method_type When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link.
     # @return [Array<(PaymentIntent, Integer, Hash)>] PaymentIntent data, response status code and response headers
     def get_embed_payment_intent_with_http_info(id, opts = {})
       if @api_client.config.debugging
@@ -302,16 +376,11 @@ module Amos
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling PaymentIntentsApi.get_embed_payment_intent"
       end
-      allowable_values = ["bank_account"]
-      if @api_client.config.client_side_validation && opts[:'payment_method_type'] && !allowable_values.include?(opts[:'payment_method_type'])
-        fail ArgumentError, "invalid value for \"payment_method_type\", must be one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/embed/payment_intents/{id}'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'payment_method_type'] = opts[:'payment_method_type'] if !opts[:'payment_method_type'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

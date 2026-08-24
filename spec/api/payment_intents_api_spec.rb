@@ -81,7 +81,6 @@ describe 'PaymentIntentsApi' do
   # Retrieve a payment intent by ID
   # @param id The ID of the payment intent to retrieve
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :payment_method_type When set to bank_account and ACH verification is required for the intent amount, the response includes ach_verification.link_token for Plaid Link.
   # @return [PaymentIntent]
   describe 'get_embed_payment_intent test' do
     it 'should work' do

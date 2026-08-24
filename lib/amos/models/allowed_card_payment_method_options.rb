@@ -15,6 +15,7 @@ require 'time'
 
 module Amos
   class AllowedCardPaymentMethodOptions < ApiModelBase
+    # When true, this surface supports MOTO card entry (cardholder not present). Only supported on render templates. 
     attr_accessor :moto
 
     # Attribute mapping from ruby-style variable name to JSON key.

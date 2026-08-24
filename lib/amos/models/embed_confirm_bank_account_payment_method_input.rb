@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Amos
-  # Confirm an embedded intent with a bank account. When ACH verification is required for the intent amount, include plaid credentials; routing and account numbers are filled server-side from Plaid Auth. Otherwise provide encrypted_account_number and routing_number on bank_account_profile_attributes.
+  # Confirm an embedded intent with a bank account. When ACH verification is required for the intent amount, include plaid credentials and omit bank_account_profile_attributes; routing and account numbers are filled server-side from Plaid Auth. Otherwise provide encrypted_account_number and routing_number on bank_account_profile_attributes.
   class EmbedConfirmBankAccountPaymentMethodInput < ApiModelBase
     attr_accessor :type
 
@@ -124,8 +124,6 @@ module Amos
 
       if attributes.key?(:'bank_account_profile_attributes')
         self.bank_account_profile_attributes = attributes[:'bank_account_profile_attributes']
-      else
-        self.bank_account_profile_attributes = nil
       end
 
       if attributes.key?(:'billing_address_attributes')
@@ -142,10 +140,6 @@ module Amos
         invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
-      if @bank_account_profile_attributes.nil?
-        invalid_properties.push('invalid value for "bank_account_profile_attributes", bank_account_profile_attributes cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -156,7 +150,6 @@ module Amos
       return false if @type.nil?
       type_validator = EnumAttributeValidator.new('String', ["bank_account"])
       return false unless type_validator.valid?(@type)
-      return false if @bank_account_profile_attributes.nil?
       true
     end
 
@@ -168,16 +161,6 @@ module Amos
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
       @type = type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] bank_account_profile_attributes Value to be assigned
-    def bank_account_profile_attributes=(bank_account_profile_attributes)
-      if bank_account_profile_attributes.nil?
-        fail ArgumentError, 'bank_account_profile_attributes cannot be nil'
-      end
-
-      @bank_account_profile_attributes = bank_account_profile_attributes
     end
 
     # Checks equality by comparing each attribute.

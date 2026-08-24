@@ -17,7 +17,6 @@ module Amos
   class AllowedBankAccountPaymentMethod < ApiModelBase
     attr_accessor :type
 
-    # No configurable options for bank account payment methods.
     attr_accessor :options
 
     class EnumAttributeValidator
@@ -64,7 +63,7 @@ module Amos
     def self.openapi_types
       {
         :'type' => :'String',
-        :'options' => :'Object'
+        :'options' => :'AllowedBankAccountPaymentMethodOptions'
       }
     end
 

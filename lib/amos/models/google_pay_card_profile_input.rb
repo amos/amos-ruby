@@ -14,45 +14,15 @@ require 'date'
 require 'time'
 
 module Amos
+  # Google Pay card profile for embed confirm. Clients only send wallet_payload. wallet_provider is derived from the payment method type. Brand, last4, expiration, pan_type, and cryptogram are set from the Vault response. Encrypted PAN is not supported. 
   class GooglePayCardProfileInput < ApiModelBase
-    attr_accessor :wallet_brand
-
-    attr_accessor :wallet_last4
-
     # The unmodified Google Pay payment token payload.
     attr_accessor :wallet_payload
-
-    attr_accessor :wallet_provider
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'wallet_brand' => :'wallet_brand',
-        :'wallet_last4' => :'wallet_last4',
-        :'wallet_payload' => :'wallet_payload',
-        :'wallet_provider' => :'wallet_provider'
+        :'wallet_payload' => :'wallet_payload'
       }
     end
 
@@ -69,10 +39,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'wallet_brand' => :'String',
-        :'wallet_last4' => :'String',
-        :'wallet_payload' => :'String',
-        :'wallet_provider' => :'WalletProviderType'
+        :'wallet_payload' => :'String'
       }
     end
 
@@ -101,22 +68,10 @@ module Amos
         end
       }
 
-      if attributes.key?(:'wallet_brand')
-        self.wallet_brand = attributes[:'wallet_brand']
-      end
-
-      if attributes.key?(:'wallet_last4')
-        self.wallet_last4 = attributes[:'wallet_last4']
-      end
-
       if attributes.key?(:'wallet_payload')
         self.wallet_payload = attributes[:'wallet_payload']
       else
         self.wallet_payload = nil
-      end
-
-      if attributes.key?(:'wallet_provider')
-        self.wallet_provider = attributes[:'wallet_provider']
       end
     end
 
@@ -155,10 +110,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          wallet_brand == o.wallet_brand &&
-          wallet_last4 == o.wallet_last4 &&
-          wallet_payload == o.wallet_payload &&
-          wallet_provider == o.wallet_provider
+          wallet_payload == o.wallet_payload
     end
 
     # @see the `==` method
@@ -170,7 +122,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [wallet_brand, wallet_last4, wallet_payload, wallet_provider].hash
+      [wallet_payload].hash
     end
 
     # Builds the object from hash

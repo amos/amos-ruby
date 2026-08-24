@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
+| **ach_threshold** | **Integer** | ACH verification threshold in cents. Amounts at or above this require Plaid verification. | [optional] |
 | **active** | **Boolean** |  | [optional] |
 | **organization_id** | **String** |  | [optional] |
 | **legal_entity_id** | **String** |  | [optional] |
@@ -32,6 +33,7 @@
 | **primary_contact_phone** | **String** |  | [optional] |
 | **purchase_currency** | **String** |  | [optional] |
 | **settlement_currency** | **String** |  | [optional] |
+| **state_province** | **String** |  | [optional] |
 | **street_address1** | **String** |  | [optional] |
 | **street_address2** | **String** |  | [optional] |
 | **sub_merchant_id** | **String** |  | [optional] |
@@ -46,6 +48,7 @@ require 'amos'
 
 instance = Amos::Merchant.new(
   id: null,
+  ach_threshold: null,
   active: null,
   organization_id: null,
   legal_entity_id: null,
@@ -73,6 +76,7 @@ instance = Amos::Merchant.new(
   primary_contact_phone: null,
   purchase_currency: null,
   settlement_currency: null,
+  state_province: null,
   street_address1: null,
   street_address2: null,
   sub_merchant_id: null,

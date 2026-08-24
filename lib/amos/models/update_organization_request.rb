@@ -14,31 +14,13 @@ require 'date'
 require 'time'
 
 module Amos
-  class RenderTemplate < ApiModelBase
-    attr_accessor :id
-
-    attr_accessor :organization_id
-
-    attr_accessor :allowed_payment_methods
-
-    attr_accessor :billing_address_options
-
-    attr_accessor :currency
-
-    attr_accessor :last_used_at
-
-    attr_accessor :origins
+  class UpdateOrganizationRequest < ApiModelBase
+    attr_accessor :organization
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'organization_id' => :'organization_id',
-        :'allowed_payment_methods' => :'allowed_payment_methods',
-        :'billing_address_options' => :'billing_address_options',
-        :'currency' => :'currency',
-        :'last_used_at' => :'last_used_at',
-        :'origins' => :'origins'
+        :'organization' => :'organization'
       }
     end
 
@@ -55,20 +37,13 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'organization_id' => :'String',
-        :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
-        :'billing_address_options' => :'BillingAddressOptions',
-        :'currency' => :'String',
-        :'last_used_at' => :'Time',
-        :'origins' => :'Array<Origin>'
+        :'organization' => :'UpdateOrganizationInput'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'last_used_at',
       ])
     end
 
@@ -76,7 +51,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::RenderTemplate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::UpdateOrganizationRequest` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -91,40 +66,10 @@ module Amos
         end
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'organization_id')
-        self.organization_id = attributes[:'organization_id']
-      end
-
-      if attributes.key?(:'allowed_payment_methods')
-        if (value = attributes[:'allowed_payment_methods']).is_a?(Array)
-          self.allowed_payment_methods = value
-        end
-      end
-
-      if attributes.key?(:'billing_address_options')
-        self.billing_address_options = attributes[:'billing_address_options']
+      if attributes.key?(:'organization')
+        self.organization = attributes[:'organization']
       else
-        self.billing_address_options = nil
-      end
-
-      if attributes.key?(:'currency')
-        self.currency = attributes[:'currency']
-      end
-
-      if attributes.key?(:'last_used_at')
-        self.last_used_at = attributes[:'last_used_at']
-      end
-
-      if attributes.key?(:'origins')
-        if (value = attributes[:'origins']).is_a?(Array)
-          self.origins = value
-        end
-      else
-        self.origins = nil
+        self.organization = nil
       end
     end
 
@@ -133,12 +78,8 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @billing_address_options.nil?
-        invalid_properties.push('invalid value for "billing_address_options", billing_address_options cannot be nil.')
-      end
-
-      if @origins.nil?
-        invalid_properties.push('invalid value for "origins", origins cannot be nil.')
+      if @organization.nil?
+        invalid_properties.push('invalid value for "organization", organization cannot be nil.')
       end
 
       invalid_properties
@@ -148,29 +89,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @billing_address_options.nil?
-      return false if @origins.nil?
+      return false if @organization.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] billing_address_options Value to be assigned
-    def billing_address_options=(billing_address_options)
-      if billing_address_options.nil?
-        fail ArgumentError, 'billing_address_options cannot be nil'
+    # @param [Object] organization Value to be assigned
+    def organization=(organization)
+      if organization.nil?
+        fail ArgumentError, 'organization cannot be nil'
       end
 
-      @billing_address_options = billing_address_options
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] origins Value to be assigned
-    def origins=(origins)
-      if origins.nil?
-        fail ArgumentError, 'origins cannot be nil'
-      end
-
-      @origins = origins
+      @organization = organization
     end
 
     # Checks equality by comparing each attribute.
@@ -178,13 +108,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          organization_id == o.organization_id &&
-          allowed_payment_methods == o.allowed_payment_methods &&
-          billing_address_options == o.billing_address_options &&
-          currency == o.currency &&
-          last_used_at == o.last_used_at &&
-          origins == o.origins
+          organization == o.organization
     end
 
     # @see the `==` method
@@ -196,7 +120,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, allowed_payment_methods, billing_address_options, currency, last_used_at, origins].hash
+      [organization].hash
     end
 
     # Builds the object from hash

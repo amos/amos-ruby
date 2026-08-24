@@ -8,6 +8,7 @@
 | **name** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
+| **mailing_address_attributes** | [**MailingAddressInput**](MailingAddressInput.md) |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 
 ## Example
@@ -20,6 +21,7 @@ instance = Amos::UpdateCustomerInput.new(
   name: null,
   payment_method_id: null,
   phone: null,
+  mailing_address_attributes: null,
   metadata: null
 )
 ```

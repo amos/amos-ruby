@@ -121,11 +121,14 @@ Class | Method | HTTP request | Description
 *Amos::MerchantApplicationsApi* | [**get_merchant_application**](docs/MerchantApplicationsApi.md#get_merchant_application) | **GET** /merchant_applications/{id} | Retrieve a merchant application by ID
 *Amos::MerchantsApi* | [**get_merchant**](docs/MerchantsApi.md#get_merchant) | **GET** /merchants/{id} | Retrieve a merchant by ID
 *Amos::MerchantsApi* | [**list_merchants**](docs/MerchantsApi.md#list_merchants) | **GET** /merchants | List all merchants
+*Amos::OrganizationsApi* | [**get_organization**](docs/OrganizationsApi.md#get_organization) | **GET** /organization | Retrieve the current organization
+*Amos::OrganizationsApi* | [**update_organization**](docs/OrganizationsApi.md#update_organization) | **PATCH** /organization | Update the current organization
 *Amos::OriginsApi* | [**create_origin**](docs/OriginsApi.md#create_origin) | **POST** /origins | Create a new origin
 *Amos::OriginsApi* | [**list_origins**](docs/OriginsApi.md#list_origins) | **GET** /origins | List all origins
 *Amos::PaymentIntentsApi* | [**cancel_payment_intent**](docs/PaymentIntentsApi.md#cancel_payment_intent) | **POST** /payment_intents/{id}/cancel | Cancel a payment intent
 *Amos::PaymentIntentsApi* | [**capture_payment_intent**](docs/PaymentIntentsApi.md#capture_payment_intent) | **POST** /payment_intents/{id}/capture | Capture a payment intent
-*Amos::PaymentIntentsApi* | [**confirm_embed_payment_intent_with_payment_method**](docs/PaymentIntentsApi.md#confirm_embed_payment_intent_with_payment_method) | **POST** /embed/payment_intents/{id}/confirm_with_payment_method | Confirm a payment intent with a new payment method
+*Amos::PaymentIntentsApi* | [**confirm_embed_payment_intent**](docs/PaymentIntentsApi.md#confirm_embed_payment_intent) | **POST** /embed/payment_intents/{id}/confirm | Confirm a payment intent and wait for processor authorization or sale
+*Amos::PaymentIntentsApi* | [**confirm_embed_payment_intent_with_payment_method**](docs/PaymentIntentsApi.md#confirm_embed_payment_intent_with_payment_method) | **POST** /embed/payment_intents/{id}/confirm_with_payment_method | Confirm a payment intent with a new payment method (async)
 *Amos::PaymentIntentsApi* | [**create_payment_intent**](docs/PaymentIntentsApi.md#create_payment_intent) | **POST** /payment_intents | Create a new payment intent
 *Amos::PaymentIntentsApi* | [**get_embed_payment_intent**](docs/PaymentIntentsApi.md#get_embed_payment_intent) | **GET** /embed/payment_intents/{id} | Retrieve a payment intent by ID
 *Amos::PaymentIntentsApi* | [**get_payment_intent**](docs/PaymentIntentsApi.md#get_payment_intent) | **GET** /payment_intents/{id} | Retrieve a payment intent by ID
@@ -153,7 +156,8 @@ Class | Method | HTTP request | Description
 *Amos::RenderTemplatesApi* | [**create_render_token**](docs/RenderTemplatesApi.md#create_render_token) | **POST** /render_templates/{id}/token | Create a render token for render template
 *Amos::RenderTemplatesApi* | [**get_render_template**](docs/RenderTemplatesApi.md#get_render_template) | **GET** /render_templates/{id} | Retrieve a render template by ID
 *Amos::RenderTemplatesApi* | [**list_render_templates**](docs/RenderTemplatesApi.md#list_render_templates) | **GET** /render_templates | List all render templates
-*Amos::SetupIntentsApi* | [**confirm_setup_intent_with_payment_method**](docs/SetupIntentsApi.md#confirm_setup_intent_with_payment_method) | **POST** /embed/setup_intents/{id}/confirm_with_payment_method | Confirm a setup intent with a new payment method
+*Amos::SetupIntentsApi* | [**confirm_embed_setup_intent**](docs/SetupIntentsApi.md#confirm_embed_setup_intent) | **POST** /embed/setup_intents/{id}/confirm | Confirm a setup intent and wait for card verification
+*Amos::SetupIntentsApi* | [**confirm_setup_intent_with_payment_method**](docs/SetupIntentsApi.md#confirm_setup_intent_with_payment_method) | **POST** /embed/setup_intents/{id}/confirm_with_payment_method | Confirm a setup intent with a new payment method (async)
 *Amos::SetupIntentsApi* | [**create_setup_intent**](docs/SetupIntentsApi.md#create_setup_intent) | **POST** /setup_intents | Create a new setup intent
 *Amos::SetupIntentsApi* | [**get_setup_intent**](docs/SetupIntentsApi.md#get_setup_intent) | **GET** /embed/setup_intents/{id} | Retrieve a setup intent by ID
 *Amos::SubscriptionPlansApi* | [**create_subscription_plan**](docs/SubscriptionPlansApi.md#create_subscription_plan) | **POST** /subscription_plans | Create a new subscription plan
@@ -183,11 +187,11 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Amos::Account](docs/Account.md)
- - [Amos::AchVerification](docs/AchVerification.md)
  - [Amos::AllowedApplePayPaymentMethod](docs/AllowedApplePayPaymentMethod.md)
  - [Amos::AllowedApplePayPaymentMethodInput](docs/AllowedApplePayPaymentMethodInput.md)
  - [Amos::AllowedBankAccountPaymentMethod](docs/AllowedBankAccountPaymentMethod.md)
  - [Amos::AllowedBankAccountPaymentMethodInput](docs/AllowedBankAccountPaymentMethodInput.md)
+ - [Amos::AllowedBankAccountPaymentMethodOptions](docs/AllowedBankAccountPaymentMethodOptions.md)
  - [Amos::AllowedCardPaymentMethod](docs/AllowedCardPaymentMethod.md)
  - [Amos::AllowedCardPaymentMethodInput](docs/AllowedCardPaymentMethodInput.md)
  - [Amos::AllowedCardPaymentMethodOptions](docs/AllowedCardPaymentMethodOptions.md)
@@ -301,10 +305,13 @@ Class | Method | HTTP request | Description
  - [Amos::ListWebhookAttempts](docs/ListWebhookAttempts.md)
  - [Amos::ListWebhookEndpoints](docs/ListWebhookEndpoints.md)
  - [Amos::ListWebhookRequests](docs/ListWebhookRequests.md)
+ - [Amos::MailingAddress](docs/MailingAddress.md)
+ - [Amos::MailingAddressInput](docs/MailingAddressInput.md)
  - [Amos::Merchant](docs/Merchant.md)
  - [Amos::MerchantApplication](docs/MerchantApplication.md)
  - [Amos::MerchantBusinessCategoryType](docs/MerchantBusinessCategoryType.md)
  - [Amos::Meta](docs/Meta.md)
+ - [Amos::Organization](docs/Organization.md)
  - [Amos::Origin](docs/Origin.md)
  - [Amos::PaymentIntent](docs/PaymentIntent.md)
  - [Amos::PaymentIntentCaptureMethodType](docs/PaymentIntentCaptureMethodType.md)
@@ -338,6 +345,8 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateChargeRequest](docs/UpdateChargeRequest.md)
  - [Amos::UpdateCustomerInput](docs/UpdateCustomerInput.md)
  - [Amos::UpdateCustomerRequest](docs/UpdateCustomerRequest.md)
+ - [Amos::UpdateOrganizationInput](docs/UpdateOrganizationInput.md)
+ - [Amos::UpdateOrganizationRequest](docs/UpdateOrganizationRequest.md)
  - [Amos::UpdatePaymentIntentInput](docs/UpdatePaymentIntentInput.md)
  - [Amos::UpdatePaymentIntentRequest](docs/UpdatePaymentIntentRequest.md)
  - [Amos::UpdatePaymentLinkInput](docs/UpdatePaymentLinkInput.md)

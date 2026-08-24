@@ -23,6 +23,8 @@ module Amos
 
     attr_accessor :phone
 
+    attr_accessor :mailing_address_attributes
+
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
@@ -33,6 +35,7 @@ module Amos
         :'name' => :'name',
         :'email' => :'email',
         :'phone' => :'phone',
+        :'mailing_address_attributes' => :'mailing_address_attributes',
         :'metadata' => :'metadata'
       }
     end
@@ -54,6 +57,7 @@ module Amos
         :'name' => :'String',
         :'email' => :'String',
         :'phone' => :'String',
+        :'mailing_address_attributes' => :'MailingAddressInput',
         :'metadata' => :'Hash<String, String>'
       }
     end
@@ -99,6 +103,10 @@ module Amos
         self.phone = attributes[:'phone']
       end
 
+      if attributes.key?(:'mailing_address_attributes')
+        self.mailing_address_attributes = attributes[:'mailing_address_attributes']
+      end
+
       if attributes.key?(:'metadata')
         if (value = attributes[:'metadata']).is_a?(Hash)
           self.metadata = value
@@ -130,6 +138,7 @@ module Amos
           name == o.name &&
           email == o.email &&
           phone == o.phone &&
+          mailing_address_attributes == o.mailing_address_attributes &&
           metadata == o.metadata
     end
 
@@ -142,7 +151,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, name, email, phone, metadata].hash
+      [account_id, name, email, phone, mailing_address_attributes, metadata].hash
     end
 
     # Builds the object from hash

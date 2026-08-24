@@ -44,11 +44,6 @@ module Amos
 
     attr_accessor :statement_descriptor
 
-    # True when the intent amount meets or exceeds the configured ACH verification threshold.
-    attr_accessor :requires_ach_verification
-
-    attr_accessor :ach_verification
-
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -92,8 +87,6 @@ module Amos
         :'source' => :'source',
         :'state' => :'state',
         :'statement_descriptor' => :'statement_descriptor',
-        :'requires_ach_verification' => :'requires_ach_verification',
-        :'ach_verification' => :'ach_verification',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -126,8 +119,6 @@ module Amos
         :'source' => :'TransactionSourceType',
         :'state' => :'String',
         :'statement_descriptor' => :'String',
-        :'requires_ach_verification' => :'Boolean',
-        :'ach_verification' => :'AchVerification',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -216,14 +207,6 @@ module Amos
         self.statement_descriptor = attributes[:'statement_descriptor']
       end
 
-      if attributes.key?(:'requires_ach_verification')
-        self.requires_ach_verification = attributes[:'requires_ach_verification']
-      end
-
-      if attributes.key?(:'ach_verification')
-        self.ach_verification = attributes[:'ach_verification']
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -279,8 +262,6 @@ module Amos
           source == o.source &&
           state == o.state &&
           statement_descriptor == o.statement_descriptor &&
-          requires_ach_verification == o.requires_ach_verification &&
-          ach_verification == o.ach_verification &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -294,7 +275,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, source, state, statement_descriptor, requires_ach_verification, ach_verification, created_at, updated_at].hash
+      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, source, state, statement_descriptor, created_at, updated_at].hash
     end
 
     # Builds the object from hash

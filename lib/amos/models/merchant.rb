@@ -17,6 +17,9 @@ module Amos
   class Merchant < ApiModelBase
     attr_accessor :id
 
+    # ACH verification threshold in cents. Amounts at or above this require Plaid verification.
+    attr_accessor :ach_threshold
+
     attr_accessor :active
 
     attr_accessor :organization_id
@@ -71,6 +74,8 @@ module Amos
 
     attr_accessor :settlement_currency
 
+    attr_accessor :state_province
+
     attr_accessor :street_address1
 
     attr_accessor :street_address2
@@ -109,6 +114,7 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
+        :'ach_threshold' => :'ach_threshold',
         :'active' => :'active',
         :'organization_id' => :'organization_id',
         :'legal_entity_id' => :'legal_entity_id',
@@ -136,6 +142,7 @@ module Amos
         :'primary_contact_phone' => :'primary_contact_phone',
         :'purchase_currency' => :'purchase_currency',
         :'settlement_currency' => :'settlement_currency',
+        :'state_province' => :'state_province',
         :'street_address1' => :'street_address1',
         :'street_address2' => :'street_address2',
         :'sub_merchant_id' => :'sub_merchant_id',
@@ -159,6 +166,7 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
+        :'ach_threshold' => :'Integer',
         :'active' => :'Boolean',
         :'organization_id' => :'String',
         :'legal_entity_id' => :'String',
@@ -186,6 +194,7 @@ module Amos
         :'primary_contact_phone' => :'String',
         :'purchase_currency' => :'String',
         :'settlement_currency' => :'String',
+        :'state_province' => :'String',
         :'street_address1' => :'String',
         :'street_address2' => :'String',
         :'sub_merchant_id' => :'String',
@@ -222,6 +231,10 @@ module Amos
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'ach_threshold')
+        self.ach_threshold = attributes[:'ach_threshold']
       end
 
       if attributes.key?(:'active')
@@ -334,6 +347,10 @@ module Amos
         self.settlement_currency = attributes[:'settlement_currency']
       end
 
+      if attributes.key?(:'state_province')
+        self.state_province = attributes[:'state_province']
+      end
+
       if attributes.key?(:'street_address1')
         self.street_address1 = attributes[:'street_address1']
       end
@@ -380,6 +397,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          ach_threshold == o.ach_threshold &&
           active == o.active &&
           organization_id == o.organization_id &&
           legal_entity_id == o.legal_entity_id &&
@@ -407,6 +425,7 @@ module Amos
           primary_contact_phone == o.primary_contact_phone &&
           purchase_currency == o.purchase_currency &&
           settlement_currency == o.settlement_currency &&
+          state_province == o.state_province &&
           street_address1 == o.street_address1 &&
           street_address2 == o.street_address2 &&
           sub_merchant_id == o.sub_merchant_id &&
@@ -424,7 +443,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, active, organization_id, legal_entity_id, annual_credit_card_sales_volume, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
+      [id, ach_threshold, active, organization_id, legal_entity_id, annual_credit_card_sales_volume, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, state_province, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

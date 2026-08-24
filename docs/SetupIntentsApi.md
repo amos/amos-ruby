@@ -4,16 +4,19 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**confirm_setup_intent_with_payment_method**](SetupIntentsApi.md#confirm_setup_intent_with_payment_method) | **POST** /embed/setup_intents/{id}/confirm_with_payment_method | Confirm a setup intent with a new payment method |
+| [**confirm_embed_setup_intent**](SetupIntentsApi.md#confirm_embed_setup_intent) | **POST** /embed/setup_intents/{id}/confirm | Confirm a setup intent and wait for card verification |
+| [**confirm_setup_intent_with_payment_method**](SetupIntentsApi.md#confirm_setup_intent_with_payment_method) | **POST** /embed/setup_intents/{id}/confirm_with_payment_method | Confirm a setup intent with a new payment method (async) |
 | [**create_setup_intent**](SetupIntentsApi.md#create_setup_intent) | **POST** /setup_intents | Create a new setup intent |
 | [**get_setup_intent**](SetupIntentsApi.md#get_setup_intent) | **GET** /embed/setup_intents/{id} | Retrieve a setup intent by ID |
 
 
-## confirm_setup_intent_with_payment_method
+## confirm_embed_setup_intent
 
-> <SetupIntent> confirm_setup_intent_with_payment_method(id, confirm_setup_intent_with_payment_method_request)
+> <SetupIntent> confirm_embed_setup_intent(id, confirm_setup_intent_with_payment_method_request)
 
-Confirm a setup intent with a new payment method
+Confirm a setup intent and wait for card verification
+
+Confirms the setup intent and, for cards, blocks until processor verification completes. Returns 200 with the post-verification state (for example succeeded, requires_payment_method, or requires_review). Bank account setups succeed without a processor authorization. 
 
 ### Examples
 
@@ -33,7 +36,80 @@ id = 'id_example' # String | The ID of the setup intent to confirm
 confirm_setup_intent_with_payment_method_request = Amos::ConfirmSetupIntentWithPaymentMethodRequest.new({setup_intent: Amos::ConfirmSetupIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::ApplePayCardProfileInput.new({wallet_payload: 'wallet_payload_example'})})})}) # ConfirmSetupIntentWithPaymentMethodRequest | 
 
 begin
-  # Confirm a setup intent with a new payment method
+  # Confirm a setup intent and wait for card verification
+  result = api_instance.confirm_embed_setup_intent(id, confirm_setup_intent_with_payment_method_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling SetupIntentsApi->confirm_embed_setup_intent: #{e}"
+end
+```
+
+#### Using the confirm_embed_setup_intent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SetupIntent>, Integer, Hash)> confirm_embed_setup_intent_with_http_info(id, confirm_setup_intent_with_payment_method_request)
+
+```ruby
+begin
+  # Confirm a setup intent and wait for card verification
+  data, status_code, headers = api_instance.confirm_embed_setup_intent_with_http_info(id, confirm_setup_intent_with_payment_method_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SetupIntent>
+rescue Amos::ApiError => e
+  puts "Error when calling SetupIntentsApi->confirm_embed_setup_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the setup intent to confirm |  |
+| **confirm_setup_intent_with_payment_method_request** | [**ConfirmSetupIntentWithPaymentMethodRequest**](ConfirmSetupIntentWithPaymentMethodRequest.md) |  |  |
+
+### Return type
+
+[**SetupIntent**](SetupIntent.md)
+
+### Authorization
+
+[Embed](../README.md#Embed)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## confirm_setup_intent_with_payment_method
+
+> <SetupIntent> confirm_setup_intent_with_payment_method(id, confirm_setup_intent_with_payment_method_request)
+
+Confirm a setup intent with a new payment method (async)
+
+Legacy async confirmation for migration. Accepts a payment method and, for cards, enqueues verification. Returns 202 with verifying or succeeded. Prefer POST /embed/setup_intents/{id}/confirm for synchronous confirmation. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: Embed
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = Amos::SetupIntentsApi.new
+id = 'id_example' # String | The ID of the setup intent to confirm
+confirm_setup_intent_with_payment_method_request = Amos::ConfirmSetupIntentWithPaymentMethodRequest.new({setup_intent: Amos::ConfirmSetupIntentWithEmbeddedPaymentMethodInput.new({payment_method: Amos::EmbedConfirmApplePayPaymentMethodInput.new({type: 'applepay', card_profile_attributes: Amos::ApplePayCardProfileInput.new({wallet_payload: 'wallet_payload_example'})})})}) # ConfirmSetupIntentWithPaymentMethodRequest | 
+
+begin
+  # Confirm a setup intent with a new payment method (async)
   result = api_instance.confirm_setup_intent_with_payment_method(id, confirm_setup_intent_with_payment_method_request)
   p result
 rescue Amos::ApiError => e
@@ -49,7 +125,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Confirm a setup intent with a new payment method
+  # Confirm a setup intent with a new payment method (async)
   data, status_code, headers = api_instance.confirm_setup_intent_with_payment_method_with_http_info(id, confirm_setup_intent_with_payment_method_request)
   p status_code # => 2xx
   p headers # => { ... }

@@ -9,6 +9,8 @@
 | **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethod&gt;**](AllowedPaymentMethod.md) |  | [optional] |
 | **billing_address_options** | [**BillingAddressOptions**](BillingAddressOptions.md) |  |  |
 | **currency** | **String** |  | [optional] |
+| **last_used_at** | **Time** |  | [optional] |
+| **origins** | [**Array&lt;Origin&gt;**](Origin.md) |  |  |
 
 ## Example
 
@@ -20,7 +22,9 @@ instance = Amos::RenderTemplate.new(
   organization_id: null,
   allowed_payment_methods: null,
   billing_address_options: null,
-  currency: null
+  currency: null,
+  last_used_at: null,
+  origins: null
 )
 ```
 

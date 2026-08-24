@@ -7,7 +7,7 @@
 | **type** | **String** |  |  |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **plaid** | [**PlaidCredentialsInput**](PlaidCredentialsInput.md) |  | [optional] |
-| **bank_account_profile_attributes** | [**BankAccountProfileInput**](BankAccountProfileInput.md) |  |  |
+| **bank_account_profile_attributes** | [**BankAccountProfileInput**](BankAccountProfileInput.md) |  | [optional] |
 | **billing_address_attributes** | [**BillingAddressInput**](BillingAddressInput.md) |  | [optional] |
 
 ## Example

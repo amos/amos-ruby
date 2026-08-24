@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **type** | **String** |  |  |
-| **options** | **Object** | No configurable options for bank account payment methods. | [optional] |
+| **options** | [**AllowedBankAccountPaymentMethodOptions**](AllowedBankAccountPaymentMethodOptions.md) |  | [optional] |
 
 ## Example
 

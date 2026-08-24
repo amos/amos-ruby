@@ -14,40 +14,31 @@ require 'date'
 require 'time'
 
 module Amos
-  # Instructions for the embed client to complete ACH verification via Plaid Link.
-  class AchVerification < ApiModelBase
-    attr_accessor :type
+  class MailingAddressInput < ApiModelBase
+    attr_accessor :address_line1
 
-    # Short-lived Plaid Link token used to open Link in the embed client.
-    attr_accessor :link_token
+    attr_accessor :address_line2
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    attr_accessor :city
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    attr_accessor :country
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :name
+
+    attr_accessor :postal_code
+
+    attr_accessor :state
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'type' => :'type',
-        :'link_token' => :'link_token'
+        :'address_line1' => :'address_line1',
+        :'address_line2' => :'address_line2',
+        :'city' => :'city',
+        :'country' => :'country',
+        :'name' => :'name',
+        :'postal_code' => :'postal_code',
+        :'state' => :'state'
       }
     end
 
@@ -64,14 +55,20 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'type' => :'String',
-        :'link_token' => :'String'
+        :'address_line1' => :'String',
+        :'address_line2' => :'String',
+        :'city' => :'String',
+        :'country' => :'String',
+        :'name' => :'String',
+        :'postal_code' => :'String',
+        :'state' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'address_line2',
       ])
     end
 
@@ -79,7 +76,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::AchVerification` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::MailingAddressInput` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -94,16 +91,32 @@ module Amos
         end
       }
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      else
-        self.type = nil
+      if attributes.key?(:'address_line1')
+        self.address_line1 = attributes[:'address_line1']
       end
 
-      if attributes.key?(:'link_token')
-        self.link_token = attributes[:'link_token']
-      else
-        self.link_token = nil
+      if attributes.key?(:'address_line2')
+        self.address_line2 = attributes[:'address_line2']
+      end
+
+      if attributes.key?(:'city')
+        self.city = attributes[:'city']
+      end
+
+      if attributes.key?(:'country')
+        self.country = attributes[:'country']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
       end
     end
 
@@ -112,14 +125,6 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
-      end
-
-      if @link_token.nil?
-        invalid_properties.push('invalid value for "link_token", link_token cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -127,31 +132,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["plaid_auth"])
-      return false unless type_validator.valid?(@type)
-      return false if @link_token.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["plaid_auth"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] link_token Value to be assigned
-    def link_token=(link_token)
-      if link_token.nil?
-        fail ArgumentError, 'link_token cannot be nil'
-      end
-
-      @link_token = link_token
     end
 
     # Checks equality by comparing each attribute.
@@ -159,8 +140,13 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          type == o.type &&
-          link_token == o.link_token
+          address_line1 == o.address_line1 &&
+          address_line2 == o.address_line2 &&
+          city == o.city &&
+          country == o.country &&
+          name == o.name &&
+          postal_code == o.postal_code &&
+          state == o.state
     end
 
     # @see the `==` method
@@ -172,7 +158,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, link_token].hash
+      [address_line1, address_line2, city, country, name, postal_code, state].hash
     end
 
     # Builds the object from hash

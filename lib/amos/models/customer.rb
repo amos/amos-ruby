@@ -26,11 +26,15 @@ module Amos
 
     attr_accessor :name
 
+    attr_accessor :organization_id
+
     attr_accessor :payment_method_id
 
     attr_accessor :phone
 
     attr_accessor :type
+
+    attr_accessor :mailing_address
 
     attr_accessor :created_at
 
@@ -44,9 +48,11 @@ module Amos
         :'email' => :'email',
         :'metadata' => :'metadata',
         :'name' => :'name',
+        :'organization_id' => :'organization_id',
         :'payment_method_id' => :'payment_method_id',
         :'phone' => :'phone',
         :'type' => :'type',
+        :'mailing_address' => :'mailing_address',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -70,9 +76,11 @@ module Amos
         :'email' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'name' => :'String',
+        :'organization_id' => :'String',
         :'payment_method_id' => :'String',
         :'phone' => :'String',
         :'type' => :'String',
+        :'mailing_address' => :'MailingAddress',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -125,6 +133,10 @@ module Amos
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
+      end
+
       if attributes.key?(:'payment_method_id')
         self.payment_method_id = attributes[:'payment_method_id']
       end
@@ -135,6 +147,10 @@ module Amos
 
       if attributes.key?(:'type')
         self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'mailing_address')
+        self.mailing_address = attributes[:'mailing_address']
       end
 
       if attributes.key?(:'created_at')
@@ -171,9 +187,11 @@ module Amos
           email == o.email &&
           metadata == o.metadata &&
           name == o.name &&
+          organization_id == o.organization_id &&
           payment_method_id == o.payment_method_id &&
           phone == o.phone &&
           type == o.type &&
+          mailing_address == o.mailing_address &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -187,7 +205,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, email, metadata, name, payment_method_id, phone, type, created_at, updated_at].hash
+      [id, account_id, email, metadata, name, organization_id, payment_method_id, phone, type, mailing_address, created_at, updated_at].hash
     end
 
     # Builds the object from hash
