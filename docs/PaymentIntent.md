@@ -12,7 +12,7 @@
 | **currency** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
-| **last_payment_error** | [**LastPaymentError**](LastPaymentError.md) |  | [optional] |
+| **last_payment_error** | [**LastPaymentError**](LastPaymentError.md) | Null after a successful authorization, sale, or capture. | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **recurring_payment** | [**RecurringPayment**](RecurringPayment.md) |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |

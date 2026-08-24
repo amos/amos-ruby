@@ -31,6 +31,7 @@ module Amos
 
     attr_accessor :description
 
+    # Null after a successful authorization, sale, or capture.
     attr_accessor :last_payment_error
 
     # Additional metadata key-value pairs

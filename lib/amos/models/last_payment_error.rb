@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Amos
-  # Canonical post-confirm payment failure. Present after a processor decline, processing exception, or missing vault credential. Null after a successful authorization, sale, or capture. 
+  # Canonical post-confirm payment failure. Present after a processor decline, processing exception, or missing vault credential. 
   class LastPaymentError < ApiModelBase
     attr_accessor :type
 

@@ -437,5 +437,4 @@ lib/amos/models/webhook_event_payload.rb
 lib/amos/models/webhook_event_type.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
-spec/models/last_payment_error_spec.rb
 spec/spec_helper.rb
