@@ -10,7 +10,7 @@
 | **merchant_id** | **String** |  | [optional] |
 | **processor_id** | **String** |  | [optional] |
 | **worldpay_mid** | **String** |  | [optional] |
-| **ach_threshold** | **Integer** | ACH verification threshold in cents for this account, taken from the merchant. When the organization sets ach_threshold, that value is used instead. Amounts at or above this require Plaid verification when the render template enables it.  | [optional] |
+| **ach_threshold** | **Integer** | ACH verification threshold in cents for this account, taken from the organization. Amounts at or above this require Plaid verification when the render template enables it. Defaults to 20000 cents.  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 

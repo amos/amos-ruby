@@ -14,38 +14,43 @@ require 'date'
 require 'time'
 
 module Amos
-  class Account < ApiModelBase
-    attr_accessor :id
+  # Canonical post-confirm payment failure. Present after a processor decline, processing exception, or missing vault credential. Null after a successful authorization, sale, or capture. 
+  class LastPaymentError < ApiModelBase
+    attr_accessor :type
 
-    attr_accessor :name
+    attr_accessor :code
 
-    attr_accessor :active
+    # Localized, payer-facing explanation of the failure.
+    attr_accessor :message
 
-    attr_accessor :merchant_id
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :processor_id
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    attr_accessor :worldpay_mid
-
-    # ACH verification threshold in cents for this account, taken from the organization. Amounts at or above this require Plaid verification when the render template enables it. Defaults to 20000 cents. 
-    attr_accessor :ach_threshold
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'active' => :'active',
-        :'merchant_id' => :'merchant_id',
-        :'processor_id' => :'processor_id',
-        :'worldpay_mid' => :'worldpay_mid',
-        :'ach_threshold' => :'ach_threshold',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'type' => :'type',
+        :'code' => :'code',
+        :'message' => :'message'
       }
     end
 
@@ -62,15 +67,9 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'active' => :'Boolean',
-        :'merchant_id' => :'String',
-        :'processor_id' => :'String',
-        :'worldpay_mid' => :'String',
-        :'ach_threshold' => :'Integer',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'type' => :'String',
+        :'code' => :'String',
+        :'message' => :'String'
       }
     end
 
@@ -84,7 +83,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::Account` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::LastPaymentError` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -99,40 +98,22 @@ module Amos
         end
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
+      else
+        self.code = nil
       end
 
-      if attributes.key?(:'active')
-        self.active = attributes[:'active']
-      end
-
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.key?(:'processor_id')
-        self.processor_id = attributes[:'processor_id']
-      end
-
-      if attributes.key?(:'worldpay_mid')
-        self.worldpay_mid = attributes[:'worldpay_mid']
-      end
-
-      if attributes.key?(:'ach_threshold')
-        self.ach_threshold = attributes[:'ach_threshold']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
+      else
+        self.message = nil
       end
     end
 
@@ -141,6 +122,18 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
+      end
+
+      if @message.nil?
+        invalid_properties.push('invalid value for "message", message cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -148,7 +141,44 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @type.nil?
+      type_validator = EnumAttributeValidator.new('String', ["card_error", "processing_error"])
+      return false unless type_validator.valid?(@type)
+      return false if @code.nil?
+      code_validator = EnumAttributeValidator.new('String', ["incorrect_number", "incorrect_cvc", "incorrect_postal_code", "incorrect_pin", "expired_card", "insufficient_funds", "card_declined", "authentication_failure", "processing_error", "vault_token_not_found"])
+      return false unless code_validator.valid?(@code)
+      return false if @message.nil?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["card_error", "processing_error"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+      end
+      @type = type
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] code Object to be assigned
+    def code=(code)
+      validator = EnumAttributeValidator.new('String', ["incorrect_number", "incorrect_cvc", "incorrect_postal_code", "incorrect_pin", "expired_card", "insufficient_funds", "card_declined", "authentication_failure", "processing_error", "vault_token_not_found"])
+      unless validator.valid?(code)
+        fail ArgumentError, "invalid value for \"code\", must be one of #{validator.allowable_values}."
+      end
+      @code = code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] message Value to be assigned
+    def message=(message)
+      if message.nil?
+        fail ArgumentError, 'message cannot be nil'
+      end
+
+      @message = message
     end
 
     # Checks equality by comparing each attribute.
@@ -156,15 +186,9 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          active == o.active &&
-          merchant_id == o.merchant_id &&
-          processor_id == o.processor_id &&
-          worldpay_mid == o.worldpay_mid &&
-          ach_threshold == o.ach_threshold &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          type == o.type &&
+          code == o.code &&
+          message == o.message
     end
 
     # @see the `==` method
@@ -176,7 +200,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, active, merchant_id, processor_id, worldpay_mid, ach_threshold, created_at, updated_at].hash
+      [type, code, message].hash
     end
 
     # Builds the object from hash

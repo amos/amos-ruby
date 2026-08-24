@@ -273,6 +273,7 @@ Class | Method | HTTP request | Description
  - [Amos::FileUploadConfiguration](docs/FileUploadConfiguration.md)
  - [Amos::GooglePayCardProfileInput](docs/GooglePayCardProfileInput.md)
  - [Amos::InternationalBillingAddressOptions](docs/InternationalBillingAddressOptions.md)
+ - [Amos::LastPaymentError](docs/LastPaymentError.md)
  - [Amos::LegalEntity](docs/LegalEntity.md)
  - [Amos::LegalEntityApplication](docs/LegalEntityApplication.md)
  - [Amos::LegalEntityApplicationDocument](docs/LegalEntityApplicationDocument.md)

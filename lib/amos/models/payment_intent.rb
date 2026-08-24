@@ -31,6 +31,8 @@ module Amos
 
     attr_accessor :description
 
+    attr_accessor :last_payment_error
+
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
@@ -81,6 +83,7 @@ module Amos
         :'currency' => :'currency',
         :'customer_id' => :'customer_id',
         :'description' => :'description',
+        :'last_payment_error' => :'last_payment_error',
         :'metadata' => :'metadata',
         :'recurring_payment' => :'recurring_payment',
         :'payment_method_id' => :'payment_method_id',
@@ -113,6 +116,7 @@ module Amos
         :'currency' => :'String',
         :'customer_id' => :'String',
         :'description' => :'String',
+        :'last_payment_error' => :'LastPaymentError',
         :'metadata' => :'Hash<String, String>',
         :'recurring_payment' => :'RecurringPayment',
         :'payment_method_id' => :'String',
@@ -127,6 +131,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'last_payment_error',
       ])
     end
 
@@ -179,6 +184,10 @@ module Amos
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'last_payment_error')
+        self.last_payment_error = attributes[:'last_payment_error']
       end
 
       if attributes.key?(:'metadata')
@@ -256,6 +265,7 @@ module Amos
           currency == o.currency &&
           customer_id == o.customer_id &&
           description == o.description &&
+          last_payment_error == o.last_payment_error &&
           metadata == o.metadata &&
           recurring_payment == o.recurring_payment &&
           payment_method_id == o.payment_method_id &&
@@ -275,7 +285,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, source, state, statement_descriptor, created_at, updated_at].hash
+      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, last_payment_error, metadata, recurring_payment, payment_method_id, source, state, statement_descriptor, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -29,10 +29,6 @@ module Amos
 
     attr_accessor :description
 
-    attr_accessor :failure_code
-
-    attr_accessor :failure_reason
-
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
@@ -92,8 +88,6 @@ module Amos
         :'currency' => :'currency',
         :'customer_id' => :'customer_id',
         :'description' => :'description',
-        :'failure_code' => :'failure_code',
-        :'failure_reason' => :'failure_reason',
         :'metadata' => :'metadata',
         :'original_transaction_id' => :'original_transaction_id',
         :'parent_transaction_id' => :'parent_transaction_id',
@@ -130,8 +124,6 @@ module Amos
         :'currency' => :'String',
         :'customer_id' => :'String',
         :'description' => :'String',
-        :'failure_code' => :'String',
-        :'failure_reason' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'original_transaction_id' => :'String',
         :'parent_transaction_id' => :'String',
@@ -152,8 +144,6 @@ module Amos
     def self.openapi_nullable
       Set.new([
         :'description',
-        :'failure_code',
-        :'failure_reason',
         :'allowed_reverse_action'
       ])
     end
@@ -203,14 +193,6 @@ module Amos
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'failure_code')
-        self.failure_code = attributes[:'failure_code']
-      end
-
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
       end
 
       if attributes.key?(:'metadata')
@@ -307,8 +289,6 @@ module Amos
           currency == o.currency &&
           customer_id == o.customer_id &&
           description == o.description &&
-          failure_code == o.failure_code &&
-          failure_reason == o.failure_reason &&
           metadata == o.metadata &&
           original_transaction_id == o.original_transaction_id &&
           parent_transaction_id == o.parent_transaction_id &&
@@ -333,7 +313,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, adjustment_reason, amount, currency, customer_id, description, failure_code, failure_reason, metadata, original_transaction_id, parent_transaction_id, payment_intent_id, payment_method_id, platform_fee, source, state, statement_descriptor, succeeded_at, created_at, updated_at, allowed_reverse_action].hash
+      [id, account_id, adjustment_reason, amount, currency, customer_id, description, metadata, original_transaction_id, parent_transaction_id, payment_intent_id, payment_method_id, platform_fee, source, state, statement_descriptor, succeeded_at, created_at, updated_at, allowed_reverse_action].hash
     end
 
     # Builds the object from hash

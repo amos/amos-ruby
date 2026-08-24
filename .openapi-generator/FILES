@@ -98,6 +98,7 @@ docs/FileUploadConfiguration.md
 docs/FileUploadsApi.md
 docs/GooglePayCardProfileInput.md
 docs/InternationalBillingAddressOptions.md
+docs/LastPaymentError.md
 docs/LegalEntitiesApi.md
 docs/LegalEntity.md
 docs/LegalEntityApplication.md
@@ -339,6 +340,7 @@ lib/amos/models/file_upload.rb
 lib/amos/models/file_upload_configuration.rb
 lib/amos/models/google_pay_card_profile_input.rb
 lib/amos/models/international_billing_address_options.rb
+lib/amos/models/last_payment_error.rb
 lib/amos/models/legal_entity.rb
 lib/amos/models/legal_entity_application.rb
 lib/amos/models/legal_entity_application_document.rb
@@ -435,11 +437,5 @@ lib/amos/models/webhook_event_payload.rb
 lib/amos/models/webhook_event_type.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
-spec/api/organizations_api_spec.rb
-spec/models/allowed_bank_account_payment_method_options_spec.rb
-spec/models/mailing_address_input_spec.rb
-spec/models/mailing_address_spec.rb
-spec/models/organization_spec.rb
-spec/models/update_organization_input_spec.rb
-spec/models/update_organization_request_spec.rb
+spec/models/last_payment_error_spec.rb
 spec/spec_helper.rb
