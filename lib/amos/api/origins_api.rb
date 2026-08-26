@@ -89,6 +89,7 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :q Substring search across origin value (case-insensitive).
     # @return [ListOrigins]
     def list_origins(opts = {})
       data, _status_code, _headers = list_origins_with_http_info(opts)
@@ -99,6 +100,7 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :q Substring search across origin value (case-insensitive).
     # @return [Array<(ListOrigins, Integer, Hash)>] ListOrigins data, response status code and response headers
     def list_origins_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -111,6 +113,7 @@ module Amos
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

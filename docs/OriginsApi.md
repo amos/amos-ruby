@@ -105,7 +105,8 @@ end
 api_instance = Amos::OriginsApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  q: 'q_example' # String | Substring search across origin value (case-insensitive).
 }
 
 begin
@@ -141,6 +142,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **q** | **String** | Substring search across origin value (case-insensitive). | [optional] |
 
 ### Return type
 
