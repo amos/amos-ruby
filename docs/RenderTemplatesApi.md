@@ -8,6 +8,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | [**create_render_token**](RenderTemplatesApi.md#create_render_token) | **POST** /render_templates/{id}/token | Create a render token for render template |
 | [**get_render_template**](RenderTemplatesApi.md#get_render_template) | **GET** /render_templates/{id} | Retrieve a render template by ID |
 | [**list_render_templates**](RenderTemplatesApi.md#list_render_templates) | **GET** /render_templates | List all render templates |
+| [**update_render_template**](RenderTemplatesApi.md#update_render_template) | **PUT** /render_templates/{id} | Update a render template by ID |
 
 
 ## create_render_template
@@ -301,5 +302,81 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_render_template
+
+> <RenderTemplate> update_render_template(id, update_render_template_request)
+
+Update a render template by ID
+
+Replaces the template's origin allowlist. Currency, allowed payment methods, and billing address options cannot be changed.
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Amos::RenderTemplatesApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | The ID of the render template to update
+update_render_template_request = Amos::UpdateRenderTemplateRequest.new({render_template: Amos::UpdateRenderTemplateInput.new({origin_ids: ['origin_ids_example']})}) # UpdateRenderTemplateRequest | 
+
+begin
+  # Update a render template by ID
+  result = api_instance.update_render_template(id, update_render_template_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling RenderTemplatesApi->update_render_template: #{e}"
+end
+```
+
+#### Using the update_render_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RenderTemplate>, Integer, Hash)> update_render_template_with_http_info(id, update_render_template_request)
+
+```ruby
+begin
+  # Update a render template by ID
+  data, status_code, headers = api_instance.update_render_template_with_http_info(id, update_render_template_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RenderTemplate>
+rescue Amos::ApiError => e
+  puts "Error when calling RenderTemplatesApi->update_render_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the render template to update |  |
+| **update_render_template_request** | [**UpdateRenderTemplateRequest**](UpdateRenderTemplateRequest.md) |  |  |
+
+### Return type
+
+[**RenderTemplate**](RenderTemplate.md)
+
+### Authorization
+
+[X-Api-Key](../README.md#X-Api-Key), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

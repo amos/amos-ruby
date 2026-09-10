@@ -4,7 +4,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_customer**](CustomersApi.md#create_customer) | **POST** /customers | Create a new customer |
+| [**create_customer**](CustomersApi.md#create_customer) | **POST** /customers | Create or reuse a customer |
 | [**get_customer**](CustomersApi.md#get_customer) | **GET** /customers/{id} | Retrieve a customer by ID |
 | [**list_customers**](CustomersApi.md#list_customers) | **GET** /customers | List all customers |
 | [**update_customer**](CustomersApi.md#update_customer) | **PUT** /customers/{id} | Update a customer by ID |
@@ -14,7 +14,9 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 > <Customer> create_customer(create_customer_request)
 
-Create a new customer
+Create or reuse a customer
+
+Creates a registered customer, or returns the existing customer when `email` or `phone` already belongs to one in the organization. When `email` is sent, reuse is by email only; a phone match is not used as a fallback, so a mistyped email cannot attach to another customer. Reuse does not update the existing record; use PUT to change it. Returns 200 for reuse and 201 for create. 
 
 ### Examples
 
@@ -36,7 +38,7 @@ api_instance = Amos::CustomersApi.new
 create_customer_request = Amos::CreateCustomerRequest.new({customer: Amos::CreateCustomerInput.new}) # CreateCustomerRequest | 
 
 begin
-  # Create a new customer
+  # Create or reuse a customer
   result = api_instance.create_customer(create_customer_request)
   p result
 rescue Amos::ApiError => e
@@ -52,7 +54,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new customer
+  # Create or reuse a customer
   data, status_code, headers = api_instance.create_customer_with_http_info(create_customer_request)
   p status_code # => 2xx
   p headers # => { ... }

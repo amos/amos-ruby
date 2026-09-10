@@ -35,6 +35,9 @@ module Amos
 
     attr_accessor :token
 
+    # True when the bank account was verified via Plaid Auth.
+    attr_accessor :verified
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -74,6 +77,7 @@ module Amos
         :'routing_number' => :'routing_number',
         :'state' => :'state',
         :'token' => :'token',
+        :'verified' => :'verified',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -102,6 +106,7 @@ module Amos
         :'routing_number' => :'String',
         :'state' => :'String',
         :'token' => :'String',
+        :'verified' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -174,6 +179,10 @@ module Amos
         self.token = attributes[:'token']
       end
 
+      if attributes.key?(:'verified')
+        self.verified = attributes[:'verified']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -225,6 +234,7 @@ module Amos
           routing_number == o.routing_number &&
           state == o.state &&
           token == o.token &&
+          verified == o.verified &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -238,7 +248,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_holder_name, account_holder_type, account_type, bank_name, failure_reason, fingerprint, last4, routing_number, state, token, created_at, updated_at].hash
+      [account_holder_name, account_holder_type, account_type, bank_name, failure_reason, fingerprint, last4, routing_number, state, token, verified, created_at, updated_at].hash
     end
 
     # Builds the object from hash

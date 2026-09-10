@@ -14,43 +14,25 @@ require 'date'
 require 'time'
 
 module Amos
-  # Canonical post-confirm payment failure. Present after a processor decline, processing exception, or missing vault credential. 
-  class LastPaymentError < ApiModelBase
-    attr_accessor :type
+  class DunningConfiguration < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :code
+    attr_accessor :retry_days
 
-    # Localized, payer-facing explanation of the failure.
-    attr_accessor :message
+    attr_accessor :enabled
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    attr_accessor :created_at
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'type' => :'type',
-        :'code' => :'code',
-        :'message' => :'message'
+        :'id' => :'id',
+        :'retry_days' => :'retry_days',
+        :'enabled' => :'enabled',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -67,9 +49,11 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'type' => :'String',
-        :'code' => :'String',
-        :'message' => :'String'
+        :'id' => :'String',
+        :'retry_days' => :'Array<Integer>',
+        :'enabled' => :'Boolean',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -83,7 +67,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::LastPaymentError` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::DunningConfiguration` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -98,22 +82,26 @@ module Amos
         end
       }
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      else
-        self.type = nil
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'code')
-        self.code = attributes[:'code']
-      else
-        self.code = nil
+      if attributes.key?(:'retry_days')
+        if (value = attributes[:'retry_days']).is_a?(Array)
+          self.retry_days = value
+        end
       end
 
-      if attributes.key?(:'message')
-        self.message = attributes[:'message']
-      else
-        self.message = nil
+      if attributes.key?(:'enabled')
+        self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -122,18 +110,6 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
-      end
-
-      if @code.nil?
-        invalid_properties.push('invalid value for "code", code cannot be nil.')
-      end
-
-      if @message.nil?
-        invalid_properties.push('invalid value for "message", message cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -141,44 +117,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["card_error", "processing_error"])
-      return false unless type_validator.valid?(@type)
-      return false if @code.nil?
-      code_validator = EnumAttributeValidator.new('String', ["incorrect_number", "incorrect_cvc", "incorrect_postal_code", "incorrect_pin", "expired_card", "insufficient_funds", "card_declined", "authentication_failure", "processing_error", "vault_token_not_found"])
-      return false unless code_validator.valid?(@code)
-      return false if @message.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["card_error", "processing_error"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] code Object to be assigned
-    def code=(code)
-      validator = EnumAttributeValidator.new('String', ["incorrect_number", "incorrect_cvc", "incorrect_postal_code", "incorrect_pin", "expired_card", "insufficient_funds", "card_declined", "authentication_failure", "processing_error", "vault_token_not_found"])
-      unless validator.valid?(code)
-        fail ArgumentError, "invalid value for \"code\", must be one of #{validator.allowable_values}."
-      end
-      @code = code
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] message Value to be assigned
-    def message=(message)
-      if message.nil?
-        fail ArgumentError, 'message cannot be nil'
-      end
-
-      @message = message
     end
 
     # Checks equality by comparing each attribute.
@@ -186,9 +125,11 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          type == o.type &&
-          code == o.code &&
-          message == o.message
+          id == o.id &&
+          retry_days == o.retry_days &&
+          enabled == o.enabled &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -200,7 +141,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, code, message].hash
+      [id, retry_days, enabled, created_at, updated_at].hash
     end
 
     # Builds the object from hash

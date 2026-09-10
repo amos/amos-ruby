@@ -19,15 +19,49 @@ module Amos
 
     attr_accessor :value
 
+    # Apple Pay merchant-domain registration status for this origin host. Null until registration is enabled.
+    attr_accessor :applepay_registration_state
+
+    # Last Apple Pay registration or unregistration error, if any
+    attr_accessor :applepay_registration_error
+
+    # When this origin host was last registered with Apple Pay
+    attr_accessor :applepay_registered_at
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'value' => :'value',
+        :'applepay_registration_state' => :'applepay_registration_state',
+        :'applepay_registration_error' => :'applepay_registration_error',
+        :'applepay_registered_at' => :'applepay_registered_at',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -48,6 +82,9 @@ module Amos
       {
         :'id' => :'String',
         :'value' => :'String',
+        :'applepay_registration_state' => :'OriginApplepayRegistrationStateType',
+        :'applepay_registration_error' => :'String',
+        :'applepay_registered_at' => :'Time',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -56,6 +93,9 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'applepay_registration_state',
+        :'applepay_registration_error',
+        :'applepay_registered_at',
       ])
     end
 
@@ -84,6 +124,18 @@ module Amos
 
       if attributes.key?(:'value')
         self.value = attributes[:'value']
+      end
+
+      if attributes.key?(:'applepay_registration_state')
+        self.applepay_registration_state = attributes[:'applepay_registration_state']
+      end
+
+      if attributes.key?(:'applepay_registration_error')
+        self.applepay_registration_error = attributes[:'applepay_registration_error']
+      end
+
+      if attributes.key?(:'applepay_registered_at')
+        self.applepay_registered_at = attributes[:'applepay_registered_at']
       end
 
       if attributes.key?(:'created_at')
@@ -117,6 +169,9 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           value == o.value &&
+          applepay_registration_state == o.applepay_registration_state &&
+          applepay_registration_error == o.applepay_registration_error &&
+          applepay_registered_at == o.applepay_registered_at &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -130,7 +185,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, value, created_at, updated_at].hash
+      [id, value, applepay_registration_state, applepay_registration_error, applepay_registered_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

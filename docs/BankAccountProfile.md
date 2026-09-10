@@ -14,6 +14,7 @@
 | **routing_number** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **token** | **String** |  | [optional] |
+| **verified** | **Boolean** | True when the bank account was verified via Plaid Auth. | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -33,6 +34,7 @@ instance = Amos::BankAccountProfile.new(
   routing_number: null,
   state: null,
   token: null,
+  verified: null,
   created_at: null,
   updated_at: null
 )

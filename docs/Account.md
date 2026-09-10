@@ -10,7 +10,6 @@
 | **merchant_id** | **String** |  | [optional] |
 | **processor_id** | **String** |  | [optional] |
 | **worldpay_mid** | **String** |  | [optional] |
-| **ach_threshold** | **Integer** | ACH verification threshold in cents for this account, taken from the organization. Amounts at or above this require Plaid verification when the render template enables it. Defaults to 20000 cents.  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -26,7 +25,6 @@ instance = Amos::Account.new(
   merchant_id: null,
   processor_id: null,
   worldpay_mid: null,
-  ach_threshold: null,
   created_at: null,
   updated_at: null
 )

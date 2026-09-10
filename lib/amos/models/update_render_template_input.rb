@@ -14,17 +14,15 @@ require 'date'
 require 'time'
 
 module Amos
-  class EmbedToken < ApiModelBase
-    # JWT string used for embedded payment and setup intent flows. When decoded, the JWT payload matches the EmbedTokenJwt schema. Setup intent tokens are organization-scoped (`organization_id` + `setup_intent_id`). Payment intent tokens remain account-scoped (`account_id` + `payment_intent_id`). 
-    attr_accessor :token
-
-    attr_accessor :ttl
+  # Replaces the origin allowlist on an existing render template. Currency, allowed payment methods, and billing address options are not updatable.
+  class UpdateRenderTemplateInput < ApiModelBase
+    # Origin IDs in the current organization. Replaces the current list. At least one origin is required.
+    attr_accessor :origin_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'token' => :'token',
-        :'ttl' => :'ttl'
+        :'origin_ids' => :'origin_ids'
       }
     end
 
@@ -41,8 +39,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'token' => :'String',
-        :'ttl' => :'Integer'
+        :'origin_ids' => :'Array<String>'
       }
     end
 
@@ -56,7 +53,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::EmbedToken` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::UpdateRenderTemplateInput` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -71,12 +68,12 @@ module Amos
         end
       }
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'ttl')
-        self.ttl = attributes[:'ttl']
+      if attributes.key?(:'origin_ids')
+        if (value = attributes[:'origin_ids']).is_a?(Array)
+          self.origin_ids = value
+        end
+      else
+        self.origin_ids = nil
       end
     end
 
@@ -85,6 +82,10 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @origin_ids.nil?
+        invalid_properties.push('invalid value for "origin_ids", origin_ids cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -92,7 +93,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @origin_ids.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] origin_ids Value to be assigned
+    def origin_ids=(origin_ids)
+      if origin_ids.nil?
+        fail ArgumentError, 'origin_ids cannot be nil'
+      end
+
+      @origin_ids = origin_ids
     end
 
     # Checks equality by comparing each attribute.
@@ -100,8 +112,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          token == o.token &&
-          ttl == o.ttl
+          origin_ids == o.origin_ids
     end
 
     # @see the `==` method
@@ -113,7 +124,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [token, ttl].hash
+      [origin_ids].hash
     end
 
     # Builds the object from hash

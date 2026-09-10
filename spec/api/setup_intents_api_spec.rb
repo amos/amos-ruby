@@ -32,18 +32,6 @@ describe 'SetupIntentsApi' do
     end
   end
 
-  # unit tests for confirm_setup_intent_with_payment_method
-  # Confirm a setup intent with a new payment method
-  # @param id The ID of the setup intent to confirm
-  # @param confirm_setup_intent_with_payment_method_request 
-  # @param [Hash] opts the optional parameters
-  # @return [SetupIntent]
-  describe 'confirm_setup_intent_with_payment_method test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for create_setup_intent
   # Create a new setup intent
   # @param create_setup_intent_request 

@@ -14,18 +14,25 @@ require 'date'
 require 'time'
 
 module Amos
-  # Decoded JWT payload for embed token responses.
+  # Decoded JWT payload for embed token responses.  Payment intent tokens include `account_id` and `payment_intent_id`. Setup intent tokens include `organization_id` and `setup_intent_id` and do not use `account_id`. Unused fields are null. 
   class EmbedTokenJwt < ApiModelBase
+    # Present for payment intent embed tokens. Null for setup intents.
     attr_accessor :account_id
 
+    # Present for setup intent embed tokens. Null for payment intents.
+    attr_accessor :organization_id
+
+    # Present for payment intent embed tokens. Null for setup intents.
     attr_accessor :payment_intent_id
 
+    # Present for setup intent embed tokens. Null for payment intents.
     attr_accessor :setup_intent_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_id' => :'account_id',
+        :'organization_id' => :'organization_id',
         :'payment_intent_id' => :'payment_intent_id',
         :'setup_intent_id' => :'setup_intent_id'
       }
@@ -45,6 +52,7 @@ module Amos
     def self.openapi_types
       {
         :'account_id' => :'String',
+        :'organization_id' => :'String',
         :'payment_intent_id' => :'String',
         :'setup_intent_id' => :'String'
       }
@@ -53,6 +61,8 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'account_id',
+        :'organization_id',
         :'payment_intent_id',
         :'setup_intent_id'
       ])
@@ -79,6 +89,10 @@ module Amos
 
       if attributes.key?(:'account_id')
         self.account_id = attributes[:'account_id']
+      end
+
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
       end
 
       if attributes.key?(:'payment_intent_id')
@@ -111,6 +125,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           account_id == o.account_id &&
+          organization_id == o.organization_id &&
           payment_intent_id == o.payment_intent_id &&
           setup_intent_id == o.setup_intent_id
     end
@@ -124,7 +139,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, payment_intent_id, setup_intent_id].hash
+      [account_id, organization_id, payment_intent_id, setup_intent_id].hash
     end
 
     # Builds the object from hash

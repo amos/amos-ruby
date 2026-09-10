@@ -95,10 +95,13 @@ Class | Method | HTTP request | Description
 *Amos::ChargesApi* | [**get_charge**](docs/ChargesApi.md#get_charge) | **GET** /charges/{id} | Retrieve a charge
 *Amos::ChargesApi* | [**list_charges**](docs/ChargesApi.md#list_charges) | **GET** /charges | List all charges
 *Amos::ChargesApi* | [**update_charge**](docs/ChargesApi.md#update_charge) | **PUT** /charges/{id} | Update a charge
-*Amos::CustomersApi* | [**create_customer**](docs/CustomersApi.md#create_customer) | **POST** /customers | Create a new customer
+*Amos::CustomersApi* | [**create_customer**](docs/CustomersApi.md#create_customer) | **POST** /customers | Create or reuse a customer
 *Amos::CustomersApi* | [**get_customer**](docs/CustomersApi.md#get_customer) | **GET** /customers/{id} | Retrieve a customer by ID
 *Amos::CustomersApi* | [**list_customers**](docs/CustomersApi.md#list_customers) | **GET** /customers | List all customers
 *Amos::CustomersApi* | [**update_customer**](docs/CustomersApi.md#update_customer) | **PUT** /customers/{id} | Update a customer by ID
+*Amos::DunningConfigurationsApi* | [**create_dunning_configuration**](docs/DunningConfigurationsApi.md#create_dunning_configuration) | **POST** /dunning_configuration | Create the current organization's dunning configuration
+*Amos::DunningConfigurationsApi* | [**get_dunning_configuration**](docs/DunningConfigurationsApi.md#get_dunning_configuration) | **GET** /dunning_configuration | Retrieve the current organization's dunning configuration
+*Amos::DunningConfigurationsApi* | [**update_dunning_configuration**](docs/DunningConfigurationsApi.md#update_dunning_configuration) | **PATCH** /dunning_configuration | Update the current organization's dunning configuration
 *Amos::ExternalAccountsApi* | [**create_external_account**](docs/ExternalAccountsApi.md#create_external_account) | **POST** /external_accounts | Create an external account
 *Amos::ExternalAccountsApi* | [**get_external_account**](docs/ExternalAccountsApi.md#get_external_account) | **GET** /external_accounts/{id} | Retrieve an external account by ID
 *Amos::ExternalAccountsApi* | [**list_external_accounts**](docs/ExternalAccountsApi.md#list_external_accounts) | **GET** /external_accounts | List all external accounts
@@ -124,11 +127,11 @@ Class | Method | HTTP request | Description
 *Amos::OrganizationsApi* | [**get_organization**](docs/OrganizationsApi.md#get_organization) | **GET** /organization | Retrieve the current organization
 *Amos::OrganizationsApi* | [**update_organization**](docs/OrganizationsApi.md#update_organization) | **PATCH** /organization | Update the current organization
 *Amos::OriginsApi* | [**create_origin**](docs/OriginsApi.md#create_origin) | **POST** /origins | Create a new origin
+*Amos::OriginsApi* | [**delete_origin**](docs/OriginsApi.md#delete_origin) | **DELETE** /origins/{id} | Delete an origin by ID
 *Amos::OriginsApi* | [**list_origins**](docs/OriginsApi.md#list_origins) | **GET** /origins | List all origins
 *Amos::PaymentIntentsApi* | [**cancel_payment_intent**](docs/PaymentIntentsApi.md#cancel_payment_intent) | **POST** /payment_intents/{id}/cancel | Cancel a payment intent
 *Amos::PaymentIntentsApi* | [**capture_payment_intent**](docs/PaymentIntentsApi.md#capture_payment_intent) | **POST** /payment_intents/{id}/capture | Capture a payment intent
 *Amos::PaymentIntentsApi* | [**confirm_embed_payment_intent**](docs/PaymentIntentsApi.md#confirm_embed_payment_intent) | **POST** /embed/payment_intents/{id}/confirm | Confirm a payment intent and wait for processor authorization or sale
-*Amos::PaymentIntentsApi* | [**confirm_embed_payment_intent_with_payment_method**](docs/PaymentIntentsApi.md#confirm_embed_payment_intent_with_payment_method) | **POST** /embed/payment_intents/{id}/confirm_with_payment_method | Confirm a payment intent with a new payment method (async)
 *Amos::PaymentIntentsApi* | [**create_payment_intent**](docs/PaymentIntentsApi.md#create_payment_intent) | **POST** /payment_intents | Create a new payment intent
 *Amos::PaymentIntentsApi* | [**get_embed_payment_intent**](docs/PaymentIntentsApi.md#get_embed_payment_intent) | **GET** /embed/payment_intents/{id} | Retrieve a payment intent by ID
 *Amos::PaymentIntentsApi* | [**get_payment_intent**](docs/PaymentIntentsApi.md#get_payment_intent) | **GET** /payment_intents/{id} | Retrieve a payment intent by ID
@@ -156,8 +159,8 @@ Class | Method | HTTP request | Description
 *Amos::RenderTemplatesApi* | [**create_render_token**](docs/RenderTemplatesApi.md#create_render_token) | **POST** /render_templates/{id}/token | Create a render token for render template
 *Amos::RenderTemplatesApi* | [**get_render_template**](docs/RenderTemplatesApi.md#get_render_template) | **GET** /render_templates/{id} | Retrieve a render template by ID
 *Amos::RenderTemplatesApi* | [**list_render_templates**](docs/RenderTemplatesApi.md#list_render_templates) | **GET** /render_templates | List all render templates
+*Amos::RenderTemplatesApi* | [**update_render_template**](docs/RenderTemplatesApi.md#update_render_template) | **PUT** /render_templates/{id} | Update a render template by ID
 *Amos::SetupIntentsApi* | [**confirm_embed_setup_intent**](docs/SetupIntentsApi.md#confirm_embed_setup_intent) | **POST** /embed/setup_intents/{id}/confirm | Confirm a setup intent and wait for card verification
-*Amos::SetupIntentsApi* | [**confirm_setup_intent_with_payment_method**](docs/SetupIntentsApi.md#confirm_setup_intent_with_payment_method) | **POST** /embed/setup_intents/{id}/confirm_with_payment_method | Confirm a setup intent with a new payment method (async)
 *Amos::SetupIntentsApi* | [**create_setup_intent**](docs/SetupIntentsApi.md#create_setup_intent) | **POST** /setup_intents | Create a new setup intent
 *Amos::SetupIntentsApi* | [**get_setup_intent**](docs/SetupIntentsApi.md#get_setup_intent) | **GET** /embed/setup_intents/{id} | Retrieve a setup intent by ID
 *Amos::SubscriptionPlansApi* | [**create_subscription_plan**](docs/SubscriptionPlansApi.md#create_subscription_plan) | **POST** /subscription_plans | Create a new subscription plan
@@ -221,6 +224,8 @@ Class | Method | HTTP request | Description
  - [Amos::CreateBulkPayoutsRequest](docs/CreateBulkPayoutsRequest.md)
  - [Amos::CreateCustomerInput](docs/CreateCustomerInput.md)
  - [Amos::CreateCustomerRequest](docs/CreateCustomerRequest.md)
+ - [Amos::CreateDunningConfigurationInput](docs/CreateDunningConfigurationInput.md)
+ - [Amos::CreateDunningConfigurationRequest](docs/CreateDunningConfigurationRequest.md)
  - [Amos::CreateExternalAccountInput](docs/CreateExternalAccountInput.md)
  - [Amos::CreateExternalAccountRequest](docs/CreateExternalAccountRequest.md)
  - [Amos::CreateFileUploadInput](docs/CreateFileUploadInput.md)
@@ -258,6 +263,7 @@ Class | Method | HTTP request | Description
  - [Amos::CreateWebhookEndpointInput](docs/CreateWebhookEndpointInput.md)
  - [Amos::CreateWebhookEndpointRequest](docs/CreateWebhookEndpointRequest.md)
  - [Amos::Customer](docs/Customer.md)
+ - [Amos::DunningConfiguration](docs/DunningConfiguration.md)
  - [Amos::EmbedConfirmApplePayPaymentMethodInput](docs/EmbedConfirmApplePayPaymentMethodInput.md)
  - [Amos::EmbedConfirmBankAccountPaymentMethodInput](docs/EmbedConfirmBankAccountPaymentMethodInput.md)
  - [Amos::EmbedConfirmCardPaymentMethodInput](docs/EmbedConfirmCardPaymentMethodInput.md)
@@ -273,7 +279,6 @@ Class | Method | HTTP request | Description
  - [Amos::FileUploadConfiguration](docs/FileUploadConfiguration.md)
  - [Amos::GooglePayCardProfileInput](docs/GooglePayCardProfileInput.md)
  - [Amos::InternationalBillingAddressOptions](docs/InternationalBillingAddressOptions.md)
- - [Amos::LastPaymentError](docs/LastPaymentError.md)
  - [Amos::LegalEntity](docs/LegalEntity.md)
  - [Amos::LegalEntityApplication](docs/LegalEntityApplication.md)
  - [Amos::LegalEntityApplicationDocument](docs/LegalEntityApplicationDocument.md)
@@ -314,6 +319,7 @@ Class | Method | HTTP request | Description
  - [Amos::Meta](docs/Meta.md)
  - [Amos::Organization](docs/Organization.md)
  - [Amos::Origin](docs/Origin.md)
+ - [Amos::OriginApplepayRegistrationStateType](docs/OriginApplepayRegistrationStateType.md)
  - [Amos::PaymentIntent](docs/PaymentIntent.md)
  - [Amos::PaymentIntentCaptureMethodType](docs/PaymentIntentCaptureMethodType.md)
  - [Amos::PaymentLink](docs/PaymentLink.md)
@@ -346,6 +352,8 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateChargeRequest](docs/UpdateChargeRequest.md)
  - [Amos::UpdateCustomerInput](docs/UpdateCustomerInput.md)
  - [Amos::UpdateCustomerRequest](docs/UpdateCustomerRequest.md)
+ - [Amos::UpdateDunningConfigurationInput](docs/UpdateDunningConfigurationInput.md)
+ - [Amos::UpdateDunningConfigurationRequest](docs/UpdateDunningConfigurationRequest.md)
  - [Amos::UpdateOrganizationInput](docs/UpdateOrganizationInput.md)
  - [Amos::UpdateOrganizationRequest](docs/UpdateOrganizationRequest.md)
  - [Amos::UpdatePaymentIntentInput](docs/UpdatePaymentIntentInput.md)
@@ -356,6 +364,8 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateProductRequest](docs/UpdateProductRequest.md)
  - [Amos::UpdateRefundInput](docs/UpdateRefundInput.md)
  - [Amos::UpdateRefundRequest](docs/UpdateRefundRequest.md)
+ - [Amos::UpdateRenderTemplateInput](docs/UpdateRenderTemplateInput.md)
+ - [Amos::UpdateRenderTemplateRequest](docs/UpdateRenderTemplateRequest.md)
  - [Amos::UpdateSubscriptionInput](docs/UpdateSubscriptionInput.md)
  - [Amos::UpdateSubscriptionRequest](docs/UpdateSubscriptionRequest.md)
  - [Amos::UpdateVoidInput](docs/UpdateVoidInput.md)

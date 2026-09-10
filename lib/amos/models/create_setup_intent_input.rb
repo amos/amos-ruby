@@ -15,6 +15,7 @@ require 'time'
 
 module Amos
   class CreateSetupIntentInput < ApiModelBase
+    # Customer on the authenticated organization.
     attr_accessor :customer_id
 
     # Additional metadata key-value pairs

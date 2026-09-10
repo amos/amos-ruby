@@ -5,7 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **account_id** | **String** |  | [optional] |
+| **account_id** | **String** | Account the transaction was processed under. Null for setup intent verifications, which are scoped to the organization. | [optional] |
+| **organization_id** | **String** | Organization the transaction belongs to. | [optional] |
 | **approved** | **Boolean** |  | [optional] |
 | **avs_check** | **String** |  | [optional] |
 | **avs_check_message** | **String** |  | [optional] |
@@ -32,6 +33,7 @@ require 'amos'
 instance = Amos::ProcessorTransaction.new(
   id: null,
   account_id: null,
+  organization_id: null,
   approved: null,
   avs_check: null,
   avs_check_message: null,

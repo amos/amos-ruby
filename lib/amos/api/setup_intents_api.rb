@@ -93,81 +93,8 @@ module Amos
       return data, status_code, headers
     end
 
-    # Confirm a setup intent with a new payment method (async)
-    # Legacy async confirmation for migration. Accepts a payment method and, for cards, enqueues verification. Returns 202 with verifying or succeeded. Prefer POST /embed/setup_intents/{id}/confirm for synchronous confirmation. 
-    # @param id [String] The ID of the setup intent to confirm
-    # @param confirm_setup_intent_with_payment_method_request [ConfirmSetupIntentWithPaymentMethodRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [SetupIntent]
-    def confirm_setup_intent_with_payment_method(id, confirm_setup_intent_with_payment_method_request, opts = {})
-      data, _status_code, _headers = confirm_setup_intent_with_payment_method_with_http_info(id, confirm_setup_intent_with_payment_method_request, opts)
-      data
-    end
-
-    # Confirm a setup intent with a new payment method (async)
-    # Legacy async confirmation for migration. Accepts a payment method and, for cards, enqueues verification. Returns 202 with verifying or succeeded. Prefer POST /embed/setup_intents/{id}/confirm for synchronous confirmation. 
-    # @param id [String] The ID of the setup intent to confirm
-    # @param confirm_setup_intent_with_payment_method_request [ConfirmSetupIntentWithPaymentMethodRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(SetupIntent, Integer, Hash)>] SetupIntent data, response status code and response headers
-    def confirm_setup_intent_with_payment_method_with_http_info(id, confirm_setup_intent_with_payment_method_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SetupIntentsApi.confirm_setup_intent_with_payment_method ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SetupIntentsApi.confirm_setup_intent_with_payment_method"
-      end
-      # verify the required parameter 'confirm_setup_intent_with_payment_method_request' is set
-      if @api_client.config.client_side_validation && confirm_setup_intent_with_payment_method_request.nil?
-        fail ArgumentError, "Missing the required parameter 'confirm_setup_intent_with_payment_method_request' when calling SetupIntentsApi.confirm_setup_intent_with_payment_method"
-      end
-      # resource path
-      local_var_path = '/embed/setup_intents/{id}/confirm_with_payment_method'.sub('{id}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(confirm_setup_intent_with_payment_method_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'SetupIntent'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['Embed']
-
-      new_options = opts.merge(
-        :operation => :"SetupIntentsApi.confirm_setup_intent_with_payment_method",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SetupIntentsApi#confirm_setup_intent_with_payment_method\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Create a new setup intent
+    # Creates an organization-scoped setup intent. X-Account-Id is ignored if sent. The customer must belong to the authenticated organization. Returns an embed token whose JWT payload includes organization_id and setup_intent_id. 
     # @param create_setup_intent_request [CreateSetupIntentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [EmbedToken]
@@ -177,6 +104,7 @@ module Amos
     end
 
     # Create a new setup intent
+    # Creates an organization-scoped setup intent. X-Account-Id is ignored if sent. The customer must belong to the authenticated organization. Returns an embed token whose JWT payload includes organization_id and setup_intent_id. 
     # @param create_setup_intent_request [CreateSetupIntentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EmbedToken, Integer, Hash)>] EmbedToken data, response status code and response headers

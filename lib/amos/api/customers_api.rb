@@ -19,7 +19,8 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a new customer
+    # Create or reuse a customer
+    # Creates a registered customer, or returns the existing customer when `email` or `phone` already belongs to one in the organization. When `email` is sent, reuse is by email only; a phone match is not used as a fallback, so a mistyped email cannot attach to another customer. Reuse does not update the existing record; use PUT to change it. Returns 200 for reuse and 201 for create. 
     # @param create_customer_request [CreateCustomerRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Customer]
@@ -28,7 +29,8 @@ module Amos
       data
     end
 
-    # Create a new customer
+    # Create or reuse a customer
+    # Creates a registered customer, or returns the existing customer when &#x60;email&#x60; or &#x60;phone&#x60; already belongs to one in the organization. When &#x60;email&#x60; is sent, reuse is by email only; a phone match is not used as a fallback, so a mistyped email cannot attach to another customer. Reuse does not update the existing record; use PUT to change it. Returns 200 for reuse and 201 for create. 
     # @param create_customer_request [CreateCustomerRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Customer, Integer, Hash)>] Customer data, response status code and response headers

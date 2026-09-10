@@ -17,7 +17,11 @@ module Amos
   class ProcessorTransaction < ApiModelBase
     attr_accessor :id
 
+    # Account the transaction was processed under. Null for setup intent verifications, which are scoped to the organization.
     attr_accessor :account_id
+
+    # Organization the transaction belongs to.
+    attr_accessor :organization_id
 
     attr_accessor :approved
 
@@ -81,6 +85,7 @@ module Amos
       {
         :'id' => :'id',
         :'account_id' => :'account_id',
+        :'organization_id' => :'organization_id',
         :'approved' => :'approved',
         :'avs_check' => :'avs_check',
         :'avs_check_message' => :'avs_check_message',
@@ -116,6 +121,7 @@ module Amos
       {
         :'id' => :'String',
         :'account_id' => :'String',
+        :'organization_id' => :'String',
         :'approved' => :'Boolean',
         :'avs_check' => :'String',
         :'avs_check_message' => :'String',
@@ -139,6 +145,8 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'account_id',
+        :'organization_id',
       ])
     end
 
@@ -167,6 +175,10 @@ module Amos
 
       if attributes.key?(:'account_id')
         self.account_id = attributes[:'account_id']
+      end
+
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
       end
 
       if attributes.key?(:'approved')
@@ -286,6 +298,7 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           account_id == o.account_id &&
+          organization_id == o.organization_id &&
           approved == o.approved &&
           avs_check == o.avs_check &&
           avs_check_message == o.avs_check_message &&
@@ -314,7 +327,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, approved, avs_check, avs_check_message, cvc_check, cvc_check_message, external_reference, metadata, payment_method_id, payment_transaction_id, payment_transaction_type, processor_transaction_id, processor_reference, network_transaction_id, transaction_link_id, transaction_type, created_at, updated_at].hash
+      [id, account_id, organization_id, approved, avs_check, avs_check_message, cvc_check, cvc_check_message, external_reference, metadata, payment_method_id, payment_transaction_id, payment_transaction_type, processor_transaction_id, processor_reference, network_transaction_id, transaction_link_id, transaction_type, created_at, updated_at].hash
     end
 
     # Builds the object from hash

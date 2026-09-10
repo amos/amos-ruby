@@ -54,18 +54,6 @@ describe 'PaymentIntentsApi' do
     end
   end
 
-  # unit tests for confirm_embed_payment_intent_with_payment_method
-  # Confirm a payment intent with a new payment method
-  # @param id The ID of the payment intent to confirm
-  # @param confirm_payment_intent_with_payment_method_request 
-  # @param [Hash] opts the optional parameters
-  # @return [PaymentIntent]
-  describe 'confirm_embed_payment_intent_with_payment_method test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for create_payment_intent
   # Create a new payment intent
   # @param create_payment_intent_request 

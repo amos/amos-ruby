@@ -14,17 +14,13 @@ require 'date'
 require 'time'
 
 module Amos
-  class EmbedToken < ApiModelBase
-    # JWT string used for embedded payment and setup intent flows. When decoded, the JWT payload matches the EmbedTokenJwt schema. Setup intent tokens are organization-scoped (`organization_id` + `setup_intent_id`). Payment intent tokens remain account-scoped (`account_id` + `payment_intent_id`). 
-    attr_accessor :token
-
-    attr_accessor :ttl
+  class UpdateRenderTemplateRequest < ApiModelBase
+    attr_accessor :render_template
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'token' => :'token',
-        :'ttl' => :'ttl'
+        :'render_template' => :'render_template'
       }
     end
 
@@ -41,8 +37,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'token' => :'String',
-        :'ttl' => :'Integer'
+        :'render_template' => :'UpdateRenderTemplateInput'
       }
     end
 
@@ -56,7 +51,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::EmbedToken` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::UpdateRenderTemplateRequest` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -71,12 +66,10 @@ module Amos
         end
       }
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'ttl')
-        self.ttl = attributes[:'ttl']
+      if attributes.key?(:'render_template')
+        self.render_template = attributes[:'render_template']
+      else
+        self.render_template = nil
       end
     end
 
@@ -85,6 +78,10 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @render_template.nil?
+        invalid_properties.push('invalid value for "render_template", render_template cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -92,7 +89,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @render_template.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] render_template Value to be assigned
+    def render_template=(render_template)
+      if render_template.nil?
+        fail ArgumentError, 'render_template cannot be nil'
+      end
+
+      @render_template = render_template
     end
 
     # Checks equality by comparing each attribute.
@@ -100,8 +108,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          token == o.token &&
-          ttl == o.ttl
+          render_template == o.render_template
     end
 
     # @see the `==` method
@@ -113,7 +120,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [token, ttl].hash
+      [render_template].hash
     end
 
     # Builds the object from hash

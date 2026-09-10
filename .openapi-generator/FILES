@@ -43,6 +43,8 @@ docs/CreateBulkPayoutInput.md
 docs/CreateBulkPayoutsRequest.md
 docs/CreateCustomerInput.md
 docs/CreateCustomerRequest.md
+docs/CreateDunningConfigurationInput.md
+docs/CreateDunningConfigurationRequest.md
 docs/CreateExternalAccountInput.md
 docs/CreateExternalAccountRequest.md
 docs/CreateFileUploadInput.md
@@ -81,6 +83,8 @@ docs/CreateWebhookEndpointInput.md
 docs/CreateWebhookEndpointRequest.md
 docs/Customer.md
 docs/CustomersApi.md
+docs/DunningConfiguration.md
+docs/DunningConfigurationsApi.md
 docs/EmbedConfirmApplePayPaymentMethodInput.md
 docs/EmbedConfirmBankAccountPaymentMethodInput.md
 docs/EmbedConfirmCardPaymentMethodInput.md
@@ -98,7 +102,6 @@ docs/FileUploadConfiguration.md
 docs/FileUploadsApi.md
 docs/GooglePayCardProfileInput.md
 docs/InternationalBillingAddressOptions.md
-docs/LastPaymentError.md
 docs/LegalEntitiesApi.md
 docs/LegalEntity.md
 docs/LegalEntityApplication.md
@@ -147,6 +150,7 @@ docs/Meta.md
 docs/Organization.md
 docs/OrganizationsApi.md
 docs/Origin.md
+docs/OriginApplepayRegistrationStateType.md
 docs/OriginsApi.md
 docs/PaymentIntent.md
 docs/PaymentIntentCaptureMethodType.md
@@ -191,6 +195,8 @@ docs/UpdateChargeInput.md
 docs/UpdateChargeRequest.md
 docs/UpdateCustomerInput.md
 docs/UpdateCustomerRequest.md
+docs/UpdateDunningConfigurationInput.md
+docs/UpdateDunningConfigurationRequest.md
 docs/UpdateOrganizationInput.md
 docs/UpdateOrganizationRequest.md
 docs/UpdatePaymentIntentInput.md
@@ -201,6 +207,8 @@ docs/UpdateProductInput.md
 docs/UpdateProductRequest.md
 docs/UpdateRefundInput.md
 docs/UpdateRefundRequest.md
+docs/UpdateRenderTemplateInput.md
+docs/UpdateRenderTemplateRequest.md
 docs/UpdateSubscriptionInput.md
 docs/UpdateSubscriptionRequest.md
 docs/UpdateVoidInput.md
@@ -223,6 +231,7 @@ lib/amos.rb
 lib/amos/api/accounts_api.rb
 lib/amos/api/charges_api.rb
 lib/amos/api/customers_api.rb
+lib/amos/api/dunning_configurations_api.rb
 lib/amos/api/external_accounts_api.rb
 lib/amos/api/file_uploads_api.rb
 lib/amos/api/legal_entities_api.rb
@@ -288,6 +297,8 @@ lib/amos/models/create_bulk_payout_input.rb
 lib/amos/models/create_bulk_payouts_request.rb
 lib/amos/models/create_customer_input.rb
 lib/amos/models/create_customer_request.rb
+lib/amos/models/create_dunning_configuration_input.rb
+lib/amos/models/create_dunning_configuration_request.rb
 lib/amos/models/create_external_account_input.rb
 lib/amos/models/create_external_account_request.rb
 lib/amos/models/create_file_upload_input.rb
@@ -325,6 +336,7 @@ lib/amos/models/create_void_request.rb
 lib/amos/models/create_webhook_endpoint_input.rb
 lib/amos/models/create_webhook_endpoint_request.rb
 lib/amos/models/customer.rb
+lib/amos/models/dunning_configuration.rb
 lib/amos/models/embed_confirm_apple_pay_payment_method_input.rb
 lib/amos/models/embed_confirm_bank_account_payment_method_input.rb
 lib/amos/models/embed_confirm_card_payment_method_input.rb
@@ -340,7 +352,6 @@ lib/amos/models/file_upload.rb
 lib/amos/models/file_upload_configuration.rb
 lib/amos/models/google_pay_card_profile_input.rb
 lib/amos/models/international_billing_address_options.rb
-lib/amos/models/last_payment_error.rb
 lib/amos/models/legal_entity.rb
 lib/amos/models/legal_entity_application.rb
 lib/amos/models/legal_entity_application_document.rb
@@ -381,6 +392,7 @@ lib/amos/models/merchant_business_category_type.rb
 lib/amos/models/meta.rb
 lib/amos/models/organization.rb
 lib/amos/models/origin.rb
+lib/amos/models/origin_applepay_registration_state_type.rb
 lib/amos/models/payment_intent.rb
 lib/amos/models/payment_intent_capture_method_type.rb
 lib/amos/models/payment_link.rb
@@ -413,6 +425,8 @@ lib/amos/models/update_charge_input.rb
 lib/amos/models/update_charge_request.rb
 lib/amos/models/update_customer_input.rb
 lib/amos/models/update_customer_request.rb
+lib/amos/models/update_dunning_configuration_input.rb
+lib/amos/models/update_dunning_configuration_request.rb
 lib/amos/models/update_organization_input.rb
 lib/amos/models/update_organization_request.rb
 lib/amos/models/update_payment_intent_input.rb
@@ -423,6 +437,8 @@ lib/amos/models/update_product_input.rb
 lib/amos/models/update_product_request.rb
 lib/amos/models/update_refund_input.rb
 lib/amos/models/update_refund_request.rb
+lib/amos/models/update_render_template_input.rb
+lib/amos/models/update_render_template_request.rb
 lib/amos/models/update_subscription_input.rb
 lib/amos/models/update_subscription_request.rb
 lib/amos/models/update_void_input.rb
@@ -437,4 +453,13 @@ lib/amos/models/webhook_event_payload.rb
 lib/amos/models/webhook_event_type.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
+spec/api/dunning_configurations_api_spec.rb
+spec/models/create_dunning_configuration_input_spec.rb
+spec/models/create_dunning_configuration_request_spec.rb
+spec/models/dunning_configuration_spec.rb
+spec/models/origin_applepay_registration_state_type_spec.rb
+spec/models/update_dunning_configuration_input_spec.rb
+spec/models/update_dunning_configuration_request_spec.rb
+spec/models/update_render_template_input_spec.rb
+spec/models/update_render_template_request_spec.rb
 spec/spec_helper.rb

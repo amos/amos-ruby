@@ -14,17 +14,17 @@ require 'date'
 require 'time'
 
 module Amos
-  class EmbedToken < ApiModelBase
-    # JWT string used for embedded payment and setup intent flows. When decoded, the JWT payload matches the EmbedTokenJwt schema. Setup intent tokens are organization-scoped (`organization_id` + `setup_intent_id`). Payment intent tokens remain account-scoped (`account_id` + `payment_intent_id`). 
-    attr_accessor :token
+  class CreateDunningConfigurationInput < ApiModelBase
+    # Days after a failed collection to retry, in ascending order. 
+    attr_accessor :retry_days
 
-    attr_accessor :ttl
+    attr_accessor :enabled
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'token' => :'token',
-        :'ttl' => :'ttl'
+        :'retry_days' => :'retry_days',
+        :'enabled' => :'enabled'
       }
     end
 
@@ -41,8 +41,8 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'token' => :'String',
-        :'ttl' => :'Integer'
+        :'retry_days' => :'Array<Integer>',
+        :'enabled' => :'Boolean'
       }
     end
 
@@ -56,7 +56,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::EmbedToken` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::CreateDunningConfigurationInput` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -71,12 +71,16 @@ module Amos
         end
       }
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'retry_days')
+        if (value = attributes[:'retry_days']).is_a?(Array)
+          self.retry_days = value
+        end
+      else
+        self.retry_days = nil
       end
 
-      if attributes.key?(:'ttl')
-        self.ttl = attributes[:'ttl']
+      if attributes.key?(:'enabled')
+        self.enabled = attributes[:'enabled']
       end
     end
 
@@ -85,6 +89,18 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @retry_days.nil?
+        invalid_properties.push('invalid value for "retry_days", retry_days cannot be nil.')
+      end
+
+      if @retry_days.length > 10
+        invalid_properties.push('invalid value for "retry_days", number of items must be less than or equal to 10.')
+      end
+
+      if @retry_days.length < 1
+        invalid_properties.push('invalid value for "retry_days", number of items must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -92,7 +108,28 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @retry_days.nil?
+      return false if @retry_days.length > 10
+      return false if @retry_days.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] retry_days Value to be assigned
+    def retry_days=(retry_days)
+      if retry_days.nil?
+        fail ArgumentError, 'retry_days cannot be nil'
+      end
+
+      if retry_days.length > 10
+        fail ArgumentError, 'invalid value for "retry_days", number of items must be less than or equal to 10.'
+      end
+
+      if retry_days.length < 1
+        fail ArgumentError, 'invalid value for "retry_days", number of items must be greater than or equal to 1.'
+      end
+
+      @retry_days = retry_days
     end
 
     # Checks equality by comparing each attribute.
@@ -100,8 +137,8 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          token == o.token &&
-          ttl == o.ttl
+          retry_days == o.retry_days &&
+          enabled == o.enabled
     end
 
     # @see the `==` method
@@ -113,7 +150,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [token, ttl].hash
+      [retry_days, enabled].hash
     end
 
     # Builds the object from hash
