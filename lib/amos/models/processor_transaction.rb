@@ -44,8 +44,6 @@ module Amos
 
     attr_accessor :payment_transaction_type
 
-    attr_accessor :processor_transaction_id
-
     attr_accessor :processor_reference
 
     attr_accessor :network_transaction_id
@@ -96,7 +94,6 @@ module Amos
         :'payment_method_id' => :'payment_method_id',
         :'payment_transaction_id' => :'payment_transaction_id',
         :'payment_transaction_type' => :'payment_transaction_type',
-        :'processor_transaction_id' => :'processor_transaction_id',
         :'processor_reference' => :'processor_reference',
         :'network_transaction_id' => :'network_transaction_id',
         :'transaction_link_id' => :'transaction_link_id',
@@ -132,7 +129,6 @@ module Amos
         :'payment_method_id' => :'String',
         :'payment_transaction_id' => :'String',
         :'payment_transaction_type' => :'String',
-        :'processor_transaction_id' => :'String',
         :'processor_reference' => :'String',
         :'network_transaction_id' => :'String',
         :'transaction_link_id' => :'String',
@@ -223,10 +219,6 @@ module Amos
         self.payment_transaction_type = attributes[:'payment_transaction_type']
       end
 
-      if attributes.key?(:'processor_transaction_id')
-        self.processor_transaction_id = attributes[:'processor_transaction_id']
-      end
-
       if attributes.key?(:'processor_reference')
         self.processor_reference = attributes[:'processor_reference']
       end
@@ -309,7 +301,6 @@ module Amos
           payment_method_id == o.payment_method_id &&
           payment_transaction_id == o.payment_transaction_id &&
           payment_transaction_type == o.payment_transaction_type &&
-          processor_transaction_id == o.processor_transaction_id &&
           processor_reference == o.processor_reference &&
           network_transaction_id == o.network_transaction_id &&
           transaction_link_id == o.transaction_link_id &&
@@ -327,7 +318,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, organization_id, approved, avs_check, avs_check_message, cvc_check, cvc_check_message, external_reference, metadata, payment_method_id, payment_transaction_id, payment_transaction_type, processor_transaction_id, processor_reference, network_transaction_id, transaction_link_id, transaction_type, created_at, updated_at].hash
+      [id, account_id, organization_id, approved, avs_check, avs_check_message, cvc_check, cvc_check_message, external_reference, metadata, payment_method_id, payment_transaction_id, payment_transaction_type, processor_reference, network_transaction_id, transaction_link_id, transaction_type, created_at, updated_at].hash
     end
 
     # Builds the object from hash

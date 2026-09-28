@@ -19,6 +19,72 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Create a payment method
+    # @param create_payment_method_request [CreatePaymentMethodRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PaymentMethod]
+    def create_payment_method(create_payment_method_request, opts = {})
+      data, _status_code, _headers = create_payment_method_with_http_info(create_payment_method_request, opts)
+      data
+    end
+
+    # Create a payment method
+    # @param create_payment_method_request [CreatePaymentMethodRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
+    def create_payment_method_with_http_info(create_payment_method_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.create_payment_method ...'
+      end
+      # verify the required parameter 'create_payment_method_request' is set
+      if @api_client.config.client_side_validation && create_payment_method_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_payment_method_request' when calling PaymentMethodsApi.create_payment_method"
+      end
+      # resource path
+      local_var_path = '/payment_methods'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_payment_method_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaymentMethod'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"PaymentMethodsApi.create_payment_method",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PaymentMethodsApi#create_payment_method\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a payment method
     # @param id [String] 
     # @param [Hash] opts the optional parameters

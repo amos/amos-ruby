@@ -25,9 +25,6 @@ module Amos
 
     attr_accessor :active
 
-    # Additional metadata key-value pairs
-    attr_accessor :metadata
-
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -40,7 +37,6 @@ module Amos
         :'name' => :'name',
         :'description' => :'description',
         :'active' => :'active',
-        :'metadata' => :'metadata',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -64,7 +60,6 @@ module Amos
         :'name' => :'String',
         :'description' => :'String',
         :'active' => :'Boolean',
-        :'metadata' => :'Hash<String, String>',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -115,12 +110,6 @@ module Amos
         self.active = attributes[:'active']
       end
 
-      if attributes.key?(:'metadata')
-        if (value = attributes[:'metadata']).is_a?(Hash)
-          self.metadata = value
-        end
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -155,7 +144,6 @@ module Amos
           name == o.name &&
           description == o.description &&
           active == o.active &&
-          metadata == o.metadata &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -169,7 +157,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, name, description, active, metadata, created_at, updated_at].hash
+      [id, account_id, name, description, active, created_at, updated_at].hash
     end
 
     # Builds the object from hash

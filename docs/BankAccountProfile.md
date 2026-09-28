@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **account_holder_name** | **String** |  | [optional] |
+| **account_holder_name** | **String** | Account holder name. Letters, spaces, hyphens, apostrophes, and periods only.  | [optional] |
 | **account_holder_type** | **String** |  | [optional] |
 | **account_type** | **String** |  | [optional] |
 | **bank_name** | **String** |  | [optional] |

@@ -17,9 +17,13 @@ module Amos
   class Subscription < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :account_id
-
     attr_accessor :amount
+
+    attr_accessor :cancel_at
+
+    attr_accessor :cancel_at_period_end
+
+    attr_accessor :cancelled_at
 
     attr_accessor :currency
 
@@ -35,6 +39,11 @@ module Amos
 
     attr_accessor :interval_count
 
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
+
+    attr_accessor :start_at
+
     attr_accessor :state
 
     attr_accessor :cycles_completed
@@ -46,8 +55,6 @@ module Amos
     attr_accessor :current_billing_period_start
 
     attr_accessor :current_billing_period_end
-
-    attr_accessor :trial_ends_at
 
     attr_accessor :created_at
 
@@ -79,8 +86,10 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
-        :'account_id' => :'account_id',
         :'amount' => :'amount',
+        :'cancel_at' => :'cancel_at',
+        :'cancel_at_period_end' => :'cancel_at_period_end',
+        :'cancelled_at' => :'cancelled_at',
         :'currency' => :'currency',
         :'cycles' => :'cycles',
         :'subscription_plan_id' => :'subscription_plan_id',
@@ -88,13 +97,14 @@ module Amos
         :'payment_method_id' => :'payment_method_id',
         :'interval' => :'interval',
         :'interval_count' => :'interval_count',
+        :'metadata' => :'metadata',
+        :'start_at' => :'start_at',
         :'state' => :'state',
         :'cycles_completed' => :'cycles_completed',
         :'skip_billing_periods_remaining' => :'skip_billing_periods_remaining',
         :'skipped_billing_periods_count' => :'skipped_billing_periods_count',
         :'current_billing_period_start' => :'current_billing_period_start',
         :'current_billing_period_end' => :'current_billing_period_end',
-        :'trial_ends_at' => :'trial_ends_at',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -114,8 +124,10 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'account_id' => :'String',
         :'amount' => :'Integer',
+        :'cancel_at' => :'Time',
+        :'cancel_at_period_end' => :'Boolean',
+        :'cancelled_at' => :'Time',
         :'currency' => :'String',
         :'cycles' => :'Integer',
         :'subscription_plan_id' => :'String',
@@ -123,13 +135,14 @@ module Amos
         :'payment_method_id' => :'String',
         :'interval' => :'SubscriptionIntervalType',
         :'interval_count' => :'Integer',
+        :'metadata' => :'Hash<String, String>',
+        :'start_at' => :'Time',
         :'state' => :'String',
         :'cycles_completed' => :'Integer',
         :'skip_billing_periods_remaining' => :'Integer',
         :'skipped_billing_periods_count' => :'Integer',
         :'current_billing_period_start' => :'Time',
         :'current_billing_period_end' => :'Time',
-        :'trial_ends_at' => :'Time',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -138,7 +151,9 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'trial_ends_at',
+        :'cancel_at',
+        :'cancelled_at',
+        :'start_at',
       ])
     end
 
@@ -165,12 +180,20 @@ module Amos
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
-      end
-
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'cancel_at')
+        self.cancel_at = attributes[:'cancel_at']
+      end
+
+      if attributes.key?(:'cancel_at_period_end')
+        self.cancel_at_period_end = attributes[:'cancel_at_period_end']
+      end
+
+      if attributes.key?(:'cancelled_at')
+        self.cancelled_at = attributes[:'cancelled_at']
       end
 
       if attributes.key?(:'currency')
@@ -201,6 +224,16 @@ module Amos
         self.interval_count = attributes[:'interval_count']
       end
 
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
+      end
+
+      if attributes.key?(:'start_at')
+        self.start_at = attributes[:'start_at']
+      end
+
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
@@ -223,10 +256,6 @@ module Amos
 
       if attributes.key?(:'current_billing_period_end')
         self.current_billing_period_end = attributes[:'current_billing_period_end']
-      end
-
-      if attributes.key?(:'trial_ends_at')
-        self.trial_ends_at = attributes[:'trial_ends_at']
       end
 
       if attributes.key?(:'created_at')
@@ -271,8 +300,10 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          account_id == o.account_id &&
           amount == o.amount &&
+          cancel_at == o.cancel_at &&
+          cancel_at_period_end == o.cancel_at_period_end &&
+          cancelled_at == o.cancelled_at &&
           currency == o.currency &&
           cycles == o.cycles &&
           subscription_plan_id == o.subscription_plan_id &&
@@ -280,13 +311,14 @@ module Amos
           payment_method_id == o.payment_method_id &&
           interval == o.interval &&
           interval_count == o.interval_count &&
+          metadata == o.metadata &&
+          start_at == o.start_at &&
           state == o.state &&
           cycles_completed == o.cycles_completed &&
           skip_billing_periods_remaining == o.skip_billing_periods_remaining &&
           skipped_billing_periods_count == o.skipped_billing_periods_count &&
           current_billing_period_start == o.current_billing_period_start &&
           current_billing_period_end == o.current_billing_period_end &&
-          trial_ends_at == o.trial_ends_at &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -300,7 +332,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, currency, cycles, subscription_plan_id, customer_id, payment_method_id, interval, interval_count, state, cycles_completed, skip_billing_periods_remaining, skipped_billing_periods_count, current_billing_period_start, current_billing_period_end, trial_ends_at, created_at, updated_at].hash
+      [id, amount, cancel_at, cancel_at_period_end, cancelled_at, currency, cycles, subscription_plan_id, customer_id, payment_method_id, interval, interval_count, metadata, start_at, state, cycles_completed, skip_billing_periods_remaining, skipped_billing_periods_count, current_billing_period_start, current_billing_period_end, created_at, updated_at].hash
     end
 
     # Builds the object from hash

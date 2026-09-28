@@ -73,7 +73,7 @@ module Amos
         :return_type => return_type
       )
 
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: RefundsApi#cancel_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

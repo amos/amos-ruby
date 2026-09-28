@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **active** | **Boolean** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
 | **processor_id** | **String** |  | [optional] |
 | **worldpay_mid** | **String** |  | [optional] |
@@ -21,7 +20,6 @@ require 'amos'
 instance = Amos::Account.new(
   id: null,
   name: null,
-  active: null,
   merchant_id: null,
   processor_id: null,
   worldpay_mid: null,

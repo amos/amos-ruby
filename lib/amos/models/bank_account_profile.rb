@@ -15,6 +15,7 @@ require 'time'
 
 module Amos
   class BankAccountProfile < ApiModelBase
+    # Account holder name. Letters, spaces, hyphens, apostrophes, and periods only. 
     attr_accessor :account_holder_name
 
     attr_accessor :account_holder_type

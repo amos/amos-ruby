@@ -20,6 +20,7 @@ module Amos
       @api_client = api_client
     end
     # Create an external account
+    # Creates an organization-scoped external account. X-Account-Id is ignored if sent. 
     # @param create_external_account_request [CreateExternalAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ExternalAccount]
@@ -29,6 +30,7 @@ module Amos
     end
 
     # Create an external account
+    # Creates an organization-scoped external account. X-Account-Id is ignored if sent. 
     # @param create_external_account_request [CreateExternalAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExternalAccount, Integer, Hash)>] ExternalAccount data, response status code and response headers
@@ -86,6 +88,7 @@ module Amos
     end
 
     # Retrieve an external account by ID
+    # Retrieves an organization-scoped external account. X-Account-Id is ignored if sent. 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [ExternalAccount]
@@ -95,6 +98,7 @@ module Amos
     end
 
     # Retrieve an external account by ID
+    # Retrieves an organization-scoped external account. X-Account-Id is ignored if sent. 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExternalAccount, Integer, Hash)>] ExternalAccount data, response status code and response headers
@@ -147,6 +151,7 @@ module Amos
     end
 
     # List all external accounts
+    # Lists organization-scoped external accounts. X-Account-Id is ignored if sent. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
@@ -157,6 +162,7 @@ module Amos
     end
 
     # List all external accounts
+    # Lists organization-scoped external accounts. X-Account-Id is ignored if sent. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.

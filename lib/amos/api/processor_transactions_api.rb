@@ -19,13 +19,79 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Retrieve a processor transaction by ID
+    # Retrieves an organization-scoped processor transaction. X-Account-Id is ignored if sent. Returns 404 if the transaction belongs to another organization. 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ProcessorTransaction]
+    def get_processor_transaction(id, opts = {})
+      data, _status_code, _headers = get_processor_transaction_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a processor transaction by ID
+    # Retrieves an organization-scoped processor transaction. X-Account-Id is ignored if sent. Returns 404 if the transaction belongs to another organization. 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ProcessorTransaction, Integer, Hash)>] ProcessorTransaction data, response status code and response headers
+    def get_processor_transaction_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProcessorTransactionsApi.get_processor_transaction ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProcessorTransactionsApi.get_processor_transaction"
+      end
+      # resource path
+      local_var_path = '/processor_transactions/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ProcessorTransaction'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"ProcessorTransactionsApi.get_processor_transaction",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProcessorTransactionsApi#get_processor_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List all processor transactions
+    # Lists organization-scoped processor transactions across all accounts in the organization. X-Account-Id is ignored if sent; use the account_id query parameter to filter to a single account. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :account_id The ID of the account to filter by
     # @option opts [String] :payment_intent_id The ID of the payment intent to filter by
     # @option opts [String] :payment_method_id The ID of the payment method to filter by
     # @option opts [String] :payment_transaction_id The ID of the payment transaction to filter by
+    # @option opts [String] :original_transaction_id 
     # @return [ListProcessorTransactions]
     def list_processor_transactions(opts = {})
       data, _status_code, _headers = list_processor_transactions_with_http_info(opts)
@@ -33,12 +99,15 @@ module Amos
     end
 
     # List all processor transactions
+    # Lists organization-scoped processor transactions across all accounts in the organization. X-Account-Id is ignored if sent; use the account_id query parameter to filter to a single account. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :account_id The ID of the account to filter by
     # @option opts [String] :payment_intent_id The ID of the payment intent to filter by
     # @option opts [String] :payment_method_id The ID of the payment method to filter by
     # @option opts [String] :payment_transaction_id The ID of the payment transaction to filter by
+    # @option opts [String] :original_transaction_id 
     # @return [Array<(ListProcessorTransactions, Integer, Hash)>] ListProcessorTransactions data, response status code and response headers
     def list_processor_transactions_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -51,9 +120,11 @@ module Amos
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'account_id'] = opts[:'account_id'] if !opts[:'account_id'].nil?
       query_params[:'payment_intent_id'] = opts[:'payment_intent_id'] if !opts[:'payment_intent_id'].nil?
       query_params[:'payment_method_id'] = opts[:'payment_method_id'] if !opts[:'payment_method_id'].nil?
       query_params[:'payment_transaction_id'] = opts[:'payment_transaction_id'] if !opts[:'payment_transaction_id'].nil?
+      query_params[:'original_transaction_id'] = opts[:'original_transaction_id'] if !opts[:'original_transaction_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

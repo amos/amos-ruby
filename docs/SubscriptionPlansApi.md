@@ -178,7 +178,8 @@ end
 api_instance = Amos::SubscriptionPlansApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  name: 'name_example' # String | Exact name match (case-insensitive). For substring search, use `q`.
 }
 
 begin
@@ -214,6 +215,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **name** | **String** | Exact name match (case-insensitive). For substring search, use &#x60;q&#x60;. | [optional] |
 
 ### Return type
 

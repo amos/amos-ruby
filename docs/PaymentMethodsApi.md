@@ -4,8 +4,81 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**create_payment_method**](PaymentMethodsApi.md#create_payment_method) | **POST** /payment_methods | Create a payment method |
 | [**get_payment_method**](PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method |
 | [**list_payment_methods**](PaymentMethodsApi.md#list_payment_methods) | **GET** /payment_methods | List all payment methods |
+
+
+## create_payment_method
+
+> <PaymentMethod> create_payment_method(create_payment_method_request)
+
+Create a payment method
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Amos::PaymentMethodsApi.new
+create_payment_method_request = Amos::CreatePaymentMethodRequest.new({payment_method: Amos::CreatePaymentMethodInput.new}) # CreatePaymentMethodRequest | 
+
+begin
+  # Create a payment method
+  result = api_instance.create_payment_method(create_payment_method_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling PaymentMethodsApi->create_payment_method: #{e}"
+end
+```
+
+#### Using the create_payment_method_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaymentMethod>, Integer, Hash)> create_payment_method_with_http_info(create_payment_method_request)
+
+```ruby
+begin
+  # Create a payment method
+  data, status_code, headers = api_instance.create_payment_method_with_http_info(create_payment_method_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaymentMethod>
+rescue Amos::ApiError => e
+  puts "Error when calling PaymentMethodsApi->create_payment_method_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_payment_method_request** | [**CreatePaymentMethodRequest**](CreatePaymentMethodRequest.md) |  |  |
+
+### Return type
+
+[**PaymentMethod**](PaymentMethod.md)
+
+### Authorization
+
+[X-Api-Key](../README.md#X-Api-Key), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## get_payment_method

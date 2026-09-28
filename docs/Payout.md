@@ -15,6 +15,7 @@
 | **organization_id** | **String** |  | [optional] |
 | **prefix** | **String** |  | [optional] |
 | **public_id** | **String** |  | [optional] |
+| **payout_batch_id** | **String** |  | [optional] |
 | **state** | [**PayoutStateType**](PayoutStateType.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -36,6 +37,7 @@ instance = Amos::Payout.new(
   organization_id: null,
   prefix: null,
   public_id: null,
+  payout_batch_id: null,
   state: null,
   created_at: null,
   updated_at: null

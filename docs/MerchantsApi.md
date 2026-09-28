@@ -6,6 +6,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 | ------ | ------------ | ----------- |
 | [**get_merchant**](MerchantsApi.md#get_merchant) | **GET** /merchants/{id} | Retrieve a merchant by ID |
 | [**list_merchants**](MerchantsApi.md#list_merchants) | **GET** /merchants | List all merchants |
+| [**update_merchant**](MerchantsApi.md#update_merchant) | **PATCH** /merchants/{id} | Update a merchant by ID |
 
 
 ## get_merchant
@@ -105,7 +106,10 @@ end
 api_instance = Amos::MerchantsApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  dba_name: 'dba_name_example', # String | 
+  legal_entity_id: 'legal_entity_id_example', # String | 
+  legal_name: 'legal_name_example' # String | 
 }
 
 begin
@@ -141,6 +145,9 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **dba_name** | **String** |  | [optional] |
+| **legal_entity_id** | **String** |  | [optional] |
+| **legal_name** | **String** |  | [optional] |
 
 ### Return type
 
@@ -153,5 +160,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_merchant
+
+> <Merchant> update_merchant(id, update_merchant_request)
+
+Update a merchant by ID
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Amos::MerchantsApi.new
+id = 'id_example' # String | The ID of the merchant to update
+update_merchant_request = Amos::UpdateMerchantRequest.new({merchant: Amos::UpdateMerchantInput.new}) # UpdateMerchantRequest | 
+
+begin
+  # Update a merchant by ID
+  result = api_instance.update_merchant(id, update_merchant_request)
+  p result
+rescue Amos::ApiError => e
+  puts "Error when calling MerchantsApi->update_merchant: #{e}"
+end
+```
+
+#### Using the update_merchant_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Merchant>, Integer, Hash)> update_merchant_with_http_info(id, update_merchant_request)
+
+```ruby
+begin
+  # Update a merchant by ID
+  data, status_code, headers = api_instance.update_merchant_with_http_info(id, update_merchant_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Merchant>
+rescue Amos::ApiError => e
+  puts "Error when calling MerchantsApi->update_merchant_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the merchant to update |  |
+| **update_merchant_request** | [**UpdateMerchantRequest**](UpdateMerchantRequest.md) |  |  |
+
+### Return type
+
+[**Merchant**](Merchant.md)
+
+### Authorization
+
+[X-Api-Key](../README.md#X-Api-Key), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

@@ -84,6 +84,9 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :dba_name 
+    # @option opts [String] :legal_entity_id 
+    # @option opts [String] :legal_name 
     # @return [ListMerchants]
     def list_merchants(opts = {})
       data, _status_code, _headers = list_merchants_with_http_info(opts)
@@ -94,6 +97,9 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :dba_name 
+    # @option opts [String] :legal_entity_id 
+    # @option opts [String] :legal_name 
     # @return [Array<(ListMerchants, Integer, Hash)>] ListMerchants data, response status code and response headers
     def list_merchants_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -106,6 +112,9 @@ module Amos
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'dba_name'] = opts[:'dba_name'] if !opts[:'dba_name'].nil?
+      query_params[:'legal_entity_id'] = opts[:'legal_entity_id'] if !opts[:'legal_entity_id'].nil?
+      query_params[:'legal_name'] = opts[:'legal_name'] if !opts[:'legal_name'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -137,6 +146,78 @@ module Amos
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MerchantsApi#list_merchants\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a merchant by ID
+    # @param id [String] The ID of the merchant to update
+    # @param update_merchant_request [UpdateMerchantRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Merchant]
+    def update_merchant(id, update_merchant_request, opts = {})
+      data, _status_code, _headers = update_merchant_with_http_info(id, update_merchant_request, opts)
+      data
+    end
+
+    # Update a merchant by ID
+    # @param id [String] The ID of the merchant to update
+    # @param update_merchant_request [UpdateMerchantRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Merchant, Integer, Hash)>] Merchant data, response status code and response headers
+    def update_merchant_with_http_info(id, update_merchant_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MerchantsApi.update_merchant ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling MerchantsApi.update_merchant"
+      end
+      # verify the required parameter 'update_merchant_request' is set
+      if @api_client.config.client_side_validation && update_merchant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_merchant_request' when calling MerchantsApi.update_merchant"
+      end
+      # resource path
+      local_var_path = '/merchants/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_merchant_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Merchant'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"MerchantsApi.update_merchant",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MerchantsApi#update_merchant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

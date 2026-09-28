@@ -107,7 +107,8 @@ api_instance = Amos::ChargesApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
-  payment_intent_id: 'payment_intent_id_example' # String | The ID of the payment intent to filter by
+  payment_intent_id: 'payment_intent_id_example', # String | The ID of the payment intent to filter by
+  customer_id: 'customer_id_example' # String | The customer ID to filter by
 }
 
 begin
@@ -144,6 +145,7 @@ end
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 | **payment_intent_id** | **String** | The ID of the payment intent to filter by | [optional] |
+| **customer_id** | **String** | The customer ID to filter by | [optional] |
 
 ### Return type
 

@@ -38,6 +38,8 @@ module Amos
 
     attr_accessor :public_id
 
+    attr_accessor :payout_batch_id
+
     attr_accessor :state
 
     attr_accessor :created_at
@@ -80,6 +82,7 @@ module Amos
         :'organization_id' => :'organization_id',
         :'prefix' => :'prefix',
         :'public_id' => :'public_id',
+        :'payout_batch_id' => :'payout_batch_id',
         :'state' => :'state',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -110,6 +113,7 @@ module Amos
         :'organization_id' => :'String',
         :'prefix' => :'String',
         :'public_id' => :'String',
+        :'payout_batch_id' => :'String',
         :'state' => :'PayoutStateType',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -120,6 +124,7 @@ module Amos
     def self.openapi_nullable
       Set.new([
         :'addenda',
+        :'payout_batch_id',
       ])
     end
 
@@ -188,6 +193,10 @@ module Amos
         self.public_id = attributes[:'public_id']
       end
 
+      if attributes.key?(:'payout_batch_id')
+        self.payout_batch_id = attributes[:'payout_batch_id']
+      end
+
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
@@ -232,6 +241,7 @@ module Amos
           organization_id == o.organization_id &&
           prefix == o.prefix &&
           public_id == o.public_id &&
+          payout_batch_id == o.payout_batch_id &&
           state == o.state &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -246,7 +256,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, addenda, external_account_id, amount, currency, direction, metadata, organization_id, prefix, public_id, state, created_at, updated_at].hash
+      [id, account_id, addenda, external_account_id, amount, currency, direction, metadata, organization_id, prefix, public_id, payout_batch_id, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash

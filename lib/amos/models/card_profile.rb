@@ -21,6 +21,7 @@ module Amos
 
     attr_accessor :brand
 
+    # Cardholder name. Letters, spaces, hyphens, apostrophes, and periods only. 
     attr_accessor :card_holder_name
 
     attr_accessor :cvc_check

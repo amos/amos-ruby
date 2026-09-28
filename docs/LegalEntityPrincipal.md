@@ -19,6 +19,8 @@
 | **postal_code** | **String** |  | [optional] |
 | **contact_phone** | **String** |  | [optional] |
 | **tax_id_last4** | **String** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -40,7 +42,9 @@ instance = Amos::LegalEntityPrincipal.new(
   country: null,
   postal_code: null,
   contact_phone: null,
-  tax_id_last4: null
+  tax_id_last4: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

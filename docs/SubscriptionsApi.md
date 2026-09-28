@@ -253,7 +253,8 @@ end
 api_instance = Amos::SubscriptionsApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  state: 'state_example' # String | 
 }
 
 begin
@@ -289,6 +290,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **state** | **String** |  | [optional] |
 
 ### Return type
 

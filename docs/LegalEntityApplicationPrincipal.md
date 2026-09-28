@@ -20,6 +20,8 @@
 | **contact_phone** | **String** |  | [optional] |
 | **tax_id_last4** | **String** |  | [optional] |
 | **title** | **String** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -42,7 +44,9 @@ instance = Amos::LegalEntityApplicationPrincipal.new(
   stake_percent: null,
   contact_phone: null,
   tax_id_last4: null,
-  title: null
+  title: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

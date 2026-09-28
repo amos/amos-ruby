@@ -10,6 +10,8 @@
 | **purpose** | **String** |  |  |
 | **state** | **String** |  |  |
 | **upload** | [**FileUploadConfiguration**](FileUploadConfiguration.md) |  |  |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -22,7 +24,9 @@ instance = Amos::FileUpload.new(
   file_name: null,
   purpose: null,
   state: null,
-  upload: null
+  upload: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

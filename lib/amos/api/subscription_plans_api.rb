@@ -150,6 +150,7 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :name Exact name match (case-insensitive). For substring search, use &#x60;q&#x60;.
     # @return [ListSubscriptionPlans]
     def list_subscription_plans(opts = {})
       data, _status_code, _headers = list_subscription_plans_with_http_info(opts)
@@ -160,6 +161,7 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :name Exact name match (case-insensitive). For substring search, use &#x60;q&#x60;.
     # @return [Array<(ListSubscriptionPlans, Integer, Hash)>] ListSubscriptionPlans data, response status code and response headers
     def list_subscription_plans_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -172,6 +174,7 @@ module Amos
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

@@ -19,6 +19,9 @@ module Amos
 
     attr_accessor :legal_name
 
+    attr_accessor :organization_id
+
+    # Set when the application is approved and the legal entity is created.
     attr_accessor :legal_entity_id
 
     attr_accessor :entity_type
@@ -86,6 +89,7 @@ module Amos
       {
         :'id' => :'id',
         :'legal_name' => :'legal_name',
+        :'organization_id' => :'organization_id',
         :'legal_entity_id' => :'legal_entity_id',
         :'entity_type' => :'entity_type',
         :'ownership_type' => :'ownership_type',
@@ -124,6 +128,7 @@ module Amos
       {
         :'id' => :'String',
         :'legal_name' => :'String',
+        :'organization_id' => :'String',
         :'legal_entity_id' => :'String',
         :'entity_type' => :'LegalEntityEntityType',
         :'ownership_type' => :'LegalEntityOwnershipType',
@@ -135,7 +140,7 @@ module Amos
         :'business_state' => :'String',
         :'business_postal_code' => :'String',
         :'business_country' => :'String',
-        :'state' => :'String',
+        :'state' => :'LegalEntityApplicationStateType',
         :'tax_id_last4' => :'String',
         :'approved_at' => :'Time',
         :'denied_at' => :'Time',
@@ -150,6 +155,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'legal_entity_id',
         :'business_address_line2',
         :'approved_at',
         :'denied_at',
@@ -183,6 +189,10 @@ module Amos
 
       if attributes.key?(:'legal_name')
         self.legal_name = attributes[:'legal_name']
+      end
+
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
       end
 
       if attributes.key?(:'legal_entity_id')
@@ -290,6 +300,7 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           legal_name == o.legal_name &&
+          organization_id == o.organization_id &&
           legal_entity_id == o.legal_entity_id &&
           entity_type == o.entity_type &&
           ownership_type == o.ownership_type &&
@@ -321,7 +332,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_name, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, approved_at, denied_at, needs_information_at, decision_reason, created_at, updated_at, requirements].hash
+      [id, legal_name, organization_id, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, approved_at, denied_at, needs_information_at, decision_reason, created_at, updated_at, requirements].hash
     end
 
     # Builds the object from hash

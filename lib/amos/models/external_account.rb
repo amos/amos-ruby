@@ -17,7 +17,7 @@ module Amos
   class ExternalAccount < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :account_id
+    attr_accessor :organization_id
 
     # Additional metadata key-value pairs
     attr_accessor :metadata
@@ -60,7 +60,7 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
-        :'account_id' => :'account_id',
+        :'organization_id' => :'organization_id',
         :'metadata' => :'metadata',
         :'type' => :'type',
         :'external_bank_account_profile' => :'external_bank_account_profile',
@@ -85,7 +85,7 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'account_id' => :'String',
+        :'organization_id' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'type' => :'String',
         :'external_bank_account_profile' => :'BankAccountProfile',
@@ -125,8 +125,8 @@ module Amos
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
       end
 
       if attributes.key?(:'metadata')
@@ -193,7 +193,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          account_id == o.account_id &&
+          organization_id == o.organization_id &&
           metadata == o.metadata &&
           type == o.type &&
           external_bank_account_profile == o.external_bank_account_profile &&
@@ -212,7 +212,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, metadata, type, external_bank_account_profile, external_card_profile, external_billing_address, created_at, updated_at].hash
+      [id, organization_id, metadata, type, external_bank_account_profile, external_card_profile, external_billing_address, created_at, updated_at].hash
     end
 
     # Builds the object from hash

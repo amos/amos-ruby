@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Amos
-  # Confirm an embedded intent with a bank account. When ACH verification is required for the intent amount, include plaid credentials and omit bank_account_profile_attributes; routing and account numbers are filled server-side from Plaid Auth. Otherwise provide encrypted_account_number and routing_number on bank_account_profile_attributes.
+  # Confirm an embedded intent with a bank account. When ACH verification is required for the intent amount, include plaid credentials and omit bank_account_profile_attributes; routing and account numbers are filled server-side from Plaid Auth. Otherwise provide routing_number and account_number on bank_account_profile_attributes.
   class EmbedConfirmBankAccountPaymentMethodInput < ApiModelBase
     attr_accessor :type
 

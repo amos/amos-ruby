@@ -29,6 +29,10 @@ module Amos
 
     attr_accessor :waived_at
 
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,7 +42,9 @@ module Amos
         :'message' => :'message',
         :'reason_code' => :'reason_code',
         :'satisfied_at' => :'satisfied_at',
-        :'waived_at' => :'waived_at'
+        :'waived_at' => :'waived_at',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -61,7 +67,9 @@ module Amos
         :'message' => :'String',
         :'reason_code' => :'String',
         :'satisfied_at' => :'Time',
-        :'waived_at' => :'Time'
+        :'waived_at' => :'Time',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -70,7 +78,7 @@ module Amos
       Set.new([
         :'reason_code',
         :'satisfied_at',
-        :'waived_at'
+        :'waived_at',
       ])
     end
 
@@ -120,6 +128,14 @@ module Amos
       if attributes.key?(:'waived_at')
         self.waived_at = attributes[:'waived_at']
       end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -148,7 +164,9 @@ module Amos
           message == o.message &&
           reason_code == o.reason_code &&
           satisfied_at == o.satisfied_at &&
-          waived_at == o.waived_at
+          waived_at == o.waived_at &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -160,7 +178,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, requirement_type, state, message, reason_code, satisfied_at, waived_at].hash
+      [id, requirement_type, state, message, reason_code, satisfied_at, waived_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

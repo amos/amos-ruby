@@ -19,8 +19,6 @@ module Amos
 
     attr_accessor :name
 
-    attr_accessor :active
-
     attr_accessor :merchant_id
 
     attr_accessor :processor_id
@@ -36,7 +34,6 @@ module Amos
       {
         :'id' => :'id',
         :'name' => :'name',
-        :'active' => :'active',
         :'merchant_id' => :'merchant_id',
         :'processor_id' => :'processor_id',
         :'worldpay_mid' => :'worldpay_mid',
@@ -60,7 +57,6 @@ module Amos
       {
         :'id' => :'String',
         :'name' => :'String',
-        :'active' => :'Boolean',
         :'merchant_id' => :'String',
         :'processor_id' => :'String',
         :'worldpay_mid' => :'String',
@@ -100,10 +96,6 @@ module Amos
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'active')
-        self.active = attributes[:'active']
       end
 
       if attributes.key?(:'merchant_id')
@@ -149,7 +141,6 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
-          active == o.active &&
           merchant_id == o.merchant_id &&
           processor_id == o.processor_id &&
           worldpay_mid == o.worldpay_mid &&
@@ -166,7 +157,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, active, merchant_id, processor_id, worldpay_mid, created_at, updated_at].hash
+      [id, name, merchant_id, processor_id, worldpay_mid, created_at, updated_at].hash
     end
 
     # Builds the object from hash

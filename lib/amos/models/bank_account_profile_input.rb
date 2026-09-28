@@ -15,6 +15,7 @@ require 'time'
 
 module Amos
   class BankAccountProfileInput < ApiModelBase
+    # Account holder name. Letters, spaces, hyphens, apostrophes, and periods only. 
     attr_accessor :account_holder_name
 
     attr_accessor :account_holder_type
@@ -25,7 +26,8 @@ module Amos
 
     attr_accessor :currency
 
-    attr_accessor :encrypted_account_number
+    # Bank account number. Stored encrypted at rest and not returned in API responses. 
+    attr_accessor :account_number
 
     attr_accessor :routing_number
 
@@ -37,7 +39,7 @@ module Amos
         :'account_type' => :'account_type',
         :'bank_name' => :'bank_name',
         :'currency' => :'currency',
-        :'encrypted_account_number' => :'encrypted_account_number',
+        :'account_number' => :'account_number',
         :'routing_number' => :'routing_number'
       }
     end
@@ -60,7 +62,7 @@ module Amos
         :'account_type' => :'String',
         :'bank_name' => :'String',
         :'currency' => :'String',
-        :'encrypted_account_number' => :'String',
+        :'account_number' => :'String',
         :'routing_number' => :'String'
       }
     end
@@ -110,8 +112,8 @@ module Amos
         self.currency = attributes[:'currency']
       end
 
-      if attributes.key?(:'encrypted_account_number')
-        self.encrypted_account_number = attributes[:'encrypted_account_number']
+      if attributes.key?(:'account_number')
+        self.account_number = attributes[:'account_number']
       end
 
       if attributes.key?(:'routing_number')
@@ -144,7 +146,7 @@ module Amos
           account_type == o.account_type &&
           bank_name == o.bank_name &&
           currency == o.currency &&
-          encrypted_account_number == o.encrypted_account_number &&
+          account_number == o.account_number &&
           routing_number == o.routing_number
     end
 
@@ -157,7 +159,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_holder_name, account_holder_type, account_type, bank_name, currency, encrypted_account_number, routing_number].hash
+      [account_holder_name, account_holder_type, account_type, bank_name, currency, account_number, routing_number].hash
     end
 
     # Builds the object from hash

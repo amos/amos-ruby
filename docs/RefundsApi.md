@@ -4,7 +4,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**cancel_refund**](RefundsApi.md#cancel_refund) | **PUT** /refunds/{id}/cancel | Cancel a refund |
+| [**cancel_refund**](RefundsApi.md#cancel_refund) | **POST** /refunds/{id}/cancel | Cancel a refund |
 | [**create_refund**](RefundsApi.md#create_refund) | **POST** /refunds | Create a refund |
 | [**get_refund**](RefundsApi.md#get_refund) | **GET** /refunds/{id} | Retrieve a refund by ID |
 | [**list_refunds**](RefundsApi.md#list_refunds) | **GET** /refunds | List all refunds |

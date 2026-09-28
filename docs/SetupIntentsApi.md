@@ -84,7 +84,7 @@ end
 
 ## create_setup_intent
 
-> <EmbedToken> create_setup_intent(create_setup_intent_request)
+> <EmbedToken> create_setup_intent(x_render_token, create_setup_intent_request)
 
 Create a new setup intent
 
@@ -107,11 +107,12 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::SetupIntentsApi.new
+x_render_token = 'x_render_token_example' # String | Render template JWT required to create a payment or setup intent.
 create_setup_intent_request = Amos::CreateSetupIntentRequest.new({setup_intent: Amos::CreateSetupIntentInput.new}) # CreateSetupIntentRequest | 
 
 begin
   # Create a new setup intent
-  result = api_instance.create_setup_intent(create_setup_intent_request)
+  result = api_instance.create_setup_intent(x_render_token, create_setup_intent_request)
   p result
 rescue Amos::ApiError => e
   puts "Error when calling SetupIntentsApi->create_setup_intent: #{e}"
@@ -122,12 +123,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EmbedToken>, Integer, Hash)> create_setup_intent_with_http_info(create_setup_intent_request)
+> <Array(<EmbedToken>, Integer, Hash)> create_setup_intent_with_http_info(x_render_token, create_setup_intent_request)
 
 ```ruby
 begin
   # Create a new setup intent
-  data, status_code, headers = api_instance.create_setup_intent_with_http_info(create_setup_intent_request)
+  data, status_code, headers = api_instance.create_setup_intent_with_http_info(x_render_token, create_setup_intent_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <EmbedToken>
@@ -140,6 +141,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **x_render_token** | **String** | Render template JWT required to create a payment or setup intent. |  |
 | **create_setup_intent_request** | [**CreateSetupIntentRequest**](CreateSetupIntentRequest.md) |  |  |
 
 ### Return type

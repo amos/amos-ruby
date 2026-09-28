@@ -56,6 +56,10 @@ module Amos
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -100,7 +104,9 @@ module Amos
         :'title' => :'title',
         :'cancel_url' => :'cancel_url',
         :'allowed_payment_methods' => :'allowed_payment_methods',
-        :'metadata' => :'metadata'
+        :'metadata' => :'metadata',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -136,7 +142,9 @@ module Amos
         :'title' => :'String',
         :'cancel_url' => :'String',
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
-        :'metadata' => :'Hash<String, String>'
+        :'metadata' => :'Hash<String, String>',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -251,6 +259,14 @@ module Amos
           self.metadata = value
         end
       end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -292,7 +308,9 @@ module Amos
           title == o.title &&
           cancel_url == o.cancel_url &&
           allowed_payment_methods == o.allowed_payment_methods &&
-          metadata == o.metadata
+          metadata == o.metadata &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -304,7 +322,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, organization_slug, account_id, slug, active, amount_type, amount, image_url, minimum_amount, maximum_amount, suggested_amounts, currency, description, statement_descriptor, success_url, title, cancel_url, allowed_payment_methods, metadata].hash
+      [id, organization_id, organization_slug, account_id, slug, active, amount_type, amount, image_url, minimum_amount, maximum_amount, suggested_amounts, currency, description, statement_descriptor, success_url, title, cancel_url, allowed_payment_methods, metadata, created_at, updated_at].hash
     end
 
     # Builds the object from hash

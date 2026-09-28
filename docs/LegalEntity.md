@@ -20,6 +20,7 @@
 | **business_country** | **String** |  | [optional] |
 | **tax_id_last4** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -42,7 +43,8 @@ instance = Amos::LegalEntity.new(
   business_postal_code: null,
   business_country: null,
   tax_id_last4: null,
-  created_at: null
+  created_at: null,
+  updated_at: null
 )
 ```
 

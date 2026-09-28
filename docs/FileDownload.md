@@ -10,6 +10,8 @@
 | **purpose** | **String** |  |  |
 | **state** | **String** |  |  |
 | **download** | [**FileDownloadConfiguration**](FileDownloadConfiguration.md) |  |  |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -22,7 +24,9 @@ instance = Amos::FileDownload.new(
   file_name: null,
   purpose: null,
   state: null,
-  download: null
+  download: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

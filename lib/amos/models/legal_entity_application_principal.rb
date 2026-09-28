@@ -47,6 +47,10 @@ module Amos
 
     attr_accessor :title
 
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -65,7 +69,9 @@ module Amos
         :'stake_percent' => :'stake_percent',
         :'contact_phone' => :'contact_phone',
         :'tax_id_last4' => :'tax_id_last4',
-        :'title' => :'title'
+        :'title' => :'title',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -97,7 +103,9 @@ module Amos
         :'stake_percent' => :'Integer',
         :'contact_phone' => :'String',
         :'tax_id_last4' => :'String',
-        :'title' => :'String'
+        :'title' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -189,6 +197,14 @@ module Amos
       if attributes.key?(:'title')
         self.title = attributes[:'title']
       end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -226,7 +242,9 @@ module Amos
           stake_percent == o.stake_percent &&
           contact_phone == o.contact_phone &&
           tax_id_last4 == o.tax_id_last4 &&
-          title == o.title
+          title == o.title &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -238,7 +256,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_entity_application_id, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, stake_percent, contact_phone, tax_id_last4, title].hash
+      [id, legal_entity_application_id, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, stake_percent, contact_phone, tax_id_last4, title, created_at, updated_at].hash
     end
 
     # Builds the object from hash

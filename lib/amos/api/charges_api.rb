@@ -85,6 +85,7 @@ module Amos
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @option opts [String] :payment_intent_id The ID of the payment intent to filter by
+    # @option opts [String] :customer_id The customer ID to filter by
     # @return [ListCharges]
     def list_charges(opts = {})
       data, _status_code, _headers = list_charges_with_http_info(opts)
@@ -96,6 +97,7 @@ module Amos
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @option opts [String] :payment_intent_id The ID of the payment intent to filter by
+    # @option opts [String] :customer_id The customer ID to filter by
     # @return [Array<(ListCharges, Integer, Hash)>] ListCharges data, response status code and response headers
     def list_charges_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -109,6 +111,7 @@ module Amos
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'payment_intent_id'] = opts[:'payment_intent_id'] if !opts[:'payment_intent_id'].nil?
+      query_params[:'customer_id'] = opts[:'customer_id'] if !opts[:'customer_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

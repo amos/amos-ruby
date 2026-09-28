@@ -19,8 +19,6 @@ module Amos
 
     attr_accessor :annual_credit_card_sales_volume
 
-    attr_accessor :allowed_payment_methods
-
     attr_accessor :business_category
 
     attr_accessor :business_description
@@ -45,7 +43,15 @@ module Amos
 
     attr_accessor :legal_entity_application_id
 
-    attr_accessor :legal_entity_id
+    attr_accessor :max_daily_credits_amount
+
+    attr_accessor :max_daily_debits_amount
+
+    attr_accessor :max_monthly_credits_amount
+
+    attr_accessor :max_monthly_debits_amount
+
+    attr_accessor :max_single_debit_amount
 
     attr_accessor :max_transaction_amount
 
@@ -65,6 +71,8 @@ module Amos
 
     attr_accessor :settlement_currency
 
+    attr_accessor :settlement_days
+
     attr_accessor :state_province
 
     attr_accessor :street_address1
@@ -72,6 +80,10 @@ module Amos
     attr_accessor :street_address2
 
     attr_accessor :website_url
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -100,7 +112,6 @@ module Amos
       {
         :'id' => :'id',
         :'annual_credit_card_sales_volume' => :'annual_credit_card_sales_volume',
-        :'allowed_payment_methods' => :'allowed_payment_methods',
         :'business_category' => :'business_category',
         :'business_description' => :'business_description',
         :'city' => :'city',
@@ -113,7 +124,11 @@ module Amos
         :'hard_coded_billing_descriptor' => :'hard_coded_billing_descriptor',
         :'has_accepted_credit_cards' => :'has_accepted_credit_cards',
         :'legal_entity_application_id' => :'legal_entity_application_id',
-        :'legal_entity_id' => :'legal_entity_id',
+        :'max_daily_credits_amount' => :'max_daily_credits_amount',
+        :'max_daily_debits_amount' => :'max_daily_debits_amount',
+        :'max_monthly_credits_amount' => :'max_monthly_credits_amount',
+        :'max_monthly_debits_amount' => :'max_monthly_debits_amount',
+        :'max_single_debit_amount' => :'max_single_debit_amount',
         :'max_transaction_amount' => :'max_transaction_amount',
         :'mcc' => :'mcc',
         :'postal_code' => :'postal_code',
@@ -123,10 +138,13 @@ module Amos
         :'primary_contact_phone' => :'primary_contact_phone',
         :'purchase_currency' => :'purchase_currency',
         :'settlement_currency' => :'settlement_currency',
+        :'settlement_days' => :'settlement_days',
         :'state_province' => :'state_province',
         :'street_address1' => :'street_address1',
         :'street_address2' => :'street_address2',
-        :'website_url' => :'website_url'
+        :'website_url' => :'website_url',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -145,7 +163,6 @@ module Amos
       {
         :'id' => :'String',
         :'annual_credit_card_sales_volume' => :'Integer',
-        :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
         :'business_category' => :'MerchantBusinessCategoryType',
         :'business_description' => :'String',
         :'city' => :'String',
@@ -158,7 +175,11 @@ module Amos
         :'hard_coded_billing_descriptor' => :'String',
         :'has_accepted_credit_cards' => :'Boolean',
         :'legal_entity_application_id' => :'String',
-        :'legal_entity_id' => :'String',
+        :'max_daily_credits_amount' => :'Integer',
+        :'max_daily_debits_amount' => :'Integer',
+        :'max_monthly_credits_amount' => :'Integer',
+        :'max_monthly_debits_amount' => :'Integer',
+        :'max_single_debit_amount' => :'Integer',
         :'max_transaction_amount' => :'String',
         :'mcc' => :'String',
         :'postal_code' => :'String',
@@ -168,10 +189,13 @@ module Amos
         :'primary_contact_phone' => :'String',
         :'purchase_currency' => :'String',
         :'settlement_currency' => :'String',
+        :'settlement_days' => :'Integer',
         :'state_province' => :'String',
         :'street_address1' => :'String',
         :'street_address2' => :'String',
-        :'website_url' => :'String'
+        :'website_url' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -206,12 +230,6 @@ module Amos
 
       if attributes.key?(:'annual_credit_card_sales_volume')
         self.annual_credit_card_sales_volume = attributes[:'annual_credit_card_sales_volume']
-      end
-
-      if attributes.key?(:'allowed_payment_methods')
-        if (value = attributes[:'allowed_payment_methods']).is_a?(Array)
-          self.allowed_payment_methods = value
-        end
       end
 
       if attributes.key?(:'business_category')
@@ -262,8 +280,24 @@ module Amos
         self.legal_entity_application_id = attributes[:'legal_entity_application_id']
       end
 
-      if attributes.key?(:'legal_entity_id')
-        self.legal_entity_id = attributes[:'legal_entity_id']
+      if attributes.key?(:'max_daily_credits_amount')
+        self.max_daily_credits_amount = attributes[:'max_daily_credits_amount']
+      end
+
+      if attributes.key?(:'max_daily_debits_amount')
+        self.max_daily_debits_amount = attributes[:'max_daily_debits_amount']
+      end
+
+      if attributes.key?(:'max_monthly_credits_amount')
+        self.max_monthly_credits_amount = attributes[:'max_monthly_credits_amount']
+      end
+
+      if attributes.key?(:'max_monthly_debits_amount')
+        self.max_monthly_debits_amount = attributes[:'max_monthly_debits_amount']
+      end
+
+      if attributes.key?(:'max_single_debit_amount')
+        self.max_single_debit_amount = attributes[:'max_single_debit_amount']
       end
 
       if attributes.key?(:'max_transaction_amount')
@@ -302,6 +336,10 @@ module Amos
         self.settlement_currency = attributes[:'settlement_currency']
       end
 
+      if attributes.key?(:'settlement_days')
+        self.settlement_days = attributes[:'settlement_days']
+      end
+
       if attributes.key?(:'state_province')
         self.state_province = attributes[:'state_province']
       end
@@ -316,6 +354,14 @@ module Amos
 
       if attributes.key?(:'website_url')
         self.website_url = attributes[:'website_url']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -341,7 +387,6 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           annual_credit_card_sales_volume == o.annual_credit_card_sales_volume &&
-          allowed_payment_methods == o.allowed_payment_methods &&
           business_category == o.business_category &&
           business_description == o.business_description &&
           city == o.city &&
@@ -354,7 +399,11 @@ module Amos
           hard_coded_billing_descriptor == o.hard_coded_billing_descriptor &&
           has_accepted_credit_cards == o.has_accepted_credit_cards &&
           legal_entity_application_id == o.legal_entity_application_id &&
-          legal_entity_id == o.legal_entity_id &&
+          max_daily_credits_amount == o.max_daily_credits_amount &&
+          max_daily_debits_amount == o.max_daily_debits_amount &&
+          max_monthly_credits_amount == o.max_monthly_credits_amount &&
+          max_monthly_debits_amount == o.max_monthly_debits_amount &&
+          max_single_debit_amount == o.max_single_debit_amount &&
           max_transaction_amount == o.max_transaction_amount &&
           mcc == o.mcc &&
           postal_code == o.postal_code &&
@@ -364,10 +413,13 @@ module Amos
           primary_contact_phone == o.primary_contact_phone &&
           purchase_currency == o.purchase_currency &&
           settlement_currency == o.settlement_currency &&
+          settlement_days == o.settlement_days &&
           state_province == o.state_province &&
           street_address1 == o.street_address1 &&
           street_address2 == o.street_address2 &&
-          website_url == o.website_url
+          website_url == o.website_url &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -379,7 +431,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, annual_credit_card_sales_volume, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, has_accepted_credit_cards, legal_entity_application_id, legal_entity_id, max_transaction_amount, mcc, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, state_province, street_address1, street_address2, website_url].hash
+      [id, annual_credit_card_sales_volume, business_category, business_description, city, country_code, customer_service_number, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, has_accepted_credit_cards, legal_entity_application_id, max_daily_credits_amount, max_daily_debits_amount, max_monthly_credits_amount, max_monthly_debits_amount, max_single_debit_amount, max_transaction_amount, mcc, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, settlement_days, state_province, street_address1, street_address2, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

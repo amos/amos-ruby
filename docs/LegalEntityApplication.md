@@ -6,7 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **legal_name** | **String** |  | [optional] |
-| **legal_entity_id** | **String** |  | [optional] |
+| **organization_id** | **String** |  | [optional] |
+| **legal_entity_id** | **String** | Set when the application is approved and the legal entity is created. | [optional] |
 | **entity_type** | [**LegalEntityEntityType**](LegalEntityEntityType.md) |  | [optional] |
 | **ownership_type** | [**LegalEntityOwnershipType**](LegalEntityOwnershipType.md) |  | [optional] |
 | **contact_email** | **String** |  | [optional] |
@@ -17,7 +18,7 @@
 | **business_state** | **String** |  | [optional] |
 | **business_postal_code** | **String** |  | [optional] |
 | **business_country** | **String** |  | [optional] |
-| **state** | **String** |  | [optional] |
+| **state** | [**LegalEntityApplicationStateType**](LegalEntityApplicationStateType.md) |  | [optional] |
 | **tax_id_last4** | **String** |  | [optional] |
 | **approved_at** | **Time** |  | [optional] |
 | **denied_at** | **Time** |  | [optional] |
@@ -35,6 +36,7 @@ require 'amos'
 instance = Amos::LegalEntityApplication.new(
   id: null,
   legal_name: null,
+  organization_id: null,
   legal_entity_id: null,
   entity_type: null,
   ownership_type: null,

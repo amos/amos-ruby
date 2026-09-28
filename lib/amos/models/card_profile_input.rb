@@ -15,6 +15,7 @@ require 'time'
 
 module Amos
   class CardProfileInput < ApiModelBase
+    # Cardholder name. Letters, spaces, hyphens, apostrophes, and periods only. 
     attr_accessor :card_holder_name
 
     attr_accessor :cvc

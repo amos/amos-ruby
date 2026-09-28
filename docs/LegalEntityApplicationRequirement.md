@@ -11,6 +11,8 @@
 | **reason_code** | **String** |  | [optional] |
 | **satisfied_at** | **Time** |  | [optional] |
 | **waived_at** | **Time** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -24,7 +26,9 @@ instance = Amos::LegalEntityApplicationRequirement.new(
   message: null,
   reason_code: null,
   satisfied_at: null,
-  waived_at: null
+  waived_at: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

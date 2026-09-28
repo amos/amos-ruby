@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **account_id** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **name** | **String** |  | [optional] |
@@ -24,7 +23,6 @@ require 'amos'
 
 instance = Amos::Customer.new(
   id: null,
-  account_id: null,
   email: null,
   metadata: null,
   name: null,

@@ -17,6 +17,12 @@ module Amos
   class WebhookRequest < ApiModelBase
     attr_accessor :id
 
+    attr_accessor :eventable_id
+
+    attr_accessor :eventable_type
+
+    attr_accessor :organization_id
+
     attr_accessor :webhook_endpoint_id
 
     attr_accessor :expires_at
@@ -31,6 +37,9 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
+        :'eventable_id' => :'eventable_id',
+        :'eventable_type' => :'eventable_type',
+        :'organization_id' => :'organization_id',
         :'webhook_endpoint_id' => :'webhook_endpoint_id',
         :'expires_at' => :'expires_at',
         :'request_body' => :'request_body',
@@ -53,6 +62,9 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
+        :'eventable_id' => :'String',
+        :'eventable_type' => :'String',
+        :'organization_id' => :'String',
         :'webhook_endpoint_id' => :'String',
         :'expires_at' => :'Time',
         :'request_body' => :'WebhookEventPayload',
@@ -88,6 +100,18 @@ module Amos
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'eventable_id')
+        self.eventable_id = attributes[:'eventable_id']
+      end
+
+      if attributes.key?(:'eventable_type')
+        self.eventable_type = attributes[:'eventable_type']
+      end
+
+      if attributes.key?(:'organization_id')
+        self.organization_id = attributes[:'organization_id']
       end
 
       if attributes.key?(:'webhook_endpoint_id')
@@ -132,6 +156,9 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          eventable_id == o.eventable_id &&
+          eventable_type == o.eventable_type &&
+          organization_id == o.organization_id &&
           webhook_endpoint_id == o.webhook_endpoint_id &&
           expires_at == o.expires_at &&
           request_body == o.request_body &&
@@ -148,7 +175,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, webhook_endpoint_id, expires_at, request_body, created_at, updated_at].hash
+      [id, eventable_id, eventable_type, organization_id, webhook_endpoint_id, expires_at, request_body, created_at, updated_at].hash
     end
 
     # Builds the object from hash

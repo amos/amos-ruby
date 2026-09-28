@@ -27,6 +27,10 @@ module Amos
 
     attr_accessor :download
 
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +39,9 @@ module Amos
         :'file_name' => :'file_name',
         :'purpose' => :'purpose',
         :'state' => :'state',
-        :'download' => :'download'
+        :'download' => :'download',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -57,7 +63,9 @@ module Amos
         :'file_name' => :'String',
         :'purpose' => :'String',
         :'state' => :'String',
-        :'download' => :'FileDownloadConfiguration'
+        :'download' => :'FileDownloadConfiguration',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -120,6 +128,14 @@ module Amos
         self.download = attributes[:'download']
       else
         self.download = nil
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -238,7 +254,9 @@ module Amos
           file_name == o.file_name &&
           purpose == o.purpose &&
           state == o.state &&
-          download == o.download
+          download == o.download &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -250,7 +268,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, content_type, file_name, purpose, state, download].hash
+      [id, content_type, file_name, purpose, state, download, created_at, updated_at].hash
     end
 
     # Builds the object from hash

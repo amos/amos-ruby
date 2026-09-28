@@ -11,6 +11,7 @@
 | **file_name** | **String** |  | [optional] |
 | **byte_size** | **Integer** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = Amos::LegalEntityApplicationDocument.new(
   file_upload_id: null,
   file_name: null,
   byte_size: null,
-  created_at: null
+  created_at: null,
+  updated_at: null
 )
 ```
 

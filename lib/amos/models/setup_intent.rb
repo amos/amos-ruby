@@ -17,9 +17,6 @@ module Amos
   class SetupIntent < ApiModelBase
     attr_accessor :id
 
-    # Legacy account association. Null for organization-scoped setup intents.
-    attr_accessor :account_id
-
     # Organization that owns the setup intent.
     attr_accessor :organization_id
 
@@ -64,7 +61,6 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
-        :'account_id' => :'account_id',
         :'organization_id' => :'organization_id',
         :'customer_id' => :'customer_id',
         :'metadata' => :'metadata',
@@ -90,7 +86,6 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'account_id' => :'String',
         :'organization_id' => :'String',
         :'customer_id' => :'String',
         :'metadata' => :'Hash<String, String>',
@@ -105,7 +100,6 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'account_id',
       ])
     end
 
@@ -130,10 +124,6 @@ module Amos
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
       end
 
       if attributes.key?(:'organization_id')
@@ -204,7 +194,6 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          account_id == o.account_id &&
           organization_id == o.organization_id &&
           customer_id == o.customer_id &&
           metadata == o.metadata &&
@@ -224,7 +213,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, organization_id, customer_id, metadata, payment_method_id, source, state, created_at, updated_at].hash
+      [id, organization_id, customer_id, metadata, payment_method_id, source, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash

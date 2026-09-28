@@ -17,8 +17,6 @@ module Amos
   class Customer < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :account_id
-
     attr_accessor :email
 
     # Additional metadata key-value pairs
@@ -44,7 +42,6 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
-        :'account_id' => :'account_id',
         :'email' => :'email',
         :'metadata' => :'metadata',
         :'name' => :'name',
@@ -72,7 +69,6 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'account_id' => :'String',
         :'email' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'name' => :'String',
@@ -113,10 +109,6 @@ module Amos
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
       end
 
       if attributes.key?(:'email')
@@ -183,7 +175,6 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          account_id == o.account_id &&
           email == o.email &&
           metadata == o.metadata &&
           name == o.name &&
@@ -205,7 +196,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, email, metadata, name, organization_id, payment_method_id, phone, type, mailing_address, created_at, updated_at].hash
+      [id, email, metadata, name, organization_id, payment_method_id, phone, type, mailing_address, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -61,7 +61,6 @@ describe 'CustomersApi' do
   # @option opts [Integer] :per_page Number of results per page.
   # @option opts [String] :email The email to filter by
   # @option opts [String] :phone The phone to filter by
-  # @option opts [String] :account_id 
   # @return [ListCustomers]
   describe 'list_customers test' do
     it 'should work' do

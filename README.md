@@ -114,16 +114,20 @@ Class | Method | HTTP request | Description
 *Amos::LegalEntityApplicationDocumentsApi* | [**list_legal_entity_application_documents**](docs/LegalEntityApplicationDocumentsApi.md#list_legal_entity_application_documents) | **GET** /legal_entity_application_documents | List all legal entity application documents
 *Amos::LegalEntityApplicationPrincipalsApi* | [**create_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#create_legal_entity_application_principal) | **POST** /legal_entity_application_principals | Create a legal entity application principal
 *Amos::LegalEntityApplicationPrincipalsApi* | [**get_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#get_legal_entity_application_principal) | **GET** /legal_entity_application_principals/{id} | Retrieve a legal entity application principal by ID
-*Amos::LegalEntityApplicationsApi* | [**approve_legal_entity_application**](docs/LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Approve a legal entity application
+*Amos::LegalEntityApplicationPrincipalsApi* | [**update_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#update_legal_entity_application_principal) | **PUT** /legal_entity_application_principals/{id} | Update a legal entity application principal
+*Amos::LegalEntityApplicationsApi* | [**approve_legal_entity_application**](docs/LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Start review or approve a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**create_legal_entity_application**](docs/LegalEntityApplicationsApi.md#create_legal_entity_application) | **POST** /legal_entity_applications | Create a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**get_legal_entity_application**](docs/LegalEntityApplicationsApi.md#get_legal_entity_application) | **GET** /legal_entity_applications/{id} | Retrieve a legal entity application by ID
 *Amos::LegalEntityApplicationsApi* | [**submit_legal_entity_application**](docs/LegalEntityApplicationsApi.md#submit_legal_entity_application) | **POST** /legal_entity_applications/{id}/submit | Submit a legal entity application
+*Amos::LegalEntityApplicationsApi* | [**update_legal_entity_application**](docs/LegalEntityApplicationsApi.md#update_legal_entity_application) | **PUT** /legal_entity_applications/{id} | Update a pending legal entity application
 *Amos::LegalEntityPrincipalsApi* | [**get_legal_entity_principal**](docs/LegalEntityPrincipalsApi.md#get_legal_entity_principal) | **GET** /legal_entity_principals/{id} | Retrieve a legal entity principal by ID
 *Amos::LegalEntityPrincipalsApi* | [**list_legal_entity_principals**](docs/LegalEntityPrincipalsApi.md#list_legal_entity_principals) | **GET** /legal_entity_principals | List all legal entity principals
 *Amos::MerchantApplicationsApi* | [**create_merchant_application**](docs/MerchantApplicationsApi.md#create_merchant_application) | **POST** /merchant_applications | Create a merchant application
 *Amos::MerchantApplicationsApi* | [**get_merchant_application**](docs/MerchantApplicationsApi.md#get_merchant_application) | **GET** /merchant_applications/{id} | Retrieve a merchant application by ID
+*Amos::MerchantApplicationsApi* | [**update_merchant_application**](docs/MerchantApplicationsApi.md#update_merchant_application) | **PUT** /merchant_applications/{id} | Update a pending merchant application
 *Amos::MerchantsApi* | [**get_merchant**](docs/MerchantsApi.md#get_merchant) | **GET** /merchants/{id} | Retrieve a merchant by ID
 *Amos::MerchantsApi* | [**list_merchants**](docs/MerchantsApi.md#list_merchants) | **GET** /merchants | List all merchants
+*Amos::MerchantsApi* | [**update_merchant**](docs/MerchantsApi.md#update_merchant) | **PATCH** /merchants/{id} | Update a merchant by ID
 *Amos::OrganizationsApi* | [**get_organization**](docs/OrganizationsApi.md#get_organization) | **GET** /organization | Retrieve the current organization
 *Amos::OrganizationsApi* | [**update_organization**](docs/OrganizationsApi.md#update_organization) | **PATCH** /organization | Update the current organization
 *Amos::OriginsApi* | [**create_origin**](docs/OriginsApi.md#create_origin) | **POST** /origins | Create a new origin
@@ -140,17 +144,19 @@ Class | Method | HTTP request | Description
 *Amos::PaymentLinksApi* | [**get_payment_link**](docs/PaymentLinksApi.md#get_payment_link) | **GET** /payment_links/{id} | Retrieve a payment link by ID
 *Amos::PaymentLinksApi* | [**list_payment_links**](docs/PaymentLinksApi.md#list_payment_links) | **GET** /payment_links | List payment links
 *Amos::PaymentLinksApi* | [**update_payment_link**](docs/PaymentLinksApi.md#update_payment_link) | **PUT** /payment_links/{id} | Update a payment link by ID
+*Amos::PaymentMethodsApi* | [**create_payment_method**](docs/PaymentMethodsApi.md#create_payment_method) | **POST** /payment_methods | Create a payment method
 *Amos::PaymentMethodsApi* | [**get_payment_method**](docs/PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method
 *Amos::PaymentMethodsApi* | [**list_payment_methods**](docs/PaymentMethodsApi.md#list_payment_methods) | **GET** /payment_methods | List all payment methods
 *Amos::PayoutsApi* | [**bulk_create_payouts**](docs/PayoutsApi.md#bulk_create_payouts) | **POST** /payouts/bulk_create | Bulk create payouts
 *Amos::PayoutsApi* | [**create_payout**](docs/PayoutsApi.md#create_payout) | **POST** /payouts | Create a payout
 *Amos::PayoutsApi* | [**get_payout**](docs/PayoutsApi.md#get_payout) | **GET** /payouts/{id} | Retrieve a payout by ID
 *Amos::PayoutsApi* | [**list_payouts**](docs/PayoutsApi.md#list_payouts) | **GET** /payouts | List all payouts
+*Amos::ProcessorTransactionsApi* | [**get_processor_transaction**](docs/ProcessorTransactionsApi.md#get_processor_transaction) | **GET** /processor_transactions/{id} | Retrieve a processor transaction by ID
 *Amos::ProcessorTransactionsApi* | [**list_processor_transactions**](docs/ProcessorTransactionsApi.md#list_processor_transactions) | **GET** /processor_transactions | List all processor transactions
 *Amos::ProductsApi* | [**create_product**](docs/ProductsApi.md#create_product) | **POST** /products | Create a new product
 *Amos::ProductsApi* | [**list_products**](docs/ProductsApi.md#list_products) | **GET** /products | List all products
 *Amos::ProductsApi* | [**update_product**](docs/ProductsApi.md#update_product) | **PUT** /products/{id} | Update a product by ID
-*Amos::RefundsApi* | [**cancel_refund**](docs/RefundsApi.md#cancel_refund) | **PUT** /refunds/{id}/cancel | Cancel a refund
+*Amos::RefundsApi* | [**cancel_refund**](docs/RefundsApi.md#cancel_refund) | **POST** /refunds/{id}/cancel | Cancel a refund
 *Amos::RefundsApi* | [**create_refund**](docs/RefundsApi.md#create_refund) | **POST** /refunds | Create a refund
 *Amos::RefundsApi* | [**get_refund**](docs/RefundsApi.md#get_refund) | **GET** /refunds/{id} | Retrieve a refund by ID
 *Amos::RefundsApi* | [**list_refunds**](docs/RefundsApi.md#list_refunds) | **GET** /refunds | List all refunds
@@ -244,6 +250,10 @@ Class | Method | HTTP request | Description
  - [Amos::CreatePaymentIntentRequest](docs/CreatePaymentIntentRequest.md)
  - [Amos::CreatePaymentLinkInput](docs/CreatePaymentLinkInput.md)
  - [Amos::CreatePaymentLinkRequest](docs/CreatePaymentLinkRequest.md)
+ - [Amos::CreatePaymentMethodInput](docs/CreatePaymentMethodInput.md)
+ - [Amos::CreatePaymentMethodInputBankAccountProfileAttributes](docs/CreatePaymentMethodInputBankAccountProfileAttributes.md)
+ - [Amos::CreatePaymentMethodInputCardProfileAttributes](docs/CreatePaymentMethodInputCardProfileAttributes.md)
+ - [Amos::CreatePaymentMethodRequest](docs/CreatePaymentMethodRequest.md)
  - [Amos::CreatePayoutInput](docs/CreatePayoutInput.md)
  - [Amos::CreatePayoutRequest](docs/CreatePayoutRequest.md)
  - [Amos::CreateProductInput](docs/CreateProductInput.md)
@@ -284,6 +294,7 @@ Class | Method | HTTP request | Description
  - [Amos::LegalEntityApplicationDocument](docs/LegalEntityApplicationDocument.md)
  - [Amos::LegalEntityApplicationPrincipal](docs/LegalEntityApplicationPrincipal.md)
  - [Amos::LegalEntityApplicationRequirement](docs/LegalEntityApplicationRequirement.md)
+ - [Amos::LegalEntityApplicationStateType](docs/LegalEntityApplicationStateType.md)
  - [Amos::LegalEntityDocumentType](docs/LegalEntityDocumentType.md)
  - [Amos::LegalEntityEntityType](docs/LegalEntityEntityType.md)
  - [Amos::LegalEntityOwnershipType](docs/LegalEntityOwnershipType.md)
@@ -354,6 +365,14 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateCustomerRequest](docs/UpdateCustomerRequest.md)
  - [Amos::UpdateDunningConfigurationInput](docs/UpdateDunningConfigurationInput.md)
  - [Amos::UpdateDunningConfigurationRequest](docs/UpdateDunningConfigurationRequest.md)
+ - [Amos::UpdateLegalEntityApplicationInput](docs/UpdateLegalEntityApplicationInput.md)
+ - [Amos::UpdateLegalEntityApplicationPrincipalInput](docs/UpdateLegalEntityApplicationPrincipalInput.md)
+ - [Amos::UpdateLegalEntityApplicationPrincipalRequest](docs/UpdateLegalEntityApplicationPrincipalRequest.md)
+ - [Amos::UpdateLegalEntityApplicationRequest](docs/UpdateLegalEntityApplicationRequest.md)
+ - [Amos::UpdateMerchantApplicationInput](docs/UpdateMerchantApplicationInput.md)
+ - [Amos::UpdateMerchantApplicationRequest](docs/UpdateMerchantApplicationRequest.md)
+ - [Amos::UpdateMerchantInput](docs/UpdateMerchantInput.md)
+ - [Amos::UpdateMerchantRequest](docs/UpdateMerchantRequest.md)
  - [Amos::UpdateOrganizationInput](docs/UpdateOrganizationInput.md)
  - [Amos::UpdateOrganizationRequest](docs/UpdateOrganizationRequest.md)
  - [Amos::UpdatePaymentIntentInput](docs/UpdatePaymentIntentInput.md)

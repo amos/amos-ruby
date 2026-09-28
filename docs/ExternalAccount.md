@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **account_id** | **String** |  | [optional] |
+| **organization_id** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **type** | **String** |  | [optional] |
 | **external_bank_account_profile** | [**BankAccountProfile**](BankAccountProfile.md) |  | [optional] |
@@ -21,7 +21,7 @@ require 'amos'
 
 instance = Amos::ExternalAccount.new(
   id: null,
-  account_id: null,
+  organization_id: null,
   metadata: null,
   type: null,
   external_bank_account_profile: null,

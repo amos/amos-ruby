@@ -95,22 +95,28 @@ module Amos
 
     # Create a new setup intent
     # Creates an organization-scoped setup intent. X-Account-Id is ignored if sent. The customer must belong to the authenticated organization. Returns an embed token whose JWT payload includes organization_id and setup_intent_id. 
+    # @param x_render_token [String] Render template JWT required to create a payment or setup intent.
     # @param create_setup_intent_request [CreateSetupIntentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [EmbedToken]
-    def create_setup_intent(create_setup_intent_request, opts = {})
-      data, _status_code, _headers = create_setup_intent_with_http_info(create_setup_intent_request, opts)
+    def create_setup_intent(x_render_token, create_setup_intent_request, opts = {})
+      data, _status_code, _headers = create_setup_intent_with_http_info(x_render_token, create_setup_intent_request, opts)
       data
     end
 
     # Create a new setup intent
     # Creates an organization-scoped setup intent. X-Account-Id is ignored if sent. The customer must belong to the authenticated organization. Returns an embed token whose JWT payload includes organization_id and setup_intent_id. 
+    # @param x_render_token [String] Render template JWT required to create a payment or setup intent.
     # @param create_setup_intent_request [CreateSetupIntentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EmbedToken, Integer, Hash)>] EmbedToken data, response status code and response headers
-    def create_setup_intent_with_http_info(create_setup_intent_request, opts = {})
+    def create_setup_intent_with_http_info(x_render_token, create_setup_intent_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SetupIntentsApi.create_setup_intent ...'
+      end
+      # verify the required parameter 'x_render_token' is set
+      if @api_client.config.client_side_validation && x_render_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_render_token' when calling SetupIntentsApi.create_setup_intent"
       end
       # verify the required parameter 'create_setup_intent_request' is set
       if @api_client.config.client_side_validation && create_setup_intent_request.nil?
@@ -131,6 +137,7 @@ module Amos
       if !content_type.nil?
         header_params['Content-Type'] = content_type
       end
+      header_params[:'X-Render-Token'] = x_render_token
 
       # form parameters
       form_params = opts[:form_params] || {}

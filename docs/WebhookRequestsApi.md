@@ -34,7 +34,11 @@ end
 api_instance = Amos::WebhookRequestsApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  webhook_endpoint_id: 'webhook_endpoint_id_example', # String | 
+  success: true, # Boolean | 
+  event: 'event_example', # String | 
+  eventable_id: 'eventable_id_example' # String | 
 }
 
 begin
@@ -70,6 +74,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **webhook_endpoint_id** | **String** |  | [optional] |
+| **success** | **Boolean** |  | [optional] |
+| **event** | **String** |  | [optional] |
+| **eventable_id** | **String** |  | [optional] |
 
 ### Return type
 

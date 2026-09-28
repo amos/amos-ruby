@@ -216,21 +216,27 @@ module Amos
     end
 
     # Create a new payment intent
+    # @param x_render_token [String] Render template JWT required to create a payment or setup intent.
     # @param create_payment_intent_request [CreatePaymentIntentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [EmbedToken]
-    def create_payment_intent(create_payment_intent_request, opts = {})
-      data, _status_code, _headers = create_payment_intent_with_http_info(create_payment_intent_request, opts)
+    def create_payment_intent(x_render_token, create_payment_intent_request, opts = {})
+      data, _status_code, _headers = create_payment_intent_with_http_info(x_render_token, create_payment_intent_request, opts)
       data
     end
 
     # Create a new payment intent
+    # @param x_render_token [String] Render template JWT required to create a payment or setup intent.
     # @param create_payment_intent_request [CreatePaymentIntentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EmbedToken, Integer, Hash)>] EmbedToken data, response status code and response headers
-    def create_payment_intent_with_http_info(create_payment_intent_request, opts = {})
+    def create_payment_intent_with_http_info(x_render_token, create_payment_intent_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PaymentIntentsApi.create_payment_intent ...'
+      end
+      # verify the required parameter 'x_render_token' is set
+      if @api_client.config.client_side_validation && x_render_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_render_token' when calling PaymentIntentsApi.create_payment_intent"
       end
       # verify the required parameter 'create_payment_intent_request' is set
       if @api_client.config.client_side_validation && create_payment_intent_request.nil?
@@ -251,6 +257,7 @@ module Amos
       if !content_type.nil?
         header_params['Content-Type'] = content_type
       end
+      header_params[:'X-Render-Token'] = x_render_token
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -407,6 +414,8 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :id Filter payment intents by id
+    # @option opts [String] :processor_reference 
     # @return [ListPaymentIntents]
     def list_payment_intents(opts = {})
       data, _status_code, _headers = list_payment_intents_with_http_info(opts)
@@ -417,6 +426,8 @@ module Amos
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :id Filter payment intents by id
+    # @option opts [String] :processor_reference 
     # @return [Array<(ListPaymentIntents, Integer, Hash)>] ListPaymentIntents data, response status code and response headers
     def list_payment_intents_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -429,6 +440,8 @@ module Amos
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'id'] = opts[:'id'] if !opts[:'id'].nil?
+      query_params[:'processor_reference'] = opts[:'processor_reference'] if !opts[:'processor_reference'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

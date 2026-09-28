@@ -39,12 +39,6 @@ describe Amos::MerchantApplication do
     end
   end
 
-  describe 'test attribute "allowed_payment_methods"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "business_category"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -112,12 +106,6 @@ describe Amos::MerchantApplication do
   end
 
   describe 'test attribute "legal_entity_application_id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "legal_entity_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

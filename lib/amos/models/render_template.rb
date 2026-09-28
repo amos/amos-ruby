@@ -29,6 +29,10 @@ module Amos
 
     attr_accessor :origins
 
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,7 +42,9 @@ module Amos
         :'billing_address_options' => :'billing_address_options',
         :'currency' => :'currency',
         :'last_used_at' => :'last_used_at',
-        :'origins' => :'origins'
+        :'origins' => :'origins',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -61,7 +67,9 @@ module Amos
         :'billing_address_options' => :'BillingAddressOptions',
         :'currency' => :'String',
         :'last_used_at' => :'Time',
-        :'origins' => :'Array<Origin>'
+        :'origins' => :'Array<Origin>',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -126,6 +134,14 @@ module Amos
       else
         self.origins = nil
       end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -184,7 +200,9 @@ module Amos
           billing_address_options == o.billing_address_options &&
           currency == o.currency &&
           last_used_at == o.last_used_at &&
-          origins == o.origins
+          origins == o.origins &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -196,7 +214,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, allowed_payment_methods, billing_address_options, currency, last_used_at, origins].hash
+      [id, organization_id, allowed_payment_methods, billing_address_options, currency, last_used_at, origins, created_at, updated_at].hash
     end
 
     # Builds the object from hash

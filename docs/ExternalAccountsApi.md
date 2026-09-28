@@ -15,6 +15,8 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 Create an external account
 
+Creates an organization-scoped external account. X-Account-Id is ignored if sent. 
+
 ### Examples
 
 ```ruby
@@ -87,6 +89,8 @@ end
 
 Retrieve an external account by ID
 
+Retrieves an organization-scoped external account. X-Account-Id is ignored if sent. 
+
 ### Examples
 
 ```ruby
@@ -158,6 +162,8 @@ end
 > <ListExternalAccounts> list_external_accounts(opts)
 
 List all external accounts
+
+Lists organization-scoped external accounts. X-Account-Id is ignored if sent. 
 
 ### Examples
 

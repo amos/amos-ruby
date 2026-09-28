@@ -232,7 +232,7 @@ end
 
 ## create_payment_intent
 
-> <EmbedToken> create_payment_intent(create_payment_intent_request)
+> <EmbedToken> create_payment_intent(x_render_token, create_payment_intent_request)
 
 Create a new payment intent
 
@@ -253,11 +253,12 @@ Amos.configure do |config|
 end
 
 api_instance = Amos::PaymentIntentsApi.new
+x_render_token = 'x_render_token_example' # String | Render template JWT required to create a payment or setup intent.
 create_payment_intent_request = Amos::CreatePaymentIntentRequest.new({payment_intent: Amos::CreatePaymentIntentInput.new({amount: 37})}) # CreatePaymentIntentRequest | 
 
 begin
   # Create a new payment intent
-  result = api_instance.create_payment_intent(create_payment_intent_request)
+  result = api_instance.create_payment_intent(x_render_token, create_payment_intent_request)
   p result
 rescue Amos::ApiError => e
   puts "Error when calling PaymentIntentsApi->create_payment_intent: #{e}"
@@ -268,12 +269,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EmbedToken>, Integer, Hash)> create_payment_intent_with_http_info(create_payment_intent_request)
+> <Array(<EmbedToken>, Integer, Hash)> create_payment_intent_with_http_info(x_render_token, create_payment_intent_request)
 
 ```ruby
 begin
   # Create a new payment intent
-  data, status_code, headers = api_instance.create_payment_intent_with_http_info(create_payment_intent_request)
+  data, status_code, headers = api_instance.create_payment_intent_with_http_info(x_render_token, create_payment_intent_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <EmbedToken>
@@ -286,6 +287,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **x_render_token** | **String** | Render template JWT required to create a payment or setup intent. |  |
 | **create_payment_intent_request** | [**CreatePaymentIntentRequest**](CreatePaymentIntentRequest.md) |  |  |
 
 ### Return type
@@ -468,7 +470,9 @@ end
 api_instance = Amos::PaymentIntentsApi.new
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  id: 'id_example', # String | Filter payment intents by id
+  processor_reference: 'processor_reference_example' # String | 
 }
 
 begin
@@ -504,6 +508,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **id** | **String** | Filter payment intents by id | [optional] |
+| **processor_reference** | **String** |  | [optional] |
 
 ### Return type
 

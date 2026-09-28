@@ -24,6 +24,8 @@
 | **cancel_url** | **String** |  | [optional] |
 | **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethod&gt;**](AllowedPaymentMethod.md) |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -50,7 +52,9 @@ instance = Amos::PaymentLink.new(
   title: null,
   cancel_url: null,
   allowed_payment_methods: null,
-  metadata: null
+  metadata: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

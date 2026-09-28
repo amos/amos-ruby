@@ -11,6 +11,8 @@
 | **currency** | **String** |  | [optional] |
 | **last_used_at** | **Time** |  | [optional] |
 | **origins** | [**Array&lt;Origin&gt;**](Origin.md) |  |  |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -24,7 +26,9 @@ instance = Amos::RenderTemplate.new(
   billing_address_options: null,
   currency: null,
   last_used_at: null,
-  origins: null
+  origins: null,
+  created_at: null,
+  updated_at: null
 )
 ```
 

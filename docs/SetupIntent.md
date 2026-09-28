@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **account_id** | **String** | Legacy account association. Null for organization-scoped setup intents. | [optional] |
 | **organization_id** | **String** | Organization that owns the setup intent. | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
@@ -22,7 +21,6 @@ require 'amos'
 
 instance = Amos::SetupIntent.new(
   id: null,
-  account_id: null,
   organization_id: null,
   customer_id: null,
   metadata: null,

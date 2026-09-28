@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **account_holder_name** | **String** |  | [optional] |
+| **account_holder_name** | **String** | Account holder name. Letters, spaces, hyphens, apostrophes, and periods only.  | [optional] |
 | **account_holder_type** | **String** |  | [optional] |
 | **account_type** | **String** |  | [optional] |
 | **bank_name** | **String** |  | [optional] |
 | **currency** | **String** |  | [optional] |
-| **encrypted_account_number** | **String** |  | [optional] |
+| **account_number** | **String** | Bank account number. Stored encrypted at rest and not returned in API responses.  | [optional] |
 | **routing_number** | **String** |  | [optional] |
 
 ## Example
@@ -23,7 +23,7 @@ instance = Amos::BankAccountProfileInput.new(
   account_type: null,
   bank_name: null,
   currency: null,
-  encrypted_account_number: null,
+  account_number: null,
   routing_number: null
 )
 ```
