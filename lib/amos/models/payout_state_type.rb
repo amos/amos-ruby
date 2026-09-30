@@ -22,9 +22,10 @@ module Amos
     ERRORED = "errored".freeze
     ACCEPTED = "accepted".freeze
     REJECTED = "rejected".freeze
+    RETURNED = "returned".freeze
 
     def self.all_vars
-      @all_vars ||= [PENDING, PROCESSING, SUCCEEDED, FAILED, ERRORED, ACCEPTED, REJECTED].freeze
+      @all_vars ||= [PENDING, PROCESSING, SUCCEEDED, FAILED, ERRORED, ACCEPTED, REJECTED, RETURNED].freeze
     end
 
     # Builds the enum from string
