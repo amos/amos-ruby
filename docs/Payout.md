@@ -17,6 +17,7 @@
 | **public_id** | **String** |  | [optional] |
 | **payout_batch_id** | **String** |  | [optional] |
 | **return_reason_code** | **String** | ACH return reason code, such as R13, once the payout is returned. | [optional] |
+| **same_day** | **Boolean** | True when the payout is still requested for same-day settlement. Set to false when a missed same-day payout is included in a next-day batch.  | [optional] |
 | **state** | [**PayoutStateType**](PayoutStateType.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -40,6 +41,7 @@ instance = Amos::Payout.new(
   public_id: null,
   payout_batch_id: null,
   return_reason_code: null,
+  same_day: null,
   state: null,
   created_at: null,
   updated_at: null

@@ -21,6 +21,7 @@
 | **three_d_secure_supported** | **Boolean** |  | [optional] |
 | **token** | **String** |  | [optional] |
 | **wallet_provider** | [**WalletProviderType**](WalletProviderType.md) |  | [optional] |
+| **card_updated_at** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -47,6 +48,7 @@ instance = Amos::CardProfile.new(
   three_d_secure_supported: null,
   token: null,
   wallet_provider: null,
+  card_updated_at: null,
   created_at: null,
   updated_at: null
 )

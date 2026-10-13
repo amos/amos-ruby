@@ -30,6 +30,7 @@ module Amos
 
     attr_accessor :last4
 
+    # ABA routing number. A nine-digit value must pass the ABA checksum. 
     attr_accessor :routing_number
 
     attr_accessor :state

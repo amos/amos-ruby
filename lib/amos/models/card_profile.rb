@@ -50,6 +50,8 @@ module Amos
 
     attr_accessor :wallet_provider
 
+    attr_accessor :card_updated_at
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -96,6 +98,7 @@ module Amos
         :'three_d_secure_supported' => :'three_d_secure_supported',
         :'token' => :'token',
         :'wallet_provider' => :'wallet_provider',
+        :'card_updated_at' => :'card_updated_at',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -131,6 +134,7 @@ module Amos
         :'three_d_secure_supported' => :'Boolean',
         :'token' => :'String',
         :'wallet_provider' => :'WalletProviderType',
+        :'card_updated_at' => :'Time',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -235,6 +239,10 @@ module Amos
         self.wallet_provider = attributes[:'wallet_provider']
       end
 
+      if attributes.key?(:'card_updated_at')
+        self.card_updated_at = attributes[:'card_updated_at']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -293,6 +301,7 @@ module Amos
           three_d_secure_supported == o.three_d_secure_supported &&
           token == o.token &&
           wallet_provider == o.wallet_provider &&
+          card_updated_at == o.card_updated_at &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -306,7 +315,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, failure_reason, first6, funding, fingerprint, last4, state, three_d_secure_supported, token, wallet_provider, created_at, updated_at].hash
+      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, failure_reason, first6, funding, fingerprint, last4, state, three_d_secure_supported, token, wallet_provider, card_updated_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

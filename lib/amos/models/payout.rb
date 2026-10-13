@@ -43,6 +43,9 @@ module Amos
     # ACH return reason code, such as R13, once the payout is returned.
     attr_accessor :return_reason_code
 
+    # True when the payout is still requested for same-day settlement. Set to false when a missed same-day payout is included in a next-day batch. 
+    attr_accessor :same_day
+
     attr_accessor :state
 
     attr_accessor :created_at
@@ -87,6 +90,7 @@ module Amos
         :'public_id' => :'public_id',
         :'payout_batch_id' => :'payout_batch_id',
         :'return_reason_code' => :'return_reason_code',
+        :'same_day' => :'same_day',
         :'state' => :'state',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -119,6 +123,7 @@ module Amos
         :'public_id' => :'String',
         :'payout_batch_id' => :'String',
         :'return_reason_code' => :'String',
+        :'same_day' => :'Boolean',
         :'state' => :'PayoutStateType',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -207,6 +212,10 @@ module Amos
         self.return_reason_code = attributes[:'return_reason_code']
       end
 
+      if attributes.key?(:'same_day')
+        self.same_day = attributes[:'same_day']
+      end
+
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
@@ -253,6 +262,7 @@ module Amos
           public_id == o.public_id &&
           payout_batch_id == o.payout_batch_id &&
           return_reason_code == o.return_reason_code &&
+          same_day == o.same_day &&
           state == o.state &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -267,7 +277,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, addenda, external_account_id, amount, currency, direction, metadata, organization_id, prefix, public_id, payout_batch_id, return_reason_code, state, created_at, updated_at].hash
+      [id, account_id, addenda, external_account_id, amount, currency, direction, metadata, organization_id, prefix, public_id, payout_batch_id, return_reason_code, same_day, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash

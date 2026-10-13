@@ -12,7 +12,7 @@
 | **currency** | **String** |  | [optional] |
 | **account_number** | **String** | Bank account number. Stored encrypted at rest and not returned in API responses.  | [optional] |
 | **token** | **String** |  | [optional] |
-| **routing_number** | **String** |  | [optional] |
+| **routing_number** | **String** | ABA routing number. A nine-digit value must pass the ABA checksum.  | [optional] |
 
 ## Example
 

@@ -11,6 +11,7 @@
 | **direction** | [**PayoutDirectionType**](PayoutDirectionType.md) |  |  |
 | **prefix** | **String** |  | [optional] |
 | **addenda** | **String** |  | [optional] |
+| **same_day** | **Boolean** | Request same-day ACH settlement. Allowed before 2:00 PM Central on a Federal Reserve banking day. Defaults to false.  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = Amos::CreateBulkPayoutInput.new(
   direction: null,
   prefix: null,
   addenda: null,
+  same_day: null,
   metadata: null
 )
 ```

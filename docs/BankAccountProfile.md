@@ -11,7 +11,7 @@
 | **failure_reason** | **String** |  | [optional] |
 | **fingerprint** | **String** |  | [optional] |
 | **last4** | **String** |  | [optional] |
-| **routing_number** | **String** |  | [optional] |
+| **routing_number** | **String** | ABA routing number. A nine-digit value must pass the ABA checksum.  | [optional] |
 | **state** | **String** |  | [optional] |
 | **token** | **String** |  | [optional] |
 | **verified** | **Boolean** | True when the bank account was verified via Plaid Auth. | [optional] |

@@ -33,6 +33,7 @@ module Amos
 
     attr_accessor :token
 
+    # ABA routing number. A nine-digit value must pass the ABA checksum. 
     attr_accessor :routing_number
 
     # Attribute mapping from ruby-style variable name to JSON key.

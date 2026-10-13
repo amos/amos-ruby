@@ -29,6 +29,9 @@ module Amos
 
     attr_accessor :addenda
 
+    # Request same-day ACH settlement. Allowed before 2:00 PM Central on a Federal Reserve banking day. Defaults to false. 
+    attr_accessor :same_day
+
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
@@ -64,6 +67,7 @@ module Amos
         :'direction' => :'direction',
         :'prefix' => :'prefix',
         :'addenda' => :'addenda',
+        :'same_day' => :'same_day',
         :'metadata' => :'metadata'
       }
     end
@@ -88,6 +92,7 @@ module Amos
         :'direction' => :'PayoutDirectionType',
         :'prefix' => :'String',
         :'addenda' => :'String',
+        :'same_day' => :'Boolean',
         :'metadata' => :'Hash<String, String>'
       }
     end
@@ -152,6 +157,10 @@ module Amos
 
       if attributes.key?(:'addenda')
         self.addenda = attributes[:'addenda']
+      end
+
+      if attributes.key?(:'same_day')
+        self.same_day = attributes[:'same_day']
       end
 
       if attributes.key?(:'metadata')
@@ -248,6 +257,7 @@ module Amos
           direction == o.direction &&
           prefix == o.prefix &&
           addenda == o.addenda &&
+          same_day == o.same_day &&
           metadata == o.metadata
     end
 
@@ -260,7 +270,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, external_account_id, amount, currency, direction, prefix, addenda, metadata].hash
+      [account_id, external_account_id, amount, currency, direction, prefix, addenda, same_day, metadata].hash
     end
 
     # Builds the object from hash

@@ -29,6 +29,7 @@ module Amos
     # Bank account number. Stored encrypted at rest and not returned in API responses. 
     attr_accessor :account_number
 
+    # ABA routing number. A nine-digit value must pass the ABA checksum. 
     attr_accessor :routing_number
 
     # Attribute mapping from ruby-style variable name to JSON key.

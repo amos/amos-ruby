@@ -40,6 +40,9 @@ module Amos
 
     attr_accessor :state
 
+    # True when this payment intent can be retried. Use this value instead of inferring retryability from `state`. 
+    attr_accessor :retryable
+
     attr_accessor :statement_descriptor
 
     attr_accessor :created_at
@@ -83,6 +86,7 @@ module Amos
         :'recurring_payment' => :'recurring_payment',
         :'payment_method_id' => :'payment_method_id',
         :'state' => :'state',
+        :'retryable' => :'retryable',
         :'statement_descriptor' => :'statement_descriptor',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -114,6 +118,7 @@ module Amos
         :'recurring_payment' => :'RecurringPayment',
         :'payment_method_id' => :'String',
         :'state' => :'String',
+        :'retryable' => :'Boolean',
         :'statement_descriptor' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -195,6 +200,10 @@ module Amos
         self.state = attributes[:'state']
       end
 
+      if attributes.key?(:'retryable')
+        self.retryable = attributes[:'retryable']
+      end
+
       if attributes.key?(:'statement_descriptor')
         self.statement_descriptor = attributes[:'statement_descriptor']
       end
@@ -252,6 +261,7 @@ module Amos
           recurring_payment == o.recurring_payment &&
           payment_method_id == o.payment_method_id &&
           state == o.state &&
+          retryable == o.retryable &&
           statement_descriptor == o.statement_descriptor &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -266,7 +276,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, state, statement_descriptor, created_at, updated_at].hash
+      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, state, retryable, statement_descriptor, created_at, updated_at].hash
     end
 
     # Builds the object from hash
