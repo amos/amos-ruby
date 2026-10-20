@@ -21,7 +21,7 @@ module Amos
 
     attr_accessor :brand
 
-    # Cardholder name as stored on the card. 2-26 characters. Letters, numbers, spaces, periods, commas, apostrophes, hyphens, slashes, and ampersands. 
+    # Cardholder name as stored on the card. 2-26 characters when present. Letters, numbers, spaces, periods, commas, apostrophes, hyphens, slashes, and ampersands. 
     attr_accessor :card_holder_name
 
     attr_accessor :cvc_check
@@ -46,7 +46,8 @@ module Amos
 
     attr_accessor :three_d_secure_supported
 
-    attr_accessor :token
+    # Vault UUID for this card. Used for charges and Vault callbacks.
+    attr_accessor :vault_token
 
     attr_accessor :wallet_provider
 
@@ -96,7 +97,7 @@ module Amos
         :'last4' => :'last4',
         :'state' => :'state',
         :'three_d_secure_supported' => :'three_d_secure_supported',
-        :'token' => :'token',
+        :'vault_token' => :'vault_token',
         :'wallet_provider' => :'wallet_provider',
         :'card_updated_at' => :'card_updated_at',
         :'created_at' => :'created_at',
@@ -132,7 +133,7 @@ module Amos
         :'last4' => :'String',
         :'state' => :'String',
         :'three_d_secure_supported' => :'Boolean',
-        :'token' => :'String',
+        :'vault_token' => :'String',
         :'wallet_provider' => :'WalletProviderType',
         :'card_updated_at' => :'Time',
         :'created_at' => :'Time',
@@ -144,6 +145,7 @@ module Amos
     def self.openapi_nullable
       Set.new([
         :'avs_check_message',
+        :'card_holder_name',
         :'cvc_check_message',
         :'failure_reason',
         :'funding',
@@ -231,8 +233,8 @@ module Amos
         self.three_d_secure_supported = attributes[:'three_d_secure_supported']
       end
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'vault_token')
+        self.vault_token = attributes[:'vault_token']
       end
 
       if attributes.key?(:'wallet_provider')
@@ -282,15 +284,11 @@ module Amos
     # Custom attribute writer method with validation
     # @param [Object] card_holder_name Value to be assigned
     def card_holder_name=(card_holder_name)
-      if card_holder_name.nil?
-        fail ArgumentError, 'card_holder_name cannot be nil'
-      end
-
-      if card_holder_name.to_s.length > 26
+      if !card_holder_name.nil? && card_holder_name.to_s.length > 26
         fail ArgumentError, 'invalid value for "card_holder_name", the character length must be smaller than or equal to 26.'
       end
 
-      if card_holder_name.to_s.length < 2
+      if !card_holder_name.nil? && card_holder_name.to_s.length < 2
         fail ArgumentError, 'invalid value for "card_holder_name", the character length must be greater than or equal to 2.'
       end
 
@@ -327,7 +325,7 @@ module Amos
           last4 == o.last4 &&
           state == o.state &&
           three_d_secure_supported == o.three_d_secure_supported &&
-          token == o.token &&
+          vault_token == o.vault_token &&
           wallet_provider == o.wallet_provider &&
           card_updated_at == o.card_updated_at &&
           created_at == o.created_at &&
@@ -343,7 +341,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, failure_reason, first6, funding, fingerprint, last4, state, three_d_secure_supported, token, wallet_provider, card_updated_at, created_at, updated_at].hash
+      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, failure_reason, first6, funding, fingerprint, last4, state, three_d_secure_supported, vault_token, wallet_provider, card_updated_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

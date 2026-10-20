@@ -15,7 +15,7 @@ require 'time'
 
 module Amos
   class CardProfileInput < ApiModelBase
-    # Cardholder name as stored on the card. 2-26 characters. Letters, numbers, spaces, periods, commas, apostrophes, hyphens, slashes, and ampersands. 
+    # Cardholder name as stored on the card. 2-26 characters when present. Letters, numbers, spaces, periods, commas, apostrophes, hyphens, slashes, and ampersands. 
     attr_accessor :card_holder_name
 
     attr_accessor :cvc
@@ -65,6 +65,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'card_holder_name',
       ])
     end
 
@@ -140,15 +141,11 @@ module Amos
     # Custom attribute writer method with validation
     # @param [Object] card_holder_name Value to be assigned
     def card_holder_name=(card_holder_name)
-      if card_holder_name.nil?
-        fail ArgumentError, 'card_holder_name cannot be nil'
-      end
-
-      if card_holder_name.to_s.length > 26
+      if !card_holder_name.nil? && card_holder_name.to_s.length > 26
         fail ArgumentError, 'invalid value for "card_holder_name", the character length must be smaller than or equal to 26.'
       end
 
-      if card_holder_name.to_s.length < 2
+      if !card_holder_name.nil? && card_holder_name.to_s.length < 2
         fail ArgumentError, 'invalid value for "card_holder_name", the character length must be greater than or equal to 2.'
       end
 
