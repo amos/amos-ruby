@@ -17,7 +17,7 @@ module Amos
   class CreatePaymentMethodInputCardProfileAttributes < ApiModelBase
     attr_accessor :brand
 
-    # Cardholder name. Letters, spaces, hyphens, apostrophes, and periods only. 
+    # Cardholder name as stored on the card. 2-26 characters. Letters, numbers, spaces, periods, commas, apostrophes, hyphens, slashes, and ampersands. 
     attr_accessor :card_holder_name
 
     attr_accessor :cvc
@@ -187,6 +187,14 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@card_holder_name.nil? && @card_holder_name.to_s.length > 26
+        invalid_properties.push('invalid value for "card_holder_name", the character length must be smaller than or equal to 26.')
+      end
+
+      if !@card_holder_name.nil? && @card_holder_name.to_s.length < 2
+        invalid_properties.push('invalid value for "card_holder_name", the character length must be greater than or equal to 2.')
+      end
+
       invalid_properties
     end
 
@@ -194,7 +202,27 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@card_holder_name.nil? && @card_holder_name.to_s.length > 26
+      return false if !@card_holder_name.nil? && @card_holder_name.to_s.length < 2
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] card_holder_name Value to be assigned
+    def card_holder_name=(card_holder_name)
+      if card_holder_name.nil?
+        fail ArgumentError, 'card_holder_name cannot be nil'
+      end
+
+      if card_holder_name.to_s.length > 26
+        fail ArgumentError, 'invalid value for "card_holder_name", the character length must be smaller than or equal to 26.'
+      end
+
+      if card_holder_name.to_s.length < 2
+        fail ArgumentError, 'invalid value for "card_holder_name", the character length must be greater than or equal to 2.'
+      end
+
+      @card_holder_name = card_holder_name
     end
 
     # Checks equality by comparing each attribute.

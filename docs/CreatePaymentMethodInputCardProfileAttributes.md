@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **brand** | **String** |  | [optional] |
-| **card_holder_name** | **String** | Cardholder name. Letters, spaces, hyphens, apostrophes, and periods only.  | [optional] |
+| **card_holder_name** | **String** | Cardholder name as stored on the card. 2-26 characters. Letters, numbers, spaces, periods, commas, apostrophes, hyphens, slashes, and ampersands.  | [optional] |
 | **cvc** | **String** |  | [optional] |
 | **encrypted_card_number** | **String** |  | [optional] |
 | **exp_month** | **Integer** |  | [optional] |

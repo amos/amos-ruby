@@ -11,7 +11,7 @@
 | **email** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
-| **postal_code** | **String** |  | [optional] |
+| **postal_code** | **String** | Required when country is CA, PR, GB, or US. Optional for every other country.  | [optional] |
 | **state** | **String** |  | [optional] |
 
 ## Example

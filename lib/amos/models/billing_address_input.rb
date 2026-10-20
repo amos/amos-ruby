@@ -29,6 +29,7 @@ module Amos
 
     attr_accessor :phone
 
+    # Required when country is CA, PR, GB, or US. Optional for every other country. 
     attr_accessor :postal_code
 
     attr_accessor :state
