@@ -11,6 +11,7 @@
 | **currency** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
+| **failure** | [**PaymentFailure**](PaymentFailure.md) |  | [optional] |
 | **allowed_reverse_action** | **String** |  | [optional] |
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **original_transaction_id** | **String** |  | [optional] |
@@ -38,6 +39,7 @@ instance = Amos::Charge.new(
   currency: null,
   customer_id: null,
   description: null,
+  failure: null,
   allowed_reverse_action: null,
   metadata: null,
   original_transaction_id: null,

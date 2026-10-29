@@ -32,8 +32,6 @@ module Amos
 
     attr_accessor :exp_year
 
-    attr_accessor :failure_reason
-
     attr_accessor :first6
 
     attr_accessor :funding
@@ -90,7 +88,6 @@ module Amos
         :'cvc_check_message' => :'cvc_check_message',
         :'exp_month' => :'exp_month',
         :'exp_year' => :'exp_year',
-        :'failure_reason' => :'failure_reason',
         :'first6' => :'first6',
         :'funding' => :'funding',
         :'fingerprint' => :'fingerprint',
@@ -126,7 +123,6 @@ module Amos
         :'cvc_check_message' => :'String',
         :'exp_month' => :'Integer',
         :'exp_year' => :'Integer',
-        :'failure_reason' => :'String',
         :'first6' => :'String',
         :'funding' => :'String',
         :'fingerprint' => :'String',
@@ -147,7 +143,6 @@ module Amos
         :'avs_check_message',
         :'card_holder_name',
         :'cvc_check_message',
-        :'failure_reason',
         :'funding',
         :'fingerprint',
         :'three_d_secure_supported',
@@ -203,10 +198,6 @@ module Amos
 
       if attributes.key?(:'exp_year')
         self.exp_year = attributes[:'exp_year']
-      end
-
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
       end
 
       if attributes.key?(:'first6')
@@ -276,8 +267,6 @@ module Amos
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@card_holder_name.nil? && @card_holder_name.to_s.length > 26
       return false if !@card_holder_name.nil? && @card_holder_name.to_s.length < 2
-      failure_reason_validator = EnumAttributeValidator.new('String', ["authorization_failed", "avs_blocked", "brand_not_allowed", "brand_not_found", "cvc_blocked", "processing_error", "vault_failed"])
-      return false unless failure_reason_validator.valid?(@failure_reason)
       true
     end
 
@@ -295,16 +284,6 @@ module Amos
       @card_holder_name = card_holder_name
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] failure_reason Object to be assigned
-    def failure_reason=(failure_reason)
-      validator = EnumAttributeValidator.new('String', ["authorization_failed", "avs_blocked", "brand_not_allowed", "brand_not_found", "cvc_blocked", "processing_error", "vault_failed"])
-      unless validator.valid?(failure_reason)
-        fail ArgumentError, "invalid value for \"failure_reason\", must be one of #{validator.allowable_values}."
-      end
-      @failure_reason = failure_reason
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -318,7 +297,6 @@ module Amos
           cvc_check_message == o.cvc_check_message &&
           exp_month == o.exp_month &&
           exp_year == o.exp_year &&
-          failure_reason == o.failure_reason &&
           first6 == o.first6 &&
           funding == o.funding &&
           fingerprint == o.fingerprint &&
@@ -341,7 +319,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, failure_reason, first6, funding, fingerprint, last4, state, three_d_secure_supported, vault_token, wallet_provider, card_updated_at, created_at, updated_at].hash
+      [avs_check, avs_check_message, brand, card_holder_name, cvc_check, cvc_check_message, exp_month, exp_year, first6, funding, fingerprint, last4, state, three_d_secure_supported, vault_token, wallet_provider, card_updated_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

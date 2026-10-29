@@ -63,10 +63,6 @@ docs/CreatePaymentIntentInput.md
 docs/CreatePaymentIntentRequest.md
 docs/CreatePaymentLinkInput.md
 docs/CreatePaymentLinkRequest.md
-docs/CreatePaymentMethodInput.md
-docs/CreatePaymentMethodInputBankAccountProfileAttributes.md
-docs/CreatePaymentMethodInputCardProfileAttributes.md
-docs/CreatePaymentMethodRequest.md
 docs/CreatePayoutInput.md
 docs/CreatePayoutRequest.md
 docs/CreateProductInput.md
@@ -157,6 +153,8 @@ docs/OrganizationsApi.md
 docs/Origin.md
 docs/OriginApplepayRegistrationStateType.md
 docs/OriginsApi.md
+docs/PaymentFailure.md
+docs/PaymentFailureType.md
 docs/PaymentIntent.md
 docs/PaymentIntentCaptureMethodType.md
 docs/PaymentIntentsApi.md
@@ -330,10 +328,6 @@ lib/amos/models/create_payment_intent_input.rb
 lib/amos/models/create_payment_intent_request.rb
 lib/amos/models/create_payment_link_input.rb
 lib/amos/models/create_payment_link_request.rb
-lib/amos/models/create_payment_method_input.rb
-lib/amos/models/create_payment_method_input_bank_account_profile_attributes.rb
-lib/amos/models/create_payment_method_input_card_profile_attributes.rb
-lib/amos/models/create_payment_method_request.rb
 lib/amos/models/create_payout_input.rb
 lib/amos/models/create_payout_request.rb
 lib/amos/models/create_product_input.rb
@@ -411,6 +405,8 @@ lib/amos/models/meta.rb
 lib/amos/models/organization.rb
 lib/amos/models/origin.rb
 lib/amos/models/origin_applepay_registration_state_type.rb
+lib/amos/models/payment_failure.rb
+lib/amos/models/payment_failure_type.rb
 lib/amos/models/payment_intent.rb
 lib/amos/models/payment_intent_capture_method_type.rb
 lib/amos/models/payment_link.rb
@@ -479,4 +475,6 @@ lib/amos/models/webhook_event_payload.rb
 lib/amos/models/webhook_event_type.rb
 lib/amos/models/webhook_request.rb
 lib/amos/version.rb
+spec/models/payment_failure_spec.rb
+spec/models/payment_failure_type_spec.rb
 spec/spec_helper.rb

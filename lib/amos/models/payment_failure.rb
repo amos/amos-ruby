@@ -14,40 +14,44 @@ require 'date'
 require 'time'
 
 module Amos
-  class CreatePaymentMethodInputBankAccountProfileAttributes < ApiModelBase
-    attr_accessor :last4
+  # Why a transaction failed, in terms that are the same for every processor.
+  class PaymentFailure < ApiModelBase
+    # Stable failure code, for example insufficient_funds, issuer_declined or incorrect_cvc. New codes may be added over time, so treat unknown values as generic_decline.
+    attr_accessor :code
 
-    # Account holder name. Letters, spaces, hyphens, apostrophes, and periods only. 
-    attr_accessor :account_holder_name
+    attr_accessor :type
 
-    attr_accessor :account_holder_type
+    # Human readable explanation. Safe to show to the merchant.
+    attr_accessor :message
 
-    attr_accessor :account_type
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :bank_name
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    attr_accessor :currency
-
-    # Bank account number. Stored encrypted at rest and not returned in API responses. 
-    attr_accessor :account_number
-
-    attr_accessor :token
-
-    # ABA routing number. A nine-digit value must pass the ABA checksum. 
-    attr_accessor :routing_number
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'last4' => :'last4',
-        :'account_holder_name' => :'account_holder_name',
-        :'account_holder_type' => :'account_holder_type',
-        :'account_type' => :'account_type',
-        :'bank_name' => :'bank_name',
-        :'currency' => :'currency',
-        :'account_number' => :'account_number',
-        :'token' => :'token',
-        :'routing_number' => :'routing_number'
+        :'code' => :'code',
+        :'type' => :'type',
+        :'message' => :'message'
       }
     end
 
@@ -64,15 +68,9 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'last4' => :'String',
-        :'account_holder_name' => :'String',
-        :'account_holder_type' => :'String',
-        :'account_type' => :'String',
-        :'bank_name' => :'String',
-        :'currency' => :'String',
-        :'account_number' => :'String',
-        :'token' => :'String',
-        :'routing_number' => :'String'
+        :'code' => :'String',
+        :'type' => :'PaymentFailureType',
+        :'message' => :'String'
       }
     end
 
@@ -86,7 +84,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::CreatePaymentMethodInputBankAccountProfileAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::PaymentFailure` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -101,40 +99,22 @@ module Amos
         end
       }
 
-      if attributes.key?(:'last4')
-        self.last4 = attributes[:'last4']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
+      else
+        self.code = nil
       end
 
-      if attributes.key?(:'account_holder_name')
-        self.account_holder_name = attributes[:'account_holder_name']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
       end
 
-      if attributes.key?(:'account_holder_type')
-        self.account_holder_type = attributes[:'account_holder_type']
-      end
-
-      if attributes.key?(:'account_type')
-        self.account_type = attributes[:'account_type']
-      end
-
-      if attributes.key?(:'bank_name')
-        self.bank_name = attributes[:'bank_name']
-      end
-
-      if attributes.key?(:'currency')
-        self.currency = attributes[:'currency']
-      end
-
-      if attributes.key?(:'account_number')
-        self.account_number = attributes[:'account_number']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'routing_number')
-        self.routing_number = attributes[:'routing_number']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
+      else
+        self.message = nil
       end
     end
 
@@ -143,6 +123,18 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
+      end
+
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
+      if @message.nil?
+        invalid_properties.push('invalid value for "message", message cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -150,7 +142,40 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @code.nil?
+      return false if @type.nil?
+      return false if @message.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] code Value to be assigned
+    def code=(code)
+      if code.nil?
+        fail ArgumentError, 'code cannot be nil'
+      end
+
+      @code = code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] type Value to be assigned
+    def type=(type)
+      if type.nil?
+        fail ArgumentError, 'type cannot be nil'
+      end
+
+      @type = type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] message Value to be assigned
+    def message=(message)
+      if message.nil?
+        fail ArgumentError, 'message cannot be nil'
+      end
+
+      @message = message
     end
 
     # Checks equality by comparing each attribute.
@@ -158,15 +183,9 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          last4 == o.last4 &&
-          account_holder_name == o.account_holder_name &&
-          account_holder_type == o.account_holder_type &&
-          account_type == o.account_type &&
-          bank_name == o.bank_name &&
-          currency == o.currency &&
-          account_number == o.account_number &&
-          token == o.token &&
-          routing_number == o.routing_number
+          code == o.code &&
+          type == o.type &&
+          message == o.message
     end
 
     # @see the `==` method
@@ -178,7 +197,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [last4, account_holder_name, account_holder_type, account_type, bank_name, currency, account_number, token, routing_number].hash
+      [code, type, message].hash
     end
 
     # Builds the object from hash

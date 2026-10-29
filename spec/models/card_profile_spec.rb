@@ -75,16 +75,6 @@ describe Amos::CardProfile do
     end
   end
 
-  describe 'test attribute "failure_reason"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["authorization_failed", "avs_blocked", "brand_not_allowed", "brand_not_found", "cvc_blocked", "processing_error", "vault_failed"])
-      # validator.allowable_values.each do |value|
-      #   expect { instance.failure_reason = value }.not_to raise_error
-      # end
-    end
-  end
-
   describe 'test attribute "first6"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

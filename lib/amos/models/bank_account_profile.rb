@@ -24,8 +24,6 @@ module Amos
 
     attr_accessor :bank_name
 
-    attr_accessor :failure_reason
-
     attr_accessor :fingerprint
 
     attr_accessor :last4
@@ -42,28 +40,6 @@ module Amos
 
     attr_accessor :updated_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -71,7 +47,6 @@ module Amos
         :'account_holder_type' => :'account_holder_type',
         :'account_type' => :'account_type',
         :'bank_name' => :'bank_name',
-        :'failure_reason' => :'failure_reason',
         :'fingerprint' => :'fingerprint',
         :'last4' => :'last4',
         :'routing_number' => :'routing_number',
@@ -99,7 +74,6 @@ module Amos
         :'account_holder_type' => :'String',
         :'account_type' => :'String',
         :'bank_name' => :'String',
-        :'failure_reason' => :'String',
         :'fingerprint' => :'String',
         :'last4' => :'String',
         :'routing_number' => :'String',
@@ -113,7 +87,6 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'failure_reason',
         :'fingerprint',
       ])
     end
@@ -151,10 +124,6 @@ module Amos
 
       if attributes.key?(:'bank_name')
         self.bank_name = attributes[:'bank_name']
-      end
-
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
       end
 
       if attributes.key?(:'fingerprint')
@@ -198,19 +167,7 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      failure_reason_validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed", "insufficient_funds", "verification_failed"])
-      return false unless failure_reason_validator.valid?(@failure_reason)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] failure_reason Object to be assigned
-    def failure_reason=(failure_reason)
-      validator = EnumAttributeValidator.new('String', ["activation_failed", "processing_error", "vault_failed", "insufficient_funds", "verification_failed"])
-      unless validator.valid?(failure_reason)
-        fail ArgumentError, "invalid value for \"failure_reason\", must be one of #{validator.allowable_values}."
-      end
-      @failure_reason = failure_reason
     end
 
     # Checks equality by comparing each attribute.
@@ -222,7 +179,6 @@ module Amos
           account_holder_type == o.account_holder_type &&
           account_type == o.account_type &&
           bank_name == o.bank_name &&
-          failure_reason == o.failure_reason &&
           fingerprint == o.fingerprint &&
           last4 == o.last4 &&
           routing_number == o.routing_number &&
@@ -241,7 +197,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_holder_name, account_holder_type, account_type, bank_name, failure_reason, fingerprint, last4, routing_number, state, verified, created_at, updated_at].hash
+      [account_holder_name, account_holder_type, account_type, bank_name, fingerprint, last4, routing_number, state, verified, created_at, updated_at].hash
     end
 
     # Builds the object from hash

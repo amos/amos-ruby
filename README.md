@@ -144,7 +144,6 @@ Class | Method | HTTP request | Description
 *Amos::PaymentLinksApi* | [**get_payment_link**](docs/PaymentLinksApi.md#get_payment_link) | **GET** /payment_links/{id} | Retrieve a payment link by ID
 *Amos::PaymentLinksApi* | [**list_payment_links**](docs/PaymentLinksApi.md#list_payment_links) | **GET** /payment_links | List payment links
 *Amos::PaymentLinksApi* | [**update_payment_link**](docs/PaymentLinksApi.md#update_payment_link) | **PUT** /payment_links/{id} | Update a payment link by ID
-*Amos::PaymentMethodsApi* | [**create_payment_method**](docs/PaymentMethodsApi.md#create_payment_method) | **POST** /payment_methods | Create a payment method
 *Amos::PaymentMethodsApi* | [**get_payment_method**](docs/PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method
 *Amos::PaymentMethodsApi* | [**list_payment_methods**](docs/PaymentMethodsApi.md#list_payment_methods) | **GET** /payment_methods | List all payment methods
 *Amos::PayoutsApi* | [**bulk_create_payouts**](docs/PayoutsApi.md#bulk_create_payouts) | **POST** /payouts/bulk_create | Bulk create payouts
@@ -250,10 +249,6 @@ Class | Method | HTTP request | Description
  - [Amos::CreatePaymentIntentRequest](docs/CreatePaymentIntentRequest.md)
  - [Amos::CreatePaymentLinkInput](docs/CreatePaymentLinkInput.md)
  - [Amos::CreatePaymentLinkRequest](docs/CreatePaymentLinkRequest.md)
- - [Amos::CreatePaymentMethodInput](docs/CreatePaymentMethodInput.md)
- - [Amos::CreatePaymentMethodInputBankAccountProfileAttributes](docs/CreatePaymentMethodInputBankAccountProfileAttributes.md)
- - [Amos::CreatePaymentMethodInputCardProfileAttributes](docs/CreatePaymentMethodInputCardProfileAttributes.md)
- - [Amos::CreatePaymentMethodRequest](docs/CreatePaymentMethodRequest.md)
  - [Amos::CreatePayoutInput](docs/CreatePayoutInput.md)
  - [Amos::CreatePayoutRequest](docs/CreatePayoutRequest.md)
  - [Amos::CreateProductInput](docs/CreateProductInput.md)
@@ -331,6 +326,8 @@ Class | Method | HTTP request | Description
  - [Amos::Organization](docs/Organization.md)
  - [Amos::Origin](docs/Origin.md)
  - [Amos::OriginApplepayRegistrationStateType](docs/OriginApplepayRegistrationStateType.md)
+ - [Amos::PaymentFailure](docs/PaymentFailure.md)
+ - [Amos::PaymentFailureType](docs/PaymentFailureType.md)
  - [Amos::PaymentIntent](docs/PaymentIntent.md)
  - [Amos::PaymentIntentCaptureMethodType](docs/PaymentIntentCaptureMethodType.md)
  - [Amos::PaymentLink](docs/PaymentLink.md)

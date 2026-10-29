@@ -8,7 +8,6 @@
 | **account_holder_type** | **String** |  | [optional] |
 | **account_type** | **String** |  | [optional] |
 | **bank_name** | **String** |  | [optional] |
-| **failure_reason** | **String** |  | [optional] |
 | **fingerprint** | **String** |  | [optional] |
 | **last4** | **String** |  | [optional] |
 | **routing_number** | **String** | ABA routing number. A nine-digit value must pass the ABA checksum.  | [optional] |
@@ -27,7 +26,6 @@ instance = Amos::BankAccountProfile.new(
   account_holder_type: null,
   account_type: null,
   bank_name: null,
-  failure_reason: null,
   fingerprint: null,
   last4: null,
   routing_number: null,
