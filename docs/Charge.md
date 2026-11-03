@@ -22,6 +22,7 @@
 | **source** | [**TransactionSourceType**](TransactionSourceType.md) |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |
+| **subscription_id** | **String** |  | [optional] |
 | **succeeded_at** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -50,6 +51,7 @@ instance = Amos::Charge.new(
   source: null,
   state: null,
   statement_descriptor: null,
+  subscription_id: null,
   succeeded_at: null,
   created_at: null,
   updated_at: null

@@ -10,6 +10,7 @@
 | **cycles** | **Integer** |  | [optional] |
 | **interval** | [**SubscriptionIntervalType**](SubscriptionIntervalType.md) |  | [optional] |
 | **interval_count** | **Integer** |  | [optional] |
+| **payment_method_id** | **String** | Active payment method that belongs to the customer. | [optional] |
 | **subscription_plan_id** | **String** |  | [optional] |
 
 ## Example
@@ -24,6 +25,7 @@ instance = Amos::CreateSubscriptionInput.new(
   cycles: null,
   interval: null,
   interval_count: null,
+  payment_method_id: null,
   subscription_plan_id: null
 )
 ```

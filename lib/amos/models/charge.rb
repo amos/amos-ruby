@@ -52,6 +52,8 @@ module Amos
 
     attr_accessor :statement_descriptor
 
+    attr_accessor :subscription_id
+
     attr_accessor :succeeded_at
 
     attr_accessor :created_at
@@ -101,6 +103,7 @@ module Amos
         :'source' => :'source',
         :'state' => :'state',
         :'statement_descriptor' => :'statement_descriptor',
+        :'subscription_id' => :'subscription_id',
         :'succeeded_at' => :'succeeded_at',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -138,6 +141,7 @@ module Amos
         :'source' => :'TransactionSourceType',
         :'state' => :'String',
         :'statement_descriptor' => :'String',
+        :'subscription_id' => :'String',
         :'succeeded_at' => :'Time',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -150,6 +154,7 @@ module Amos
         :'description',
         :'failure',
         :'allowed_reverse_action',
+        :'subscription_id',
       ])
     end
 
@@ -246,6 +251,10 @@ module Amos
         self.statement_descriptor = attributes[:'statement_descriptor']
       end
 
+      if attributes.key?(:'subscription_id')
+        self.subscription_id = attributes[:'subscription_id']
+      end
+
       if attributes.key?(:'succeeded_at')
         self.succeeded_at = attributes[:'succeeded_at']
       end
@@ -321,6 +330,7 @@ module Amos
           source == o.source &&
           state == o.state &&
           statement_descriptor == o.statement_descriptor &&
+          subscription_id == o.subscription_id &&
           succeeded_at == o.succeeded_at &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -335,7 +345,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, adjustment_reason, amount, currency, customer_id, description, failure, allowed_reverse_action, metadata, original_transaction_id, parent_transaction_id, payment_intent_id, payment_method_id, platform_fee, source, state, statement_descriptor, succeeded_at, created_at, updated_at].hash
+      [id, account_id, adjustment_reason, amount, currency, customer_id, description, failure, allowed_reverse_action, metadata, original_transaction_id, parent_transaction_id, payment_intent_id, payment_method_id, platform_fee, source, state, statement_descriptor, subscription_id, succeeded_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash

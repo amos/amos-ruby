@@ -19,8 +19,6 @@ module Amos
 
     attr_accessor :name
 
-    attr_accessor :payment_method_id
-
     attr_accessor :phone
 
     attr_accessor :mailing_address_attributes
@@ -33,7 +31,6 @@ module Amos
       {
         :'email' => :'email',
         :'name' => :'name',
-        :'payment_method_id' => :'payment_method_id',
         :'phone' => :'phone',
         :'mailing_address_attributes' => :'mailing_address_attributes',
         :'metadata' => :'metadata'
@@ -55,7 +52,6 @@ module Amos
       {
         :'email' => :'String',
         :'name' => :'String',
-        :'payment_method_id' => :'String',
         :'phone' => :'String',
         :'mailing_address_attributes' => :'MailingAddressInput',
         :'metadata' => :'Hash<String, String>'
@@ -95,10 +91,6 @@ module Amos
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
-      end
-
       if attributes.key?(:'phone')
         self.phone = attributes[:'phone']
       end
@@ -136,7 +128,6 @@ module Amos
       self.class == o.class &&
           email == o.email &&
           name == o.name &&
-          payment_method_id == o.payment_method_id &&
           phone == o.phone &&
           mailing_address_attributes == o.mailing_address_attributes &&
           metadata == o.metadata
@@ -151,7 +142,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [email, name, payment_method_id, phone, mailing_address_attributes, metadata].hash
+      [email, name, phone, mailing_address_attributes, metadata].hash
     end
 
     # Builds the object from hash

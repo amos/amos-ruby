@@ -45,6 +45,8 @@ module Amos
 
     attr_accessor :statement_descriptor
 
+    attr_accessor :subscription_id
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -88,6 +90,7 @@ module Amos
         :'state' => :'state',
         :'retryable' => :'retryable',
         :'statement_descriptor' => :'statement_descriptor',
+        :'subscription_id' => :'subscription_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -120,6 +123,7 @@ module Amos
         :'state' => :'String',
         :'retryable' => :'Boolean',
         :'statement_descriptor' => :'String',
+        :'subscription_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -128,6 +132,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'subscription_id',
       ])
     end
 
@@ -208,6 +213,10 @@ module Amos
         self.statement_descriptor = attributes[:'statement_descriptor']
       end
 
+      if attributes.key?(:'subscription_id')
+        self.subscription_id = attributes[:'subscription_id']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -263,6 +272,7 @@ module Amos
           state == o.state &&
           retryable == o.retryable &&
           statement_descriptor == o.statement_descriptor &&
+          subscription_id == o.subscription_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -276,7 +286,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, state, retryable, statement_descriptor, created_at, updated_at].hash
+      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, state, retryable, statement_descriptor, subscription_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash

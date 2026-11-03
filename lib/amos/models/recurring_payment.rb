@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Amos
-  # How this payment intent relates to a recurring series. Use `initial` for the first charge that establishes the series. Use `network_transaction_id` and/or `transaction_link_id` for subsequent merchant-initiated charges. Do not combine `initial` with network identifiers on the same request. 
+  # How this payment intent relates to a recurring series. Use `initial` for the first charge that establishes the series. Use `network_transaction_id` and/or `transaction_link_id`, with `original_amount`, for subsequent merchant-initiated charges. Do not combine `initial` with network identifiers on the same request. 
   class RecurringPayment < ApiModelBase
     # When true, marks the first payment in a recurring series so the processor can treat it as an initial recurring / credential-on-file setup transaction. 
     attr_accessor :initial
@@ -25,12 +25,16 @@ module Amos
     # Processor transaction link id for subsequent recurring payments where supported. 
     attr_accessor :transaction_link_id
 
+    # Amount of the initial recurring charge, in the smallest currency unit. Send this with the network identifiers on subsequent merchant-initiated charges. 
+    attr_accessor :original_amount
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'initial' => :'initial',
         :'network_transaction_id' => :'network_transaction_id',
-        :'transaction_link_id' => :'transaction_link_id'
+        :'transaction_link_id' => :'transaction_link_id',
+        :'original_amount' => :'original_amount'
       }
     end
 
@@ -49,7 +53,8 @@ module Amos
       {
         :'initial' => :'Boolean',
         :'network_transaction_id' => :'String',
-        :'transaction_link_id' => :'String'
+        :'transaction_link_id' => :'String',
+        :'original_amount' => :'Integer'
       }
     end
 
@@ -89,6 +94,10 @@ module Amos
       if attributes.key?(:'transaction_link_id')
         self.transaction_link_id = attributes[:'transaction_link_id']
       end
+
+      if attributes.key?(:'original_amount')
+        self.original_amount = attributes[:'original_amount']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -96,6 +105,10 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@original_amount.nil? && @original_amount < 1
+        invalid_properties.push('invalid value for "original_amount", must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -103,7 +116,22 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@original_amount.nil? && @original_amount < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] original_amount Value to be assigned
+    def original_amount=(original_amount)
+      if original_amount.nil?
+        fail ArgumentError, 'original_amount cannot be nil'
+      end
+
+      if original_amount < 1
+        fail ArgumentError, 'invalid value for "original_amount", must be greater than or equal to 1.'
+      end
+
+      @original_amount = original_amount
     end
 
     # Checks equality by comparing each attribute.
@@ -113,7 +141,8 @@ module Amos
       self.class == o.class &&
           initial == o.initial &&
           network_transaction_id == o.network_transaction_id &&
-          transaction_link_id == o.transaction_link_id
+          transaction_link_id == o.transaction_link_id &&
+          original_amount == o.original_amount
     end
 
     # @see the `==` method
@@ -125,7 +154,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [initial, network_transaction_id, transaction_link_id].hash
+      [initial, network_transaction_id, transaction_link_id, original_amount].hash
     end
 
     # Builds the object from hash

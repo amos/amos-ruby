@@ -27,6 +27,9 @@ module Amos
 
     attr_accessor :interval_count
 
+    # Active payment method that belongs to the customer.
+    attr_accessor :payment_method_id
+
     attr_accessor :subscription_plan_id
 
     class EnumAttributeValidator
@@ -60,6 +63,7 @@ module Amos
         :'cycles' => :'cycles',
         :'interval' => :'interval',
         :'interval_count' => :'interval_count',
+        :'payment_method_id' => :'payment_method_id',
         :'subscription_plan_id' => :'subscription_plan_id'
       }
     end
@@ -83,6 +87,7 @@ module Amos
         :'cycles' => :'Integer',
         :'interval' => :'SubscriptionIntervalType',
         :'interval_count' => :'Integer',
+        :'payment_method_id' => :'String',
         :'subscription_plan_id' => :'String'
       }
     end
@@ -136,6 +141,10 @@ module Amos
         self.interval_count = attributes[:'interval_count']
       end
 
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
       if attributes.key?(:'subscription_plan_id')
         self.subscription_plan_id = attributes[:'subscription_plan_id']
       end
@@ -167,6 +176,7 @@ module Amos
           cycles == o.cycles &&
           interval == o.interval &&
           interval_count == o.interval_count &&
+          payment_method_id == o.payment_method_id &&
           subscription_plan_id == o.subscription_plan_id
     end
 
@@ -179,7 +189,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, currency, customer_id, cycles, interval, interval_count, subscription_plan_id].hash
+      [amount, currency, customer_id, cycles, interval, interval_count, payment_method_id, subscription_plan_id].hash
     end
 
     # Builds the object from hash

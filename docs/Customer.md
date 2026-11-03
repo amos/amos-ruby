@@ -9,7 +9,6 @@
 | **metadata** | **Hash&lt;String, String&gt;** | Additional metadata key-value pairs | [optional] |
 | **name** | **String** |  | [optional] |
 | **organization_id** | **String** |  | [optional] |
-| **payment_method_id** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **type** | **String** |  | [optional] |
 | **mailing_address** | [**MailingAddress**](MailingAddress.md) |  | [optional] |
@@ -27,7 +26,6 @@ instance = Amos::Customer.new(
   metadata: null,
   name: null,
   organization_id: null,
-  payment_method_id: null,
   phone: null,
   type: null,
   mailing_address: null,
