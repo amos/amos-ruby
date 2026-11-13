@@ -33,12 +33,6 @@ describe Amos::MerchantApplication do
     end
   end
 
-  describe 'test attribute "annual_credit_card_sales_volume"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "business_category"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

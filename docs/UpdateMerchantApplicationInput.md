@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **annual_credit_card_sales_volume** | **Integer** |  | [optional] |
+| **annual_transaction_volume** | [**AnnualTransactionVolume**](AnnualTransactionVolume.md) |  | [optional] |
+| **average_transaction_amount** | [**AverageTransactionAmount**](AverageTransactionAmount.md) |  | [optional] |
 | **bank_account_number** | **String** |  | [optional] |
 | **bank_routing_number** | **String** |  | [optional] |
 | **business_category** | [**MerchantBusinessCategoryType**](MerchantBusinessCategoryType.md) |  | [optional] |
@@ -14,6 +15,7 @@
 | **customer_service_number** | **String** |  | [optional] |
 | **dba_name** | **String** |  | [optional] |
 | **max_transaction_amount** | **Integer** |  | [optional] |
+| **max_transaction_amount_reason** | **String** |  | [optional] |
 | **postal_code** | **String** |  | [optional] |
 | **primary_contact_email_address** | **String** |  | [optional] |
 | **primary_contact_first_name** | **String** |  | [optional] |
@@ -30,7 +32,8 @@
 require 'amos'
 
 instance = Amos::UpdateMerchantApplicationInput.new(
-  annual_credit_card_sales_volume: null,
+  annual_transaction_volume: null,
+  average_transaction_amount: null,
   bank_account_number: null,
   bank_routing_number: null,
   business_category: null,
@@ -40,6 +43,7 @@ instance = Amos::UpdateMerchantApplicationInput.new(
   customer_service_number: null,
   dba_name: null,
   max_transaction_amount: null,
+  max_transaction_amount_reason: null,
   postal_code: null,
   primary_contact_email_address: null,
   primary_contact_first_name: null,

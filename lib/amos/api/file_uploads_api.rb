@@ -19,6 +19,73 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Complete an onboarding file upload
+    # @param legal_entity_application_id [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [FileDownload]
+    def complete_embed_file_upload(legal_entity_application_id, id, opts = {})
+      data, _status_code, _headers = complete_embed_file_upload_with_http_info(legal_entity_application_id, id, opts)
+      data
+    end
+
+    # Complete an onboarding file upload
+    # @param legal_entity_application_id [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileDownload, Integer, Hash)>] FileDownload data, response status code and response headers
+    def complete_embed_file_upload_with_http_info(legal_entity_application_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FileUploadsApi.complete_embed_file_upload ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling FileUploadsApi.complete_embed_file_upload"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling FileUploadsApi.complete_embed_file_upload"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/file_uploads/{id}/complete'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FileDownload'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"FileUploadsApi.complete_embed_file_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FileUploadsApi#complete_embed_file_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Complete a file upload
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -76,6 +143,80 @@ module Amos
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FileUploadsApi#complete_file_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a file upload for the embedded application
+    # Purpose must be `identity` or `business`. Returns upload instructions for the iframe to PUT the file. 
+    # @param legal_entity_application_id [String] 
+    # @param create_file_upload_request [CreateFileUploadRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [FileUpload]
+    def create_embed_file_upload(legal_entity_application_id, create_file_upload_request, opts = {})
+      data, _status_code, _headers = create_embed_file_upload_with_http_info(legal_entity_application_id, create_file_upload_request, opts)
+      data
+    end
+
+    # Create a file upload for the embedded application
+    # Purpose must be &#x60;identity&#x60; or &#x60;business&#x60;. Returns upload instructions for the iframe to PUT the file. 
+    # @param legal_entity_application_id [String] 
+    # @param create_file_upload_request [CreateFileUploadRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileUpload, Integer, Hash)>] FileUpload data, response status code and response headers
+    def create_embed_file_upload_with_http_info(legal_entity_application_id, create_file_upload_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FileUploadsApi.create_embed_file_upload ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling FileUploadsApi.create_embed_file_upload"
+      end
+      # verify the required parameter 'create_file_upload_request' is set
+      if @api_client.config.client_side_validation && create_file_upload_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_file_upload_request' when calling FileUploadsApi.create_embed_file_upload"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/file_uploads'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_file_upload_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FileUpload'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"FileUploadsApi.create_embed_file_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FileUploadsApi#create_embed_file_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -142,6 +283,73 @@ module Amos
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FileUploadsApi#create_file_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an onboarding file upload
+    # @param legal_entity_application_id [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [FileDownload]
+    def get_embed_file_upload(legal_entity_application_id, id, opts = {})
+      data, _status_code, _headers = get_embed_file_upload_with_http_info(legal_entity_application_id, id, opts)
+      data
+    end
+
+    # Retrieve an onboarding file upload
+    # @param legal_entity_application_id [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileDownload, Integer, Hash)>] FileDownload data, response status code and response headers
+    def get_embed_file_upload_with_http_info(legal_entity_application_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FileUploadsApi.get_embed_file_upload ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling FileUploadsApi.get_embed_file_upload"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling FileUploadsApi.get_embed_file_upload"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/file_uploads/{id}'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FileDownload'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"FileUploadsApi.get_embed_file_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FileUploadsApi#get_embed_file_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

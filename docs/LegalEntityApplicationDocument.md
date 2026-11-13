@@ -10,6 +10,9 @@
 | **file_upload_id** | **String** |  | [optional] |
 | **file_name** | **String** |  | [optional] |
 | **byte_size** | **Integer** |  | [optional] |
+| **status** | [**LegalEntityApplicationDocumentStatus**](LegalEntityApplicationDocumentStatus.md) |  | [optional] |
+| **reviewed_at** | **Time** |  | [optional] |
+| **reviewed_by** | [**LegalEntityApplicationDocumentReviewer**](LegalEntityApplicationDocumentReviewer.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -25,6 +28,9 @@ instance = Amos::LegalEntityApplicationDocument.new(
   file_upload_id: null,
   file_name: null,
   byte_size: null,
+  status: null,
+  reviewed_at: null,
+  reviewed_by: null,
   created_at: null,
   updated_at: null
 )

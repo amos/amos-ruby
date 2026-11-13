@@ -83,6 +83,7 @@ module Amos
     # Create a new subscription
     # @param create_subscription_request [CreateSubscriptionRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Subscription]
     def create_subscription(create_subscription_request, opts = {})
       data, _status_code, _headers = create_subscription_with_http_info(create_subscription_request, opts)
@@ -92,6 +93,7 @@ module Amos
     # Create a new subscription
     # @param create_subscription_request [CreateSubscriptionRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(Subscription, Integer, Hash)>] Subscription data, response status code and response headers
     def create_subscription_with_http_info(create_subscription_request, opts = {})
       if @api_client.config.debugging
@@ -116,6 +118,7 @@ module Amos
       if !content_type.nil?
         header_params['Content-Type'] = content_type
       end
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

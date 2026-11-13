@@ -19,9 +19,10 @@ module Amos
     BANK_ACCOUNT = "bank_account".freeze
     GOOGLEPAY = "googlepay".freeze
     APPLEPAY = "applepay".freeze
+    BITCOIN = "bitcoin".freeze
 
     def self.all_vars
-      @all_vars ||= [CARD, BANK_ACCOUNT, GOOGLEPAY, APPLEPAY].freeze
+      @all_vars ||= [CARD, BANK_ACCOUNT, GOOGLEPAY, APPLEPAY, BITCOIN].freeze
     end
 
     # Builds the enum from string

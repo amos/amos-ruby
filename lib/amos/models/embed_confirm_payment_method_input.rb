@@ -22,6 +22,7 @@ module Amos
         [
           :'EmbedConfirmApplePayPaymentMethodInput',
           :'EmbedConfirmBankAccountPaymentMethodInput',
+          :'EmbedConfirmBitcoinPaymentMethodInput',
           :'EmbedConfirmCardPaymentMethodInput',
           :'EmbedConfirmGooglePayPaymentMethodInput'
         ]
@@ -37,6 +38,7 @@ module Amos
         {
           :'applepay' => :'EmbedConfirmApplePayPaymentMethodInput',
           :'bank_account' => :'EmbedConfirmBankAccountPaymentMethodInput',
+          :'bitcoin' => :'EmbedConfirmBitcoinPaymentMethodInput',
           :'card' => :'EmbedConfirmCardPaymentMethodInput',
           :'googlepay' => :'EmbedConfirmGooglePayPaymentMethodInput'
         }

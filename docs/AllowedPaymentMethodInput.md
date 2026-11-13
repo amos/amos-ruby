@@ -16,6 +16,7 @@ Amos::AllowedPaymentMethodInput.openapi_one_of
 # [
 #   :'AllowedApplePayPaymentMethodInput',
 #   :'AllowedBankAccountPaymentMethodInput',
+#   :'AllowedBitcoinPaymentMethodInput',
 #   :'AllowedCardPaymentMethodInput',
 #   :'AllowedGooglePayPaymentMethodInput'
 # ]
@@ -48,6 +49,7 @@ Amos::AllowedPaymentMethodInput.openapi_discriminator_mapping
 # {
 #   :'applepay' => :'AllowedApplePayPaymentMethodInput',
 #   :'bank_account' => :'AllowedBankAccountPaymentMethodInput',
+#   :'bitcoin' => :'AllowedBitcoinPaymentMethodInput',
 #   :'card' => :'AllowedCardPaymentMethodInput',
 #   :'googlepay' => :'AllowedGooglePayPaymentMethodInput'
 # }
@@ -79,6 +81,7 @@ Amos::AllowedPaymentMethodInput.build(data_that_doesnt_match)
 
 - `AllowedApplePayPaymentMethodInput`
 - `AllowedBankAccountPaymentMethodInput`
+- `AllowedBitcoinPaymentMethodInput`
 - `AllowedCardPaymentMethodInput`
 - `AllowedGooglePayPaymentMethodInput`
 - `nil` (if no type matches)

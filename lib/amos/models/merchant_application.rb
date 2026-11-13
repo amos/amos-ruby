@@ -17,7 +17,9 @@ module Amos
   class MerchantApplication < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :annual_credit_card_sales_volume
+    attr_accessor :annual_transaction_volume
+
+    attr_accessor :average_transaction_amount
 
     attr_accessor :business_category
 
@@ -54,6 +56,8 @@ module Amos
     attr_accessor :max_single_debit_amount
 
     attr_accessor :max_transaction_amount
+
+    attr_accessor :max_transaction_amount_reason
 
     attr_accessor :mcc
 
@@ -111,7 +115,8 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
-        :'annual_credit_card_sales_volume' => :'annual_credit_card_sales_volume',
+        :'annual_transaction_volume' => :'annual_transaction_volume',
+        :'average_transaction_amount' => :'average_transaction_amount',
         :'business_category' => :'business_category',
         :'business_description' => :'business_description',
         :'city' => :'city',
@@ -130,6 +135,7 @@ module Amos
         :'max_monthly_debits_amount' => :'max_monthly_debits_amount',
         :'max_single_debit_amount' => :'max_single_debit_amount',
         :'max_transaction_amount' => :'max_transaction_amount',
+        :'max_transaction_amount_reason' => :'max_transaction_amount_reason',
         :'mcc' => :'mcc',
         :'postal_code' => :'postal_code',
         :'primary_contact_email_address' => :'primary_contact_email_address',
@@ -162,7 +168,8 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'annual_credit_card_sales_volume' => :'Integer',
+        :'annual_transaction_volume' => :'AnnualTransactionVolume',
+        :'average_transaction_amount' => :'AverageTransactionAmount',
         :'business_category' => :'MerchantBusinessCategoryType',
         :'business_description' => :'String',
         :'city' => :'String',
@@ -181,6 +188,7 @@ module Amos
         :'max_monthly_debits_amount' => :'Integer',
         :'max_single_debit_amount' => :'Integer',
         :'max_transaction_amount' => :'String',
+        :'max_transaction_amount_reason' => :'String',
         :'mcc' => :'String',
         :'postal_code' => :'String',
         :'primary_contact_email_address' => :'String',
@@ -228,8 +236,12 @@ module Amos
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'annual_credit_card_sales_volume')
-        self.annual_credit_card_sales_volume = attributes[:'annual_credit_card_sales_volume']
+      if attributes.key?(:'annual_transaction_volume')
+        self.annual_transaction_volume = attributes[:'annual_transaction_volume']
+      end
+
+      if attributes.key?(:'average_transaction_amount')
+        self.average_transaction_amount = attributes[:'average_transaction_amount']
       end
 
       if attributes.key?(:'business_category')
@@ -302,6 +314,10 @@ module Amos
 
       if attributes.key?(:'max_transaction_amount')
         self.max_transaction_amount = attributes[:'max_transaction_amount']
+      end
+
+      if attributes.key?(:'max_transaction_amount_reason')
+        self.max_transaction_amount_reason = attributes[:'max_transaction_amount_reason']
       end
 
       if attributes.key?(:'mcc')
@@ -386,7 +402,8 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          annual_credit_card_sales_volume == o.annual_credit_card_sales_volume &&
+          annual_transaction_volume == o.annual_transaction_volume &&
+          average_transaction_amount == o.average_transaction_amount &&
           business_category == o.business_category &&
           business_description == o.business_description &&
           city == o.city &&
@@ -405,6 +422,7 @@ module Amos
           max_monthly_debits_amount == o.max_monthly_debits_amount &&
           max_single_debit_amount == o.max_single_debit_amount &&
           max_transaction_amount == o.max_transaction_amount &&
+          max_transaction_amount_reason == o.max_transaction_amount_reason &&
           mcc == o.mcc &&
           postal_code == o.postal_code &&
           primary_contact_email_address == o.primary_contact_email_address &&
@@ -431,7 +449,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, annual_credit_card_sales_volume, business_category, business_description, city, country_code, customer_service_number, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, has_accepted_credit_cards, legal_entity_application_id, max_daily_credits_amount, max_daily_debits_amount, max_monthly_credits_amount, max_monthly_debits_amount, max_single_debit_amount, max_transaction_amount, mcc, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, settlement_days, state_province, street_address1, street_address2, website_url, created_at, updated_at].hash
+      [id, annual_transaction_volume, average_transaction_amount, business_category, business_description, city, country_code, customer_service_number, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, has_accepted_credit_cards, legal_entity_application_id, max_daily_credits_amount, max_daily_debits_amount, max_monthly_credits_amount, max_monthly_debits_amount, max_single_debit_amount, max_transaction_amount, max_transaction_amount_reason, mcc, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, settlement_days, state_province, street_address1, street_address2, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

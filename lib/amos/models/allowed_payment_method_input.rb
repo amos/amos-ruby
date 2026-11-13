@@ -22,6 +22,7 @@ module Amos
         [
           :'AllowedApplePayPaymentMethodInput',
           :'AllowedBankAccountPaymentMethodInput',
+          :'AllowedBitcoinPaymentMethodInput',
           :'AllowedCardPaymentMethodInput',
           :'AllowedGooglePayPaymentMethodInput'
         ]
@@ -37,6 +38,7 @@ module Amos
         {
           :'applepay' => :'AllowedApplePayPaymentMethodInput',
           :'bank_account' => :'AllowedBankAccountPaymentMethodInput',
+          :'bitcoin' => :'AllowedBitcoinPaymentMethodInput',
           :'card' => :'AllowedCardPaymentMethodInput',
           :'googlepay' => :'AllowedGooglePayPaymentMethodInput'
         }

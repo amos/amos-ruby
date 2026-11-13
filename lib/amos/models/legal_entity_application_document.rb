@@ -27,6 +27,12 @@ module Amos
 
     attr_accessor :byte_size
 
+    attr_accessor :status
+
+    attr_accessor :reviewed_at
+
+    attr_accessor :reviewed_by
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -62,6 +68,9 @@ module Amos
         :'file_upload_id' => :'file_upload_id',
         :'file_name' => :'file_name',
         :'byte_size' => :'byte_size',
+        :'status' => :'status',
+        :'reviewed_at' => :'reviewed_at',
+        :'reviewed_by' => :'reviewed_by',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -86,6 +95,9 @@ module Amos
         :'file_upload_id' => :'String',
         :'file_name' => :'String',
         :'byte_size' => :'Integer',
+        :'status' => :'LegalEntityApplicationDocumentStatus',
+        :'reviewed_at' => :'Time',
+        :'reviewed_by' => :'LegalEntityApplicationDocumentReviewer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -94,6 +106,8 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'reviewed_at',
+        :'reviewed_by',
       ])
     end
 
@@ -140,6 +154,18 @@ module Amos
         self.byte_size = attributes[:'byte_size']
       end
 
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'reviewed_at')
+        self.reviewed_at = attributes[:'reviewed_at']
+      end
+
+      if attributes.key?(:'reviewed_by')
+        self.reviewed_by = attributes[:'reviewed_by']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -175,6 +201,9 @@ module Amos
           file_upload_id == o.file_upload_id &&
           file_name == o.file_name &&
           byte_size == o.byte_size &&
+          status == o.status &&
+          reviewed_at == o.reviewed_at &&
+          reviewed_by == o.reviewed_by &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -188,7 +217,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_entity_application_id, document_type, file_upload_id, file_name, byte_size, created_at, updated_at].hash
+      [id, legal_entity_application_id, document_type, file_upload_id, file_name, byte_size, status, reviewed_at, reviewed_by, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -14,12 +14,12 @@ require 'date'
 require 'time'
 
 module Amos
-  # Decoded JWT payload for embed token responses.  Payment intent tokens include `account_id` and `payment_intent_id`. Setup intent tokens include `organization_id` and `setup_intent_id` and do not use `account_id`. Unused fields are null. 
+  # Decoded JWT payload for embed token responses.  Payment intent tokens include `account_id` and `payment_intent_id`. Setup intent tokens include `organization_id` and `setup_intent_id` and do not use `account_id`. Legal entity application tokens include `organization_id` and `legal_entity_application_id`. Unused fields are null. 
   class EmbedTokenJwt < ApiModelBase
     # Present for payment intent embed tokens. Null for setup intents.
     attr_accessor :account_id
 
-    # Present for setup intent embed tokens. Null for payment intents.
+    # Present for organization-scoped embed tokens, including setup intents and legal entity applications. Null for payment intents. 
     attr_accessor :organization_id
 
     # Present for payment intent embed tokens. Null for setup intents.
@@ -28,13 +28,17 @@ module Amos
     # Present for setup intent embed tokens. Null for payment intents.
     attr_accessor :setup_intent_id
 
+    # Present for legal entity application embed tokens. Null for other embed tokens. 
+    attr_accessor :legal_entity_application_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_id' => :'account_id',
         :'organization_id' => :'organization_id',
         :'payment_intent_id' => :'payment_intent_id',
-        :'setup_intent_id' => :'setup_intent_id'
+        :'setup_intent_id' => :'setup_intent_id',
+        :'legal_entity_application_id' => :'legal_entity_application_id'
       }
     end
 
@@ -54,7 +58,8 @@ module Amos
         :'account_id' => :'String',
         :'organization_id' => :'String',
         :'payment_intent_id' => :'String',
-        :'setup_intent_id' => :'String'
+        :'setup_intent_id' => :'String',
+        :'legal_entity_application_id' => :'String'
       }
     end
 
@@ -64,7 +69,8 @@ module Amos
         :'account_id',
         :'organization_id',
         :'payment_intent_id',
-        :'setup_intent_id'
+        :'setup_intent_id',
+        :'legal_entity_application_id'
       ])
     end
 
@@ -102,6 +108,10 @@ module Amos
       if attributes.key?(:'setup_intent_id')
         self.setup_intent_id = attributes[:'setup_intent_id']
       end
+
+      if attributes.key?(:'legal_entity_application_id')
+        self.legal_entity_application_id = attributes[:'legal_entity_application_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -127,7 +137,8 @@ module Amos
           account_id == o.account_id &&
           organization_id == o.organization_id &&
           payment_intent_id == o.payment_intent_id &&
-          setup_intent_id == o.setup_intent_id
+          setup_intent_id == o.setup_intent_id &&
+          legal_entity_application_id == o.legal_entity_application_id
     end
 
     # @see the `==` method
@@ -139,7 +150,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, organization_id, payment_intent_id, setup_intent_id].hash
+      [account_id, organization_id, payment_intent_id, setup_intent_id, legal_entity_application_id].hash
     end
 
     # Builds the object from hash

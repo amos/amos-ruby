@@ -19,6 +19,7 @@
 | **retryable** | **Boolean** | True when this payment intent can be retried. Use this value instead of inferring retryability from &#x60;state&#x60;.  | [optional] |
 | **statement_descriptor** | **String** |  | [optional] |
 | **subscription_id** | **String** |  | [optional] |
+| **bitcoin_checkout** | [**BitcoinCheckout**](BitcoinCheckout.md) |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -43,6 +44,7 @@ instance = Amos::PaymentIntent.new(
   retryable: null,
   statement_descriptor: null,
   subscription_id: null,
+  bitcoin_checkout: null,
   created_at: null,
   updated_at: null
 )

@@ -21,12 +21,16 @@ module Amos
 
     attr_accessor :purpose
 
+    # SHA-256 hex digest of the file contents. Completion rejects the upload when the stored object checksum does not match.
+    attr_accessor :checksum
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'content_type' => :'content_type',
         :'file_name' => :'file_name',
-        :'purpose' => :'purpose'
+        :'purpose' => :'purpose',
+        :'checksum' => :'checksum'
       }
     end
 
@@ -45,7 +49,8 @@ module Amos
       {
         :'content_type' => :'String',
         :'file_name' => :'String',
-        :'purpose' => :'String'
+        :'purpose' => :'String',
+        :'checksum' => :'String'
       }
     end
 
@@ -91,6 +96,10 @@ module Amos
       else
         self.purpose = nil
       end
+
+      if attributes.key?(:'checksum')
+        self.checksum = attributes[:'checksum']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -110,6 +119,11 @@ module Amos
         invalid_properties.push('invalid value for "purpose", purpose cannot be nil.')
       end
 
+      pattern = Regexp.new(/^[a-fA-F0-9]{64}$/)
+      if !@checksum.nil? && @checksum !~ pattern
+        invalid_properties.push("invalid value for \"checksum\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
@@ -120,6 +134,7 @@ module Amos
       return false if @content_type.nil?
       return false if @file_name.nil?
       return false if @purpose.nil?
+      return false if !@checksum.nil? && @checksum !~ Regexp.new(/^[a-fA-F0-9]{64}$/)
       true
     end
 
@@ -153,6 +168,21 @@ module Amos
       @purpose = purpose
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] checksum Value to be assigned
+    def checksum=(checksum)
+      if checksum.nil?
+        fail ArgumentError, 'checksum cannot be nil'
+      end
+
+      pattern = Regexp.new(/^[a-fA-F0-9]{64}$/)
+      if checksum !~ pattern
+        fail ArgumentError, "invalid value for \"checksum\", must conform to the pattern #{pattern}."
+      end
+
+      @checksum = checksum
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -160,7 +190,8 @@ module Amos
       self.class == o.class &&
           content_type == o.content_type &&
           file_name == o.file_name &&
-          purpose == o.purpose
+          purpose == o.purpose &&
+          checksum == o.checksum
     end
 
     # @see the `==` method
@@ -172,7 +203,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [content_type, file_name, purpose].hash
+      [content_type, file_name, purpose, checksum].hash
     end
 
     # Builds the object from hash

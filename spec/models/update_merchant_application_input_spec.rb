@@ -27,12 +27,6 @@ describe Amos::UpdateMerchantApplicationInput do
     end
   end
 
-  describe 'test attribute "annual_credit_card_sales_volume"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "bank_account_number"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

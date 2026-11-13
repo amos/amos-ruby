@@ -16,6 +16,7 @@ Amos::EmbedConfirmPaymentMethodInput.openapi_one_of
 # [
 #   :'EmbedConfirmApplePayPaymentMethodInput',
 #   :'EmbedConfirmBankAccountPaymentMethodInput',
+#   :'EmbedConfirmBitcoinPaymentMethodInput',
 #   :'EmbedConfirmCardPaymentMethodInput',
 #   :'EmbedConfirmGooglePayPaymentMethodInput'
 # ]
@@ -48,6 +49,7 @@ Amos::EmbedConfirmPaymentMethodInput.openapi_discriminator_mapping
 # {
 #   :'applepay' => :'EmbedConfirmApplePayPaymentMethodInput',
 #   :'bank_account' => :'EmbedConfirmBankAccountPaymentMethodInput',
+#   :'bitcoin' => :'EmbedConfirmBitcoinPaymentMethodInput',
 #   :'card' => :'EmbedConfirmCardPaymentMethodInput',
 #   :'googlepay' => :'EmbedConfirmGooglePayPaymentMethodInput'
 # }
@@ -79,6 +81,7 @@ Amos::EmbedConfirmPaymentMethodInput.build(data_that_doesnt_match)
 
 - `EmbedConfirmApplePayPaymentMethodInput`
 - `EmbedConfirmBankAccountPaymentMethodInput`
+- `EmbedConfirmBitcoinPaymentMethodInput`
 - `EmbedConfirmCardPaymentMethodInput`
 - `EmbedConfirmGooglePayPaymentMethodInput`
 - `nil` (if no type matches)

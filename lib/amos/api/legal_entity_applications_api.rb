@@ -148,6 +148,130 @@ module Amos
       return data, status_code, headers
     end
 
+    # Mint an embed token for a legal entity application
+    # Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents, and submit. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [EmbedToken]
+    def create_legal_entity_application_embed_token(id, opts = {})
+      data, _status_code, _headers = create_legal_entity_application_embed_token_with_http_info(id, opts)
+      data
+    end
+
+    # Mint an embed token for a legal entity application
+    # Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents, and submit. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmbedToken, Integer, Hash)>] EmbedToken data, response status code and response headers
+    def create_legal_entity_application_embed_token_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationsApi.create_legal_entity_application_embed_token ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationsApi.create_legal_entity_application_embed_token"
+      end
+      # resource path
+      local_var_path = '/legal_entity_applications/{id}/embed_token'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmbedToken'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationsApi.create_legal_entity_application_embed_token",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationsApi#create_legal_entity_application_embed_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the legal entity application for an embed token
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplication]
+    def get_embed_legal_entity_application(id, opts = {})
+      data, _status_code, _headers = get_embed_legal_entity_application_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve the legal entity application for an embed token
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplication, Integer, Hash)>] LegalEntityApplication data, response status code and response headers
+    def get_embed_legal_entity_application_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationsApi.get_embed_legal_entity_application ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationsApi.get_embed_legal_entity_application"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplication'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationsApi.get_embed_legal_entity_application",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationsApi#get_embed_legal_entity_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a legal entity application by ID
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -209,6 +333,69 @@ module Amos
       return data, status_code, headers
     end
 
+    # Submit a legal entity application from the onboarding iframe
+    # Submits an application in `pending` or `needs_information` once every requirement is satisfied. Responds 403 when the token belongs to a different application. 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplication]
+    def submit_embed_legal_entity_application(id, opts = {})
+      data, _status_code, _headers = submit_embed_legal_entity_application_with_http_info(id, opts)
+      data
+    end
+
+    # Submit a legal entity application from the onboarding iframe
+    # Submits an application in &#x60;pending&#x60; or &#x60;needs_information&#x60; once every requirement is satisfied. Responds 403 when the token belongs to a different application. 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplication, Integer, Hash)>] LegalEntityApplication data, response status code and response headers
+    def submit_embed_legal_entity_application_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationsApi.submit_embed_legal_entity_application ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationsApi.submit_embed_legal_entity_application"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{id}/submit'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplication'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationsApi.submit_embed_legal_entity_application",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationsApi#submit_embed_legal_entity_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Submit a legal entity application
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -266,6 +453,78 @@ module Amos
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: LegalEntityApplicationsApi#submit_legal_entity_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a pending or needs-information legal entity application
+    # @param id [String] 
+    # @param update_legal_entity_application_request [UpdateLegalEntityApplicationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplication]
+    def update_embed_legal_entity_application(id, update_legal_entity_application_request, opts = {})
+      data, _status_code, _headers = update_embed_legal_entity_application_with_http_info(id, update_legal_entity_application_request, opts)
+      data
+    end
+
+    # Update a pending or needs-information legal entity application
+    # @param id [String] 
+    # @param update_legal_entity_application_request [UpdateLegalEntityApplicationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplication, Integer, Hash)>] LegalEntityApplication data, response status code and response headers
+    def update_embed_legal_entity_application_with_http_info(id, update_legal_entity_application_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationsApi.update_embed_legal_entity_application ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationsApi.update_embed_legal_entity_application"
+      end
+      # verify the required parameter 'update_legal_entity_application_request' is set
+      if @api_client.config.client_side_validation && update_legal_entity_application_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_legal_entity_application_request' when calling LegalEntityApplicationsApi.update_embed_legal_entity_application"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_legal_entity_application_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplication'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationsApi.update_embed_legal_entity_application",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationsApi#update_embed_legal_entity_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

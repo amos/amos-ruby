@@ -47,6 +47,8 @@ module Amos
 
     attr_accessor :subscription_id
 
+    attr_accessor :bitcoin_checkout
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -91,6 +93,7 @@ module Amos
         :'retryable' => :'retryable',
         :'statement_descriptor' => :'statement_descriptor',
         :'subscription_id' => :'subscription_id',
+        :'bitcoin_checkout' => :'bitcoin_checkout',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -124,6 +127,7 @@ module Amos
         :'retryable' => :'Boolean',
         :'statement_descriptor' => :'String',
         :'subscription_id' => :'String',
+        :'bitcoin_checkout' => :'BitcoinCheckout',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -217,6 +221,10 @@ module Amos
         self.subscription_id = attributes[:'subscription_id']
       end
 
+      if attributes.key?(:'bitcoin_checkout')
+        self.bitcoin_checkout = attributes[:'bitcoin_checkout']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -273,6 +281,7 @@ module Amos
           retryable == o.retryable &&
           statement_descriptor == o.statement_descriptor &&
           subscription_id == o.subscription_id &&
+          bitcoin_checkout == o.bitcoin_checkout &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -286,7 +295,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, state, retryable, statement_descriptor, subscription_id, created_at, updated_at].hash
+      [id, account_id, amount, capture_method, charge_id, currency, customer_id, description, metadata, recurring_payment, payment_method_id, state, retryable, statement_descriptor, subscription_id, bitcoin_checkout, created_at, updated_at].hash
     end
 
     # Builds the object from hash

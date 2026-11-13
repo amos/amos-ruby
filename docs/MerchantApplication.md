@@ -5,7 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **annual_credit_card_sales_volume** | **Integer** |  | [optional] |
+| **annual_transaction_volume** | [**AnnualTransactionVolume**](AnnualTransactionVolume.md) |  | [optional] |
+| **average_transaction_amount** | [**AverageTransactionAmount**](AverageTransactionAmount.md) |  | [optional] |
 | **business_category** | [**MerchantBusinessCategoryType**](MerchantBusinessCategoryType.md) |  | [optional] |
 | **business_description** | **String** |  | [optional] |
 | **city** | **String** |  | [optional] |
@@ -24,6 +25,7 @@
 | **max_monthly_debits_amount** | **Integer** |  | [optional] |
 | **max_single_debit_amount** | **Integer** |  | [optional] |
 | **max_transaction_amount** | **String** |  | [optional] |
+| **max_transaction_amount_reason** | **String** |  | [optional] |
 | **mcc** | **String** |  | [optional] |
 | **postal_code** | **String** |  | [optional] |
 | **primary_contact_email_address** | **String** |  | [optional] |
@@ -47,7 +49,8 @@ require 'amos'
 
 instance = Amos::MerchantApplication.new(
   id: null,
-  annual_credit_card_sales_volume: null,
+  annual_transaction_volume: null,
+  average_transaction_amount: null,
   business_category: null,
   business_description: null,
   city: null,
@@ -66,6 +69,7 @@ instance = Amos::MerchantApplication.new(
   max_monthly_debits_amount: null,
   max_single_debit_amount: null,
   max_transaction_amount: null,
+  max_transaction_amount_reason: null,
   mcc: null,
   postal_code: null,
   primary_contact_email_address: null,

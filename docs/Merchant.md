@@ -8,7 +8,6 @@
 | **active** | **Boolean** |  | [optional] |
 | **organization_id** | **String** |  | [optional] |
 | **legal_entity_id** | **String** |  | [optional] |
-| **annual_credit_card_sales_volume** | **Integer** |  | [optional] |
 | **allowed_payment_methods** | [**Array&lt;AllowedPaymentMethod&gt;**](AllowedPaymentMethod.md) |  | [optional] |
 | **business_category** | [**MerchantBusinessCategoryType**](MerchantBusinessCategoryType.md) |  | [optional] |
 | **business_description** | **String** |  | [optional] |
@@ -50,7 +49,6 @@ instance = Amos::Merchant.new(
   active: null,
   organization_id: null,
   legal_entity_id: null,
-  annual_credit_card_sales_volume: null,
   allowed_payment_methods: null,
   business_category: null,
   business_description: null,

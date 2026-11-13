@@ -23,8 +23,6 @@ module Amos
 
     attr_accessor :legal_entity_id
 
-    attr_accessor :annual_credit_card_sales_volume
-
     attr_accessor :allowed_payment_methods
 
     attr_accessor :business_category
@@ -114,7 +112,6 @@ module Amos
         :'active' => :'active',
         :'organization_id' => :'organization_id',
         :'legal_entity_id' => :'legal_entity_id',
-        :'annual_credit_card_sales_volume' => :'annual_credit_card_sales_volume',
         :'allowed_payment_methods' => :'allowed_payment_methods',
         :'business_category' => :'business_category',
         :'business_description' => :'business_description',
@@ -165,7 +162,6 @@ module Amos
         :'active' => :'Boolean',
         :'organization_id' => :'String',
         :'legal_entity_id' => :'String',
-        :'annual_credit_card_sales_volume' => :'Integer',
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethod>',
         :'business_category' => :'MerchantBusinessCategoryType',
         :'business_description' => :'String',
@@ -238,10 +234,6 @@ module Amos
 
       if attributes.key?(:'legal_entity_id')
         self.legal_entity_id = attributes[:'legal_entity_id']
-      end
-
-      if attributes.key?(:'annual_credit_card_sales_volume')
-        self.annual_credit_card_sales_volume = attributes[:'annual_credit_card_sales_volume']
       end
 
       if attributes.key?(:'allowed_payment_methods')
@@ -391,7 +383,6 @@ module Amos
           active == o.active &&
           organization_id == o.organization_id &&
           legal_entity_id == o.legal_entity_id &&
-          annual_credit_card_sales_volume == o.annual_credit_card_sales_volume &&
           allowed_payment_methods == o.allowed_payment_methods &&
           business_category == o.business_category &&
           business_description == o.business_description &&
@@ -433,7 +424,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, active, organization_id, legal_entity_id, annual_credit_card_sales_volume, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, state_province, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
+      [id, active, organization_id, legal_entity_id, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, state_province, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

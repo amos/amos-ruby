@@ -92,6 +92,12 @@ Class | Method | HTTP request | Description
 *Amos::AccountsApi* | [**get_account**](docs/AccountsApi.md#get_account) | **GET** /accounts/{id} | Retrieve an account by ID
 *Amos::AccountsApi* | [**list_accounts**](docs/AccountsApi.md#list_accounts) | **GET** /accounts | List all accounts
 *Amos::AccountsApi* | [**update_account**](docs/AccountsApi.md#update_account) | **PUT** /accounts/{id} | Update an account by ID
+*Amos::ApplicationSurveysApi* | [**create_application_survey**](docs/ApplicationSurveysApi.md#create_application_survey) | **POST** /application_surveys | Create an application survey
+*Amos::ApplicationSurveysApi* | [**create_embed_application_survey**](docs/ApplicationSurveysApi.md#create_embed_application_survey) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/application_survey | Create a survey for the embedded application
+*Amos::ApplicationSurveysApi* | [**get_application_survey**](docs/ApplicationSurveysApi.md#get_application_survey) | **GET** /application_surveys/{id} | Retrieve an application survey by ID
+*Amos::ApplicationSurveysApi* | [**get_embed_application_survey**](docs/ApplicationSurveysApi.md#get_embed_application_survey) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/application_survey | Retrieve the survey for the embedded application
+*Amos::ApplicationSurveysApi* | [**update_application_survey**](docs/ApplicationSurveysApi.md#update_application_survey) | **PUT** /application_surveys/{id} | Update an application survey
+*Amos::ApplicationSurveysApi* | [**update_embed_application_survey**](docs/ApplicationSurveysApi.md#update_embed_application_survey) | **PUT** /embed/legal_entity_applications/{legal_entity_application_id}/application_survey | Update the survey for the embedded application
 *Amos::ChargesApi* | [**get_charge**](docs/ChargesApi.md#get_charge) | **GET** /charges/{id} | Retrieve a charge
 *Amos::ChargesApi* | [**list_charges**](docs/ChargesApi.md#list_charges) | **GET** /charges | List all charges
 *Amos::ChargesApi* | [**update_charge**](docs/ChargesApi.md#update_charge) | **PUT** /charges/{id} | Update a charge
@@ -105,25 +111,42 @@ Class | Method | HTTP request | Description
 *Amos::ExternalAccountsApi* | [**create_external_account**](docs/ExternalAccountsApi.md#create_external_account) | **POST** /external_accounts | Create an external account
 *Amos::ExternalAccountsApi* | [**get_external_account**](docs/ExternalAccountsApi.md#get_external_account) | **GET** /external_accounts/{id} | Retrieve an external account by ID
 *Amos::ExternalAccountsApi* | [**list_external_accounts**](docs/ExternalAccountsApi.md#list_external_accounts) | **GET** /external_accounts | List all external accounts
+*Amos::FileUploadsApi* | [**complete_embed_file_upload**](docs/FileUploadsApi.md#complete_embed_file_upload) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/file_uploads/{id}/complete | Complete an onboarding file upload
 *Amos::FileUploadsApi* | [**complete_file_upload**](docs/FileUploadsApi.md#complete_file_upload) | **POST** /file_uploads/{id}/complete | Complete a file upload
+*Amos::FileUploadsApi* | [**create_embed_file_upload**](docs/FileUploadsApi.md#create_embed_file_upload) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/file_uploads | Create a file upload for the embedded application
 *Amos::FileUploadsApi* | [**create_file_upload**](docs/FileUploadsApi.md#create_file_upload) | **POST** /file_uploads | Create a file upload
+*Amos::FileUploadsApi* | [**get_embed_file_upload**](docs/FileUploadsApi.md#get_embed_file_upload) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/file_uploads/{id} | Retrieve an onboarding file upload
 *Amos::FileUploadsApi* | [**get_file_upload**](docs/FileUploadsApi.md#get_file_upload) | **GET** /file_uploads/{id} | Retrieve a file upload by ID
 *Amos::LegalEntitiesApi* | [**get_legal_entity**](docs/LegalEntitiesApi.md#get_legal_entity) | **GET** /legal_entities/{id} | Retrieve a legal entity by ID
 *Amos::LegalEntitiesApi* | [**list_legal_entities**](docs/LegalEntitiesApi.md#list_legal_entities) | **GET** /legal_entities | List all legal entities
+*Amos::LegalEntityApplicationDocumentsApi* | [**create_embed_legal_entity_application_document**](docs/LegalEntityApplicationDocumentsApi.md#create_embed_legal_entity_application_document) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/documents | Create a document for the embedded application
 *Amos::LegalEntityApplicationDocumentsApi* | [**create_legal_entity_application_document**](docs/LegalEntityApplicationDocumentsApi.md#create_legal_entity_application_document) | **POST** /legal_entity_application_documents | Create a legal entity application document
+*Amos::LegalEntityApplicationDocumentsApi* | [**list_embed_legal_entity_application_documents**](docs/LegalEntityApplicationDocumentsApi.md#list_embed_legal_entity_application_documents) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/documents | List documents for the embedded application
 *Amos::LegalEntityApplicationDocumentsApi* | [**list_legal_entity_application_documents**](docs/LegalEntityApplicationDocumentsApi.md#list_legal_entity_application_documents) | **GET** /legal_entity_application_documents | List all legal entity application documents
+*Amos::LegalEntityApplicationPrincipalsApi* | [**create_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#create_embed_legal_entity_application_principal) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals | Create a principal for the embedded application
 *Amos::LegalEntityApplicationPrincipalsApi* | [**create_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#create_legal_entity_application_principal) | **POST** /legal_entity_application_principals | Create a legal entity application principal
+*Amos::LegalEntityApplicationPrincipalsApi* | [**get_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#get_embed_legal_entity_application_principal) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{id} | Retrieve a principal for the embedded application
 *Amos::LegalEntityApplicationPrincipalsApi* | [**get_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#get_legal_entity_application_principal) | **GET** /legal_entity_application_principals/{id} | Retrieve a legal entity application principal by ID
+*Amos::LegalEntityApplicationPrincipalsApi* | [**list_embed_legal_entity_application_principals**](docs/LegalEntityApplicationPrincipalsApi.md#list_embed_legal_entity_application_principals) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/principals | List principals for the embedded application
+*Amos::LegalEntityApplicationPrincipalsApi* | [**update_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#update_embed_legal_entity_application_principal) | **PUT** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{id} | Update a principal for the embedded application
 *Amos::LegalEntityApplicationPrincipalsApi* | [**update_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#update_legal_entity_application_principal) | **PUT** /legal_entity_application_principals/{id} | Update a legal entity application principal
 *Amos::LegalEntityApplicationsApi* | [**approve_legal_entity_application**](docs/LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Start review or approve a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**create_legal_entity_application**](docs/LegalEntityApplicationsApi.md#create_legal_entity_application) | **POST** /legal_entity_applications | Create a legal entity application
+*Amos::LegalEntityApplicationsApi* | [**create_legal_entity_application_embed_token**](docs/LegalEntityApplicationsApi.md#create_legal_entity_application_embed_token) | **POST** /legal_entity_applications/{id}/embed_token | Mint an embed token for a legal entity application
+*Amos::LegalEntityApplicationsApi* | [**get_embed_legal_entity_application**](docs/LegalEntityApplicationsApi.md#get_embed_legal_entity_application) | **GET** /embed/legal_entity_applications/{id} | Retrieve the legal entity application for an embed token
 *Amos::LegalEntityApplicationsApi* | [**get_legal_entity_application**](docs/LegalEntityApplicationsApi.md#get_legal_entity_application) | **GET** /legal_entity_applications/{id} | Retrieve a legal entity application by ID
+*Amos::LegalEntityApplicationsApi* | [**submit_embed_legal_entity_application**](docs/LegalEntityApplicationsApi.md#submit_embed_legal_entity_application) | **POST** /embed/legal_entity_applications/{id}/submit | Submit a legal entity application from the onboarding iframe
 *Amos::LegalEntityApplicationsApi* | [**submit_legal_entity_application**](docs/LegalEntityApplicationsApi.md#submit_legal_entity_application) | **POST** /legal_entity_applications/{id}/submit | Submit a legal entity application
+*Amos::LegalEntityApplicationsApi* | [**update_embed_legal_entity_application**](docs/LegalEntityApplicationsApi.md#update_embed_legal_entity_application) | **PUT** /embed/legal_entity_applications/{id} | Update a pending or needs-information legal entity application
 *Amos::LegalEntityApplicationsApi* | [**update_legal_entity_application**](docs/LegalEntityApplicationsApi.md#update_legal_entity_application) | **PUT** /legal_entity_applications/{id} | Update a pending legal entity application
 *Amos::LegalEntityPrincipalsApi* | [**get_legal_entity_principal**](docs/LegalEntityPrincipalsApi.md#get_legal_entity_principal) | **GET** /legal_entity_principals/{id} | Retrieve a legal entity principal by ID
 *Amos::LegalEntityPrincipalsApi* | [**list_legal_entity_principals**](docs/LegalEntityPrincipalsApi.md#list_legal_entity_principals) | **GET** /legal_entity_principals | List all legal entity principals
+*Amos::MerchantApplicationsApi* | [**create_embed_merchant_application**](docs/MerchantApplicationsApi.md#create_embed_merchant_application) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/merchant_applications | Create a merchant application for the embedded application
 *Amos::MerchantApplicationsApi* | [**create_merchant_application**](docs/MerchantApplicationsApi.md#create_merchant_application) | **POST** /merchant_applications | Create a merchant application
+*Amos::MerchantApplicationsApi* | [**get_embed_merchant_application**](docs/MerchantApplicationsApi.md#get_embed_merchant_application) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/merchant_applications/{id} | Retrieve a merchant application for the embedded application
 *Amos::MerchantApplicationsApi* | [**get_merchant_application**](docs/MerchantApplicationsApi.md#get_merchant_application) | **GET** /merchant_applications/{id} | Retrieve a merchant application by ID
+*Amos::MerchantApplicationsApi* | [**list_embed_merchant_applications**](docs/MerchantApplicationsApi.md#list_embed_merchant_applications) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/merchant_applications | List merchant applications for the embedded application
+*Amos::MerchantApplicationsApi* | [**update_embed_merchant_application**](docs/MerchantApplicationsApi.md#update_embed_merchant_application) | **PUT** /embed/legal_entity_applications/{legal_entity_application_id}/merchant_applications/{id} | Update a merchant application for the embedded application
 *Amos::MerchantApplicationsApi* | [**update_merchant_application**](docs/MerchantApplicationsApi.md#update_merchant_application) | **PUT** /merchant_applications/{id} | Update a pending merchant application
 *Amos::MerchantsApi* | [**get_merchant**](docs/MerchantsApi.md#get_merchant) | **GET** /merchants/{id} | Retrieve a merchant by ID
 *Amos::MerchantsApi* | [**list_merchants**](docs/MerchantsApi.md#list_merchants) | **GET** /merchants | List all merchants
@@ -200,6 +223,8 @@ Class | Method | HTTP request | Description
  - [Amos::AllowedBankAccountPaymentMethod](docs/AllowedBankAccountPaymentMethod.md)
  - [Amos::AllowedBankAccountPaymentMethodInput](docs/AllowedBankAccountPaymentMethodInput.md)
  - [Amos::AllowedBankAccountPaymentMethodOptions](docs/AllowedBankAccountPaymentMethodOptions.md)
+ - [Amos::AllowedBitcoinPaymentMethod](docs/AllowedBitcoinPaymentMethod.md)
+ - [Amos::AllowedBitcoinPaymentMethodInput](docs/AllowedBitcoinPaymentMethodInput.md)
  - [Amos::AllowedCardPaymentMethod](docs/AllowedCardPaymentMethod.md)
  - [Amos::AllowedCardPaymentMethodInput](docs/AllowedCardPaymentMethodInput.md)
  - [Amos::AllowedCardPaymentMethodOptions](docs/AllowedCardPaymentMethodOptions.md)
@@ -207,12 +232,18 @@ Class | Method | HTTP request | Description
  - [Amos::AllowedGooglePayPaymentMethodInput](docs/AllowedGooglePayPaymentMethodInput.md)
  - [Amos::AllowedPaymentMethod](docs/AllowedPaymentMethod.md)
  - [Amos::AllowedPaymentMethodInput](docs/AllowedPaymentMethodInput.md)
+ - [Amos::AnnualTransactionVolume](docs/AnnualTransactionVolume.md)
  - [Amos::ApplePayCardProfileInput](docs/ApplePayCardProfileInput.md)
+ - [Amos::ApplicationSurvey](docs/ApplicationSurvey.md)
+ - [Amos::ApplicationSurveyChannel](docs/ApplicationSurveyChannel.md)
+ - [Amos::ApplicationSurveyWebsiteStatus](docs/ApplicationSurveyWebsiteStatus.md)
+ - [Amos::AverageTransactionAmount](docs/AverageTransactionAmount.md)
  - [Amos::BankAccountProfile](docs/BankAccountProfile.md)
  - [Amos::BankAccountProfileInput](docs/BankAccountProfileInput.md)
  - [Amos::BillingAddress](docs/BillingAddress.md)
  - [Amos::BillingAddressInput](docs/BillingAddressInput.md)
  - [Amos::BillingAddressOptions](docs/BillingAddressOptions.md)
+ - [Amos::BitcoinCheckout](docs/BitcoinCheckout.md)
  - [Amos::BulkCreatePayouts](docs/BulkCreatePayouts.md)
  - [Amos::CardProfile](docs/CardProfile.md)
  - [Amos::CardProfileInput](docs/CardProfileInput.md)
@@ -225,6 +256,8 @@ Class | Method | HTTP request | Description
  - [Amos::ConfirmSetupIntentWithPaymentMethodIdInput](docs/ConfirmSetupIntentWithPaymentMethodIdInput.md)
  - [Amos::ConfirmSetupIntentWithPaymentMethodInput](docs/ConfirmSetupIntentWithPaymentMethodInput.md)
  - [Amos::ConfirmSetupIntentWithPaymentMethodRequest](docs/ConfirmSetupIntentWithPaymentMethodRequest.md)
+ - [Amos::CreateApplicationSurveyInput](docs/CreateApplicationSurveyInput.md)
+ - [Amos::CreateApplicationSurveyRequest](docs/CreateApplicationSurveyRequest.md)
  - [Amos::CreateBulkPayoutInput](docs/CreateBulkPayoutInput.md)
  - [Amos::CreateBulkPayoutsRequest](docs/CreateBulkPayoutsRequest.md)
  - [Amos::CreateCustomerInput](docs/CreateCustomerInput.md)
@@ -271,6 +304,7 @@ Class | Method | HTTP request | Description
  - [Amos::DunningConfiguration](docs/DunningConfiguration.md)
  - [Amos::EmbedConfirmApplePayPaymentMethodInput](docs/EmbedConfirmApplePayPaymentMethodInput.md)
  - [Amos::EmbedConfirmBankAccountPaymentMethodInput](docs/EmbedConfirmBankAccountPaymentMethodInput.md)
+ - [Amos::EmbedConfirmBitcoinPaymentMethodInput](docs/EmbedConfirmBitcoinPaymentMethodInput.md)
  - [Amos::EmbedConfirmCardPaymentMethodInput](docs/EmbedConfirmCardPaymentMethodInput.md)
  - [Amos::EmbedConfirmGooglePayPaymentMethodInput](docs/EmbedConfirmGooglePayPaymentMethodInput.md)
  - [Amos::EmbedConfirmPaymentMethodInput](docs/EmbedConfirmPaymentMethodInput.md)
@@ -287,6 +321,8 @@ Class | Method | HTTP request | Description
  - [Amos::LegalEntity](docs/LegalEntity.md)
  - [Amos::LegalEntityApplication](docs/LegalEntityApplication.md)
  - [Amos::LegalEntityApplicationDocument](docs/LegalEntityApplicationDocument.md)
+ - [Amos::LegalEntityApplicationDocumentReviewer](docs/LegalEntityApplicationDocumentReviewer.md)
+ - [Amos::LegalEntityApplicationDocumentStatus](docs/LegalEntityApplicationDocumentStatus.md)
  - [Amos::LegalEntityApplicationPrincipal](docs/LegalEntityApplicationPrincipal.md)
  - [Amos::LegalEntityApplicationRequirement](docs/LegalEntityApplicationRequirement.md)
  - [Amos::LegalEntityApplicationStateType](docs/LegalEntityApplicationStateType.md)
@@ -297,6 +333,9 @@ Class | Method | HTTP request | Description
  - [Amos::ListAccounts](docs/ListAccounts.md)
  - [Amos::ListCharges](docs/ListCharges.md)
  - [Amos::ListCustomers](docs/ListCustomers.md)
+ - [Amos::ListEmbedLegalEntityApplicationDocuments](docs/ListEmbedLegalEntityApplicationDocuments.md)
+ - [Amos::ListEmbedLegalEntityApplicationPrincipals](docs/ListEmbedLegalEntityApplicationPrincipals.md)
+ - [Amos::ListEmbedMerchantApplications](docs/ListEmbedMerchantApplications.md)
  - [Amos::ListExternalAccounts](docs/ListExternalAccounts.md)
  - [Amos::ListLegalEntities](docs/ListLegalEntities.md)
  - [Amos::ListLegalEntityApplicationDocuments](docs/ListLegalEntityApplicationDocuments.md)
@@ -356,6 +395,8 @@ Class | Method | HTTP request | Description
  - [Amos::TransactionSourceType](docs/TransactionSourceType.md)
  - [Amos::UpdateAccountInput](docs/UpdateAccountInput.md)
  - [Amos::UpdateAccountRequest](docs/UpdateAccountRequest.md)
+ - [Amos::UpdateApplicationSurveyInput](docs/UpdateApplicationSurveyInput.md)
+ - [Amos::UpdateApplicationSurveyRequest](docs/UpdateApplicationSurveyRequest.md)
  - [Amos::UpdateChargeInput](docs/UpdateChargeInput.md)
  - [Amos::UpdateChargeRequest](docs/UpdateChargeRequest.md)
  - [Amos::UpdateCustomerInput](docs/UpdateCustomerInput.md)

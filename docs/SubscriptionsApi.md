@@ -86,7 +86,7 @@ end
 
 ## create_subscription
 
-> <Subscription> create_subscription(create_subscription_request)
+> <Subscription> create_subscription(create_subscription_request, opts)
 
 Create a new subscription
 
@@ -108,10 +108,13 @@ end
 
 api_instance = Amos::SubscriptionsApi.new
 create_subscription_request = Amos::CreateSubscriptionRequest.new({subscription: Amos::CreateSubscriptionInput.new}) # CreateSubscriptionRequest | 
+opts = {
+  x_idempotency_key: 'x_idempotency_key_example' # String | 
+}
 
 begin
   # Create a new subscription
-  result = api_instance.create_subscription(create_subscription_request)
+  result = api_instance.create_subscription(create_subscription_request, opts)
   p result
 rescue Amos::ApiError => e
   puts "Error when calling SubscriptionsApi->create_subscription: #{e}"
@@ -122,12 +125,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Subscription>, Integer, Hash)> create_subscription_with_http_info(create_subscription_request)
+> <Array(<Subscription>, Integer, Hash)> create_subscription_with_http_info(create_subscription_request, opts)
 
 ```ruby
 begin
   # Create a new subscription
-  data, status_code, headers = api_instance.create_subscription_with_http_info(create_subscription_request)
+  data, status_code, headers = api_instance.create_subscription_with_http_info(create_subscription_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Subscription>
@@ -141,6 +144,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **create_subscription_request** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md) |  |  |
+| **x_idempotency_key** | **String** |  | [optional] |
 
 ### Return type
 

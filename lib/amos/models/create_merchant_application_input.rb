@@ -15,7 +15,9 @@ require 'time'
 
 module Amos
   class CreateMerchantApplicationInput < ApiModelBase
-    attr_accessor :annual_credit_card_sales_volume
+    attr_accessor :annual_transaction_volume
+
+    attr_accessor :average_transaction_amount
 
     attr_accessor :allowed_payment_methods
 
@@ -38,6 +40,8 @@ module Amos
     attr_accessor :legal_entity_application_id
 
     attr_accessor :max_transaction_amount
+
+    attr_accessor :max_transaction_amount_reason
 
     attr_accessor :postal_code
 
@@ -82,7 +86,8 @@ module Amos
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'annual_credit_card_sales_volume' => :'annual_credit_card_sales_volume',
+        :'annual_transaction_volume' => :'annual_transaction_volume',
+        :'average_transaction_amount' => :'average_transaction_amount',
         :'allowed_payment_methods' => :'allowed_payment_methods',
         :'bank_account_number' => :'bank_account_number',
         :'bank_routing_number' => :'bank_routing_number',
@@ -94,6 +99,7 @@ module Amos
         :'dba_name' => :'dba_name',
         :'legal_entity_application_id' => :'legal_entity_application_id',
         :'max_transaction_amount' => :'max_transaction_amount',
+        :'max_transaction_amount_reason' => :'max_transaction_amount_reason',
         :'postal_code' => :'postal_code',
         :'primary_contact_email_address' => :'primary_contact_email_address',
         :'primary_contact_first_name' => :'primary_contact_first_name',
@@ -119,7 +125,8 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'annual_credit_card_sales_volume' => :'Integer',
+        :'annual_transaction_volume' => :'AnnualTransactionVolume',
+        :'average_transaction_amount' => :'AverageTransactionAmount',
         :'allowed_payment_methods' => :'Array<AllowedPaymentMethodInput>',
         :'bank_account_number' => :'String',
         :'bank_routing_number' => :'String',
@@ -131,6 +138,7 @@ module Amos
         :'dba_name' => :'String',
         :'legal_entity_application_id' => :'String',
         :'max_transaction_amount' => :'Integer',
+        :'max_transaction_amount_reason' => :'String',
         :'postal_code' => :'String',
         :'primary_contact_email_address' => :'String',
         :'primary_contact_first_name' => :'String',
@@ -168,8 +176,12 @@ module Amos
         end
       }
 
-      if attributes.key?(:'annual_credit_card_sales_volume')
-        self.annual_credit_card_sales_volume = attributes[:'annual_credit_card_sales_volume']
+      if attributes.key?(:'annual_transaction_volume')
+        self.annual_transaction_volume = attributes[:'annual_transaction_volume']
+      end
+
+      if attributes.key?(:'average_transaction_amount')
+        self.average_transaction_amount = attributes[:'average_transaction_amount']
       end
 
       if attributes.key?(:'allowed_payment_methods')
@@ -216,6 +228,10 @@ module Amos
 
       if attributes.key?(:'max_transaction_amount')
         self.max_transaction_amount = attributes[:'max_transaction_amount']
+      end
+
+      if attributes.key?(:'max_transaction_amount_reason')
+        self.max_transaction_amount_reason = attributes[:'max_transaction_amount_reason']
       end
 
       if attributes.key?(:'postal_code')
@@ -275,7 +291,8 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          annual_credit_card_sales_volume == o.annual_credit_card_sales_volume &&
+          annual_transaction_volume == o.annual_transaction_volume &&
+          average_transaction_amount == o.average_transaction_amount &&
           allowed_payment_methods == o.allowed_payment_methods &&
           bank_account_number == o.bank_account_number &&
           bank_routing_number == o.bank_routing_number &&
@@ -287,6 +304,7 @@ module Amos
           dba_name == o.dba_name &&
           legal_entity_application_id == o.legal_entity_application_id &&
           max_transaction_amount == o.max_transaction_amount &&
+          max_transaction_amount_reason == o.max_transaction_amount_reason &&
           postal_code == o.postal_code &&
           primary_contact_email_address == o.primary_contact_email_address &&
           primary_contact_first_name == o.primary_contact_first_name &&
@@ -307,7 +325,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [annual_credit_card_sales_volume, allowed_payment_methods, bank_account_number, bank_routing_number, business_category, business_description, city, country_code, customer_service_number, dba_name, legal_entity_application_id, max_transaction_amount, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, state_province, street_address1, street_address2, website_url].hash
+      [annual_transaction_volume, average_transaction_amount, allowed_payment_methods, bank_account_number, bank_routing_number, business_category, business_description, city, country_code, customer_service_number, dba_name, legal_entity_application_id, max_transaction_amount, max_transaction_amount_reason, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, state_province, street_address1, street_address2, website_url].hash
     end
 
     # Builds the object from hash
