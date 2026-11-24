@@ -19,7 +19,7 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 Create a merchant application for the embedded application
 
-Creates the merchant profile on the application in the embed token. Does not open an additional merchant on an already approved legal entity. 
+Creates the merchant profile on the application in the embed token. Does not open an additional merchant on an already approved legal entity. The settlement account is linked separately, on the flat external bank account intent and external account routes, by sending merchant_application_id. Plaid marks the account verified. Account and routing numbers do not. 
 
 ### Examples
 

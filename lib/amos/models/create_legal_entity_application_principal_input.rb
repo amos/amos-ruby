@@ -23,6 +23,7 @@ module Amos
 
     attr_accessor :last_name
 
+    # Stored lowercase. The embed routes reject an email that isn't 10 to 50 characters in the form `name@domain.tld`; the API key routes don't check the format. 
     attr_accessor :email
 
     attr_accessor :tax_id

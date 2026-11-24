@@ -35,6 +35,7 @@ module Amos
 
     attr_accessor :dba_name
 
+    # Maximum single transaction amount in cents. Defaults to 1000000.
     attr_accessor :max_transaction_amount
 
     attr_accessor :max_transaction_amount_reason

@@ -20,7 +20,7 @@
 | **echeck_company_name** | **String** |  | [optional] |
 | **echeck_enabled** | **Boolean** |  | [optional] |
 | **hard_coded_billing_descriptor** | **String** |  | [optional] |
-| **max_transaction_amount** | **Integer** |  | [optional] |
+| **max_transaction_amount** | **Integer** | Maximum single transaction amount in cents. | [optional] |
 | **merchant_application_id** | **String** |  | [optional] |
 | **mcc** | **String** |  | [optional] |
 | **naics_code** | **String** |  | [optional] |
@@ -29,6 +29,7 @@
 | **primary_contact_first_name** | **String** |  | [optional] |
 | **primary_contact_last_name** | **String** |  | [optional] |
 | **primary_contact_phone** | **String** |  | [optional] |
+| **provisional_expires_at** | **Time** | Set while the merchant is provisionally approved. Cleared on full approval. | [optional] |
 | **purchase_currency** | **String** |  | [optional] |
 | **settlement_currency** | **String** |  | [optional] |
 | **state_province** | **String** |  | [optional] |
@@ -70,6 +71,7 @@ instance = Amos::Merchant.new(
   primary_contact_first_name: null,
   primary_contact_last_name: null,
   primary_contact_phone: null,
+  provisional_expires_at: null,
   purchase_currency: null,
   settlement_currency: null,
   state_province: null,

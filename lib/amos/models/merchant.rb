@@ -47,6 +47,7 @@ module Amos
 
     attr_accessor :hard_coded_billing_descriptor
 
+    # Maximum single transaction amount in cents.
     attr_accessor :max_transaction_amount
 
     attr_accessor :merchant_application_id
@@ -64,6 +65,9 @@ module Amos
     attr_accessor :primary_contact_last_name
 
     attr_accessor :primary_contact_phone
+
+    # Set while the merchant is provisionally approved. Cleared on full approval.
+    attr_accessor :provisional_expires_at
 
     attr_accessor :purchase_currency
 
@@ -133,6 +137,7 @@ module Amos
         :'primary_contact_first_name' => :'primary_contact_first_name',
         :'primary_contact_last_name' => :'primary_contact_last_name',
         :'primary_contact_phone' => :'primary_contact_phone',
+        :'provisional_expires_at' => :'provisional_expires_at',
         :'purchase_currency' => :'purchase_currency',
         :'settlement_currency' => :'settlement_currency',
         :'state_province' => :'state_province',
@@ -183,6 +188,7 @@ module Amos
         :'primary_contact_first_name' => :'String',
         :'primary_contact_last_name' => :'String',
         :'primary_contact_phone' => :'String',
+        :'provisional_expires_at' => :'Time',
         :'purchase_currency' => :'String',
         :'settlement_currency' => :'String',
         :'state_province' => :'String',
@@ -198,6 +204,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'provisional_expires_at',
       ])
     end
 
@@ -322,6 +329,10 @@ module Amos
         self.primary_contact_phone = attributes[:'primary_contact_phone']
       end
 
+      if attributes.key?(:'provisional_expires_at')
+        self.provisional_expires_at = attributes[:'provisional_expires_at']
+      end
+
       if attributes.key?(:'purchase_currency')
         self.purchase_currency = attributes[:'purchase_currency']
       end
@@ -404,6 +415,7 @@ module Amos
           primary_contact_first_name == o.primary_contact_first_name &&
           primary_contact_last_name == o.primary_contact_last_name &&
           primary_contact_phone == o.primary_contact_phone &&
+          provisional_expires_at == o.provisional_expires_at &&
           purchase_currency == o.purchase_currency &&
           settlement_currency == o.settlement_currency &&
           state_province == o.state_province &&
@@ -424,7 +436,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, active, organization_id, legal_entity_id, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, state_province, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
+      [id, active, organization_id, legal_entity_id, allowed_payment_methods, business_category, business_description, city, country_code, customer_service_number, has_accepted_credit_cards, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, max_transaction_amount, merchant_application_id, mcc, naics_code, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, provisional_expires_at, purchase_currency, settlement_currency, state_province, street_address1, street_address2, sub_merchant_id, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

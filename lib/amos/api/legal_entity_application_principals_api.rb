@@ -19,6 +19,154 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Accept a principal invitation
+    # Called by the invite page with the token from the emailed link. No authentication: the invitation token is the credential. Accepting verifies the principal's email, uses up the link, and returns a principal token for filling in that principal's details. Limited to 10 requests a minute per IP address. 
+    # @param accept_legal_entity_application_principal_invitation_request [AcceptLegalEntityApplicationPrincipalInvitationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplicationPrincipalInvitationAcceptance]
+    def accept_embed_principal_invitation(accept_legal_entity_application_principal_invitation_request, opts = {})
+      data, _status_code, _headers = accept_embed_principal_invitation_with_http_info(accept_legal_entity_application_principal_invitation_request, opts)
+      data
+    end
+
+    # Accept a principal invitation
+    # Called by the invite page with the token from the emailed link. No authentication: the invitation token is the credential. Accepting verifies the principal&#39;s email, uses up the link, and returns a principal token for filling in that principal&#39;s details. Limited to 10 requests a minute per IP address. 
+    # @param accept_legal_entity_application_principal_invitation_request [AcceptLegalEntityApplicationPrincipalInvitationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplicationPrincipalInvitationAcceptance, Integer, Hash)>] LegalEntityApplicationPrincipalInvitationAcceptance data, response status code and response headers
+    def accept_embed_principal_invitation_with_http_info(accept_legal_entity_application_principal_invitation_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.accept_embed_principal_invitation ...'
+      end
+      # verify the required parameter 'accept_legal_entity_application_principal_invitation_request' is set
+      if @api_client.config.client_side_validation && accept_legal_entity_application_principal_invitation_request.nil?
+        fail ArgumentError, "Missing the required parameter 'accept_legal_entity_application_principal_invitation_request' when calling LegalEntityApplicationPrincipalsApi.accept_embed_principal_invitation"
+      end
+      # resource path
+      local_var_path = '/embed/principal_invitations/accept'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(accept_legal_entity_application_principal_invitation_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplicationPrincipalInvitationAcceptance'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.accept_embed_principal_invitation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#accept_embed_principal_invitation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Confirm a principal's email with the emailed code
+    # Sets `email_verified_at` when the code matches. Responds 422 when the code is wrong or expired, the email is already verified, 5 wrong codes have been entered (request a new code to try again), or the application is no longer pending or needs information. 
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param confirm_legal_entity_application_principal_email_verification_request [ConfirmLegalEntityApplicationPrincipalEmailVerificationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplicationPrincipal]
+    def confirm_embed_legal_entity_application_principal_email_verification(legal_entity_application_id, principal_id, confirm_legal_entity_application_principal_email_verification_request, opts = {})
+      data, _status_code, _headers = confirm_embed_legal_entity_application_principal_email_verification_with_http_info(legal_entity_application_id, principal_id, confirm_legal_entity_application_principal_email_verification_request, opts)
+      data
+    end
+
+    # Confirm a principal&#39;s email with the emailed code
+    # Sets &#x60;email_verified_at&#x60; when the code matches. Responds 422 when the code is wrong or expired, the email is already verified, 5 wrong codes have been entered (request a new code to try again), or the application is no longer pending or needs information. 
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param confirm_legal_entity_application_principal_email_verification_request [ConfirmLegalEntityApplicationPrincipalEmailVerificationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplicationPrincipal, Integer, Hash)>] LegalEntityApplicationPrincipal data, response status code and response headers
+    def confirm_embed_legal_entity_application_principal_email_verification_with_http_info(legal_entity_application_id, principal_id, confirm_legal_entity_application_principal_email_verification_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.confirm_embed_legal_entity_application_principal_email_verification ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling LegalEntityApplicationPrincipalsApi.confirm_embed_legal_entity_application_principal_email_verification"
+      end
+      # verify the required parameter 'principal_id' is set
+      if @api_client.config.client_side_validation && principal_id.nil?
+        fail ArgumentError, "Missing the required parameter 'principal_id' when calling LegalEntityApplicationPrincipalsApi.confirm_embed_legal_entity_application_principal_email_verification"
+      end
+      # verify the required parameter 'confirm_legal_entity_application_principal_email_verification_request' is set
+      if @api_client.config.client_side_validation && confirm_legal_entity_application_principal_email_verification_request.nil?
+        fail ArgumentError, "Missing the required parameter 'confirm_legal_entity_application_principal_email_verification_request' when calling LegalEntityApplicationPrincipalsApi.confirm_embed_legal_entity_application_principal_email_verification"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/email_verification/confirm'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{principal_id}', CGI.escape(principal_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(confirm_legal_entity_application_principal_email_verification_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplicationPrincipal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.confirm_embed_legal_entity_application_principal_email_verification",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#confirm_embed_legal_entity_application_principal_email_verification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a principal for the embedded application
     # @param legal_entity_application_id [String] 
     # @param create_legal_entity_application_principal_request [CreateLegalEntityApplicationPrincipalRequest] 
@@ -91,9 +239,80 @@ module Amos
       return data, status_code, headers
     end
 
+    # Create a Plaid Identity Verification Link token
+    # Returns a link token the embed opens in Plaid Link. The template decides the steps. When it includes Selfie Check, Link captures a live face with the camera and compares it to the ID photo when Documentary Verification is also on. Known principal data is prefilled so Link can skip those screens. Responds 422 when the application is no longer pending or needs information, the template is not configured, or Plaid rejects the request. Limited to 10 link tokens and recorded sessions an hour per principal. An invited principal's token can start a session only for that principal.
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [IdentityVerificationLinkToken]
+    def create_embed_legal_entity_application_principal_identity_verification_link_token(legal_entity_application_id, principal_id, opts = {})
+      data, _status_code, _headers = create_embed_legal_entity_application_principal_identity_verification_link_token_with_http_info(legal_entity_application_id, principal_id, opts)
+      data
+    end
+
+    # Create a Plaid Identity Verification Link token
+    # Returns a link token the embed opens in Plaid Link. The template decides the steps. When it includes Selfie Check, Link captures a live face with the camera and compares it to the ID photo when Documentary Verification is also on. Known principal data is prefilled so Link can skip those screens. Responds 422 when the application is no longer pending or needs information, the template is not configured, or Plaid rejects the request. Limited to 10 link tokens and recorded sessions an hour per principal. An invited principal&#39;s token can start a session only for that principal.
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(IdentityVerificationLinkToken, Integer, Hash)>] IdentityVerificationLinkToken data, response status code and response headers
+    def create_embed_legal_entity_application_principal_identity_verification_link_token_with_http_info(legal_entity_application_id, principal_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.create_embed_legal_entity_application_principal_identity_verification_link_token ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling LegalEntityApplicationPrincipalsApi.create_embed_legal_entity_application_principal_identity_verification_link_token"
+      end
+      # verify the required parameter 'principal_id' is set
+      if @api_client.config.client_side_validation && principal_id.nil?
+        fail ArgumentError, "Missing the required parameter 'principal_id' when calling LegalEntityApplicationPrincipalsApi.create_embed_legal_entity_application_principal_identity_verification_link_token"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/identity_verification/link_token'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{principal_id}', CGI.escape(principal_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'IdentityVerificationLinkToken'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.create_embed_legal_entity_application_principal_identity_verification_link_token",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#create_embed_legal_entity_application_principal_identity_verification_link_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a legal entity application principal
+    # Adds a principal to an application. For an approved application, the principal is approved immediately and an active legal entity membership is created. For a pending application, the principal remains part of the parent application's legacy approval flow. 
     # @param create_legal_entity_application_principal_request [CreateLegalEntityApplicationPrincipalRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [LegalEntityApplicationPrincipal]
     def create_legal_entity_application_principal(create_legal_entity_application_principal_request, opts = {})
       data, _status_code, _headers = create_legal_entity_application_principal_with_http_info(create_legal_entity_application_principal_request, opts)
@@ -101,8 +320,10 @@ module Amos
     end
 
     # Create a legal entity application principal
+    # Adds a principal to an application. For an approved application, the principal is approved immediately and an active legal entity membership is created. For a pending application, the principal remains part of the parent application&#39;s legacy approval flow. 
     # @param create_legal_entity_application_principal_request [CreateLegalEntityApplicationPrincipalRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(LegalEntityApplicationPrincipal, Integer, Hash)>] LegalEntityApplicationPrincipal data, response status code and response headers
     def create_legal_entity_application_principal_with_http_info(create_legal_entity_application_principal_request, opts = {})
       if @api_client.config.debugging
@@ -127,6 +348,7 @@ module Amos
       if !content_type.nil?
         header_params['Content-Type'] = content_type
       end
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -157,7 +379,140 @@ module Amos
       return data, status_code, headers
     end
 
+    # Delete a principal for the embedded application
+    # Deletes the principal while the application is pending or needs information. A principal token cannot delete a principal. Removing the last principal reopens the principal requirement.
+    # @param legal_entity_application_id [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_embed_legal_entity_application_principal(legal_entity_application_id, id, opts = {})
+      delete_embed_legal_entity_application_principal_with_http_info(legal_entity_application_id, id, opts)
+      nil
+    end
+
+    # Delete a principal for the embedded application
+    # Deletes the principal while the application is pending or needs information. A principal token cannot delete a principal. Removing the last principal reopens the principal requirement.
+    # @param legal_entity_application_id [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_embed_legal_entity_application_principal_with_http_info(legal_entity_application_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.delete_embed_legal_entity_application_principal ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling LegalEntityApplicationPrincipalsApi.delete_embed_legal_entity_application_principal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationPrincipalsApi.delete_embed_legal_entity_application_principal"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/principals/{id}'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.delete_embed_legal_entity_application_principal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#delete_embed_legal_entity_application_principal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a legal entity application principal
+    # Deletes the principal while the legal entity application is pending. Responds 422 once the application has left pending, including when it needs information. Removing the last principal reopens the principal requirement.
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_legal_entity_application_principal(id, opts = {})
+      delete_legal_entity_application_principal_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a legal entity application principal
+    # Deletes the principal while the legal entity application is pending. Responds 422 once the application has left pending, including when it needs information. Removing the last principal reopens the principal requirement.
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_legal_entity_application_principal_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.delete_legal_entity_application_principal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationPrincipalsApi.delete_legal_entity_application_principal"
+      end
+      # resource path
+      local_var_path = '/legal_entity_application_principals/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.delete_legal_entity_application_principal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#delete_legal_entity_application_principal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a principal for the embedded application
+    # Accepts a principal token for its own principal; any other principal responds 403. 
     # @param legal_entity_application_id [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -168,6 +523,7 @@ module Amos
     end
 
     # Retrieve a principal for the embedded application
+    # Accepts a principal token for its own principal; any other principal responds 403. 
     # @param legal_entity_application_id [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -352,7 +708,287 @@ module Amos
       return data, status_code, headers
     end
 
+    # Record a completed Plaid Identity Verification Link session
+    # Call this from Plaid Link's onSuccess callback with `metadata.link_session_id` as `session_id`. The session is fetched from Plaid and stored for underwriting. The response is the principal, including `identity_verification_status`. It does not include captured document or selfie media. Completing Link means the applicant submitted the requested steps; check the status for the outcome. Responds 422 when `session_id` is missing, the session belongs to another principal, or the application is no longer pending or needs information. Shares the hourly limit with the link token route.
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param record_legal_entity_application_principal_identity_verification_request [RecordLegalEntityApplicationPrincipalIdentityVerificationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplicationPrincipal]
+    def record_embed_legal_entity_application_principal_identity_verification(legal_entity_application_id, principal_id, record_legal_entity_application_principal_identity_verification_request, opts = {})
+      data, _status_code, _headers = record_embed_legal_entity_application_principal_identity_verification_with_http_info(legal_entity_application_id, principal_id, record_legal_entity_application_principal_identity_verification_request, opts)
+      data
+    end
+
+    # Record a completed Plaid Identity Verification Link session
+    # Call this from Plaid Link&#39;s onSuccess callback with &#x60;metadata.link_session_id&#x60; as &#x60;session_id&#x60;. The session is fetched from Plaid and stored for underwriting. The response is the principal, including &#x60;identity_verification_status&#x60;. It does not include captured document or selfie media. Completing Link means the applicant submitted the requested steps; check the status for the outcome. Responds 422 when &#x60;session_id&#x60; is missing, the session belongs to another principal, or the application is no longer pending or needs information. Shares the hourly limit with the link token route.
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param record_legal_entity_application_principal_identity_verification_request [RecordLegalEntityApplicationPrincipalIdentityVerificationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplicationPrincipal, Integer, Hash)>] LegalEntityApplicationPrincipal data, response status code and response headers
+    def record_embed_legal_entity_application_principal_identity_verification_with_http_info(legal_entity_application_id, principal_id, record_legal_entity_application_principal_identity_verification_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.record_embed_legal_entity_application_principal_identity_verification ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling LegalEntityApplicationPrincipalsApi.record_embed_legal_entity_application_principal_identity_verification"
+      end
+      # verify the required parameter 'principal_id' is set
+      if @api_client.config.client_side_validation && principal_id.nil?
+        fail ArgumentError, "Missing the required parameter 'principal_id' when calling LegalEntityApplicationPrincipalsApi.record_embed_legal_entity_application_principal_identity_verification"
+      end
+      # verify the required parameter 'record_legal_entity_application_principal_identity_verification_request' is set
+      if @api_client.config.client_side_validation && record_legal_entity_application_principal_identity_verification_request.nil?
+        fail ArgumentError, "Missing the required parameter 'record_legal_entity_application_principal_identity_verification_request' when calling LegalEntityApplicationPrincipalsApi.record_embed_legal_entity_application_principal_identity_verification"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/identity_verification'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{principal_id}', CGI.escape(principal_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(record_legal_entity_application_principal_identity_verification_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplicationPrincipal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.record_embed_legal_entity_application_principal_identity_verification",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#record_embed_legal_entity_application_principal_identity_verification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Email a verification code to a principal
+    # For the person filling in the embed. Emails a six-digit code to the principal's email; confirm it with the confirm route. The code expires after 10 minutes, and sending a new one replaces it. Another code can't be sent for 60 seconds. Sends are limited to 5 a day per principal and 20 an hour per application. Responds 422 when the email is missing, invalid, or already verified, or the application is no longer pending or needs information. 
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplicationPrincipal]
+    def send_embed_legal_entity_application_principal_email_verification(legal_entity_application_id, principal_id, opts = {})
+      data, _status_code, _headers = send_embed_legal_entity_application_principal_email_verification_with_http_info(legal_entity_application_id, principal_id, opts)
+      data
+    end
+
+    # Email a verification code to a principal
+    # For the person filling in the embed. Emails a six-digit code to the principal&#39;s email; confirm it with the confirm route. The code expires after 10 minutes, and sending a new one replaces it. Another code can&#39;t be sent for 60 seconds. Sends are limited to 5 a day per principal and 20 an hour per application. Responds 422 when the email is missing, invalid, or already verified, or the application is no longer pending or needs information. 
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplicationPrincipal, Integer, Hash)>] LegalEntityApplicationPrincipal data, response status code and response headers
+    def send_embed_legal_entity_application_principal_email_verification_with_http_info(legal_entity_application_id, principal_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_email_verification ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_email_verification"
+      end
+      # verify the required parameter 'principal_id' is set
+      if @api_client.config.client_side_validation && principal_id.nil?
+        fail ArgumentError, "Missing the required parameter 'principal_id' when calling LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_email_verification"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/email_verification'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{principal_id}', CGI.escape(principal_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplicationPrincipal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_email_verification",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#send_embed_legal_entity_application_principal_email_verification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Email an invitation link to a principal
+    # For principals other than the person filling in the embed. Emails a link that lets the principal confirm their email and fill in their own details; see `AcceptEmbedPrincipalInvitation`. The link works once and expires after 72 hours. Sending again replaces the earlier link and ends any session it started. Sends are limited to 5 a day per principal and 20 an hour per application. Responds 422 when the email is missing, invalid, or already verified, or the application is no longer pending or needs information. 
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplicationPrincipal]
+    def send_embed_legal_entity_application_principal_invitation(legal_entity_application_id, principal_id, opts = {})
+      data, _status_code, _headers = send_embed_legal_entity_application_principal_invitation_with_http_info(legal_entity_application_id, principal_id, opts)
+      data
+    end
+
+    # Email an invitation link to a principal
+    # For principals other than the person filling in the embed. Emails a link that lets the principal confirm their email and fill in their own details; see &#x60;AcceptEmbedPrincipalInvitation&#x60;. The link works once and expires after 72 hours. Sending again replaces the earlier link and ends any session it started. Sends are limited to 5 a day per principal and 20 an hour per application. Responds 422 when the email is missing, invalid, or already verified, or the application is no longer pending or needs information. 
+    # @param legal_entity_application_id [String] 
+    # @param principal_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplicationPrincipal, Integer, Hash)>] LegalEntityApplicationPrincipal data, response status code and response headers
+    def send_embed_legal_entity_application_principal_invitation_with_http_info(legal_entity_application_id, principal_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_invitation ...'
+      end
+      # verify the required parameter 'legal_entity_application_id' is set
+      if @api_client.config.client_side_validation && legal_entity_application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_application_id' when calling LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_invitation"
+      end
+      # verify the required parameter 'principal_id' is set
+      if @api_client.config.client_side_validation && principal_id.nil?
+        fail ArgumentError, "Missing the required parameter 'principal_id' when calling LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_invitation"
+      end
+      # resource path
+      local_var_path = '/embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/invitation'.sub('{legal_entity_application_id}', CGI.escape(legal_entity_application_id.to_s)).sub('{principal_id}', CGI.escape(principal_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplicationPrincipal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['Embed']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.send_embed_legal_entity_application_principal_invitation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#send_embed_legal_entity_application_principal_invitation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Submit an independent principal application
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [LegalEntityApplicationPrincipal]
+    def submit_legal_entity_application_principal(id, opts = {})
+      data, _status_code, _headers = submit_legal_entity_application_principal_with_http_info(id, opts)
+      data
+    end
+
+    # Submit an independent principal application
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LegalEntityApplicationPrincipal, Integer, Hash)>] LegalEntityApplicationPrincipal data, response status code and response headers
+    def submit_legal_entity_application_principal_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationPrincipalsApi.submit_legal_entity_application_principal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationPrincipalsApi.submit_legal_entity_application_principal"
+      end
+      # resource path
+      local_var_path = '/legal_entity_application_principals/{id}/submit'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LegalEntityApplicationPrincipal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityApplicationPrincipalsApi.submit_legal_entity_application_principal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityApplicationPrincipalsApi#submit_legal_entity_application_principal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a principal for the embedded application
+    # Accepts a principal token for its own principal; any other principal responds 403. A principal token can't change `email` (422), since the email is what the invitation verified. Changing the email with an application token resets `email_verified_at` and revokes the principal's invitation. 
     # @param legal_entity_application_id [String] 
     # @param id [String] 
     # @param update_legal_entity_application_principal_request [UpdateLegalEntityApplicationPrincipalRequest] 
@@ -364,6 +1000,7 @@ module Amos
     end
 
     # Update a principal for the embedded application
+    # Accepts a principal token for its own principal; any other principal responds 403. A principal token can&#39;t change &#x60;email&#x60; (422), since the email is what the invitation verified. Changing the email with an application token resets &#x60;email_verified_at&#x60; and revokes the principal&#39;s invitation. 
     # @param legal_entity_application_id [String] 
     # @param id [String] 
     # @param update_legal_entity_application_principal_request [UpdateLegalEntityApplicationPrincipalRequest] 

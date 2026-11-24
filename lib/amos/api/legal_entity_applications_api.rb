@@ -19,8 +19,8 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Start review or approve a legal entity application
-    # Call this twice.  When the application is `submitted`, this moves it to `under_review`. No legal entity is created. Run identity verification for each application principal while the application is `under_review`.  When the application is `under_review`, this creates the legal entity, merchants, accounts, and principals and moves the application to `approved`, only if every application principal has a successful identity verification. 
+    # Approve a legal entity application
+    # Approves a submitted application and creates the legal entity, merchants, accounts, and principals. This legacy route does not require verified principal emails. 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [LegalEntityApplication]
@@ -29,8 +29,8 @@ module Amos
       data
     end
 
-    # Start review or approve a legal entity application
-    # Call this twice.  When the application is &#x60;submitted&#x60;, this moves it to &#x60;under_review&#x60;. No legal entity is created. Run identity verification for each application principal while the application is &#x60;under_review&#x60;.  When the application is &#x60;under_review&#x60;, this creates the legal entity, merchants, accounts, and principals and moves the application to &#x60;approved&#x60;, only if every application principal has a successful identity verification. 
+    # Approve a legal entity application
+    # Approves a submitted application and creates the legal entity, merchants, accounts, and principals. This legacy route does not require verified principal emails. 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LegalEntityApplication, Integer, Hash)>] LegalEntityApplication data, response status code and response headers
@@ -149,7 +149,7 @@ module Amos
     end
 
     # Mint an embed token for a legal entity application
-    # Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents, and submit. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
+    # Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [EmbedToken]
@@ -159,7 +159,7 @@ module Amos
     end
 
     # Mint an embed token for a legal entity application
-    # Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents, and submit. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
+    # Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EmbedToken, Integer, Hash)>] EmbedToken data, response status code and response headers
@@ -333,69 +333,6 @@ module Amos
       return data, status_code, headers
     end
 
-    # Submit a legal entity application from the onboarding iframe
-    # Submits an application in `pending` or `needs_information` once every requirement is satisfied. Responds 403 when the token belongs to a different application. 
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [LegalEntityApplication]
-    def submit_embed_legal_entity_application(id, opts = {})
-      data, _status_code, _headers = submit_embed_legal_entity_application_with_http_info(id, opts)
-      data
-    end
-
-    # Submit a legal entity application from the onboarding iframe
-    # Submits an application in &#x60;pending&#x60; or &#x60;needs_information&#x60; once every requirement is satisfied. Responds 403 when the token belongs to a different application. 
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(LegalEntityApplication, Integer, Hash)>] LegalEntityApplication data, response status code and response headers
-    def submit_embed_legal_entity_application_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: LegalEntityApplicationsApi.submit_embed_legal_entity_application ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityApplicationsApi.submit_embed_legal_entity_application"
-      end
-      # resource path
-      local_var_path = '/embed/legal_entity_applications/{id}/submit'.sub('{id}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'LegalEntityApplication'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['Embed']
-
-      new_options = opts.merge(
-        :operation => :"LegalEntityApplicationsApi.submit_embed_legal_entity_application",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: LegalEntityApplicationsApi#submit_embed_legal_entity_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Submit a legal entity application
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -458,6 +395,7 @@ module Amos
     end
 
     # Update a pending or needs-information legal entity application
+    # Saves the application. When its requirements and principals are ready and at least one principal has verified their email and identity, the application moves to submitted. Otherwise it stays where it is.
     # @param id [String] 
     # @param update_legal_entity_application_request [UpdateLegalEntityApplicationRequest] 
     # @param [Hash] opts the optional parameters
@@ -468,6 +406,7 @@ module Amos
     end
 
     # Update a pending or needs-information legal entity application
+    # Saves the application. When its requirements and principals are ready and at least one principal has verified their email and identity, the application moves to submitted. Otherwise it stays where it is.
     # @param id [String] 
     # @param update_legal_entity_application_request [UpdateLegalEntityApplicationRequest] 
     # @param [Hash] opts the optional parameters

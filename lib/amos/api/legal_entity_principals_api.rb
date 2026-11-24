@@ -19,6 +19,76 @@ module Amos
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Deactivate a legal entity principal
+    # Ends the principal's active membership on the given legal entity without deleting its record. Memberships on other legal entities are unchanged.
+    # @param id [String] 
+    # @param legal_entity_id [String] The legal entity whose membership should end
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def deactivate_legal_entity_principal(id, legal_entity_id, opts = {})
+      deactivate_legal_entity_principal_with_http_info(id, legal_entity_id, opts)
+      nil
+    end
+
+    # Deactivate a legal entity principal
+    # Ends the principal&#39;s active membership on the given legal entity without deleting its record. Memberships on other legal entities are unchanged.
+    # @param id [String] 
+    # @param legal_entity_id [String] The legal entity whose membership should end
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def deactivate_legal_entity_principal_with_http_info(id, legal_entity_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LegalEntityPrincipalsApi.deactivate_legal_entity_principal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling LegalEntityPrincipalsApi.deactivate_legal_entity_principal"
+      end
+      # verify the required parameter 'legal_entity_id' is set
+      if @api_client.config.client_side_validation && legal_entity_id.nil?
+        fail ArgumentError, "Missing the required parameter 'legal_entity_id' when calling LegalEntityPrincipalsApi.deactivate_legal_entity_principal"
+      end
+      # resource path
+      local_var_path = '/legal_entity_principals/{id}'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'legal_entity_id'] = legal_entity_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key', 'bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"LegalEntityPrincipalsApi.deactivate_legal_entity_principal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LegalEntityPrincipalsApi#deactivate_legal_entity_principal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a legal entity principal by ID
     # @param id [String] The ID of the legal entity principal to retrieve
     # @param [Hash] opts the optional parameters

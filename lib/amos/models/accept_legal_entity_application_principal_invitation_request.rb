@@ -14,13 +14,14 @@ require 'date'
 require 'time'
 
 module Amos
-  class UpdatePaymentIntentRequest < ApiModelBase
-    attr_accessor :payment_intent
+  class AcceptLegalEntityApplicationPrincipalInvitationRequest < ApiModelBase
+    # The invitation token from the emailed link. The link carries it after `#token=`, so the invite page reads it in the browser and sends it here. 
+    attr_accessor :token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'payment_intent' => :'payment_intent'
+        :'token' => :'token'
       }
     end
 
@@ -37,7 +38,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'payment_intent' => :'UpdatePaymentIntentInput'
+        :'token' => :'String'
       }
     end
 
@@ -51,7 +52,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::UpdatePaymentIntentRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::AcceptLegalEntityApplicationPrincipalInvitationRequest` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -66,10 +67,10 @@ module Amos
         end
       }
 
-      if attributes.key?(:'payment_intent')
-        self.payment_intent = attributes[:'payment_intent']
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       else
-        self.payment_intent = nil
+        self.token = nil
       end
     end
 
@@ -78,8 +79,8 @@ module Amos
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @payment_intent.nil?
-        invalid_properties.push('invalid value for "payment_intent", payment_intent cannot be nil.')
+      if @token.nil?
+        invalid_properties.push('invalid value for "token", token cannot be nil.')
       end
 
       invalid_properties
@@ -89,18 +90,18 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @payment_intent.nil?
+      return false if @token.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] payment_intent Value to be assigned
-    def payment_intent=(payment_intent)
-      if payment_intent.nil?
-        fail ArgumentError, 'payment_intent cannot be nil'
+    # @param [Object] token Value to be assigned
+    def token=(token)
+      if token.nil?
+        fail ArgumentError, 'token cannot be nil'
       end
 
-      @payment_intent = payment_intent
+      @token = token
     end
 
     # Checks equality by comparing each attribute.
@@ -108,7 +109,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          payment_intent == o.payment_intent
+          token == o.token
     end
 
     # @see the `==` method
@@ -120,7 +121,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [payment_intent].hash
+      [token].hash
     end
 
     # Builds the object from hash

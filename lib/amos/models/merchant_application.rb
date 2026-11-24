@@ -39,6 +39,9 @@ module Amos
 
     attr_accessor :echeck_enabled
 
+    # Bank account linked for this merchant application. Absent until the embedded connect succeeds. 
+    attr_accessor :external_account_id
+
     attr_accessor :hard_coded_billing_descriptor
 
     attr_accessor :has_accepted_credit_cards
@@ -55,6 +58,7 @@ module Amos
 
     attr_accessor :max_single_debit_amount
 
+    # Maximum single transaction amount in cents.
     attr_accessor :max_transaction_amount
 
     attr_accessor :max_transaction_amount_reason
@@ -126,6 +130,7 @@ module Amos
         :'echeck_billing_descriptor' => :'echeck_billing_descriptor',
         :'echeck_company_name' => :'echeck_company_name',
         :'echeck_enabled' => :'echeck_enabled',
+        :'external_account_id' => :'external_account_id',
         :'hard_coded_billing_descriptor' => :'hard_coded_billing_descriptor',
         :'has_accepted_credit_cards' => :'has_accepted_credit_cards',
         :'legal_entity_application_id' => :'legal_entity_application_id',
@@ -179,6 +184,7 @@ module Amos
         :'echeck_billing_descriptor' => :'String',
         :'echeck_company_name' => :'String',
         :'echeck_enabled' => :'String',
+        :'external_account_id' => :'String',
         :'hard_coded_billing_descriptor' => :'String',
         :'has_accepted_credit_cards' => :'Boolean',
         :'legal_entity_application_id' => :'String',
@@ -187,7 +193,7 @@ module Amos
         :'max_monthly_credits_amount' => :'Integer',
         :'max_monthly_debits_amount' => :'Integer',
         :'max_single_debit_amount' => :'Integer',
-        :'max_transaction_amount' => :'String',
+        :'max_transaction_amount' => :'Integer',
         :'max_transaction_amount_reason' => :'String',
         :'mcc' => :'String',
         :'postal_code' => :'String',
@@ -210,6 +216,7 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'external_account_id',
       ])
     end
 
@@ -278,6 +285,10 @@ module Amos
 
       if attributes.key?(:'echeck_enabled')
         self.echeck_enabled = attributes[:'echeck_enabled']
+      end
+
+      if attributes.key?(:'external_account_id')
+        self.external_account_id = attributes[:'external_account_id']
       end
 
       if attributes.key?(:'hard_coded_billing_descriptor')
@@ -413,6 +424,7 @@ module Amos
           echeck_billing_descriptor == o.echeck_billing_descriptor &&
           echeck_company_name == o.echeck_company_name &&
           echeck_enabled == o.echeck_enabled &&
+          external_account_id == o.external_account_id &&
           hard_coded_billing_descriptor == o.hard_coded_billing_descriptor &&
           has_accepted_credit_cards == o.has_accepted_credit_cards &&
           legal_entity_application_id == o.legal_entity_application_id &&
@@ -449,7 +461,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, annual_transaction_volume, average_transaction_amount, business_category, business_description, city, country_code, customer_service_number, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, hard_coded_billing_descriptor, has_accepted_credit_cards, legal_entity_application_id, max_daily_credits_amount, max_daily_debits_amount, max_monthly_credits_amount, max_monthly_debits_amount, max_single_debit_amount, max_transaction_amount, max_transaction_amount_reason, mcc, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, settlement_days, state_province, street_address1, street_address2, website_url, created_at, updated_at].hash
+      [id, annual_transaction_volume, average_transaction_amount, business_category, business_description, city, country_code, customer_service_number, dba_name, echeck_billing_descriptor, echeck_company_name, echeck_enabled, external_account_id, hard_coded_billing_descriptor, has_accepted_credit_cards, legal_entity_application_id, max_daily_credits_amount, max_daily_debits_amount, max_monthly_credits_amount, max_monthly_debits_amount, max_single_debit_amount, max_transaction_amount, max_transaction_amount_reason, mcc, postal_code, primary_contact_email_address, primary_contact_first_name, primary_contact_last_name, primary_contact_phone, purchase_currency, settlement_currency, settlement_days, state_province, street_address1, street_address2, website_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

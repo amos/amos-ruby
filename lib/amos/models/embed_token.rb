@@ -15,7 +15,7 @@ require 'time'
 
 module Amos
   class EmbedToken < ApiModelBase
-    # JWT string used for embedded payment, setup intent, and onboarding flows. When decoded, the JWT payload matches the EmbedTokenJwt schema. Setup intent tokens are organization-scoped (`organization_id` + `setup_intent_id`). Payment intent tokens remain account-scoped (`account_id` + `payment_intent_id`). Legal entity application tokens are organization-scoped and add `legal_entity_application_id`. 
+    # JWT string used for embedded payment, setup intent, and onboarding flows. When decoded, the JWT payload matches the EmbedTokenJwt schema. Setup intent tokens are organization-scoped (`organization_id` + `setup_intent_id`). Payment intent tokens remain account-scoped (`account_id` + `payment_intent_id`). Legal entity application tokens are organization-scoped and add `legal_entity_application_id`. Principal tokens come from `AcceptEmbedPrincipalInvitation`, not this route. 
     attr_accessor :token
 
     attr_accessor :ttl

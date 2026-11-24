@@ -7,7 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **legal_name** | **String** |  | [optional] |
 | **organization_id** | **String** |  | [optional] |
-| **legal_entity_id** | **String** | Set when the application is approved and the legal entity is created. | [optional] |
+| **legal_entity_id** | **String** | Set when the application is provisionally approved or approved and the legal entity is created. | [optional] |
 | **entity_type** | [**LegalEntityEntityType**](LegalEntityEntityType.md) |  | [optional] |
 | **ownership_type** | [**LegalEntityOwnershipType**](LegalEntityOwnershipType.md) |  | [optional] |
 | **contact_email** | **String** |  | [optional] |
@@ -23,6 +23,8 @@
 | **approved_at** | **Time** |  | [optional] |
 | **denied_at** | **Time** |  | [optional] |
 | **needs_information_at** | **Time** |  | [optional] |
+| **provisionally_approved_at** | **Time** |  | [optional] |
+| **provisional_expires_at** | **Time** |  | [optional] |
 | **decision_reason** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -53,6 +55,8 @@ instance = Amos::LegalEntityApplication.new(
   approved_at: null,
   denied_at: null,
   needs_information_at: null,
+  provisionally_approved_at: null,
+  provisional_expires_at: null,
   decision_reason: null,
   created_at: null,
   updated_at: null,

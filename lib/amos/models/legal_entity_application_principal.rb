@@ -19,6 +19,12 @@ module Amos
 
     attr_accessor :legal_entity_application_id
 
+    attr_accessor :legal_entity_id
+
+    attr_accessor :application_state
+
+    attr_accessor :checks
+
     attr_accessor :first_name
 
     attr_accessor :last_name
@@ -47,15 +53,61 @@ module Amos
 
     attr_accessor :title
 
+    # When the principal confirmed their email, by entering an emailed code or accepting an invitation. Reset to null when the email changes. The embedded application moves to submitted only once at least one principal has verified both email and identity. Admin approval requires every principal to have verified their email and identity, unless the underwriter skips that check. The API-key approve route does not. 
+    attr_accessor :email_verified_at
+
+    # When the principal's open invitation was sent. Null when there is none.
+    attr_accessor :invitation_sent_at
+
+    # When the principal's open invitation expires. Null when there is none.
+    attr_accessor :invitation_expires_at
+
+    # When the principal accepted the invitation that still backs their embed session. Null when there is no live session. Revoking the invitation clears it. The email can stay verified.
+    attr_accessor :invitation_accepted_at
+
+    # Status of the principal's latest Plaid Identity Verification. Null until a Link session is recorded. Completing Link means the applicant submitted the steps the template asked for, including a camera selfie when the template includes Selfie Check. `success` means those checks passed.
+    attr_accessor :identity_verification_status
+
+    # When an admin marked the principal's identity verified after a check done outside Plaid. Null otherwise.
+    attr_accessor :identity_manually_verified_at
+
+    # True when Plaid identity verification is `success` or `pending_review`, or an admin verified the identity. Email is tracked separately in `email_verified_at`.
+    attr_accessor :identity_verified
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'legal_entity_application_id' => :'legal_entity_application_id',
+        :'legal_entity_id' => :'legal_entity_id',
+        :'application_state' => :'application_state',
+        :'checks' => :'checks',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'email' => :'email',
@@ -70,6 +122,13 @@ module Amos
         :'contact_phone' => :'contact_phone',
         :'tax_id_last4' => :'tax_id_last4',
         :'title' => :'title',
+        :'email_verified_at' => :'email_verified_at',
+        :'invitation_sent_at' => :'invitation_sent_at',
+        :'invitation_expires_at' => :'invitation_expires_at',
+        :'invitation_accepted_at' => :'invitation_accepted_at',
+        :'identity_verification_status' => :'identity_verification_status',
+        :'identity_manually_verified_at' => :'identity_manually_verified_at',
+        :'identity_verified' => :'identity_verified',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -90,6 +149,9 @@ module Amos
       {
         :'id' => :'String',
         :'legal_entity_application_id' => :'String',
+        :'legal_entity_id' => :'String',
+        :'application_state' => :'String',
+        :'checks' => :'LegalEntityApplicationPrincipalChecks',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'email' => :'String',
@@ -104,6 +166,13 @@ module Amos
         :'contact_phone' => :'String',
         :'tax_id_last4' => :'String',
         :'title' => :'String',
+        :'email_verified_at' => :'Time',
+        :'invitation_sent_at' => :'Time',
+        :'invitation_expires_at' => :'Time',
+        :'invitation_accepted_at' => :'Time',
+        :'identity_verification_status' => :'String',
+        :'identity_manually_verified_at' => :'Time',
+        :'identity_verified' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -112,6 +181,13 @@ module Amos
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'legal_entity_id',
+        :'email_verified_at',
+        :'invitation_sent_at',
+        :'invitation_expires_at',
+        :'invitation_accepted_at',
+        :'identity_verification_status',
+        :'identity_manually_verified_at',
       ])
     end
 
@@ -140,6 +216,18 @@ module Amos
 
       if attributes.key?(:'legal_entity_application_id')
         self.legal_entity_application_id = attributes[:'legal_entity_application_id']
+      end
+
+      if attributes.key?(:'legal_entity_id')
+        self.legal_entity_id = attributes[:'legal_entity_id']
+      end
+
+      if attributes.key?(:'application_state')
+        self.application_state = attributes[:'application_state']
+      end
+
+      if attributes.key?(:'checks')
+        self.checks = attributes[:'checks']
       end
 
       if attributes.key?(:'first_name')
@@ -198,6 +286,34 @@ module Amos
         self.title = attributes[:'title']
       end
 
+      if attributes.key?(:'email_verified_at')
+        self.email_verified_at = attributes[:'email_verified_at']
+      end
+
+      if attributes.key?(:'invitation_sent_at')
+        self.invitation_sent_at = attributes[:'invitation_sent_at']
+      end
+
+      if attributes.key?(:'invitation_expires_at')
+        self.invitation_expires_at = attributes[:'invitation_expires_at']
+      end
+
+      if attributes.key?(:'invitation_accepted_at')
+        self.invitation_accepted_at = attributes[:'invitation_accepted_at']
+      end
+
+      if attributes.key?(:'identity_verification_status')
+        self.identity_verification_status = attributes[:'identity_verification_status']
+      end
+
+      if attributes.key?(:'identity_manually_verified_at')
+        self.identity_manually_verified_at = attributes[:'identity_manually_verified_at']
+      end
+
+      if attributes.key?(:'identity_verified')
+        self.identity_verified = attributes[:'identity_verified']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -219,7 +335,31 @@ module Amos
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      application_state_validator = EnumAttributeValidator.new('String', ["pending", "submitted", "needs_information", "approved", "denied"])
+      return false unless application_state_validator.valid?(@application_state)
+      identity_verification_status_validator = EnumAttributeValidator.new('String', ["active", "success", "failed", "expired", "canceled", "pending_review"])
+      return false unless identity_verification_status_validator.valid?(@identity_verification_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] application_state Object to be assigned
+    def application_state=(application_state)
+      validator = EnumAttributeValidator.new('String', ["pending", "submitted", "needs_information", "approved", "denied"])
+      unless validator.valid?(application_state)
+        fail ArgumentError, "invalid value for \"application_state\", must be one of #{validator.allowable_values}."
+      end
+      @application_state = application_state
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] identity_verification_status Object to be assigned
+    def identity_verification_status=(identity_verification_status)
+      validator = EnumAttributeValidator.new('String', ["active", "success", "failed", "expired", "canceled", "pending_review"])
+      unless validator.valid?(identity_verification_status)
+        fail ArgumentError, "invalid value for \"identity_verification_status\", must be one of #{validator.allowable_values}."
+      end
+      @identity_verification_status = identity_verification_status
     end
 
     # Checks equality by comparing each attribute.
@@ -229,6 +369,9 @@ module Amos
       self.class == o.class &&
           id == o.id &&
           legal_entity_application_id == o.legal_entity_application_id &&
+          legal_entity_id == o.legal_entity_id &&
+          application_state == o.application_state &&
+          checks == o.checks &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           email == o.email &&
@@ -243,6 +386,13 @@ module Amos
           contact_phone == o.contact_phone &&
           tax_id_last4 == o.tax_id_last4 &&
           title == o.title &&
+          email_verified_at == o.email_verified_at &&
+          invitation_sent_at == o.invitation_sent_at &&
+          invitation_expires_at == o.invitation_expires_at &&
+          invitation_accepted_at == o.invitation_accepted_at &&
+          identity_verification_status == o.identity_verification_status &&
+          identity_manually_verified_at == o.identity_manually_verified_at &&
+          identity_verified == o.identity_verified &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -256,7 +406,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_entity_application_id, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, stake_percent, contact_phone, tax_id_last4, title, created_at, updated_at].hash
+      [id, legal_entity_application_id, legal_entity_id, application_state, checks, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, stake_percent, contact_phone, tax_id_last4, title, email_verified_at, invitation_sent_at, invitation_expires_at, invitation_accepted_at, identity_verification_status, identity_manually_verified_at, identity_verified, created_at, updated_at].hash
     end
 
     # Builds the object from hash

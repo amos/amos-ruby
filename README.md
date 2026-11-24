@@ -123,22 +123,31 @@ Class | Method | HTTP request | Description
 *Amos::LegalEntityApplicationDocumentsApi* | [**create_legal_entity_application_document**](docs/LegalEntityApplicationDocumentsApi.md#create_legal_entity_application_document) | **POST** /legal_entity_application_documents | Create a legal entity application document
 *Amos::LegalEntityApplicationDocumentsApi* | [**list_embed_legal_entity_application_documents**](docs/LegalEntityApplicationDocumentsApi.md#list_embed_legal_entity_application_documents) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/documents | List documents for the embedded application
 *Amos::LegalEntityApplicationDocumentsApi* | [**list_legal_entity_application_documents**](docs/LegalEntityApplicationDocumentsApi.md#list_legal_entity_application_documents) | **GET** /legal_entity_application_documents | List all legal entity application documents
+*Amos::LegalEntityApplicationPrincipalsApi* | [**accept_embed_principal_invitation**](docs/LegalEntityApplicationPrincipalsApi.md#accept_embed_principal_invitation) | **POST** /embed/principal_invitations/accept | Accept a principal invitation
+*Amos::LegalEntityApplicationPrincipalsApi* | [**confirm_embed_legal_entity_application_principal_email_verification**](docs/LegalEntityApplicationPrincipalsApi.md#confirm_embed_legal_entity_application_principal_email_verification) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/email_verification/confirm | Confirm a principal's email with the emailed code
 *Amos::LegalEntityApplicationPrincipalsApi* | [**create_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#create_embed_legal_entity_application_principal) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals | Create a principal for the embedded application
+*Amos::LegalEntityApplicationPrincipalsApi* | [**create_embed_legal_entity_application_principal_identity_verification_link_token**](docs/LegalEntityApplicationPrincipalsApi.md#create_embed_legal_entity_application_principal_identity_verification_link_token) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/identity_verification/link_token | Create a Plaid Identity Verification Link token
 *Amos::LegalEntityApplicationPrincipalsApi* | [**create_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#create_legal_entity_application_principal) | **POST** /legal_entity_application_principals | Create a legal entity application principal
+*Amos::LegalEntityApplicationPrincipalsApi* | [**delete_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#delete_embed_legal_entity_application_principal) | **DELETE** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{id} | Delete a principal for the embedded application
+*Amos::LegalEntityApplicationPrincipalsApi* | [**delete_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#delete_legal_entity_application_principal) | **DELETE** /legal_entity_application_principals/{id} | Delete a legal entity application principal
 *Amos::LegalEntityApplicationPrincipalsApi* | [**get_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#get_embed_legal_entity_application_principal) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{id} | Retrieve a principal for the embedded application
 *Amos::LegalEntityApplicationPrincipalsApi* | [**get_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#get_legal_entity_application_principal) | **GET** /legal_entity_application_principals/{id} | Retrieve a legal entity application principal by ID
 *Amos::LegalEntityApplicationPrincipalsApi* | [**list_embed_legal_entity_application_principals**](docs/LegalEntityApplicationPrincipalsApi.md#list_embed_legal_entity_application_principals) | **GET** /embed/legal_entity_applications/{legal_entity_application_id}/principals | List principals for the embedded application
+*Amos::LegalEntityApplicationPrincipalsApi* | [**record_embed_legal_entity_application_principal_identity_verification**](docs/LegalEntityApplicationPrincipalsApi.md#record_embed_legal_entity_application_principal_identity_verification) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/identity_verification | Record a completed Plaid Identity Verification Link session
+*Amos::LegalEntityApplicationPrincipalsApi* | [**send_embed_legal_entity_application_principal_email_verification**](docs/LegalEntityApplicationPrincipalsApi.md#send_embed_legal_entity_application_principal_email_verification) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/email_verification | Email a verification code to a principal
+*Amos::LegalEntityApplicationPrincipalsApi* | [**send_embed_legal_entity_application_principal_invitation**](docs/LegalEntityApplicationPrincipalsApi.md#send_embed_legal_entity_application_principal_invitation) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{principal_id}/invitation | Email an invitation link to a principal
+*Amos::LegalEntityApplicationPrincipalsApi* | [**submit_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#submit_legal_entity_application_principal) | **POST** /legal_entity_application_principals/{id}/submit | Submit an independent principal application
 *Amos::LegalEntityApplicationPrincipalsApi* | [**update_embed_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#update_embed_legal_entity_application_principal) | **PUT** /embed/legal_entity_applications/{legal_entity_application_id}/principals/{id} | Update a principal for the embedded application
 *Amos::LegalEntityApplicationPrincipalsApi* | [**update_legal_entity_application_principal**](docs/LegalEntityApplicationPrincipalsApi.md#update_legal_entity_application_principal) | **PUT** /legal_entity_application_principals/{id} | Update a legal entity application principal
-*Amos::LegalEntityApplicationsApi* | [**approve_legal_entity_application**](docs/LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Start review or approve a legal entity application
+*Amos::LegalEntityApplicationsApi* | [**approve_legal_entity_application**](docs/LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Approve a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**create_legal_entity_application**](docs/LegalEntityApplicationsApi.md#create_legal_entity_application) | **POST** /legal_entity_applications | Create a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**create_legal_entity_application_embed_token**](docs/LegalEntityApplicationsApi.md#create_legal_entity_application_embed_token) | **POST** /legal_entity_applications/{id}/embed_token | Mint an embed token for a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**get_embed_legal_entity_application**](docs/LegalEntityApplicationsApi.md#get_embed_legal_entity_application) | **GET** /embed/legal_entity_applications/{id} | Retrieve the legal entity application for an embed token
 *Amos::LegalEntityApplicationsApi* | [**get_legal_entity_application**](docs/LegalEntityApplicationsApi.md#get_legal_entity_application) | **GET** /legal_entity_applications/{id} | Retrieve a legal entity application by ID
-*Amos::LegalEntityApplicationsApi* | [**submit_embed_legal_entity_application**](docs/LegalEntityApplicationsApi.md#submit_embed_legal_entity_application) | **POST** /embed/legal_entity_applications/{id}/submit | Submit a legal entity application from the onboarding iframe
 *Amos::LegalEntityApplicationsApi* | [**submit_legal_entity_application**](docs/LegalEntityApplicationsApi.md#submit_legal_entity_application) | **POST** /legal_entity_applications/{id}/submit | Submit a legal entity application
 *Amos::LegalEntityApplicationsApi* | [**update_embed_legal_entity_application**](docs/LegalEntityApplicationsApi.md#update_embed_legal_entity_application) | **PUT** /embed/legal_entity_applications/{id} | Update a pending or needs-information legal entity application
 *Amos::LegalEntityApplicationsApi* | [**update_legal_entity_application**](docs/LegalEntityApplicationsApi.md#update_legal_entity_application) | **PUT** /legal_entity_applications/{id} | Update a pending legal entity application
+*Amos::LegalEntityPrincipalsApi* | [**deactivate_legal_entity_principal**](docs/LegalEntityPrincipalsApi.md#deactivate_legal_entity_principal) | **DELETE** /legal_entity_principals/{id} | Deactivate a legal entity principal
 *Amos::LegalEntityPrincipalsApi* | [**get_legal_entity_principal**](docs/LegalEntityPrincipalsApi.md#get_legal_entity_principal) | **GET** /legal_entity_principals/{id} | Retrieve a legal entity principal by ID
 *Amos::LegalEntityPrincipalsApi* | [**list_legal_entity_principals**](docs/LegalEntityPrincipalsApi.md#list_legal_entity_principals) | **GET** /legal_entity_principals | List all legal entity principals
 *Amos::MerchantApplicationsApi* | [**create_embed_merchant_application**](docs/MerchantApplicationsApi.md#create_embed_merchant_application) | **POST** /embed/legal_entity_applications/{legal_entity_application_id}/merchant_applications | Create a merchant application for the embedded application
@@ -217,6 +226,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [Amos::AcceptLegalEntityApplicationPrincipalInvitationRequest](docs/AcceptLegalEntityApplicationPrincipalInvitationRequest.md)
  - [Amos::Account](docs/Account.md)
  - [Amos::AllowedApplePayPaymentMethod](docs/AllowedApplePayPaymentMethod.md)
  - [Amos::AllowedApplePayPaymentMethodInput](docs/AllowedApplePayPaymentMethodInput.md)
@@ -248,6 +258,7 @@ Class | Method | HTTP request | Description
  - [Amos::CardProfile](docs/CardProfile.md)
  - [Amos::CardProfileInput](docs/CardProfileInput.md)
  - [Amos::Charge](docs/Charge.md)
+ - [Amos::ConfirmLegalEntityApplicationPrincipalEmailVerificationRequest](docs/ConfirmLegalEntityApplicationPrincipalEmailVerificationRequest.md)
  - [Amos::ConfirmPaymentIntentWithEmbeddedPaymentMethodInput](docs/ConfirmPaymentIntentWithEmbeddedPaymentMethodInput.md)
  - [Amos::ConfirmPaymentIntentWithPaymentMethodIdInput](docs/ConfirmPaymentIntentWithPaymentMethodIdInput.md)
  - [Amos::ConfirmPaymentIntentWithPaymentMethodInput](docs/ConfirmPaymentIntentWithPaymentMethodInput.md)
@@ -317,6 +328,7 @@ Class | Method | HTTP request | Description
  - [Amos::FileUpload](docs/FileUpload.md)
  - [Amos::FileUploadConfiguration](docs/FileUploadConfiguration.md)
  - [Amos::GooglePayCardProfileInput](docs/GooglePayCardProfileInput.md)
+ - [Amos::IdentityVerificationLinkToken](docs/IdentityVerificationLinkToken.md)
  - [Amos::InternationalBillingAddressOptions](docs/InternationalBillingAddressOptions.md)
  - [Amos::LegalEntity](docs/LegalEntity.md)
  - [Amos::LegalEntityApplication](docs/LegalEntityApplication.md)
@@ -324,12 +336,16 @@ Class | Method | HTTP request | Description
  - [Amos::LegalEntityApplicationDocumentReviewer](docs/LegalEntityApplicationDocumentReviewer.md)
  - [Amos::LegalEntityApplicationDocumentStatus](docs/LegalEntityApplicationDocumentStatus.md)
  - [Amos::LegalEntityApplicationPrincipal](docs/LegalEntityApplicationPrincipal.md)
+ - [Amos::LegalEntityApplicationPrincipalChecks](docs/LegalEntityApplicationPrincipalChecks.md)
+ - [Amos::LegalEntityApplicationPrincipalChecksEmail](docs/LegalEntityApplicationPrincipalChecksEmail.md)
+ - [Amos::LegalEntityApplicationPrincipalInvitationAcceptance](docs/LegalEntityApplicationPrincipalInvitationAcceptance.md)
  - [Amos::LegalEntityApplicationRequirement](docs/LegalEntityApplicationRequirement.md)
  - [Amos::LegalEntityApplicationStateType](docs/LegalEntityApplicationStateType.md)
  - [Amos::LegalEntityDocumentType](docs/LegalEntityDocumentType.md)
  - [Amos::LegalEntityEntityType](docs/LegalEntityEntityType.md)
  - [Amos::LegalEntityOwnershipType](docs/LegalEntityOwnershipType.md)
  - [Amos::LegalEntityPrincipal](docs/LegalEntityPrincipal.md)
+ - [Amos::LegalEntityPrincipalMembershipsInner](docs/LegalEntityPrincipalMembershipsInner.md)
  - [Amos::ListAccounts](docs/ListAccounts.md)
  - [Amos::ListCharges](docs/ListCharges.md)
  - [Amos::ListCustomers](docs/ListCustomers.md)
@@ -379,6 +395,7 @@ Class | Method | HTTP request | Description
  - [Amos::PlaidCredentialsInput](docs/PlaidCredentialsInput.md)
  - [Amos::ProcessorTransaction](docs/ProcessorTransaction.md)
  - [Amos::Product](docs/Product.md)
+ - [Amos::RecordLegalEntityApplicationPrincipalIdentityVerificationRequest](docs/RecordLegalEntityApplicationPrincipalIdentityVerificationRequest.md)
  - [Amos::RecurringPayment](docs/RecurringPayment.md)
  - [Amos::Refund](docs/Refund.md)
  - [Amos::RefundStateType](docs/RefundStateType.md)
@@ -413,8 +430,6 @@ Class | Method | HTTP request | Description
  - [Amos::UpdateMerchantRequest](docs/UpdateMerchantRequest.md)
  - [Amos::UpdateOrganizationInput](docs/UpdateOrganizationInput.md)
  - [Amos::UpdateOrganizationRequest](docs/UpdateOrganizationRequest.md)
- - [Amos::UpdatePaymentIntentInput](docs/UpdatePaymentIntentInput.md)
- - [Amos::UpdatePaymentIntentRequest](docs/UpdatePaymentIntentRequest.md)
  - [Amos::UpdatePaymentLinkInput](docs/UpdatePaymentLinkInput.md)
  - [Amos::UpdatePaymentLinkRequest](docs/UpdatePaymentLinkRequest.md)
  - [Amos::UpdateProductInput](docs/UpdateProductInput.md)

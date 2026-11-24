@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **legal_entity_id** | **String** |  | [optional] |
+| **memberships** | [**Array&lt;LegalEntityPrincipalMembershipsInner&gt;**](LegalEntityPrincipalMembershipsInner.md) | Active legal entity memberships, oldest first. | [optional] |
 | **title** | **String** |  | [optional] |
 | **first_name** | **String** |  | [optional] |
 | **last_name** | **String** |  | [optional] |
@@ -29,7 +29,7 @@ require 'amos'
 
 instance = Amos::LegalEntityPrincipal.new(
   id: null,
-  legal_entity_id: null,
+  memberships: null,
   title: null,
   first_name: null,
   last_name: null,

@@ -15,6 +15,9 @@ require 'time'
 
 module Amos
   class CreateExternalAccountInput < ApiModelBase
+    # When creating a bank account, links it as this merchant application's settlement account. The account is not verified. Ignored verification fields cannot be set by the client. 
+    attr_accessor :merchant_application_id
+
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
@@ -27,6 +30,7 @@ module Amos
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'merchant_application_id' => :'merchant_application_id',
         :'metadata' => :'metadata',
         :'external_billing_address_attributes' => :'external_billing_address_attributes',
         :'external_bank_account_profile_attributes' => :'external_bank_account_profile_attributes',
@@ -47,6 +51,7 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'merchant_application_id' => :'String',
         :'metadata' => :'Hash<String, String>',
         :'external_billing_address_attributes' => :'BillingAddressInput',
         :'external_bank_account_profile_attributes' => :'BankAccountProfileInput',
@@ -78,6 +83,10 @@ module Amos
           h[acceptable_json_attribute_map[key]] = v
         end
       }
+
+      if attributes.key?(:'merchant_application_id')
+        self.merchant_application_id = attributes[:'merchant_application_id']
+      end
 
       if attributes.key?(:'metadata')
         if (value = attributes[:'metadata']).is_a?(Hash)
@@ -118,6 +127,7 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          merchant_application_id == o.merchant_application_id &&
           metadata == o.metadata &&
           external_billing_address_attributes == o.external_billing_address_attributes &&
           external_bank_account_profile_attributes == o.external_bank_account_profile_attributes &&
@@ -133,7 +143,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [metadata, external_billing_address_attributes, external_bank_account_profile_attributes, external_card_profile_attributes].hash
+      [merchant_application_id, metadata, external_billing_address_attributes, external_bank_account_profile_attributes, external_card_profile_attributes].hash
     end
 
     # Builds the object from hash

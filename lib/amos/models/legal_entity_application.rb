@@ -21,7 +21,7 @@ module Amos
 
     attr_accessor :organization_id
 
-    # Set when the application is approved and the legal entity is created.
+    # Set when the application is provisionally approved or approved and the legal entity is created.
     attr_accessor :legal_entity_id
 
     attr_accessor :entity_type
@@ -53,6 +53,10 @@ module Amos
     attr_accessor :denied_at
 
     attr_accessor :needs_information_at
+
+    attr_accessor :provisionally_approved_at
+
+    attr_accessor :provisional_expires_at
 
     attr_accessor :decision_reason
 
@@ -106,6 +110,8 @@ module Amos
         :'approved_at' => :'approved_at',
         :'denied_at' => :'denied_at',
         :'needs_information_at' => :'needs_information_at',
+        :'provisionally_approved_at' => :'provisionally_approved_at',
+        :'provisional_expires_at' => :'provisional_expires_at',
         :'decision_reason' => :'decision_reason',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
@@ -145,6 +151,8 @@ module Amos
         :'approved_at' => :'Time',
         :'denied_at' => :'Time',
         :'needs_information_at' => :'Time',
+        :'provisionally_approved_at' => :'Time',
+        :'provisional_expires_at' => :'Time',
         :'decision_reason' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time',
@@ -160,6 +168,8 @@ module Amos
         :'approved_at',
         :'denied_at',
         :'needs_information_at',
+        :'provisionally_approved_at',
+        :'provisional_expires_at',
         :'decision_reason',
       ])
     end
@@ -259,6 +269,14 @@ module Amos
         self.needs_information_at = attributes[:'needs_information_at']
       end
 
+      if attributes.key?(:'provisionally_approved_at')
+        self.provisionally_approved_at = attributes[:'provisionally_approved_at']
+      end
+
+      if attributes.key?(:'provisional_expires_at')
+        self.provisional_expires_at = attributes[:'provisional_expires_at']
+      end
+
       if attributes.key?(:'decision_reason')
         self.decision_reason = attributes[:'decision_reason']
       end
@@ -317,6 +335,8 @@ module Amos
           approved_at == o.approved_at &&
           denied_at == o.denied_at &&
           needs_information_at == o.needs_information_at &&
+          provisionally_approved_at == o.provisionally_approved_at &&
+          provisional_expires_at == o.provisional_expires_at &&
           decision_reason == o.decision_reason &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
@@ -332,7 +352,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_name, organization_id, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, approved_at, denied_at, needs_information_at, decision_reason, created_at, updated_at, requirements].hash
+      [id, legal_name, organization_id, legal_entity_id, entity_type, ownership_type, contact_email, contact_phone, business_address_line1, business_address_line2, business_city, business_state, business_postal_code, business_country, state, tax_id_last4, approved_at, denied_at, needs_information_at, provisionally_approved_at, provisional_expires_at, decision_reason, created_at, updated_at, requirements].hash
     end
 
     # Builds the object from hash

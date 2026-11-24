@@ -14,7 +14,7 @@
 | **country_code** | **String** |  | [optional] |
 | **customer_service_number** | **String** |  | [optional] |
 | **dba_name** | **String** |  | [optional] |
-| **max_transaction_amount** | **Integer** |  | [optional] |
+| **max_transaction_amount** | **Integer** | Maximum single transaction amount in cents. Defaults to 1000000. | [optional] |
 | **max_transaction_amount_reason** | **String** |  | [optional] |
 | **postal_code** | **String** |  | [optional] |
 | **primary_contact_email_address** | **String** |  | [optional] |

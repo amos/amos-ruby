@@ -4,8 +4,84 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**deactivate_legal_entity_principal**](LegalEntityPrincipalsApi.md#deactivate_legal_entity_principal) | **DELETE** /legal_entity_principals/{id} | Deactivate a legal entity principal |
 | [**get_legal_entity_principal**](LegalEntityPrincipalsApi.md#get_legal_entity_principal) | **GET** /legal_entity_principals/{id} | Retrieve a legal entity principal by ID |
 | [**list_legal_entity_principals**](LegalEntityPrincipalsApi.md#list_legal_entity_principals) | **GET** /legal_entity_principals | List all legal entity principals |
+
+
+## deactivate_legal_entity_principal
+
+> deactivate_legal_entity_principal(id, legal_entity_id)
+
+Deactivate a legal entity principal
+
+Ends the principal's active membership on the given legal entity without deleting its record. Memberships on other legal entities are unchanged.
+
+### Examples
+
+```ruby
+require 'time'
+require 'amos'
+# setup authorization
+Amos.configure do |config|
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Amos::LegalEntityPrincipalsApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+legal_entity_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | The legal entity whose membership should end
+
+begin
+  # Deactivate a legal entity principal
+  api_instance.deactivate_legal_entity_principal(id, legal_entity_id)
+rescue Amos::ApiError => e
+  puts "Error when calling LegalEntityPrincipalsApi->deactivate_legal_entity_principal: #{e}"
+end
+```
+
+#### Using the deactivate_legal_entity_principal_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> deactivate_legal_entity_principal_with_http_info(id, legal_entity_id)
+
+```ruby
+begin
+  # Deactivate a legal entity principal
+  data, status_code, headers = api_instance.deactivate_legal_entity_principal_with_http_info(id, legal_entity_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Amos::ApiError => e
+  puts "Error when calling LegalEntityPrincipalsApi->deactivate_legal_entity_principal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** |  |  |
+| **legal_entity_id** | **String** | The legal entity whose membership should end |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[X-Api-Key](../README.md#X-Api-Key), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_legal_entity_principal

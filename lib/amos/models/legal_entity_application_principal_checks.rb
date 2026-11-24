@@ -14,23 +14,16 @@ require 'date'
 require 'time'
 
 module Amos
-  class UpdatePaymentIntentInput < ApiModelBase
-    attr_accessor :payment_method_id
+  class LegalEntityApplicationPrincipalChecks < ApiModelBase
+    attr_accessor :email
 
-    attr_accessor :amount
-
-    # Additional metadata key-value pairs
-    attr_accessor :metadata
-
-    attr_accessor :recurring_payment
+    attr_accessor :identity
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'payment_method_id' => :'payment_method_id',
-        :'amount' => :'amount',
-        :'metadata' => :'metadata',
-        :'recurring_payment' => :'recurring_payment'
+        :'email' => :'email',
+        :'identity' => :'identity'
       }
     end
 
@@ -47,10 +40,8 @@ module Amos
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'payment_method_id' => :'String',
-        :'amount' => :'Integer',
-        :'metadata' => :'Hash<String, String>',
-        :'recurring_payment' => :'RecurringPayment'
+        :'email' => :'LegalEntityApplicationPrincipalChecksEmail',
+        :'identity' => :'LegalEntityApplicationPrincipalChecksEmail'
       }
     end
 
@@ -64,7 +55,7 @@ module Amos
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::UpdatePaymentIntentInput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Amos::LegalEntityApplicationPrincipalChecks` initialize method"
       end
 
       # Ignore attributes unknown to this client so additive API response fields remain backwards compatible.
@@ -79,22 +70,12 @@ module Amos
         end
       }
 
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
       end
 
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'metadata')
-        if (value = attributes[:'metadata']).is_a?(Hash)
-          self.metadata = value
-        end
-      end
-
-      if attributes.key?(:'recurring_payment')
-        self.recurring_payment = attributes[:'recurring_payment']
+      if attributes.key?(:'identity')
+        self.identity = attributes[:'identity']
       end
     end
 
@@ -118,10 +99,8 @@ module Amos
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          payment_method_id == o.payment_method_id &&
-          amount == o.amount &&
-          metadata == o.metadata &&
-          recurring_payment == o.recurring_payment
+          email == o.email &&
+          identity == o.identity
     end
 
     # @see the `==` method
@@ -133,7 +112,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [payment_method_id, amount, metadata, recurring_payment].hash
+      [email, identity].hash
     end
 
     # Builds the object from hash

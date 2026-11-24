@@ -20,7 +20,7 @@ module Amos
       @api_client = api_client
     end
     # Create a merchant application for the embedded application
-    # Creates the merchant profile on the application in the embed token. Does not open an additional merchant on an already approved legal entity. 
+    # Creates the merchant profile on the application in the embed token. Does not open an additional merchant on an already approved legal entity. The settlement account is linked separately, on the flat external bank account intent and external account routes, by sending merchant_application_id. Plaid marks the account verified. Account and routing numbers do not. 
     # @param legal_entity_application_id [String] 
     # @param create_merchant_application_request [CreateMerchantApplicationRequest] 
     # @param [Hash] opts the optional parameters
@@ -31,7 +31,7 @@ module Amos
     end
 
     # Create a merchant application for the embedded application
-    # Creates the merchant profile on the application in the embed token. Does not open an additional merchant on an already approved legal entity. 
+    # Creates the merchant profile on the application in the embed token. Does not open an additional merchant on an already approved legal entity. The settlement account is linked separately, on the flat external bank account intent and external account routes, by sending merchant_application_id. Plaid marks the account verified. Account and routing numbers do not. 
     # @param legal_entity_application_id [String] 
     # @param create_merchant_application_request [CreateMerchantApplicationRequest] 
     # @param [Hash] opts the optional parameters

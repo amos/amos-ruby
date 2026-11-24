@@ -4,12 +4,11 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**approve_legal_entity_application**](LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Start review or approve a legal entity application |
+| [**approve_legal_entity_application**](LegalEntityApplicationsApi.md#approve_legal_entity_application) | **POST** /legal_entity_applications/{id}/approve | Approve a legal entity application |
 | [**create_legal_entity_application**](LegalEntityApplicationsApi.md#create_legal_entity_application) | **POST** /legal_entity_applications | Create a legal entity application |
 | [**create_legal_entity_application_embed_token**](LegalEntityApplicationsApi.md#create_legal_entity_application_embed_token) | **POST** /legal_entity_applications/{id}/embed_token | Mint an embed token for a legal entity application |
 | [**get_embed_legal_entity_application**](LegalEntityApplicationsApi.md#get_embed_legal_entity_application) | **GET** /embed/legal_entity_applications/{id} | Retrieve the legal entity application for an embed token |
 | [**get_legal_entity_application**](LegalEntityApplicationsApi.md#get_legal_entity_application) | **GET** /legal_entity_applications/{id} | Retrieve a legal entity application by ID |
-| [**submit_embed_legal_entity_application**](LegalEntityApplicationsApi.md#submit_embed_legal_entity_application) | **POST** /embed/legal_entity_applications/{id}/submit | Submit a legal entity application from the onboarding iframe |
 | [**submit_legal_entity_application**](LegalEntityApplicationsApi.md#submit_legal_entity_application) | **POST** /legal_entity_applications/{id}/submit | Submit a legal entity application |
 | [**update_embed_legal_entity_application**](LegalEntityApplicationsApi.md#update_embed_legal_entity_application) | **PUT** /embed/legal_entity_applications/{id} | Update a pending or needs-information legal entity application |
 | [**update_legal_entity_application**](LegalEntityApplicationsApi.md#update_legal_entity_application) | **PUT** /legal_entity_applications/{id} | Update a pending legal entity application |
@@ -19,9 +18,9 @@ All URIs are relative to *https://pay-sandbox.amos.com*
 
 > <LegalEntityApplication> approve_legal_entity_application(id)
 
-Start review or approve a legal entity application
+Approve a legal entity application
 
-Call this twice.  When the application is `submitted`, this moves it to `under_review`. No legal entity is created. Run identity verification for each application principal while the application is `under_review`.  When the application is `under_review`, this creates the legal entity, merchants, accounts, and principals and moves the application to `approved`, only if every application principal has a successful identity verification. 
+Approves a submitted application and creates the legal entity, merchants, accounts, and principals. This legacy route does not require verified principal emails. 
 
 ### Examples
 
@@ -43,7 +42,7 @@ api_instance = Amos::LegalEntityApplicationsApi.new
 id = 'id_example' # String | 
 
 begin
-  # Start review or approve a legal entity application
+  # Approve a legal entity application
   result = api_instance.approve_legal_entity_application(id)
   p result
 rescue Amos::ApiError => e
@@ -59,7 +58,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Start review or approve a legal entity application
+  # Approve a legal entity application
   data, status_code, headers = api_instance.approve_legal_entity_application_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -167,7 +166,7 @@ end
 
 Mint an embed token for a legal entity application
 
-Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents, and submit. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
+Mints an embed token scoped to this application. Create the application with the API key first. The iframe then uses only this token on the embed routes to read and update the application, add principals, merchant applications, and documents. No request body. Embed tokens are short-lived, so call this again for each iframe request, including when an application that needs information is resumed. 
 
 ### Examples
 
@@ -376,77 +375,6 @@ end
 - **Accept**: application/json
 
 
-## submit_embed_legal_entity_application
-
-> <LegalEntityApplication> submit_embed_legal_entity_application(id)
-
-Submit a legal entity application from the onboarding iframe
-
-Submits an application in `pending` or `needs_information` once every requirement is satisfied. Responds 403 when the token belongs to a different application. 
-
-### Examples
-
-```ruby
-require 'time'
-require 'amos'
-# setup authorization
-Amos.configure do |config|
-  # Configure API key authorization: Embed
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = Amos::LegalEntityApplicationsApi.new
-id = 'id_example' # String | 
-
-begin
-  # Submit a legal entity application from the onboarding iframe
-  result = api_instance.submit_embed_legal_entity_application(id)
-  p result
-rescue Amos::ApiError => e
-  puts "Error when calling LegalEntityApplicationsApi->submit_embed_legal_entity_application: #{e}"
-end
-```
-
-#### Using the submit_embed_legal_entity_application_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<LegalEntityApplication>, Integer, Hash)> submit_embed_legal_entity_application_with_http_info(id)
-
-```ruby
-begin
-  # Submit a legal entity application from the onboarding iframe
-  data, status_code, headers = api_instance.submit_embed_legal_entity_application_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <LegalEntityApplication>
-rescue Amos::ApiError => e
-  puts "Error when calling LegalEntityApplicationsApi->submit_embed_legal_entity_application_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **String** |  |  |
-
-### Return type
-
-[**LegalEntityApplication**](LegalEntityApplication.md)
-
-### Authorization
-
-[Embed](../README.md#Embed)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## submit_legal_entity_application
 
 > <LegalEntityApplication> submit_legal_entity_application(id)
@@ -524,6 +452,8 @@ end
 > <LegalEntityApplication> update_embed_legal_entity_application(id, update_legal_entity_application_request)
 
 Update a pending or needs-information legal entity application
+
+Saves the application. When its requirements and principals are ready and at least one principal has verified their email and identity, the application moves to submitted. Otherwise it stays where it is.
 
 ### Examples
 

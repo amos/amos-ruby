@@ -16,6 +16,7 @@
 | **echeck_billing_descriptor** | **String** |  | [optional] |
 | **echeck_company_name** | **String** |  | [optional] |
 | **echeck_enabled** | **String** |  | [optional] |
+| **external_account_id** | **String** | Bank account linked for this merchant application. Absent until the embedded connect succeeds.  | [optional] |
 | **hard_coded_billing_descriptor** | **String** |  | [optional] |
 | **has_accepted_credit_cards** | **Boolean** |  | [optional] |
 | **legal_entity_application_id** | **String** |  | [optional] |
@@ -24,7 +25,7 @@
 | **max_monthly_credits_amount** | **Integer** |  | [optional] |
 | **max_monthly_debits_amount** | **Integer** |  | [optional] |
 | **max_single_debit_amount** | **Integer** |  | [optional] |
-| **max_transaction_amount** | **String** |  | [optional] |
+| **max_transaction_amount** | **Integer** | Maximum single transaction amount in cents. | [optional] |
 | **max_transaction_amount_reason** | **String** |  | [optional] |
 | **mcc** | **String** |  | [optional] |
 | **postal_code** | **String** |  | [optional] |
@@ -60,6 +61,7 @@ instance = Amos::MerchantApplication.new(
   echeck_billing_descriptor: null,
   echeck_company_name: null,
   echeck_enabled: null,
+  external_account_id: null,
   hard_coded_billing_descriptor: null,
   has_accepted_credit_cards: null,
   legal_entity_application_id: null,

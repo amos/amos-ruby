@@ -16,14 +16,14 @@ require 'time'
 module Amos
   class LegalEntityApplicationStateType
     PENDING = "pending".freeze
+    PROVISIONALLY_APPROVED = "provisionally_approved".freeze
     SUBMITTED = "submitted".freeze
     NEEDS_INFORMATION = "needs_information".freeze
-    UNDER_REVIEW = "under_review".freeze
     APPROVED = "approved".freeze
     DENIED = "denied".freeze
 
     def self.all_vars
-      @all_vars ||= [PENDING, SUBMITTED, NEEDS_INFORMATION, UNDER_REVIEW, APPROVED, DENIED].freeze
+      @all_vars ||= [PENDING, PROVISIONALLY_APPROVED, SUBMITTED, NEEDS_INFORMATION, APPROVED, DENIED].freeze
     end
 
     # Builds the enum from string

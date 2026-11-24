@@ -17,7 +17,8 @@ module Amos
   class LegalEntityPrincipal < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :legal_entity_id
+    # Active legal entity memberships, oldest first.
+    attr_accessor :memberships
 
     attr_accessor :title
 
@@ -53,7 +54,7 @@ module Amos
     def self.attribute_map
       {
         :'id' => :'id',
-        :'legal_entity_id' => :'legal_entity_id',
+        :'memberships' => :'memberships',
         :'title' => :'title',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
@@ -86,7 +87,7 @@ module Amos
     def self.openapi_types
       {
         :'id' => :'String',
-        :'legal_entity_id' => :'String',
+        :'memberships' => :'Array<LegalEntityPrincipalMembershipsInner>',
         :'title' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
@@ -134,8 +135,10 @@ module Amos
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'legal_entity_id')
-        self.legal_entity_id = attributes[:'legal_entity_id']
+      if attributes.key?(:'memberships')
+        if (value = attributes[:'memberships']).is_a?(Array)
+          self.memberships = value
+        end
       end
 
       if attributes.key?(:'title')
@@ -220,7 +223,7 @@ module Amos
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          legal_entity_id == o.legal_entity_id &&
+          memberships == o.memberships &&
           title == o.title &&
           first_name == o.first_name &&
           last_name == o.last_name &&
@@ -247,7 +250,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, legal_entity_id, title, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, contact_phone, tax_id_last4, created_at, updated_at].hash
+      [id, memberships, title, first_name, last_name, email, date_of_birth, address_line1, address_line2, city, state, country, postal_code, contact_phone, tax_id_last4, created_at, updated_at].hash
     end
 
     # Builds the object from hash

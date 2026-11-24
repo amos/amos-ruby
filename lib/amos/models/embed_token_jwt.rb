@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Amos
-  # Decoded JWT payload for embed token responses.  Payment intent tokens include `account_id` and `payment_intent_id`. Setup intent tokens include `organization_id` and `setup_intent_id` and do not use `account_id`. Legal entity application tokens include `organization_id` and `legal_entity_application_id`. Unused fields are null. 
+  # Decoded JWT payload for embed token responses.  Payment intent tokens include `account_id` and `payment_intent_id`. Setup intent tokens include `organization_id` and `setup_intent_id` and do not use `account_id`. Legal entity application tokens include `organization_id` and `legal_entity_application_id`. Principal tokens, issued when an invitation is accepted, add `legal_entity_application_principal_id` and `legal_entity_application_principal_invitation_id`. Unused fields are null. 
   class EmbedTokenJwt < ApiModelBase
     # Present for payment intent embed tokens. Null for setup intents.
     attr_accessor :account_id
@@ -31,6 +31,12 @@ module Amos
     # Present for legal entity application embed tokens. Null for other embed tokens. 
     attr_accessor :legal_entity_application_id
 
+    # Present for principal tokens, which can only retrieve and update this principal. Null for other embed tokens. 
+    attr_accessor :legal_entity_application_principal_id
+
+    # Present for principal tokens. The token stops working when this invitation is revoked, for example when a new invitation is sent or the principal's email changes. Null for other embed tokens. 
+    attr_accessor :legal_entity_application_principal_invitation_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,7 +44,9 @@ module Amos
         :'organization_id' => :'organization_id',
         :'payment_intent_id' => :'payment_intent_id',
         :'setup_intent_id' => :'setup_intent_id',
-        :'legal_entity_application_id' => :'legal_entity_application_id'
+        :'legal_entity_application_id' => :'legal_entity_application_id',
+        :'legal_entity_application_principal_id' => :'legal_entity_application_principal_id',
+        :'legal_entity_application_principal_invitation_id' => :'legal_entity_application_principal_invitation_id'
       }
     end
 
@@ -59,7 +67,9 @@ module Amos
         :'organization_id' => :'String',
         :'payment_intent_id' => :'String',
         :'setup_intent_id' => :'String',
-        :'legal_entity_application_id' => :'String'
+        :'legal_entity_application_id' => :'String',
+        :'legal_entity_application_principal_id' => :'String',
+        :'legal_entity_application_principal_invitation_id' => :'String'
       }
     end
 
@@ -70,7 +80,9 @@ module Amos
         :'organization_id',
         :'payment_intent_id',
         :'setup_intent_id',
-        :'legal_entity_application_id'
+        :'legal_entity_application_id',
+        :'legal_entity_application_principal_id',
+        :'legal_entity_application_principal_invitation_id'
       ])
     end
 
@@ -112,6 +124,14 @@ module Amos
       if attributes.key?(:'legal_entity_application_id')
         self.legal_entity_application_id = attributes[:'legal_entity_application_id']
       end
+
+      if attributes.key?(:'legal_entity_application_principal_id')
+        self.legal_entity_application_principal_id = attributes[:'legal_entity_application_principal_id']
+      end
+
+      if attributes.key?(:'legal_entity_application_principal_invitation_id')
+        self.legal_entity_application_principal_invitation_id = attributes[:'legal_entity_application_principal_invitation_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -138,7 +158,9 @@ module Amos
           organization_id == o.organization_id &&
           payment_intent_id == o.payment_intent_id &&
           setup_intent_id == o.setup_intent_id &&
-          legal_entity_application_id == o.legal_entity_application_id
+          legal_entity_application_id == o.legal_entity_application_id &&
+          legal_entity_application_principal_id == o.legal_entity_application_principal_id &&
+          legal_entity_application_principal_invitation_id == o.legal_entity_application_principal_invitation_id
     end
 
     # @see the `==` method
@@ -150,7 +172,7 @@ module Amos
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, organization_id, payment_intent_id, setup_intent_id, legal_entity_application_id].hash
+      [account_id, organization_id, payment_intent_id, setup_intent_id, legal_entity_application_id, legal_entity_application_principal_id, legal_entity_application_principal_invitation_id].hash
     end
 
     # Builds the object from hash
